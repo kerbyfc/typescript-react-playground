@@ -1,0 +1,6 @@
+.theme
+.vimrc
+tags
+node_modules
+bower_components
+build

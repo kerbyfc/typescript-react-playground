@@ -1,0 +1,13 @@
+--name       "TM"
+--readme     README.md
+--title      "Traffic Monitor Documentation"
+--extension  coffee
+--undocumented
+--private
+--quiet
+--closure
+--output     ./doc
+./doc/sources
+-
+LICENSE
+CHANGELOG.md
