@@ -1,0 +1,5 @@
+{
+  "main": "runner.coffee",
+  "auto-redeploy": true,
+  "includes": "iw~tm.logger~winston"
+}

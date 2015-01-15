@@ -1,0 +1,4 @@
+{
+  "main": "sources/bootstrap.js",
+  "auto-redeploy": true
+}

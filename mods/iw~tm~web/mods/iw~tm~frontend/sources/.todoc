@@ -1,0 +1,13 @@
+
+ Classes   Path                                                                                                            
+ Header    components/header.coffee                
+ Session   framework/session.coffee                
+ AuthForm  modules/auth/components/auth_form.coffee
+
+
+ Methods             Path                                                                                                            
+ check (Session)     framework/session.coffee                
+ navigate (Helpers)  framework/helpers.coffee                
+ render (AuthForm)   modules/auth/components/auth_form.coffee
+ start (Session)     framework/session.coffee                
+
