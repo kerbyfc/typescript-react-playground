@@ -48,7 +48,9 @@
 var container = require('vertx/container');
 var console = require('vertx/console');
 
-container.deployVerticle('sources/user.js', {}, function(err, id) {
+console.log("SOME")
+
+container.deployVerticle('user.js', {}, function(err, id) {
   if (err) {
     console.log(err);
   }

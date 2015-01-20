@@ -1,4 +1,4 @@
 {
-  "main": "server.coffee",
+  "main": "bootstrap.coffee",
   "auto-redeploy": true
 }

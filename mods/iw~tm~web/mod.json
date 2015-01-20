@@ -1,5 +1,5 @@
 {
-  "main": "runner.coffee",
+  "main": "bootstrap.coffee",
   "auto-redeploy": true,
-  "includes": "iw~tm.logger~winston"
+  "includes": "iw~tm~logger"
 }

@@ -9,5 +9,5 @@ vertx
 npm-debug.log
 asdfsa
 *.jar
-
+logs
 .symlinks
