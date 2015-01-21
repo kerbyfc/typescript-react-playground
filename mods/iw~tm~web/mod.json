@@ -1,5 +1,0 @@
-{
-  "main": "bootstrap.coffee",
-  "auto-redeploy": true,
-  "includes": "iw~tm~logger"
-}
