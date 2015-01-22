@@ -12,7 +12,6 @@ Application = require 'components/layouts/application'
 Settings    = require 'modules/settings/bootstrap'
 Auth        = require 'modules/auth/bootstrap'
 
-
 # form routers based on modules
 routes =
   <Route name="app" path="/" handler={Application}>

@@ -15,7 +15,12 @@
     "gulp-browserify": "^0.5.0",
     "gulp-webserver": "^0.8.7",
     "gulp-notify": "^2.1.0",
-    "gulp-coffee-react-transform": "^0.0.2"
+    "gulp-coffee-react-transform": "^0.0.2",
+    "yamljs": "~0.2.1",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "~0.1",
+    "karma-cucumberjs": "^0.0.2",
+    "lodash": "*"
   },
   "author": "kerbyfc@gmail.com",
   "license": "ISC",

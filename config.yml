@@ -1,0 +1,42 @@
+paths:
+  # src
+  js:
+    - ./build/**/*.js
+  coffee:
+    - ./src/**/*.coffee
+  html:
+    - ./src/*.html
+  yaml:
+    - ./src/**/*.yml
+  bootstrap:
+    - ./build/bootstrap.js
+
+  docsource: ./doc/sources
+  nodoc: "nodoc.txt"
+
+  index_file: index.html
+
+  build: ./build
+  karma: ./karma.coffee
+
+cucumber:
+  paths:
+    features: ./tests/features/**/*.feature
+    definitions: ./tests/definitions/**/*.coffee
+    support: ./tests/support/**/*.coffee
+
+browserify:
+  paths:
+    - ./build
+    - ./build/framework
+    - ./node_modules
+    - ./bower_components
+    - ./bower_components/react
+    - ./bower_components/react-router/dist/
+  shim:
+    jquery:
+      path: ./bower_components/jquery/dist/jquery.js
+      exports : jquery
+    lodash:
+      path: ./bower_components/lodash/dist/lodash.js
+      exports : _
