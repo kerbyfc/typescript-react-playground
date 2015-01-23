@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+.dashboard-view {
+
+}
+
+.dashboard-view__item {
+  display: inline-block;
+  margin: 5px;
+
+  label {
+    display: block;
+
+    width: 118px;
+    height: 118px;
+
+    box-shadow: 0 0 0 1px $greyLightBorder;
+
+    @include transition(box-shadow ease-in 0.2s);
+
+    cursor: pointer;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked {
+    + label {
+      box-shadow: 0 0 0 2px $elementSelected;
+      @include transition(box-shadow ease-in 0.2s);
+    }
+  }
+}

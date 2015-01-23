@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+$columnSizes : 30 50 66;
+
+.jdash {
+  position: relative;
+  min-width: 1000px;
+  margin: 0 -10px;
+}
+
+.jdash-column {
+  float: left;
+  min-height: 1px;
+  box-sizing: border-box;
+}
+
+@each $columnSize in $columnSizes {
+  .jdash-colum-#{nth($columnSize, 1)}percent {
+    width: #{nth($columnSize, 1)};
+  }
+}
+
+.jdash-sector {
+  clear: both;
+  display: none;
+
+  margin: 15px;
+
+  background: rgba(204, 204, 204, 0.1);
+  border: 1px dashed #bbb;
+  border-radius: 3px;
+}
+
+.jdash-widget {
+  position: relative;
+  margin: 0 10px 20px;
+}
+
+.jdash-widget.jdash_dragging {
+  opacity: 0.65;
+  z-index: 10;
+}

@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.ms-container {
+  margin-top: 15px;
+
+  background: transparent url('../img/switch.png') no-repeat 280px 80px;
+}
+
+.ms-container .ms-selectable, .ms-container .ms-selection {
+  background: #fff;
+  color: #555555;
+  float: left;
+}
+
+.ms-container .ms-list {
+  box-shadow: none;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  border: 1px solid $greyBorder;
+  border-radius: 0;
+}
+
+
+.ms-selected {
+  display:none;
+}
+.ms-container .ms-selectable {
+  margin-right: 40px;
+}
+
+.ms-container .ms-list.ms-focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  box-shadow: none;
+  outline: 0;
+  outline: thin dotted \9;
+}
+
+.ms-container ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.ms-container .ms-optgroup-container {
+  width: 100%;
+}
+
+.ms-container ul.ms-list {
+  width: 270px;
+  height: 200px;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.ms-container .ms-optgroup-label {
+  margin: 0;
+  padding: 5px 0px 0px 5px;
+  cursor: pointer;
+  color: #999;
+}
+
+.ms-container .ms-selectable li.ms-elem-selectable,
+.ms-container .ms-selection li.ms-elem-selection {
+  padding: 5px 10px;
+
+  border-bottom: 1px $greyBorder solid;
+
+  color: #555;
+  font-size: 12px;
+  line-height: 20px;
+
+  cursor: pointer
+}
+
+.ms-container .ms-selectable li.ms-hover,
+.ms-container .ms-selection li.ms-hover {
+  background-color: $blue;
+
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ms-container .ms-selectable li.disabled,
+.ms-container .ms-selection li.disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: text;
+}

@@ -1,0 +1,137 @@
+// Scaffolding
+// ==========================================================================
+$assetPath: "/img";
+$bodyBackgroundImage: url("#{$assetPath}/bg.jpg");
+$bodyBackgroundColor: #f2f2f2;
+
+// Typography
+// ==========================================================================
+$textColor                  : #2a3744;
+$titleColor                 : #2a3744;
+
+$baseFontFamily             : "Open Sans", sans-serif;
+$baseFontSize               : 12px;
+$baseFontColor              : #2a3744;
+$baseLineHeight             : 1.25;
+
+$headingFontFamily          : "Roboto", sans-serif;
+$headingFontSize            : 150%;
+$headingFontColor           : $baseFontColor;
+$headingLineHeight          : 1.25;
+
+$subHeadingFontFamily       : "Roboto", sans-serif;
+$subHeadingFontSize         : 125%;
+$subHeadingFontColor        : $baseFontColor;
+$subHeadingLineHeight       : 1.25;
+
+// Colors
+// ==========================================================================
+$primaryColor               : #2a3744;
+
+$red                        : #d65c4f;
+$redLight                   : lighten($red, 10%);
+$redDark                    : darken($red, 2%);
+$orange                     : #ee8366;
+$orangeDark                 : darken($orange, 2%);
+$yellow                     : #f1c40f;
+$yellowDark                 : darken($yellow, 2%);
+$green                      : #65b688;
+$greenDark                  : darken($green, 2%);
+$blue                       : #659dcd;
+$blueDark                   : #4a84b6;
+$greyLight                  : #adadad;
+$grey                       : #404040;
+$greyDark                   : darken($grey, 2%);
+
+// Element behavior
+// ==========================================================================
+$elementHover               : $blue;
+$elementSelected            : $blue;
+
+$iconBtnColor               : #a2a2a2;
+$iconBtnColorHover          : #646464;
+
+$textLinkColor              : $blue;
+$textLinkColorHover         : $blueDark;
+
+// Greyscale
+// ==========================================================================
+$greyBorder                 : #e1e1e1;
+$greyLightBorder            : #eee;
+$greyDarkBorder             : #d8d8d8;
+$greyBackground             : #edf0f1;
+
+// Links
+// ==========================================================================
+$linkColor                  : $blue;
+$linkColorHover             : $blueDark;
+
+// Z-index
+// ==========================================================================
+$zIndexDropdown             : 1000;
+$zIndexPopover              : 1200;
+$zIndexHintMessage          : 1120;
+$zIndexErrorMessage         : 1110;
+$zIndexPopoverHover         : 1210;
+$zIndexPopup                : 10000;
+
+// Sizes
+// ==========================================================================
+$headerHeight               : 40px;
+$contentMessageHeight       : 37px;
+
+$ElemSizeFull               : 100%;
+$ElemSizeHalf               : $ElemSizeFull / 2;
+$ElemSizeOneThird           : $ElemSizeFull / 3;
+$ElemSizeOneQuarter         : $ElemSizeFull / 4;
+$ElemSizeTwoThird           : $ElemSizeFull - $ElemSizeFull / 3;
+$ElemSizeThreeQuarter       : $ElemSizeFull - $ElemSizeFull / 4;
+
+// Threat level colors
+// ==========================================================================
+$threatColorNo              : #adadad;
+$threatColorLow             : $green;
+$threatColorMedium          : $orange;
+$threatColorHigh            : $red;
+
+$threatLvls                 : no low medium high;
+$threatColors               : $threatColorNo $threatColorLow $threatColorMedium $threatColorHigh;
+$threat                     : zip($threatLvls, $threatColors);
+
+// File formats
+// ==========================================================================
+$fileFormats: archive certificate construction database graphics mail multimedia presentation table text unknown other play;
+
+// Event types
+// ==========================================================================
+$eventTypes: email email-send email-receive messenger sharing printer crawler file-transfer ftp multimedia-photo phone-sms-send phone-sms-receive;
+
+// Tags colors
+// ==========================================================================
+$tagsColors: #4e954e #5484ed #a4bdfc #af5050 #7ae7bf #cc7a29 #898989 #fbd75b #ffb878 #ff0000 #dc2127 #dbadff #be9b33 #8cc152 #f6bb42 #da4453 #e9640b #0e71bd #3baa21 #e02525;
+
+// Popover
+// ==========================================================================
+$popoverBackground              : #fff;
+$popoverMaxWidth                : 276px;
+$popoverBorderColor             : rgba(#000, 0.2);
+$popoverBorderRadius            : 2px;
+$popoverFallbackBorderColor     : #ccc;
+$popoverTitleBackground         : darken($popoverBackground, 3%);
+$popoverArrowWidth              : 5px;
+$popoverArrowColor              : #fff;
+$popoverArrowOuterWidth         : $popoverArrowWidth + 1;
+$popoverArrowOuterColor         : fadein($popoverBorderColor, 5%);
+$popoverArrowOuterFallbackColor : darken($popoverFallbackBorderColor, 20%);
+
+// Dropdown
+// ==========================================================================
+$dropdownBackground             : #fff;
+$dropdownBorderColor            : $greyBorder;
+$dropdownBorderRadius           : 2px;
+$dropdownArrowWidth             : 5px;
+$dropdownArrowColor             : #fff;
+$dropdownLinkColor              : #8e8e8e;
+$dropdownLinkColorHover         : $textColor;
+$dropdownLinkBackgroundHover    : rgba(#000, 0.07);
+$dropdownLinkDisabledColor      : #b9c1c9;

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import "../base/mixins";
+@import "../base/variables";
+
+.auth {
+  position: relative;
+
+  width: 355px;
+  margin: 0 auto;
+
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+  border-radius: 1px;
+}
+
+.auth--title {
+  height: 50px;
+  margin: 1px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+
+  background: url("#{$assetPath}/logo.png") no-repeat 10px 7px;
+  background-color: $primaryColor;
+
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.auth--form {
+  padding: 15px 25px 20px;
+
+  .auth--submit {
+    text-align: center;
+  }
+}
+
+.pdp {
+  .auth--title {
+    background: url("#{$assetPath}/dlp-logo.png") no-repeat 10px 7px;
+    background-color: #521f1f;
+  }
+}
+
+.auth__browser-warning {
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+}

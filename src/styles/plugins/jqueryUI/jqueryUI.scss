@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// JQuery UI Spinner
+// ---------------------------------------------------------------------------------------------
+.ui-widget {
+  font-size: 12px;
+}
+
+.ui-spinner {
+  .ui-icon {
+    display: none;
+  }
+}
+
+#slider {
+  margin-top: 25px;
+}
+
+#slider .ui-state-default,
+#slider .ui-widget-content .ui-state-default,
+#slider .ui-widget-header .ui-state-default {
+  top: (-7px) !important;
+}
+
+#slider .ui-widget-content {
+  border: {
+    width: 1px;
+    style: solid;
+    color: #dcdcdc;
+  };
+  background-image: linear-gradient(top, #ffffff 0%, #eaeaea 100%);
+}
+
+.ui-slider-handle--value {
+  color: #333;
+  font-size: 10px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  background-color: $greyLightBorder;
+  padding: 5px;
+  // +border-radius(50%)
+  border-radius: 2px;
+}
+
+// JQuery UI Slider
+// ---------------------------------------------------------------------------------------------
+#slider .ui-state-default, #slider .ui-widget-content .ui-state-default, #slider .ui-widget-header .ui-state-default {
+  position: absolute;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: url("/img/handle.png") no-repeat 50% 50%;
+  font-weight: bold;
+  color: #1C94C4;
+  outline: none;
+  top: 33px;
+  margin-left: -12px;
+  border: none;
+  text-decoration: none;
+}
+
+.jslider-scale {
+  position: relative;
+  top: 2px;
+  margin-bottom: 10px;
+}
+
+.jslider-scale span {
+  position: absolute;
+  height: 5px;
+  border-left: 1px solid #999;
+  font-size: 0;
+}
+
+.jslider-scale ins {
+  font-size: 9px;
+  text-decoration: none;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: #999;
+}
+
+// JQuery UI Draggable
+// ---------------------------------------------------------------------------------------------
+.ui-draggable-dragging {
+  z-index: 1;
+}
+
+// JQuery UI Table
+// ---------------------------------------------------------------------------------------------
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background-image: linear-gradient(#f8f8f8, #f8f8f8);
+}
+
+.slick-header {
+  border-radius: 3px;
+}
+
+.slick-header-column {
+  box-shadow: inset 0 1px 0 rgba(#fcfcfc, 0.8);
+}
+
+.ui-resizable-e {
+  right: 0 !important;
+}
+
+// JQuery Dropdown
+// ---------------------------------------------------------------------------------------------
+.jquery_dropdown {
+  background-color: white;
+  border: 1px solid #ccc !important;
+  font-family: "Tahoma", "Helvetica", "Arial" sans-serif;
+  font-size: 12px;
+}
+
+// Spinner
+.ui-spinner {
+  border: none;
+  border-radius: 0;
+}
+
+.ui-spinner-input {
+  padding: 7px 9px 8px 9px;
+  min-height: 30px;
+  margin: 0;
+  display: block;
+  box-shadow: none;
+}
+
+.ui-spinner .ui-icon {
+  position: absolute;
+  margin-top: -8px;
+  top: 50%;
+  left: 0;
+  text-indent: -99999px;
+}
+
+.ui-spinner a.ui-spinner-button {
+  cursor: pointer;
+}
+
+.ui-spinner-down {
+  bottom: 0;
+  border: none !important;
+  background: url(/img/spinner_bottom.png) no-repeat !important;
+}
+
+.ui-spinner-up {
+  top: 0;
+  background: url(/img/spinner_top.png) no-repeat !important;
+  border: none !important;
+}
+
+.ui-spinner-button {
+  width: 25px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  position: absolute;
+  cursor: default;
+  display: block;
+  overflow: hidden;
+  right: 0;
+}

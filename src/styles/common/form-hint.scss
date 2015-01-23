@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+@import "../base/mixins";
+
+.form--hint {
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: $zIndexHintMessage;
+
+  width: auto;
+  margin-bottom: 2px;
+  padding: 6px 10px;
+
+  background-color: #f1f8ff;
+  border: 1px solid $blue;
+  color: $blue;
+
+  @include transition(opacity 0.1s ease-in);
+
+  &:after {
+    content: "";
+
+    display: inline-block;
+
+    position: absolute;
+    z-index: 100;
+    bottom: -7px;
+    left: 4px;
+    right: auto;
+
+    border-right: 7px solid transparent;
+    border-top: 7px solid #f1f8ff;
+    border-left: 7px solid transparent;
+
+    vertical-align: middle;
+  }
+
+  &:before {
+    content: "";
+
+    display: inline-block;
+
+    position: absolute;
+    bottom: -9px;
+    left: 3px;
+    right: auto;
+
+    border-right: 8px solid transparent;
+    border-top: 8px solid $blue;
+    border-left: 8px solid transparent;
+
+    vertical-align: middle;
+  }
+
+  .include-button & {
+    right: 36px;
+  }
+
+  [data-error-status="true"] & {
+    display: none;
+  }
+}
+
+.form--elem {
+  textarea,
+  select,
+  input[type="text"],
+  input[type="time"],
+  input[type="number"],
+  input[type="password"],
+  div[contenteditable="true"] {
+    &[disabled],
+    &[readonly] {
+      ~ .form--hint {
+        display: none;
+      }
+    }
+  }
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  &:focus {
+    ~ .form--hint {
+      visibility: visible;
+      opacity: 1;
+      @include transition(opacity 0.3s ease-in 1s);
+    }
+  }
+}
+
+.form--hint-icon {
+  margin-left: 5px;
+}

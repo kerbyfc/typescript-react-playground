@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+
+// Scaffolding
+// ==========================================================================
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  min-width: 1000px;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: $bodyBackgroundColor;
+  color: $textColor;
+}
+
+// Links
+// ==========================================================================
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+  outline: 0;
+
+  &:hover,
+  &:active {
+    color: $linkColorHover;
+    text-decoration: none;
+    outline: 0;
+  }
+
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+// Typography
+// ==========================================================================
+
+html {
+  color: $textColor;
+}
+
+body {
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-family: $baseFontFamily;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $headingFontColor;
+  font-style: normal;
+  font-weight: normal;
+  font-family: $headingFontFamily;
+  line-height: $headingLineHeight;
+  margin: 0 0 1.5em;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 300%;
+  line-height: 200%;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 150%;
+  line-height: 120%;
+  margin-bottom: 0.2em;
+}
+
+h3 {
+  font-size: 100%;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+hgroup {
+  margin-bottom: 1em;
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 85%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: $baseFontFamily;
+  width: auto;
+}
+
+label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+}
+
+figure {
+  float: right;
+  margin: 0 20px 0 0;
+  p {
+    font-size: 11px;
+    margin: 6px 0 0;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+dl {
+  margin: 0;
+}
+
+// Forms
+// ==========================================================================
+form {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  border: 0;
+  white-space: normal;
+  margin: 0 0 10px 5px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 12px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  line-height: 20px;
+  margin: 0;
+  vertical-align: baseline;
+  outline: none;
+}
+
+button,
+input {
+  line-height: normal;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+
+.progress {
+  position: relative;
+  height: auto;
+  margin-bottom: 0px;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.progress-label {
+  position: absolute;
+  top: 2px;
+  width: 100%;
+  margin-bottom: 0;
+  color: scale_color($green, $lightness: -70%);
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+}
+
+progress {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 1em;
+  display: block;
+  -webkit-appearance: none;
+  border: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #ecf0f1;
+  border-radius: 3px;
+}
+
+progress::-webkit-progress-value {
+  background-color: $green;
+  border-radius: 3px;
+  @include transition(move 5s linear 0 infinite);
+}
+
+// Scrollbar
+// ==========================================================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 8px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eee;
+  border: thin solid #e5e5e5;
+  box-shadow: 0px 0px 3px #dfdfdf inset;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border: thin solid #dcdcdc;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7d7d7d;
+}
+
+// Killing of bootstrap
+// ==========================================================================
+
+label {
+  font-weight: normal;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #555555;
+  vertical-align: middle;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+pre {
+  padding: 0 2px;
+  z-index: 899;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #fff inset !important;
+}

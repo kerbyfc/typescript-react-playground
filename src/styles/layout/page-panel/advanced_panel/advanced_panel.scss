@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+
+.advanced_panel--tumbler {
+  display: none;
+  &:checked ~ {
+    .advanced_panel {
+      display: block;
+      border-top: 1px solid $greyBorder;
+      .advanced_panel--close {
+        opacity: 0.3;
+        @include transition(opacity 0.2s ease-in);
+        &:hover {
+          opacity: 0.7;
+          @include transition(opacity 0.2s ease-in);
+        }
+      }
+    }
+  }
+}
+
+.advanced_panel {
+  display: none;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  box-shadow: inset 0 0 3px rgba(34, 34, 34, 0.15);
+  border-left: 1px solid #e1e1e1;
+  @include transition(left ease-in 0.2s);
+}
+
+.advanced_panel--trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: url("#{$assetPath}/icon-search.png") no-repeat center;
+  border-left: 1px solid $greyBorder;
+  cursor: pointer;
+  @include transition(opacity 0.2s ease-in);
+  &:hover {
+    height: 39px;
+    background-color: rgba(#000, 0.05);
+    border-bottom: 1px solid $greyBorder;
+    @include transition(opacity 0.2s ease-in);
+  }
+}
+
+.advanced_panel--field {
+  display: inline-block;
+  position: relative;
+  i {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    z-index: 10;
+    color: #6d7c8b;
+  }
+  input[type='text'] {
+    width: 100%;
+    height: 33px;
+    min-height: 20px;
+    padding: 0 10px 0 28px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: none;
+    border: 1px solid $greyBorder;
+    border-radius: 1px;
+    color: #6d7c8b;
+  }
+}
+
+.advanced_panel--filters {
+  display: inline-block;
+}
+
+.advanced_panel--filter {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.advanced_panel--toggle {
+  display: block;
+  height: 33px;
+  line-height: 31px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+  color: #6d7c8b;
+  vertical-align: middle;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $blue;
+    color: $blue;
+  }
+}
+
+.advanced_panel--label {
+  // empty
+}

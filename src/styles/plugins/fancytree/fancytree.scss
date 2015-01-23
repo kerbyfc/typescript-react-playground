@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+span.fancytree-empty,
+span.fancytree-vline,
+span.fancytree-expander,
+span.fancytree-icon,
+span.fancytree-checkbox,
+span.fancytree-radio,
+span.fancytree-drag-helper-img,
+#fancytree-drop-marker {
+  background-image: url("/images/fancytree/skin-win7/icons.gif");
+}
+
+.fancytree-loading span.fancytree-expander,
+.fancytree-loading span.fancytree-expander:hover {
+  background-image: url("/images/fancytree/skin-win7/loading.gif");
+}
+
+.fancytree-statusnode-wait span.fancytree-icon,
+.fancytree-statusnode-wait span.fancytree-icon:hover {
+  background-image: url("/images/fancytree/skin-win7/loading.gif");
+}
+
+.ui-fancytree {
+  height: 100%;
+  .fancytree-node {
+    line-height: 20px;
+    span.fancytree-title {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+}
+
+.privilegies .fancytree-container {
+  background-color: white !important;
+}
+
+.ui-fancytree {
+  outline: none;
+  .fancytree-checkbox {
+    margin-top: 4px;
+  }
+  .disabled {
+    .fancytree-checkbox {
+      opacity: 0.3;
+    }
+    .fancytree-title {
+      opacity: 0.3;
+    }
+  }
+  span.fancytree-title:hover,
+  span.fancytree-active span.fancytree-title:hover, span.fancytree-active span.fancytree-title,
+  span.fancytree-active.fancytree-focused .fancytree-title,
+  span.fancytree-selected span.fancytree-title:hover,
+  span.fancytree-selected span.fancytree-title {
+    background: none;
+    background-color: #dcf7e3;
+    border: 1px solid transparent !important;
+    outline: none;
+  }
+  span.fancytree-selected {
+    .fancytree-title {
+      background: none;
+      border: 1px solid transparent;
+      font-style: normal;
+    }
+  }
+  .fancytree-title:hover {
+    background: none;
+    border: 1px solid transparent;
+  }
+  .fancytree-focused {
+    background: none !important;
+    border: none !important;
+  }
+}
+
+ul.fancytree-container {
+  border: none !important;
+}
+
+.fancytree-info {
+  display: none;
+  margin-left: 5px;
+  font-size: 9px;
+  vertical-align: top;
+  &:before {
+    margin-right: 0;
+  }
+}
+
+span.fancytree-title {
+  position: relative;
+  &:hover {
+    .fancytree-info {
+      display: inline-block;
+    }
+  }
+}
+
+.ui-fancytree .fancytree-node span.fancytree-title:hover {
+  background-color: #dcf7e3;
+}
+
+
+.sidebar__tree.include-filters {
+
+  .ui-fancytree {
+    border: 1px solid gainsboro;
+  }
+
+  span.fancytree-focused {
+    span.fancytree-title {
+      outline: none;
+    }
+  }
+
+  .fancytree-container {
+    outline: none;
+  }
+
+  span.fancytree-childcounter {
+    color: #000;
+    position: relative;
+    top: -7px;
+    right: 0px;
+    min-width: 10px;
+    height: 10px;
+    line-height: 1;
+    vertical-align: baseline;
+    padding: 2px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 9px;
+  }
+
+  span.fancytree-icon {
+    background-position: 0px 0px !important;
+    vertical-align: middle;
+  }
+
+  .active {
+    span.fancytree-icon {
+      background-image: url("/img/catalog_active.png");
+    }
+  }
+
+  .inactive {
+    span.fancytree-icon {
+      background-image: url("/img/catalog_inactive.png");
+    }
+  }
+}

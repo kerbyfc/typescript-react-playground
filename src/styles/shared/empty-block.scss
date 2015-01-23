@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@import "../base/mixins";
+
+.empty-block {
+  height: 100%;
+}
+
+.empty-block__message {
+  display: block;
+
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  background-color: #bababa;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+
+  color: transparent;
+  font-size: 18px;
+  text-align: center;
+  text-shadow: rgba(#fff, 0.4) 0px 3px 3px;
+  line-height: 22px;
+
+  @include vertical-align;
+}

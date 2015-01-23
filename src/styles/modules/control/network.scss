@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.network_params {
+  overflow: hidden;
+  max-width: 1200px;
+  textarea[class^='size_'] {
+    height: auto;
+  }
+  textarea.size_L {
+    min-height: 40px;
+  }
+  textarea.size_M {
+    min-height: 60px;
+  }
+}
+
+.network_params--block {
+  float: left;
+  min-width: 40%;
+  &:first-child {
+    margin-right: 20px;
+  }
+  &.styled {
+    .network_params--block_title {
+      width: 400px;
+      margin-left: -200px;
+    }
+  }
+}
+
+.error-msg {
+  display: block;
+  margin-bottom: 10px;
+  color: $red;
+}

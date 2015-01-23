@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.license {
+  max-width: 1100px;
+}
+
+.license__add {
+  margin: 40px 0;
+}
+
+.license-list {
+  margin-top: 15px;
+}
+
+.license-list__item {
+  padding-right: 25px
+}
+
+.license__info {
+  padding: 10px;
+}
+
+.license__block {
+  float: left;
+
+  width: 50%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.license__interceptors,
+.license__technologies {
+  li {
+    display: inline-block;
+
+    margin: 2px 0;
+    padding: 4px 7px;
+
+    background-color: #fff;
+    border: 1px solid $greyBorder;
+    border-radius: 3px;
+
+    color: gray;
+    font-size: 12px;
+  }
+}
+
+.license__interceptors {
+  overflow: auto;
+}
+
+.license__issue-date,
+.license__end-date {
+  width: 150px;
+}
+
+.license__status {
+  display: inline-block;
+
+  margin: 3px 0 2px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+
+  border-radius: 3px;
+
+  color: #fff;
+  font-size: 12px;
+}
+
+.license__status--active {
+  background-color: $green;
+}
+
+.license__status--depleted {
+  background-color: $red
+}

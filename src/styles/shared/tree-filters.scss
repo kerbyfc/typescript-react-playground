@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.tree-filters {
+  margin: 5px;
+}
+
+.tree-filters__item {
+  display: inline-block;
+
+  color: silver;
+
+  &.active,
+  &:hover {
+    color: #444;
+  }
+
+  &:after {
+    content: "|";
+
+    position: relative;
+    top: 1px;
+
+    margin-left: 2px;
+
+    color: #dcdcdc;
+    font-weight: bold;
+  }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}

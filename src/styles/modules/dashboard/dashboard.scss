@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.dashboard {
+
+}
+
+.dashboard__tooltip {
+
+}
+
+.dashboard__widgets {
+  padding-top: 15px;
+}
+
+
+.dashboard__col_one-third {
+  width: 33%;
+}
+
+.dashboard__col_half {
+  width: 50%;
+}
+
+.dashboard__col_two-thirds {
+  width: 66%;
+}

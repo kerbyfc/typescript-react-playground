@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/mixins";
+@import "../../base/variables";
+
+.employee-extended {
+  position: relative;
+  z-index: 1;
+
+  margin: 6px 0 25px 0;
+}
+
+.employee-extended__wrap {
+  position: relative;
+
+  min-width: 730px;
+  min-height: 200px;
+  padding: 15px;
+
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+  border-radius: 10px;
+}
+
+.employee-extended__primary {
+  float: left;
+
+  position: relative;
+
+  width: 40%;
+}
+
+.employee-extended__ava {
+  float: left;
+
+  position: relative;
+
+  margin-right: 15px;
+  padding: 1px;
+
+  border: 1px solid $greyLightBorder;
+}
+
+.employee-extended__workstation {
+  float: left;
+
+  position: relative;
+
+  width: 67px;
+  height: 67px;
+  margin-right: 5px;
+
+  background: url("#{$assetPath}/sprites/workstation.png") no-repeat -69px top;
+
+  &.active-directory {
+    background-position: 0 0;
+  }
+}
+
+.employee-extended__status {
+  display: block;
+
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: -4px;
+
+  width: 10px;
+  height: 10px;
+  margin-top: 1px;
+
+  box-shadow: 0 0 0 1px $greyBorder;
+  border: 1px solid #fcfcfc;
+  border-radius: 50%;
+
+  &.enabled {
+    background: #8dc077;
+  }
+
+  &.disabled {
+    background: #ccc;
+  }
+}
+
+.employee-extended__source {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 17px;
+
+  background-color: #fff;
+  border: solid $greyLightBorder;
+  border-width: 0 0 1px 1px;
+
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+
+  &.active-directory {
+    &:before {
+      content: "AD";
+    }
+  }
+
+  &.domino-directory {
+    &:before {
+      content: "DD";
+    }
+  }
+}
+
+.employee-extended__form {
+  overflow: hidden;
+}
+
+.employee-extended__row {
+  padding: 2px 0;
+
+  input,
+  textarea {
+    box-shadow: none;
+  }
+
+  textarea {
+    height: 60px;
+    max-height: 100px;
+  }
+}
+
+.employee-extended__change-date {
+  overflow: hidden;
+
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+
+  @include calc(width, "60% - 30px");
+  margin: 0 5px;
+
+  color: #999;
+  font-size: 12px;
+}
+
+.employee-extended__create-date {
+  float: left;
+}
+
+.employee-extended__edit-date {
+  float: right;
+}
+
+.employee-extended__close {
+  position: absolute;
+  z-index: 100;
+  top: -10px;
+  right: -10px;
+
+  width: 20px;
+  height: 20px;
+
+  background-color: #202123;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 2px rgba(#000, 0.5), 0 0 1px 0 rgba(#000, 0.9);
+
+  cursor: pointer;
+
+  &:before {
+    content: "x";
+
+    display: block;
+
+    width: 20px;
+    padding-top: 3px;
+
+    color: #fff;
+    font-size: 14px;
+    line-height: 12px;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  &:hover {
+    background-color: #c53c3c;
+  }
+}

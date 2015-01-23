@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// Policy objects (objects protected by policies )
+// ==========================================================================
+.policy-objects {
+
+}
+
+.policy-objects__total {
+  display: inline-block;
+}
+
+.policy-objects__group {
+  display: inline-block;
+
+  font-weight: bold;
+}
+
+.policy-objects__item {
+  display: inline-block;
+  overflow: hidden;
+
+  max-width: 500px;
+
+  font-weight: normal;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+
+  cursor: default;
+
+  &.filtered {
+    margin: 3px;
+    padding: 3px;
+
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+
+  &.deleted {
+    color: #ed5e4f;
+    text-decoration: line-through;
+  }
+}
+
+.policy-objects__show-all {
+  border-bottom: 1px dotted #3e87b6;
+
+  color: #3e87b6;
+
+  cursor: pointer;
+}

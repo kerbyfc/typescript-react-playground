@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/mixins";
+@import "../../base/variables";
+
+// Policies primary block
+// ==========================================================================
+.policies {
+  display: table;
+
+  position: relative;
+
+  @include calc(width, "100% + 50px");
+  @include calc(height, "100% + 50px");
+  margin: -25px;
+}
+
+.policies__header {
+  display: table-row;
+  width: 100%;
+}
+
+.policies__header-wrap {
+  position: relative;
+
+  padding: 10px 10px 5px;
+
+  background-color: #fff;
+  border-bottom: 1px solid $greyBorder;
+}
+
+.policies__content {
+  overflow: hidden;
+  display: table-row;
+
+  width: 100%;
+  height: 100%;
+}
+
+.policies__content-wrap {
+  overflow-y: auto;
+
+  height: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.policies__title {
+  display: inline-block;
+
+  margin: 15px 5px -15px;
+  padding: 5px 10px;
+
+  color: #4d4d4d;
+  font-size: 13px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.policies__list {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 1px;
+
+  [data-empty-title]:empty:after {
+    content: attr(data-empty-title);
+
+    display: block;
+
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    background-color: #bababa;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+
+    color: transparent;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: rgba(#fff, 0.4) 0px 3px 3px;
+    line-height: 22px;
+    @include vertical-align;
+  }
+}

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+#nprogress .bar {
+  z-index: 100000;
+  top: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #f23838;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #f23838, 0 0 5px #f23838;
+}
+
+#nprogress .spinner {
+  display: none !important;
+}
+
+#nprogress .spinner-icon {
+  display: none !important;
+}

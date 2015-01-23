@@ -1,4 +1,0 @@
-api:
-  protocol : https
-  host     : tm6.infowatch.ru
-  path     : /api

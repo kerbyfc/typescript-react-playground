@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.employee-contact__add-btn {
+  padding: 7px 0 14px;
+
+  color: #bababa;
+  font-size: 100%;
+
+  cursor: pointer;
+}
+
+.employee-contact__type {
+  float: left;
+  margin-right: 5px;
+}
+
+.employee-contact__type-select {
+  min-width: 50px;
+}
+
+.employee-contact__save {
+  float: right;
+  margin-left: 5px;
+}
+
+.employee-contact__actions {
+  overflow: hidden;
+  float: right;
+
+  ul {
+    width: 100%;
+    margin-left: 10px;
+  }
+}
+
+.employee-contact__data {
+  overflow: hidden;
+}
+
+.employee-contact__data-wrap {
+  display: table;
+  width: 100%;
+}
+
+.employee-contact__data-value {
+  display: table-cell;
+
+  + .employee-contact__data-description {
+    padding-left: 5px;
+  }
+}
+
+.employee-contact__data-description {
+  display: table-cell;
+}
+
+.employee-contact__value {
+  overflow: hidden;
+  float: left;
+
+  width: 250px;
+  margin-left: 5px;
+  padding: 5px 0;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.employee-contact__description {
+  overflow: hidden;
+
+  padding: 5px 0;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.employee-contact__status {
+  overflow: hidden;
+  display: inline-block;
+
+  margin-bottom: 4px;
+  padding: 0 5px;
+
+  background: #f8f7f7;
+  border: 1px dotted #cacaca;
+  border-radius: 5px;
+
+  color: gray;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

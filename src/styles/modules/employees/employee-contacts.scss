@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.employee-contacts {
+  overflow: hidden;
+
+  padding-left: 10px;
+}
+
+.employee-contacts__content {
+  clear: both;
+  overflow-y: auto;
+
+  height: 266px;
+  margin-bottom: 17px;
+  padding: 10px;
+}
+
+.employee-contacts__tabs {
+
+}
+
+.employee-contacts__list {
+  min-height: 100px;
+  line-height: 20px;
+
+  > li {
+    position: relative;
+
+    padding: 5px 0;
+
+    border-top: 1px dashed #f7f7f7;
+
+    line-height: 26px;
+    word-break: break-all;
+
+    &:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.job_details_common--value {
+  color: #3e87b6;
+  vertical-align: middle;
+  cursor: pointer;
+  &:hover {
+    color: #80b67a;
+  }
+  .editable-click,
+  a.editable-click,
+  a.editable-click:hover {
+    min-height: 12px;
+    border-bottom: none;
+  }
+}

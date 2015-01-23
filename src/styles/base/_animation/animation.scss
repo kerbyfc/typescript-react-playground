@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "animation_var";
+
+.animation--block {
+  height: 100%;
+}
+
+.animation--trigger {
+  display: none;
+}
+
+// Rolldown
+// ==========================================================================
+$rollDownAnimation: all 0 ease-in 0, max-height 0.3s ease-in, opacity 0.1s ease-in;
+$rollUpAnimation: all 0 ease-in 0, max-height 0.3s ease-in, opacity 0 ease-in-out 1s;
+
+.animation-rolldown {
+  .animation--content {
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    @include transition($rollUpAnimation);
+  }
+  .animation--trigger:checked {
+    ~ .animation--content {
+      opacity: 1;
+      max-height: 500px;
+      @include transition($rollDownAnimation);
+    }
+    + div {
+      .animation--caret {
+        border-top-width: 0;
+        border-bottom: 4px solid;
+      }
+    }
+    + label {
+      .animation--caret {
+        border-top-width: 0;
+        border-bottom: 4px solid;
+      }
+    }
+  }
+  .animation--caret {
+    border-width: 4px;
+    border-bottom-width: 0;
+  }
+}
+
+// Inline switch ( анимация горизонтального смещения блоков )
+// ==========================================================================
+.animation-inline {
+  .animation--wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+  .animation--content {
+    float: left;
+    position: relative;
+    width: 100%;
+    @include animation;
+  }
+  .animation--trigger:checked {
+    + .animation--wrapper {
+      .animation--content:first-child {
+        margin-left: -100%;
+      }
+    }
+  }
+  .animation--content:nth-child(2) {
+    margin-right: -100%;
+  }
+}
+
+// Display animation
+// ==========================================================================
+.animation-display {
+  .animation--trigger {
+    &:nth-child(1):checked {
+      ~ .animation--wrapper {
+        .animation--content {
+          &:nth-child(1) {
+            display: block;
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+    }
+    &:nth-child(2):checked {
+      ~ .animation--wrapper {
+        .animation--content {
+          &:nth-child(1) {
+            display: none;
+          }
+          &:nth-child(2) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Slide animation
+// ==========================================================================
+.animation-slide {
+  overflow: hidden;
+  .animation--elem {
+    position: relative;
+    @include animation(0.3s);
+  }
+  &[class*="slide-"] {
+    @include animation(0.3s);
+  }
+  &.slide-top {
+    .animation--elem {
+      margin-top: -100%;
+    }
+    &:hover {
+      .animation--elem {
+        margin-top: 0;
+      }
+    }
+  }
+  &.slide-right {
+    .animation--elem {
+      margin-left: 100%;
+    }
+    &:hover {
+      .animation--elem {
+        margin-left: 0;
+      }
+    }
+  }
+  &.slide-bottom {
+    .animation--elem {
+      margin-bottom: -100%;
+    }
+    &:hover {
+      .animation--elem {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &.slide-left {
+    .animation--elem {
+      margin-left: -100%;
+    }
+    &:hover {
+      .animation--elem {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Swap image horizontal
+// ==========================================================================
+.animation-swap {
+  .animation--wrapper {
+    overflow: hidden;
+  }
+}

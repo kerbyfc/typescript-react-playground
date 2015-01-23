@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+@import "../base/mixins";
+
+.form--block {
+  position: relative;
+
+  margin: 50px 0 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+
+  &.styled {
+    margin: 20px 0;
+
+    border: none;
+    border-top: 1px solid $greyBorder;
+
+    &.bordered {
+      border: 1px solid $greyBorder;
+    }
+
+    .form--block_title {
+      display: inline-block;
+
+      top: -7px;
+      left: 15px;
+
+      width: auto;
+      padding: 0 10px;
+
+      background-color: #fff;
+      border: none;
+      font-weight: bold;
+    }
+  }
+}
+
+.form--block_title {
+  position: absolute;
+  top: -30px;
+  left: -1px;
+
+  @include calc(width, "100% + 2px");
+  box-sizing: border-box;
+  padding: 8px 15px;
+
+  background-color: #eee;
+  border: 1px solid $greyBorder;
+
+  color: $titleColor;
+  font-size: 11px;
+  font-weight: normal;
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+label.form--block_title {
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+}
+
+.form--block {
+  + .form--row.submit {
+    margin-top: -20px;
+  }
+}

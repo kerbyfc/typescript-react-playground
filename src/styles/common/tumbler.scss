@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@import "../base/mixins";
+@import "../base/variables";
+
+// Tumbler
+// ==========================================================================
+.tumbler {
+  display: inline-block;
+
+  display: block;
+
+  position: relative;
+  margin: 0;
+
+  input {
+    &:checked {
+      + label {
+        color: #fff;
+      }
+
+      + .tumbler--positive {
+        background-color: $green;
+        border: 1px solid $greenDark;
+      }
+
+      + .tumbler--negative {
+        background-color: #999;
+        border: 1px solid #8a8a8a;
+      }
+
+      &[readonly] {
+        + label {
+          display: inline-block;
+
+          background: none;
+          background-image: none;
+          box-shadow: none;
+          border: none;
+
+          color: #606060;
+          text-shadow: none;
+
+          cursor: default;
+        }
+      }
+    }
+
+    &[readonly] {
+      + label {
+        display: none;
+      }
+    }
+  }
+
+  label {
+    margin: 0;
+  }
+}
+
+.tumbler--input {
+  display: none;
+}
+
+.tumbler--item {
+  display: block;
+  float: left;
+
+  height: 33px;
+  padding: 10px 10px 8px;
+  min-width: 50px;
+
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+
+  color: #606060;
+  font-size: 12px;
+  text-align: center;
+
+  cursor: pointer;
+
+  &:nth-child(2) {
+    border-radius: 1px 0 0 1px;
+  }
+
+  &:last-child {
+    border-radius: 0 1px 1px 0;
+    border-left: none;
+  }
+
+  &[class^="fontello-icon-"],
+  &[class*=" fontello-icon-"] {
+    font-size: 16px;
+    line-height: 10px;
+
+    &:before {
+      margin: (-1px) -10px -5px;
+    }
+  }
+}

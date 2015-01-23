@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.entity-item {
+  position: relative;
+
+  padding: 5px 12px 5px 30px;
+  margin: 4px;
+
+  background-color: #fafafa;
+  border: 1px solid #fafafa;
+
+  cursor: pointer;
+
+  &:hover {
+    padding-right: 37px;
+
+    background-color: #f4f4f4;
+    border-color: $greyBorder;
+
+    .entity-item__delete {
+      display: block;
+    }
+  }
+}
+
+.entity-item__icon {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+
+  &:before {
+    margin: 0;
+  }
+}
+
+.entity-item__name {
+  display: inline-block;
+  line-height: 15px;
+}
+
+.entity-item__params {
+  padding: 10px 0 0 15px;
+
+  label {
+    color: #606060;
+  }
+}
+
+.entity-item__delete {
+  display: none;
+
+  position: absolute;
+  top: -1px;
+  right: 6px;
+
+  margin: 0;
+  padding: 7px 0 6px;
+
+  color: $greyLight;
+  font-size: 10px;
+  text-align: center;
+
+  &:before {
+    margin: 0;
+  }
+
+  &:hover {
+    color: $red;
+  }
+}

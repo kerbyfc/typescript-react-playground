@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+
+// Variables
+// ==========================================================================
+
+$sidebarBg            : #fff !global;
+
+$sidebarWidth         : 550px !global;
+$sidebarToggleWidth   : 6px !global;
+$sidebarWidthStep     : 25px;
+$sidebarCollapse      : -($sidebarWidth - $sidebarToggleWidth) !global;
+
+$sidebarPadding       : 20px;
+
+// Mixins
+// ==========================================================================
+
+@mixin sidebarWidth($param) {
+  $sidebarWidth: $param !global;
+  width: $sidebarWidth;
+  $sidebarCollapse: -($sidebarWidth - $sidebarToggleWidth) !global;
+  &.sidebar-collapsed {
+    margin-left: $sidebarCollapse;
+    &.position-right {
+      margin-right: $sidebarCollapse;
+    }
+    .sidebar__toggle {
+      width: $sidebarToggleWidth;
+    }
+  }
+}
+
+// Styles
+// ==========================================================================
+
+.sidebar {
+  height: 100%;
+  padding: 0 2px;
+  margin-left: 0;
+
+  box-sizing: border-box;
+  background-color: $sidebarBg;
+
+  @include transition(margin ease-in 0.3s);
+
+  &.sidebar-collapsed {
+    @include transition(margin ease-in 0.3s);
+
+    &.position-right {
+      margin-left: 0;
+
+      .sidebar__toggle {
+        &:after {
+          @include transform(scale(1));
+        }
+      }
+    }
+    .sidebar__toggle {
+      @include transition(width ease-in 0.1s 0.2s);
+
+      &:after {
+        @include transform(scale(-1));
+        @include transition(all ease-in 0.3s);
+      }
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    @include sidebarWidth($sidebarWidth);
+    margin-left: $sidebarCollapse;
+
+    &.position-right {
+      margin-left: 0;
+      margin-right: $sidebarCollapse;
+
+      .sidebar__toggle {
+        &:after {
+          @include transform(scale(1));
+        }
+      }
+    }
+
+    &.sidebar-collapsed {
+      margin-left: 0;
+
+      &.position-right {
+        margin-right: 0;
+
+        .sidebar__toggle {
+          &:after {
+            @include transform(scale(-1));
+          }
+        }
+      }
+
+      .sidebar__toggle {
+        &:after {
+          @include transform(scale(1));
+        }
+      }
+    }
+
+    .sidebar__toggle {
+      &:after {
+        @include transform(scale(-1));
+      }
+    }
+  }
+
+  @media screen and (min-width: 1290px) {
+    @include sidebarWidth($sidebarWidth);
+  }
+
+  @media screen and (min-width: 1500px) {
+    @include sidebarWidth($sidebarWidth + $sidebarWidthStep * 2);
+  }
+
+  @media screen and (min-width: 1600px) {
+    @include sidebarWidth($sidebarWidth + $sidebarWidthStep * 3);
+  }
+
+}
+
+.sidebar__toggle {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+
+  width: 0;
+  height: 100%;
+
+  background-color: $sidebarBg;
+  border-right: 1px solid $greyBorder;
+
+  cursor: pointer;
+
+  @include transition(width ease-in 0.1s 0.2s);
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+
+    height: 30px;
+    margin-top: -15px;
+  }
+
+  &:before {
+    right: -15px;
+    width: 15px;
+
+    background-color: $sidebarBg;
+    border: 1px solid $greyBorder;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+  }
+
+  &:after {
+    right: -10px;
+    width: 10px;
+
+    background: url("#{$assetPath}/arrow-left.png") center no-repeat;
+    background-size: 200%;
+
+    opacity: 0.3;
+  }
+
+  &:hover {
+    &:after {
+      opacity: 0.7;
+    }
+  }
+}
+
+.sidebar__toggle {
+  .position-right & {
+    right: auto;
+    left: 0;
+
+    border-left: 1px solid $greyBorder;
+    border-right: none;
+
+    &:after {
+      @include transform(scale(-1));
+      right: auto;
+      left: -10px;
+    }
+
+    &:before {
+      right: auto;
+      left: -15px;
+
+      border-right: none;
+      border-left: 1px solid $greyBorder;
+    }
+  }
+}
+
+.sidebar__wrap {
+  overflow: hidden;
+
+  position: relative;
+
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar__content {
+  overflow: auto;
+
+  position: relative;
+
+  height: 100%;
+  padding: $sidebarPadding;
+  box-sizing: border-box;
+}
+
+.sidebar__empty {
+  height: 100%;
+}
+
+.sidebar__search {
+  margin-top: 5px;
+}
+
+.sidebar__tree {
+  position: absolute;
+  top: 70px;
+  bottom: $sidebarPadding;
+  left: $sidebarPadding;
+  right: $sidebarPadding;
+
+  padding-bottom: 5px;
+
+  &.include-filters {
+    top: 120px;
+  }
+
+  > ul {
+    padding: 5px 0px 0px 5px;
+    border: none;
+  }
+}
+
+.sidebar__title {
+  margin-bottom: 15px;
+
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.sidebar__subtitle {
+  position: relative;
+
+  margin-bottom: 5px;
+  padding: 5px 0;
+
+  border-bottom: 1px solid $greyBorder;
+}
+
+.sidebar__block {
+  padding: 5px;
+}

@@ -13,14 +13,16 @@ class Helpers
       chunk.replace /(^[\s]*\/)|(\/[\s]*$)/g, ''
     chunks.join '/'
 
+  api: config.api[config.api_version]
+
   # form api url
   # @param path [ String ] url path
   # @return     [ String ] protocol + host + port + url path
   #
   apiUrl: (path) ->
-    config.api.protocol + "://" + @urlPath [
-      config.api.host
-      config.api.path
+    @api.protocol + "://" + @urlPath [
+      @api.host
+      @api.path
       path
     ]...
 

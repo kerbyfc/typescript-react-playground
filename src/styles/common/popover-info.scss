@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+// Popover with parameters listing
+// ==========================================================================
+
+.popover-info {
+  //
+}
+
+.popover-info__row {
+  overflow: hidden;
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.popover-info__param {
+  float: left;
+  width: 100px;
+  padding-right: 10px;
+  font-weight: bold;
+  text-align: right;
+  word-break: break-word;
+}
+
+.popover-info__param--inline {
+  float: none;
+  width: auto;
+  margin-bottom: 5px;
+  padding-right: 0;
+  text-align: left;
+}
+
+.popover-info__value {
+  overflow: hidden;
+  word-wrap: break-word;
+  @each $eventThreat in $threat {
+    &[data-threat="#{nth($eventThreat, 1)}"] {
+      color: nth($eventThreat, 2);
+      font-weight: bold;
+    }
+  }
+}
+
+.popover-info__value-list {
+  margin-left: 10px;
+}
+
+.popover-info__value-item {
+  margin-bottom: 3px;
+}
+
+.popover-info__value-item--deleted {
+  color: $red;
+  text-decoration: line-through;
+}

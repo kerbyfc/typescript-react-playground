@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.crawler_header {
+  position: relative;
+  margin: (-26px) 10px 20px 0;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+}
+
+.crawler_header--filter {
+  overflow: hidden;
+}
+
+.crawler_header--select {
+  overflow: hidden;
+  > div {
+    width: 100%;
+  }
+}
+
+.crawler_header--actions {
+  margin-bottom: 15px;
+}
+
+.crawler_header--view {
+  float: right;
+  margin-left: 15px;
+}
+
+.crawler_header--scanners {
+  overflow: hidden;
+  .select2-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.crawler_header--scanner_act {
+  float: right;
+  margin-left: 10px;
+  li {
+    display: inline-block;
+  }
+}

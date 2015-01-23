@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.sorting {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  box-shadow: 0px 1px 0px white;
+  border-bottom: 1px solid #c8ccce;
+}
+
+.sorting--caption {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 3px 0 5px;
+}
+
+.sorting--item {
+  display: inline-block;
+}
+
+.sorting--input {
+  display: none;
+  &:checked {
+    + .sorting--sort {
+      padding: 3px 5px 4px 5px;
+      background-color: #ccc;
+      &.sorting--sort_bt {
+        &:before {
+          content: "▲";
+        }
+      }
+      &:before {
+        content: "▼";
+        margin-right: 3px;
+        font-size: 8px;
+      }
+    }
+  }
+}
+
+.sorting--sort {
+  display: inline-block;
+  padding: 3px 5px 5px;
+}

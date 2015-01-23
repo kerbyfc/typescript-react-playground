@@ -1,0 +1,25 @@
+@mixin no-animation {
+  @include transition-duration(0);
+}
+
+@mixin animation($animation-duration: 0.3s) {
+  @include transition-property(all);
+  @include transition-duration($animation-duration);
+  @include transition-timing-function(ease-in);
+}
+
+@mixin animation-enlarge {
+  @include transition-property(all);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in);
+}
+
+@mixin animation-opacity {
+  @include transition-property(opacity);
+  @include transition-duration(0.4s);
+  @include transition-timing-function(ease-out);
+}
+
+@mixin animation-fade {
+  @include transition(width 0 ease-in 0.3s, height 0 ease-in 0.3s, opacity 0.3s ease-in);
+}

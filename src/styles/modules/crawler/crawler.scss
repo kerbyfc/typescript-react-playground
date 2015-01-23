@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@import "../../base/mixins";
+@import "../../base/variables";
+
+.crawler_layout {
+  // height: 100%
+}
+
+.crawler--sidebar {
+  //
+}
+
+.crawler_nav {
+  display: none;
+}
+
+.crawler_form {
+  padding: 10px;
+}
+
+.crawler_form--row {
+  padding: 10px 0;
+  &.save_revert_task {
+    display: none;
+  }
+}
+
+.crawler--adding_unit {
+  vertical-align: top;
+}
+
+.crawler--adding_unit_arrow {
+  display: inline-block;
+  width: 30px;
+  height: 300px;
+  background: transparent url("#{$assetPath}/switch.png") no-repeat center;
+}

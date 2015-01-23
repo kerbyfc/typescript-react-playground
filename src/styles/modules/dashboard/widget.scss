@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+.widget {
+  -moz-perspective: 1000px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+.widget__front,
+.widget__back {
+  position: relative;
+
+  width: 100%;
+  min-width: 300px;
+  min-height: 450px;
+  box-sizing: border-box;
+
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+  border-radius: 10px;
+
+  @include backface-visibility(hidden);
+  @include transform-style(preserve-3d);
+  @include transition(0.8s);
+}
+
+.widget__front {
+  opacity: 1;
+  z-index: 100px;
+
+  // flipping to settings of the widget //
+  .flipped & {
+    opacity: 0;
+    z-index: 10;
+    @include transform(rotateY(-180deg));
+
+    .widget__indent {
+      display: none;
+    }
+  }
+}
+
+.widget__back {
+  opacity: 0;
+
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  @include transform(rotateY(180deg));
+
+  // flipping to settings of the widget //
+  .flipped & {
+    opacity: 1;
+    z-index: 100;
+
+    @include transform(rotateY(0deg));
+
+    .widget__indent {
+      display: block;
+    }
+  }
+}
+
+.widget__header {
+  margin: 0 10px;
+  padding: 10px 0;
+
+  border-bottom: 1px solid $greyLightBorder;
+
+  i:before {
+    margin-right: 3px;
+  }
+}
+
+.widget__title {
+  overflow: hidden;
+  margin: 0;
+}
+
+.widget__subtitle {
+  margin: 0 0 0 30px;
+}
+
+.widget__actions {
+  float: right;
+
+  margin-top: 5px;
+
+  text-align: right;
+}
+
+.widget--content {
+  // padding: 10px;
+}

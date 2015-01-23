@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+@import "../base/mixins";
+@import "../base/variables";
+
+.popup_about--logo {
+  width: 350px;
+  height: 35px;
+  background: url("/img/logo_black.png") no-repeat center;
+}
+
+.popup_about--ver {
+  color: #808080;
+  font-size: 13px;
+  text-align: center;
+}
+
+.popup_about--contacts {
+  margin: 20px 20px 0;
+  padding: 20px 0 10px;
+  border-top: 1px solid #f4f4f4;
+  line-height: 16px;
+  p {
+    overflow: hidden;
+  }
+  label {
+    display: block;
+    float: left;
+    min-width: 140px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    line-height: 16px;
+  }
+  span {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+.popup_about--copyright {
+  color: #808080;
+  font-size: 11px;
+  text-align: center;
+  p {
+    margin: 4px 0;
+  }
+}

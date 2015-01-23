@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.license {
+  max-width: 1100px;
+}
+
+.license--add {
+  margin: 40px 0;
+}
+
+.license--list {
+  margin-top: 15px;
+}
+
+.license--info {
+  padding: 10px;
+}
+
+.license--block {
+  float: left;
+  width: 50%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.license--interceptors,
+.license--technologies {
+  li {
+    display: inline-block;
+    margin: 2px 0;
+    padding: 4px 7px;
+    background-color: #fff;
+    border: 1px solid $greyBorder;
+    border-radius: 3px;
+    color: gray;
+    font-size: 12px;
+  }
+}
+
+.license--interceptors {
+  overflow: auto;
+}
+
+.license--issue_date,
+.license--end_date {
+  width: 150px;
+}
+
+.license--status {
+  display: inline-block;
+  margin: 3px 0 2px;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  &.active {
+    background-color: $green;
+  }
+  &.depleted {
+    background-color: $red;
+  }
+}

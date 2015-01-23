@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import "../base/variables";
+
+.header--logo {
+  float: left;
+
+  width: 162px;
+  height: 30px;
+  margin: 3px 10px;
+
+  background: url("#{$assetPath}/logo.png") no-repeat center;
+  background-size: 100%;
+}
+
+.header {
+  .header--navbar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 10px;
+
+    margin: 0;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    div {
+      float: left;
+    }
+
+    .header--toggle {
+      display: block;
+
+      padding: 0 15px;
+      box-sizing: border-box;
+
+      color: #fff;
+      line-height: 38px;
+
+      &:first-child {
+        border-right: none;
+      }
+
+      &:hover {
+        background-color: #344454;
+        color: #fff;
+      }
+
+      i:before {
+        position: relative;
+        top: 2px;
+        margin: 0;
+      }
+    }
+    .dropdown {}
+  }
+}
+
+.header--toggle_text {
+  line-height: 16px;
+}
+
+.header--counter {
+  margin-left: 5px;
+}
+
+.pdp {
+  .header {
+    .header--navbar {
+      .header--toggle {
+        &:hover {
+          background-color: #835B68;
+        }
+      }
+    }
+  }
+  .header--logo {
+    width: 285px;
+    height: 30px;
+
+    background: url("#{$assetPath}/dlp-logo.png") no-repeat center;
+    background-size: 100%;
+  }
+}

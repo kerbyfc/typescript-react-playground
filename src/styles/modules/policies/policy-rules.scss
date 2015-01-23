@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// Policy rules
+// ==========================================================================
+.policy-rules {
+  position: relative;
+  margin: 15px 5px 5px;
+}
+
+.policy-rules__add-rule {
+  position: relative;
+  top: -7px;
+
+  font-size: 11px;
+}

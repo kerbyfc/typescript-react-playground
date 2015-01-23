@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+.dashboard-toolbar {
+  overflow: hidden;
+}
+
+.dashboard-toolbar__nav {
+  overflow: hidden;
+}
+
+.dashboard-toolbar__actions {
+  float: right;
+}
+
+.dashboard-toolbar__tabs {
+  float: left;
+}
+
+.dashboard-toolbar__add-button {
+  float: left;
+}

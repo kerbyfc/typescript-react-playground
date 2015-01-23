@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.default-table {
+  width: 100%;
+  margin: 10px 0;
+  th,
+  td {
+    padding: 8px;
+    word-break: break-all;
+    &[data-threat-lvl="no"] {
+      color: $grey;
+    }
+    &[data-threat-lvl="low"] {
+      color: $green;
+    }
+    &[data-threat-lvl="medium"] {
+      color: $orange;
+    }
+    &[data-threat-lvl="high"] {
+      color: $red;
+    }
+  }
+  th {
+    background-color: #fafafa;
+    border: 1px solid $greyBorder;
+  }
+  td {
+    background-color: #fff;
+    border: 1px solid $greyBorder;
+    cursor: pointer;
+  }
+  tr:hover {
+    td {
+      background-color: $greyBorder;
+    }
+    a {
+      visibility: visible;
+    }
+  }
+}
+
+.default-table--centered {
+  th,
+  td {
+    text-align: center;
+  }
+}
+
+.default-table__buttons {
+  padding: 0 5px;
+  a {
+    visibility: hidden;
+  }
+}

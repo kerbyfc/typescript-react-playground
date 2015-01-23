@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+.report {
+  margin: 15px;
+}
+
+.report--logo {
+  float: right;
+  position: relative;
+  width: 220px;
+  height: 35px;
+  margin: 2px 2px 0 17px;
+  background: url("#{$assetPath}/logo.png") no-repeat;
+}
+
+.report--title {
+  padding: 10px;
+  background-color: rgba(#000, 0.85);
+  border-radius: 3px;
+  color: #fff;
+  h2 {
+    overflow: hidden;
+    color: #fff;
+    font-size: 18px;
+  }
+}
+
+.report--details {
+  margin-top: 5px;
+  font-size: 16px;
+  span {
+    color: #3e87b6;
+  }
+}
+
+.report--person {
+  @include clearfix;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #dedede;
+}
+
+.report--ava {
+  float: left;
+  margin-right: 10px;
+  padding: 3px;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+}
+
+.report--person_info {
+  overflow: hidden;
+  label {
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold;
+    vertical-align: top;
+  }
+}
+
+.report--person_contacts {
+  margin-top: 20px;
+  li {
+    margin: 5px 0;
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+
+.report--person_office {
+  display: block;
+  margin-top: 5px;
+  color: #595959;
+  font-style: italic;
+}
+
+.report--person_threats {
+  float: right;
+  > ul {
+    text-align: right;
+  }
+  li {
+    display: inline-block;
+    width: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 1px rgba(#000, 1);
+  }
+  [data-threat="summary"] {
+    background-color: #ccc;
+  }
+  [data-threat="low"] {
+    background-color: darken(#cae1ca, 10%);
+  }
+  [data-threat="medium"] {
+    background-color: darken(#f3dea8, 10%);
+  }
+  [data-threat="high"] {
+    background-color: lighten(#e69090, 5%);
+  }
+}
+
+.report--person_status {
+  margin-top: 90px;
+  li {
+    display: inline-block;
+    min-width: 150px;
+    background-color: #bfbfbf;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 1px rgba(#000, 1);
+  }
+}
+
+.report--person_table {
+  @include clearfix;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 3px;
+  th {
+    background-color: #e6e6e6;
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid #c7c7c7;
+    text-align: center;
+  }
+  [data-threat="low"] {
+    background-color: lighten(#cae1ca, 10%);
+  }
+  [data-threat="medium"] {
+    background-color: lighten(#f3dea8, 13%);
+  }
+  [data-threat="high"] {
+    background-color: lighten(#e69090, 19%);
+  }
+}

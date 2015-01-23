@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+* {
+  box-sizing: content-box;
+}
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: rgba(#000, 0.2);
+}
+
+.tab.nav-pills li > a {
+  border-bottom: 1px $greyBorder solid;
+}
+
+.nav > li > a {
+  padding: 10px;
+  border-radius: none;
+}
+
+.dropdown-menu {
+  border: 1px solid #e1e1e1;
+  border-radius: 0;
+}
+
+.dropdown-menu {
+  > li {
+    &:first-child {
+      position: relative;
+      &:before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: -13px;
+        left: auto;
+        right: 12px;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #e1e1e1;
+        border-left: 8px solid transparent;
+      }
+      &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: -12px;
+        left: auto;
+        right: 13px;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+        border-left: 7px solid transparent;
+      }
+    }
+    > a {
+      padding: 7px 10px;
+      font-size: 13px;
+    }
+  }
+}
+
+.dropdown-menu.icons-right > li > a > i {
+  float: right;
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+.nav-stacked > li + li {
+  margin-top: 0;
+}
+
+.dropdown-menu,
+.alert,
+.popover {
+  border-radius: 0;
+}
+
+.nav > li > a {
+  color: #888;
+}
+
+.nav li {
+  &:hover,
+  &.active {
+    color: #606060;
+  }
+}
+
+.nav-tabs {
+  position: relative;
+  bottom: -1px;
+  border-bottom: 1px solid $greyBorder;
+  line-height: 140%;
+}
+
+.nav-tabs > li > a {
+  border-radius: 0;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: #fff;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a:hover {
+  border-color: #eee #eee $greyBorder;
+}
+
+.tab-content {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+}
+
+.btn-link {
+  font-size: 12px;
+  &.active,
+  &:hover {
+    color: #444;
+  }
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  text-decoration: none !important;
+}
+
+a:visited {
+  text-decoration: none !important;
+}
+
+.btn {
+  padding: 7px 12px;
+  &:hover {
+    background-position: 0 0;
+  }
+  &:active,
+  &:focus {
+    color: #606060;
+    background-position: 0 0;
+  }
+}
+
+.multiselect {
+  border: 1px solid $greyBorder;
+  color: #444;
+  &:hover,
+  &:active,
+  &:focus {
+    border: 1px solid $greyBorder;
+    color: #444;
+  }
+}
+
+.btn-link {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.unit_create {
+  .tab-content {
+    clear: both;
+    overflow-y: auto;
+    height: 266px;
+    margin-bottom: 17px;
+    padding: 10px;
+  }
+}
+
+button.multiselect.btn {
+  max-width: auto;
+  padding-right: 25px;
+}
+
+.bootstrap-datetimepicker-widget {
+  border-radius: 0 !important;
+}
+
+.att.nav-pills > li.active > a,
+.att.nav-pills > li.active > a:hover,
+.att.nav-pills > li.active > div {
+  border: 1px solid $greyBorder;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.att.nav-pills > li > div {
+  border: 1px solid transparent;
+}
+
+button.multiselect.btn {
+  i:before {
+    margin-right: 5px;
+  }
+}
+
+button.multiselect.btn {
+  color: #000;
+}

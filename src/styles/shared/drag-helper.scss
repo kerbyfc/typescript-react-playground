@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.drag_helper {
+  padding: 5px 10px;
+
+  z-index: 999999;
+
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+}

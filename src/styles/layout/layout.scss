@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/mixins";
+@import "../base/variables";
+
+// Variables
+// ==========================================================================
+
+$headerHeight           : 38px;
+$headerBackgroundColor  : #2a3744;
+
+// Layout
+// ==========================================================================
+
+.layout {
+  min-width: 1000px;
+  height: 100%;
+  box-sizing: border-box;
+
+  > div {
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.layout--license {
+  height: 40px;
+  padding-top: 12px;
+
+  box-sizing: border-box;
+  background-color: rgba(#d65c4f, 0.7);
+  border-bottom: 1px solid rgba(#d65c4f, 0.8);
+
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  text-shadow: (-1px) -1px 0 1px rgba(#d65c4f, 0.5);
+
+  ~ {
+    .layout--menu,
+    .layout--content {
+      @include calc(height, "100% - 85px");
+    }
+  }
+}
+
+.layout--header {
+  min-width: 1000px;
+  height: $headerHeight;
+  box-sizing: border-box;
+
+  background-color: $headerBackgroundColor;
+
+  color: #fff;
+
+  @media screen and (max-width: 1250px){
+    @include calc(height, "#{$headerHeight} + 29px");
+  }
+}
+
+.layout--content {
+  overflow: hidden;
+  @include calc(height, "100% - #{$headerHeight}");
+
+  [data-entry-id] {
+    cursor: context-menu;
+    &.deleted {
+      cursor: default;
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    @include calc(height, "100% - (#{$headerHeight} + 29px)")
+  }
+}
+
+.no-layout {
+  padding: 50px 0;
+}
+
+.pdp {
+  .layout--header {
+    background-color: #691111;
+  }
+}

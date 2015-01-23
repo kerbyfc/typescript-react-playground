@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.paginator {
+  clear: both;
+  padding: 0px 3px 0 1px;
+  margin-top: 7px;
+  width: 100%;
+  line-height: 25px;
+  height: 25px;
+  .paginate_button,
+  .first,
+  .previous,
+  .last,
+  .next {
+    display: inline-block;
+    padding: 1px 7px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid $greyBorder;
+    border-radius: 10px;
+    font-size: 80%;
+    text-align: center;
+  }
+}
+
+.paginator .select2-container .select2-choice .select2-arrow b {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAACLElEQVR42u3Zz0sUYRzH8bUISoyF1i5iXSooyYgOEXapZNYNojwU/aAfUAT9A4YhUgdxt1To0KFIBCMIvEcUEXntUtivpYuUhYFIdDBMmD69he/hObgsbSnb13ngdZjZhX3eO8/MDrMpSctKErwsg//HUSgU7uNYsB3hHla4CybqEoRPaMJGFCEMewxuxnsIk5iALPqg1yVdj9eQGUdjiuE1eAs+QOYztrsMJqwFk8EyHguW95klD+ZD08gsYvBFCBPYgHXBOT1UNpg3ncQpnAicRbrCCQ3j8SIf5QvYEWxvxnlb0mWDr0MIvcOaCiayC78gRKmlH+WDbaIjkJnDzgq/+VHIvMWqag3ehBkIAxXGdkAIDVRlsE24H9//4ty9hju4Hej710c5m83WYging32HMYjMnwSvx75UlQ+iOiDEaEMLZiA8dPc7TFQDnkGYxQ8Iz9Hs8k4riqIa4l5ApojVbm8tiduPL5CZRs5lMGFH8DNYxo+C5d3tMfgohJeow0qMQujxuqRb0RBsZ3DA2ZIuP5LgJDgJToKr4ZHOWjTOy+fzNa6DiezCFGReod1lMGF3IYzjMm5B5rirYIJyEJ4iHezfjW+YRr2n4EHE2LrAa1cg5DwFj2DWLlKljn67p+B+CIdKPAaOsddTcBOEKbTZvjp0Qvjo8Sp9DjJFfIVMjBsef4f34AHeYAxX0VfqMbDnfw97IXMTta6DLbobcxBa3Qdb9BPE2LZQ8G98530ecQi/2QAAAABJRU5ErkJggg==") no-repeat 0 -2px !important;
+}
+
+.paginate_page_size {
+  float: right;
+  height: 24px;
+  width: 80px;
+  margin-left: 20px !important;
+  .select2-choice {
+    width: 70px;
+  }
+}
+
+.paginate {
+  line-height: 21px;
+  float: right;
+}
+
+.paginator {
+  width: auto;
+  .select2-container {
+    a {
+      height: 20px !important;
+      font-size: 11px !important;
+    }
+    span {
+      line-height: 18px !important;
+    }
+    .select2-choice div b {
+      background-position: 0 -2px;
+    }
+  }
+  .paginate_page-number {
+    .paginate_button {
+      display: inline-block;
+      width: 25px;
+      padding: 1px 0;
+      box-sizing: border-box;
+      border-radius: 50%;
+    }
+  }
+  .paginate_active {
+    display: inline-block;
+    width: 25px;
+    padding: 1px 0;
+    box-sizing: border-box;
+    border: 1px solid $blue;
+    border-radius: 50%;
+    background-color: $blue;
+    color: #fff;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+  }
+  .paginate_unactive {
+    border-color: $greyLightBorder;
+    color: #dfdfdf;
+  }
+}
+
+.paginate_page-number {
+  margin: 0 2px;
+}
+
+.paging_full_numbers span.paginate_button, .paging_full_numbers span.paginate_active {
+  cursor: pointer;
+}
+
+.paginator-right {
+  overflow: hidden;
+}

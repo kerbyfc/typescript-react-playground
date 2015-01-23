@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.events {
+  overflow: hidden;
+
+  display: table;
+
+  position: relative;
+
+  @include calc(width, "100% + 50px");
+  @include calc(height, "100% + 50px");
+  margin: -25px;
+}
+
+.events__header {
+  display: table-row;
+  width: 100%;
+}
+
+.events__header-wrap {
+  position: relative;
+
+  padding: 10px;
+}
+
+.events__content {
+  overflow: hidden;
+  display: table-row;
+
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.events__list {
+  overflow-y: auto;
+
+  @include calc (height, "100% - 55px");
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.events--pagging {
+  padding: 10px 0;
+}
+
+.events--empty {
+  height: 100%;
+}
+
+.events__paginator {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 17px;
+}

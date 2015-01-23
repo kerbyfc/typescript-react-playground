@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+// Policies filters
+// ==========================================================================
+.policies-filters {
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.policies-filters__button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.policies-filters__list {
+  margin-top: 5px;
+  padding-top: 5px;
+
+  border-top: 1px solid $greyLightBorder;
+}
+
+.policies-filters__item {
+  display: inline-block;
+
+  position: relative;
+
+  padding: 3px 23px 3px 10px;
+
+  border: 1px solid transparent;
+
+  line-height: 18px;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $elementHover;
+
+    .policies-filters__delete-item {
+      display: block;
+    }
+  }
+}
+
+.policies-filters__reset-item {
+  display: inline-block;
+
+  margin-left: 5px;
+
+  border-bottom: 1px dotted #3e87b6;
+
+  color: #3e87b6;
+
+  cursor: pointer;
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}
+
+.policies-filters__delete-item {
+  display: none;
+
+  position: absolute;
+  top: 4px;
+  right: 3px;
+
+  color: $greyLight;
+
+  cursor: pointer;
+
+  &:before {
+    margin: 0;
+  }
+
+  &:hover {
+    color: $red
+  }
+}

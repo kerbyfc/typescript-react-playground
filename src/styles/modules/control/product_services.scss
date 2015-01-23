@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.product_services {
+  width: 100%;
+  margin: 10px 0;
+  th,
+  td {
+    padding: 8px;
+    word-break: break-all;
+    &:last-child {
+      background-color: transparent;
+      border: none;
+    }
+  }
+  th {
+    background-color: #fafafa;
+    border: 1px solid #d3d3d3;
+  }
+  td {
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    cursor: pointer;
+  }
+  .product_services--buttons {
+    padding: 0 5px;
+    a {
+      visibility: hidden;
+    }
+  }
+  tr:hover {
+    td {
+      background-color: rgba($blue, 0.3);
+      &:last-child {
+        background-color: transparent;
+      }
+    }
+    a {
+      visibility: visible;
+    }
+  }
+}

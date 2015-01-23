@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+@import "../base/mixins";
+
+// Checkbox
+// ==========================================================================
+
+// Radio
+// ==========================================================================
+
+// Advanced form elements
+// ==========================================================================
+.form--separator {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.form--timepicker,
+.form--datepicker {
+  display: inline-block;
+
+  position: relative;
+
+  input[type="text"] {
+    display: inline-block;
+    width: 150px;
+  }
+
+  span {
+    display: inline-block;
+
+    width: auto;
+    height: 33px;
+    margin-left: -5px;
+    padding: 9px 10px;
+    box-sizing: border-box;
+
+    border: 1px solid $greyBorder;
+
+    font-size: 12px;
+    vertical-align: middle;
+
+    cursor: pointer;
+  }
+
+  i:before {
+    margin: 0
+  }
+}
+
+.form--timepicker {
+  display: inline-block;
+
+  input {
+    width: 50px;
+  }
+}
+
+.form--days {
+  display: inline-block;
+  margin-left: 10px;
+
+  label {
+    display: inline-block;
+    min-width: 50px;
+  }
+}
+
+.form--input-file {
+  display: inline-block;
+
+  position: relative;
+
+  margin-top: 20px;
+  padding: 10px 25px;
+
+  background-color: $green;
+  border: 1px solid darken($green, 5%);
+
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    top: -10000px;
+  }
+}
+
+.form {
+  .button {
+    border-radius: 0;
+  }
+}
+
+// Elements conditions
+// ==========================================================================
+textarea,
+select,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  &[readonly],
+  &[disabled] {
+    background-color: #fafafa;
+    border-color: #e5e5e5;
+    @include user-select(none);
+    color: #ccc;
+  }
+
+  &[readonly] {
+    font-style: italic;
+  }
+
+  &[required] {
+    padding-right: 30px;
+    &:focus {
+      ~ i {
+        &:before {
+          color: $blue;
+        }
+      }
+    }
+    ~ i {
+      &:before {
+        content: "*";
+
+        position: absolute;
+        z-index: 10;
+        top: 8px;
+        right: 8px;
+
+        color: #ccc;
+        font-size: 28px;
+        font-style: normal;
+        line-height: 100%;
+
+        .include-button & {
+          right: 40px;
+        }
+      }
+    }
+
+    [data-error-status="true"] & {
+      ~ i {
+        display: none;
+      }
+    }
+  }
+}
+
+.form--icon {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+
+  line-height: 100%;
+
+  + input[type="text"] {
+    padding-left: 32px;
+  }
+}
+
+.form--clean {
+  position: absolute;
+  top: -19px;
+  right: 0;
+}
+
+.form--row-center {
+  text-align: center;
+}
+
+.form--unit-info {
+  overflow: hidden;
+  margin-top: 15px;
+  color: #999;
+}
+
+.form--create-date {
+  float: left;
+}
+
+.form--change-date {
+  float: right;
+}
+
+.form--alert {
+  margin-bottom: 15px;
+  padding: 15px 25px;
+
+  background-color: #fff8f1;
+  border: 1px solid $orange;
+
+  color: $orange;
+  font-weight: bold;
+}

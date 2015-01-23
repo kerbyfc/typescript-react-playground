@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.product_update {
+  max-width: 900px;
+}
+
+.product_update--load_update {
+  margin: 20px 0;
+}
+
+.product_update--patch_name {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.product_update--patch_notes {
+  margin: 10px 15px;
+  ul {
+    margin: 5px 25px;
+    li {
+      margin: 1px 0;
+      list-style: square outside;
+    }
+  }
+}
+
+.product_update--section_name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.product_update--install_btn {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.product_update--install_progress {
+  progress {
+    margin: 15px 0 5px;
+  }
+  div {
+    margin-bottom: 15px;
+    color: #333;
+  }
+}

@@ -1,0 +1,247 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.icon {
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+}
+
+// Unit (contacts)
+// ==========================================================================
+.i-unit {
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 9px;
+    background: {
+      repeat: no-repeat;
+      image: url("#{$assetPath}/sprites/unit.gif");
+    };
+  }
+}
+
+.i-phone {
+  &:before {
+    background-position: 0 0;
+  }
+}
+
+.i-mobile {
+  &:before {
+    background-position: 0 -13px;
+  }
+}
+
+.i-email {
+  &:before {
+    background-position: 0 -26px;
+  }
+}
+
+.i-contact-home {
+  &:before {
+    background-position: 0 -39px;
+  }
+}
+
+.i-contact-work {
+  &:before {
+    background-position: 0 -52px;
+  }
+}
+
+// File formats
+// ==========================================================================
+.attach {
+  [class*="i-file_format"] {
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      vertical-align: top;
+    }
+  }
+}
+
+[class*="i-file_format"] {
+  .dynatree-icon {
+    background-image: none;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      vertical-align: top;
+    }
+  }
+}
+
+@each $fileFormat in $fileFormats {
+  .i-file_format--#{$fileFormat} {
+    &:before {
+      background-image: url("#{$assetPath}/file_format/#{$fileFormat}.png");
+    }
+  }
+  .i-file_format--#{$fileFormat} {
+    .dynatree-icon {
+      &:before {
+        background-image: url("#{$assetPath}/file_format/#{$fileFormat}.png");
+      }
+    }
+  }
+}
+
+// Icons
+// ==========================================================================
+.i-crescent {
+  &:before {
+    background-image: url("#{$assetPath}/i-crescent.gif");
+  }
+}
+
+.i-arrow {
+  &:before {
+    background-image: url("#{$assetPath}/icon/i-arrow.png");
+  }
+}
+
+.fontello-icon-yahoo {
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("#{$assetPath}/social-icons/yahoo.png") no-repeat left 1px;
+  }
+  .active & {
+    &:before {
+      background-position: right 1px;
+    }
+  }
+}
+
+.fontello-icon-lync {
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("#{$assetPath}/social-icons/lync.png") no-repeat left top;
+    background-size: 32px 14px;
+  }
+  .active & {
+    &:before {
+      background-position: right top;
+    }
+  }
+}
+
+.fontello-icon-ftp,
+.fontello-icon-mail-send,
+.fontello-icon-mail-receive {
+  &:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.fontello-icon-ftp {
+  &:before {
+    position: relative;
+    top: -1px;
+    width: 14px;
+  }
+}
+
+.fontello-icon-mail-send {
+  &:before {
+    background: url("#{$assetPath}/event-type/event-type__mail-send.png") no-repeat;
+    background-size: 100%;
+  }
+}
+
+.fontello-icon-mail-receive {
+  &:before {
+    width: 20px;
+    background: url("#{$assetPath}/event-type/event-type__mail-receive.png") no-repeat;
+    background-size: 100%;
+  }
+}
+
+.fontello-icon-ftp {
+  &:before {
+    background: url("#{$assetPath}/event-type/event-type__ftp.png") no-repeat;
+    background-size: 100%;
+  }
+}
+
+.policies_sidebar--channel {
+  .fontello-icon-ftp,
+  .fontello-icon-mail-send,
+  .fontello-icon-mail-receive {
+    &:before {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .fontello-icon-ftp {
+    &:before {
+      top: -2px;
+      width: 14px;
+      height: 18px;
+      background: url("#{$assetPath}/event-type/event-type__ftp_black.png") no-repeat;
+      background-size: 100%;
+    }
+  }
+  .fontello-icon-mail-send {
+    &:before {
+      background: url("#{$assetPath}/event-type/event-type__mail-send_black.png") no-repeat;
+      background-size: 100%;
+    }
+  }
+  .fontello-icon-mail-receive {
+    &:before {
+      background: url("#{$assetPath}/event-type/event-type__mail-receive_black.png") no-repeat;
+      background-size: 100%;
+    }
+  }
+  .active {
+    .fontello-icon-ftp {
+      &:before {
+        background: url("#{$assetPath}/event-type/event-type__ftp_white.png") no-repeat;
+        background-size: 100%;
+      }
+    }
+    .fontello-icon-mail-send {
+      &:before {
+        background: url("#{$assetPath}/event-type/event-type__mail-send_white.png") no-repeat;
+        background-size: 100%;
+      }
+    }
+    .fontello-icon-mail-receive {
+      &:before {
+        background: url("#{$assetPath}/event-type/event-type__mail-receive_white.png") no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+}

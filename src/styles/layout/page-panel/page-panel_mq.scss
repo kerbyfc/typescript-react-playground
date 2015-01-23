@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 1170px) {
+  .page_panel--line {
+    float: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .page_panel--add {
+    float: right;
+    margin: 0;
+  }
+  .page_panel--filters {
+    clear: none;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .page_panel--line {
+    float: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .page_panel--add {
+    clear: both;
+    float: none;
+    overflow: hidden;
+    margin: 10px 0 0 0;
+  }
+  .page_panel--filters {
+    clear: both;
+    float: none;
+    overflow: hidden;
+  }
+  .page_panel--search {
+    float: none;
+  }
+}

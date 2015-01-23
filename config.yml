@@ -1,23 +1,29 @@
 paths:
-  # src
-  js:
-    - ./build/**/*.js
-  coffee:
-    - ./src/**/*.coffee
-  html:
-    - ./src/*.html
+  js: ./build/**/*.js
+  coffee: ./src/**/*.coffee
+  html: ./src/*.html
   yaml:
     - ./src/**/*.yml
-  bootstrap:
-    - ./build/bootstrap.js
-
+    - ./config.yml
+  bootstrap: ./build/app.js
+  doc: ./doc
   docsource: ./doc/sources
   nodoc: "nodoc.txt"
-
-  index_file: index.html
-
+  index_file: ./build/index.html
   build: ./build
   karma: ./karma.coffee
+  config: ./config.yaml
+
+  scss_bootstrap: ./src/app.scss
+  scss: ./src/styles
+  images: ./src/images
+
+sass:
+  includePaths:
+    - ./src/styles
+    - ./src/styles/bourbon
+    - ./bower_components
+    - ./bower_components/bootstrap-sass-official/vendor/assets/stylesheets
 
 cucumber:
   paths:
@@ -40,3 +46,15 @@ browserify:
     lodash:
       path: ./bower_components/lodash/dist/lodash.js
       exports : _
+
+api_version: v1
+
+api:
+  v1:
+    protocol : https
+    host     : tm6.infowatch.ru
+    path     : /api
+
+shared:
+  - api_version
+  - api

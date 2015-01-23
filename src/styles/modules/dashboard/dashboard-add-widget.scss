@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+.dashboard-add-widget {
+  overflow: auto;
+  margin: 10px 0;
+}
+
+.dashboard-add-widget__item {
+  overflow: hidden;
+  display: block;
+
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  border-bottom: 1px dashed $greyLightBorder;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: none;
+    border-bottom: none;
+  }
+}
+
+.dashboard-add-widget__preview {
+  float: left;
+  margin-right: 15px;
+}
+
+.dashboard-add-widget__info {
+  overflow: hidden;
+
+  color: #71797d;
+  line-height: 125%;
+}
+
+.dashboard-add-widget__name {
+  margin-bottom: 10px;
+
+  font-size: 13px;
+  font-weight: bold;
+}

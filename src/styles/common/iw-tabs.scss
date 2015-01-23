@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.iw-tabs {
+  display: block;
+  border-bottom: 1px solid $greyBorder;
+
+  li {
+    display: inline-block;
+
+    &.active {
+      .iw-tabs__link {
+        background-color: #fff;
+        border: 1px solid $greyBorder;
+        border-bottom: 1px solid #fff;
+
+        color: #555;
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.iw-tabs__item {
+  display: inline-block;
+
+  &.active {
+    .iw-tabs__link {
+      border-bottom: 3px solid $green;
+    }
+  }
+}
+
+.iw-tabs__link {
+  display: block;
+
+  margin-bottom: -1px;
+  padding: 11px 10px 9px;
+  box-sizing: border-box;
+
+  border: 1px solid transparent;
+
+  color: #888;
+  line-height: 140%;
+
+  &:hover {
+    padding: 11px 10px 9px;
+
+    background-color: #eee;
+    border-color: #eee #eee $greyBorder;
+    border-top: none;
+
+    color: #888;
+  }
+}

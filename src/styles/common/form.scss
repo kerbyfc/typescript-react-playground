@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+@import "../base/mixins";
+
+.form {
+  &.include-footer {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  color: #606060;
+}
+
+.form--row {
+  > .form--row {
+    display: table-row;
+  }
+}
+
+.form--row {
+  display: table;
+
+  width: 100%;
+  padding: 5px 0;
+  box-sizing: border-box;
+
+  &.submit {
+    margin-top: 15px;
+  }
+
+  &.inline {
+    display: block;
+
+    .form--label,
+    .form--elem {
+      display: inline-block;
+    }
+  }
+}
+
+.form--label {
+  @include clearfix;
+  display: table-cell;
+
+  width: 150px;
+  padding-right: 1em;
+  box-sizing: border-box;
+
+  color: $textColor;
+  cursor: auto;
+  text-align: right;
+  line-height: 100%;
+  vertical-align: middle;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+}
+
+.form--elem {
+  display: table-cell;
+
+  position: relative;
+
+  vertical-align: middle;
+  word-wrap: break-word;
+  text-wrap: suppress;
+
+  &.include-button {
+    padding-right: 35px;
+
+    .button {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      height: 33px;
+
+      border-left: none;
+
+      line-height: 19px;
+
+      &:hover {
+        border-left: 1px solid $blue;
+      }
+    }
+  }
+  &.include-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  ~ .form--elem {
+    // width: 100%;
+    padding-left: 10px;
+  }
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="time"],
+input[type="number"],
+input[type="password"],
+div[contenteditable="true"] {
+  width: 100%;
+  height: 33px;
+  min-height: 20px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  background-color: #fff;
+  box-shadow: none;
+  border: 1px solid $greyBorder;
+  border-radius: 1px;
+
+  font-size: 13px;
+
+  &:focus {
+    border: 1px solid $blue;
+  }
+}
+
+textarea,
+div[contenteditable="true"] {
+  min-height: 52px;
+  padding: 5px 10px;
+
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+.form--action-result {
+  text-align: center;
+}
+
+.form--elem-wrap {
+  display: table;
+  position: relative;
+  width: 100%;
+}

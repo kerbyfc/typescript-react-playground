@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+@import "../../base/mixins";
+@import "../../base/variables";
+
+.diagnostic-page__form {
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.diagnostic-page__type {
+  & input {
+    float: left;
+  }
+}
+
+.diagnostic-page__label {
+  margin-left: 20px;
+  padding: 5px 5px 5px 0;
+
+  color: #777;
+  line-height: 130%;
+}
+
+.diagnostic-page__label-title {
+  font-size: 14px;
+  color: $textColor;
+}
+
+.diagnostic-page__run {
+  margin: 10px 0 0;
+}
+
+.diagnostic-page._in-progress {
+  .diagnostic-page__form {
+    display: none;
+  }
+}
+
+.diagnostic-item__in-progress {
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.diagnostic-item__progress-container {
+  overflow: hidden;
+}
+
+.diagnostic-item__progress {
+  position: relative;
+  margin: 5px 100px 5px 0;
+  @include progress;
+}
+
+.diagnostic-item__cancel {
+  float: right;
+}
+
+.diagnostic-item__result {
+  display: inline-block;
+}

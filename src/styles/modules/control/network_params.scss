@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.network_params {
+  overflow: hidden;
+  max-width: 640px;
+}
+
+.network_params--block {
+  background-color: #f2f2f2;
+  &:first-child {
+    margin-right: 20px;
+  }
+  &.styled {
+    border-top: 1px solid $greyDarkBorder;
+    .network_params--block_title {
+      background-color: #f0eef0;
+    }
+  }
+}

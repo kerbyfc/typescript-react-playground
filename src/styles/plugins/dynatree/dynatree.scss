@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.dynatree-container {
+  overflow: auto;
+  height: 100%;
+  padding: 10px;
+  font-size: 13px;
+  white-space: nowrap;
+  border: none !important;
+  background-color: transparent !important;
+  ul {
+    padding: 10px;
+  }
+  li {
+    margin-top: 5px;
+    line-height: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.dynatree-empty,
+.dynatree-vline,
+.dynatree-connector,
+.dynatree-expander,
+.dynatree-icon,
+.dynatree-checkbox,
+.dynatree-radio,
+.dynatree-drag-helper-img,
+#dynatree-drop-marker {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: top;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-image: url("icons.gif");
+  background-position: 0 0;
+}
+
+.tree_view ul.dynatree-container a {
+  border: none;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+  }
+}
+
+ul.dynatree-container a,
+ul.dynatree-container a:visited {
+  outline: 0;
+}
+
+span.dynatree-active a {
+  background-color: rgb(240, 250, 243) !important;
+}
+
+span.dynatree-focused a {
+  background-color: #DCF7E3 !important;
+}
+
+ul.dynatree-container {
+  li {
+    clear: both;
+    float: left;
+  }
+}

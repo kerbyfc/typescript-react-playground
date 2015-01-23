@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.settings-ldap {
+  max-width: 950px;
+}
+
+.settings-ldap__title {
+  //
+}
+
+.settings-ldap__title-left {
+  float: left;
+}
+
+.settings-ldap__title-right {
+  float: right;
+  span {
+    display: inline-block;
+    margin-left: 0.5em;
+  }
+}
+
+.settings-ldap__sync-status {
+  width: 12px;
+  height: 12px;
+}
+
+.settings-ldap__sync-status--success {
+  background-color: $green;
+}
+
+.settings-ldap__sync-status--notstarted {
+  background-color: $grey;
+}
+
+.settings-ldap__sync-status--failed {
+  background-color: $red;
+}

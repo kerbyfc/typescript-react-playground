@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.events-audit {
+  overflow: hidden;
+
+  @include calc(height, "100% - 51px");
+  margin-right: 10px;
+  padding: 10px 10px 0 0;
+  box-shadow: box-sizing;
+
+  > div {
+    height: 100%;
+  }
+}
+
+.events-audit {
+  height: 100%;
+  margin: 10px;
+}
+
+.events-audit__wrap {
+  overflow-y: scroll;
+  width: 100%;
+  @include calc(height, "100% - 55px");
+  padding: 5px 10px 5px 5px;
+  box-sizing: border-box;
+}
+
+.events-audit__list {
+  padding: 0 15px;
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px 0 -5px;
+  }
+}
+
+.audit_event {
+  position: relative;
+  min-height: 33px;
+  margin-bottom: 10px;
+  padding: 10px 10px 15px 60px;
+  background-color: #fff;
+  border: 1px solid $greyBorder;
+  border-radius: 5px;
+  line-height: 120%;
+  word-break: break-all;
+  img {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.audit_event__user {
+  display: block;
+  margin-bottom: 5px;
+  color: #292929;
+  font: {
+    size: 12px;
+    weight: bold;
+  };
+  line-height: 15px;
+}
+
+.audit_event__date {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #a1a1a1;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+.audit_event__adv_trigger {
+  float: right;
+  margin-top: -10px;
+  border-bottom: 1px dotted $blue;
+  color: $blue;
+  &:hover {
+    border-color: transparent;
+  }
+}
+
+.audit_event__advanced {
+  margin-top: 10px;
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  th,
+  td {
+    padding: 7px;
+    text-align: left;
+  }
+  th {
+    min-width: 100px;
+    background-color: #f0f0f0;
+    border: 1px solid $greyBorder;
+    color: #555;
+    font-weight: normal;
+  }
+  td {
+    background-color: #fff;
+    border: 1px solid $greyBorder;
+    color: #555;
+  }
+}
+
+.audit_filters {
+  position: relative;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.audit_filters__title {
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 50%;
+  @include transform-origin(0 0);
+  width: 150px;
+  margin-left: -75px;
+  padding: 5px 0;
+  background-color: #dedede;
+  border-radius: 0;
+  text-align: center;
+
+  border: 1px solid green;
+
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+  }
+  &:before {
+    left: -23px;
+    border-width: 23px 0 0 23px;
+    border-color: #dedede transparent transparent transparent;
+  }
+  &:after {
+    right: -23px;
+    border-width: 23px 23px 0 0;
+    border-color: #dedede transparent transparent transparent;
+  }
+}
+
+.audit_filter {
+  margin-bottom: 10px;
+}
+
+.audit_event__action {
+  margin-bottom: 5px;
+}

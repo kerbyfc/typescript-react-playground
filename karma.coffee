@@ -1,49 +1,52 @@
-YAML = require 'yamljs'
-cfg = YAML.load "config.yml"
+YAML = require "yamljs"
+_    = require "lodash"
+
 module.exports = (config) ->
 
-  console.log "HERE"
-  # console.log JSON.stringify cfg, null, 2
+  cfg = YAML.load "config.yml"
 
   config.set
 
-    basePath: ''
+    cgf: cfg
+
+    basePath: ""
     colors: true
 
-    files: [
-      {
-        pattern: 'node_modules/karma-cucumberjs/vendor/cucumber-html.css'
-        watched: false
-        included: false
+    customLaunchers:
+      Chrome_without_security:
+        base: "Chrome",
+        flags: [
+          "--disable-web-security"
+          "--ignore-certificate-errors"
+          "--no-sandbox"
+          "--disable-hang-monitor"
+          "--start-maximazed"
+        ]
+
+    files: _.values
+      bootstrap:
+        pattern: cfg.paths.bootstrap
+        watched: true
+        included: true
         served: true
-      }
-      {
-        pattern: cfg.paths.index_file
-        watched: false
-        included: false
-        served: true
-      }
-      {
+      features:
         pattern: cfg.cucumber.paths.features
         watched: true
         included: false
         served: true
-      }
-      {
+      step_definitions:
         pattern: cfg.cucumber.paths.definitions
         watched: true
         included: true
         served: true
-      }
-    ]
 
     frameworks: [
-      'cucumberjs'
+      "cucumberjs"
     ]
 
     preprocessors:
-      '**/*.coffee': 'coffee'
+      "**/*.coffee": "coffee"
 
     browsers: [
-     'Chrome'
+     "Chrome_without_security"
     ]

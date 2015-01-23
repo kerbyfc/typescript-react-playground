@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.scanners_fiasco {
+  box-sizing: border-box;
+  display: none;
+  padding-top: 15%;
+}
+
+.crawler_entry_apply, .crawler_entry_revert, .crawler_scanner_locked {
+  display: none;
+}

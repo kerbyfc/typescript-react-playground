@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../../base/variables";
+
+// Policies control panel
+// ==========================================================================
+.policy-control__multiselect {
+  .multiselect {
+    height: auto;
+  }
+
+  span {
+    font-style: italic;
+  }
+}
+
+.policy-control__threat {
+  @each $eventThreat in $threat {
+    &[data-threat="#{nth($eventThreat, 1)}"] {
+      color: nth($eventThreat, 2);
+    }
+  }
+}
+
+.policy-control__domain_http {
+  &:before {
+    content: "http(s)://";
+    font-weight: bold;
+  }
+}
+
+.policy-control__domain_mail {
+  &:before {
+    content: "@";
+    font-weight: bold;
+  }
+}

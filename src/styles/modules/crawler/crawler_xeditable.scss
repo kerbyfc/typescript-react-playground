@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.crawler_schedule {
+  label {
+    clear: both;
+    float: left;
+    padding-top: 5px;
+  }
+  input, select {
+    float: right;
+    margin: 0 10px 10px;
+  }
+  input {
+    margin-right: 55px;
+  }
+}
+
+.crawler_file_masks {
+  .add-crawler-file-masks {
+    margin-right: 20px;
+  }
+  ul {
+    margin-top: 10px;
+  }
+  li {
+    width: 110px;
+    margin-bottom: 10px;
+    input {
+      float: right;
+      margin-right: 15px;
+    }
+    .delete-crawler-mask {
+      float: right;
+      padding: 3px 10px 0;
+    }
+  }
+  input[type=text] {
+    width: 250px;
+  }
+}
+
+.crawler_scan_mode {
+  .crawler_scan_mode--item {
+    margin-bottom: 15px;
+  }
+  textarea {
+    display: block;
+  }
+  [type=checkbox] {
+    margin-top: 0;
+  }
+}
+
+.crawler_groups_workstations {
+  &.crawler_workstations_center {
+    // Величины рассчитаны на глаз и могут быть изменены
+    left: calc(50% - 310px) !important;
+    top: 100px !important;
+  }
+  .tree_view {
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+    margin-top: 0;
+    padding: 10px 0;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    vertical-align: top;
+  }
+  .crawler_workstations {
+    display: inline-block;
+    overflow: scroll;
+    height: 300px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    vertical-align: top;
+    .crawler_workstation {
+      cursor: move;
+    }
+  }
+  .crawler_manually_added_workstations {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #dedede;
+    box-shadow: none;
+    border-radius: 3px;
+    vertical-align: top;
+  }
+  .crawler_added_groups_workstations {
+    display: inline-block;
+    overflow-y: scroll;
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    vertical-align: top;
+  }
+  .crawler_group_or_workstation {
+    float: left;
+    width: 180px;
+  }
+  .delete_crawler_group_workstation {
+    float: left;
+    margin-right: -15px;
+    margin-top: 1px;
+    i {
+      &:before {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.crawler_autoriz {
+  input:not([type=checkbox]) {
+    display: block;
+    margin-bottom: 8px;
+  }
+  [type=checkbox] {
+    margin: 0;
+  }
+}
+
+.crawler_user_filters {
+  input {
+    margin-top: 0;
+  }
+  .crawler_sids_label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  textarea {
+    display: block;
+  }
+}
+
+.file_storage_settings {
+  display: none;
+  margin-top: 10px;
+  .file_storage_labels {
+    width: 110px;
+    padding-bottom: 15px;
+  }
+}

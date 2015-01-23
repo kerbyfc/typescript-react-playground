@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// Event types icons
+// ==========================================================================
+@each $eventType in $eventTypes {
+  .event-type__#{$eventType} {
+    width: 26px;
+    height: 26px;
+
+    background: url("#{$assetPath}/event-type/event-type__#{$eventType}.png") center no-repeat;
+    background-size: 100%;
+  }
+}

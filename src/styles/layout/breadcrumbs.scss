@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.breadscrumbs {
+  display: inline-block;
+  padding-left: 10px;
+  color: #88919b;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  li {
+    display: inline-block;
+    height: 40px;
+    padding: 10px 0 5px 5px;
+    box-sizing: border-box;
+    &:after {
+      content: "";
+      display: inline-block;
+      opacity: 0.3;
+      width: 20px;
+      height: 20px;
+      margin: (-2px) 0 0 5px;
+      background: url("#{$assetPath}/arrow-right.png") no-repeat;
+      background-size: 100%;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+  a {
+    color: #88919b;
+    content: "dsadsadsa";
+    &:hover {
+      color: #88919b;
+    }
+    &:after {
+      content: contents;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 200px;
+      height: 200px;
+      font-size: 40px;
+      border: 5px solid red;
+      // color: red
+    }
+  }
+}

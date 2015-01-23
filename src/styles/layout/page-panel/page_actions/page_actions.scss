@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.page_actions {
+  float: right;
+}
+
+.page_actions--action {
+  float: left;
+}
+
+.page_actions--toggle {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-left: 1px solid #e1e1e1;
+  color: #6d7c8b;
+  vertical-align: middle;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(#000, 0.05);
+    color: #6d7c8b;
+  }
+}
+
+.page_actions--label {
+  // empty
+  i.caret {
+    position: relative;
+    top: -2px;
+  }
+}
+
+.page_actions--data {
+  // empty
+  i {
+    position: relative;
+    top: -2px;
+  }
+}

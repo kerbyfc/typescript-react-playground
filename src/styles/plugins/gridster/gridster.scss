@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.gridster {
+  .gridster--wrapper {
+    position: relative;
+    left: -20px;
+    bottom: 30px;
+    margin-top: 30px;
+    li {
+      border-radius: 10px;
+    }
+  }
+}
+
+.player {
+  .widget {
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.15);
+    &:after,
+    &:before {
+      display: none;
+    }
+  }
+}

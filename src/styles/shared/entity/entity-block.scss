@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+/* #Variables */
+
+$actionTypes  : positive negative neutral;
+$actionColors : $green $red $blue;
+$actions      : zip($actionTypes, $actionColors);
+
+/* #Entity-block */
+
+.entity-block {
+  position: relative;
+
+  margin: 20px 0;
+
+  border: 1px solid $greyLightBorder;
+
+  &:hover {
+    border-color: $greyDarkBorder;
+
+    .entity-block__actions {
+      display: block;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.entity-block__title {
+  display: inline-block;
+
+  position: relative;
+  top: -8px;
+  left: 5px;
+
+  margin: 0;
+  padding: 0 10px;
+
+  background-color: #fff;
+
+  font-weight: bold;
+}
+
+.entity-block__actions {
+  display: none;
+
+  position: absolute;
+  top: -14px;
+  right: 5px;
+
+  padding: 0 5px;
+
+  background-color: #fff;
+}
+
+.entity-block__action {
+  display: inline-block;
+
+  width: 30px;
+  margin: 0;
+  padding: 5px 0;
+
+  border: 1px solid $greyBorder;
+
+  color: $greyLight;
+  text-align: center;
+
+  &:before {
+    margin: 0;
+  }
+}
+
+@each $action in $actions {
+  .entity-block__action--#{nth($action, 1)} {
+    &:hover {
+      background-color: rgba(nth($action, 2), .2);
+      border: 1px solid nth($action, 2);
+
+      color: nth($action, 2);
+    }
+  }
+}

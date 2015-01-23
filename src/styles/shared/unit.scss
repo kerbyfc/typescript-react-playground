@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.unit {
+  display: inline-block;
+
+  position: relative;
+
+  max-width: 300px;
+  margin-right: 3px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+
+  &:hover {
+    color: #292929;
+
+    .unit__caret {
+      border-top-color: #696969;
+    }
+
+    .unit__link {
+      color: #292929;
+    }
+  }
+}
+
+.unit__name {
+  display: inline-block;
+
+  min-width: 20px;
+
+  text-overflow: ellipsis;
+}
+
+.unit__link {
+  color: #696969;
+
+  &.conflict {
+    color: $red;
+  }
+
+  &.deleted {
+    color: $red;
+  }
+}
+
+.unit-dropdown {
+  overflow: hidden;
+
+  position: absolute;
+  z-index: 100;
+  top: 100%;
+  left: 0;
+
+  @include calc(width, "100% - 1px");
+  margin-top: 2px;
+
+  background-color: #fff;
+  box-shadow: 0 6px 12px rgba(#000, 0.175);
+  border: 1px solid rgba(#000, 0.15);
+  border-radius: 3px;
+
+  a {
+    display: block;
+
+    padding: 3px 10px;
+
+    color: inherit;
+
+    &:hover {
+      background-color: rgba(#000, 0.6);
+      color: #fff;
+    }
+  }
+}

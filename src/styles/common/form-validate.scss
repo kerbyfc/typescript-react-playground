@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+@import "bourbon";
+@import "../base/variables";
+
+.form--errors {
+  margin-bottom: 10px;
+  padding: 7px 25px;
+
+  background-color: #fff1f1;
+  border: 1px solid $red;
+
+  color: $red;
+  font-weight: bold;
+
+  li {
+    margin: 10px 0;
+
+    &:before {
+      content: "";
+
+      display: inline-block;
+
+      width: 5px;
+      height: 5px;
+      margin-right: 7px;
+
+      background-color: $red;
+    }
+  }
+}
+
+.form--elem {
+  &[data-error-status="true"] {
+    &:before {
+      content: "!";
+
+      position: absolute;
+      z-index: 10;
+      top: 5px;
+      right: 2px;
+
+      width: 20px;
+
+      color: $red;
+      font-size: 20px;
+      font-family: "Tahoma", sans-serif;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    &.include-button {
+      &:before {
+        right: 38px;
+      }
+    }
+  }
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  [data-error-status="true"] & {
+    padding-right: 30px;
+    border-color: $red;
+    color: $red;
+
+    &:focus,
+    &:hover {
+      border-color: $red;
+
+      ~ .form--error {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+[data-error-status="true"] {
+  &:hover {
+    .form--error {
+      visibility: visible;
+      opacity: 1;
+      z-index: 1200;
+    }
+  }
+}
+
+.form--error {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1100;
+  margin-bottom: 2px;
+  padding: 6px 10px;
+  background-color: #fff1f1;
+  border: 1px solid $red;
+  @include transition(opacity 0.2s ease-in);
+  color: $red;
+  &:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: 100;
+    bottom: -7px;
+    left: auto;
+    right: 4px;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #fff1f1;
+    border-left: 7px solid transparent;
+    vertical-align: middle;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: -9px;
+    left: auto;
+    right: 3px;
+    border-right: 8px solid transparent;
+    border-top: 8px solid $red;
+    border-left: 8px solid transparent;
+    vertical-align: middle;
+  }
+  .include-button & {
+    right: 36px;
+  }
+}

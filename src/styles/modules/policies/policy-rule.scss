@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// Policy rule
+// ==========================================================================
+.policy-rule {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: -1px;
+
+  border: 1px solid $greyLightBorder;
+
+  &:last-child {
+    margin-bottom: 0;
+    border-radius: 0 0 7px 7px;
+  }
+
+  &:hover,
+  &.selected {
+    z-index: 2;
+
+    background-color: rgba(#fff, 0.02);
+    border-color: $greyDarkBorder;
+
+    transition: background-color 0.2s 0 ease-in, border-color 0.2s 0 ease-in;
+
+    .policy-rule__delete-btn {
+      opacity: 1;
+
+      transition: opacity 0.2s 0 ease-in
+    }
+  }
+}
+
+.policy-rule__delete-btn {
+  opacity: 0;
+
+  position: absolute;
+  top: 7px;
+  right: 0;
+
+  @include iconButton(10px);
+}
+
+.policy-rule__actions {
+  margin: 6px 8px;
+
+  @each $eventThreat in $threat {
+    [data-threat="#{nth($eventThreat, 1)}"] {
+      color: nth($eventThreat, 2)
+    }
+  }
+}
+
+.policy-rule__actions-list {
+  display: inline-block;
+
+  color: #868686;
+
+  li {
+    display: inline-block;
+    margin: 0 1px;
+  }
+
+  span {
+    &:before {
+      margin-right: 5px;
+    }
+  }
+}
+
+.policy-rule__action {
+  display: inline-block;
+
+  color: #868686;
+
+  &:before {
+    margin: 0 0 0 2px;
+  }
+
+  @each $eventThreat in $threat {
+    &[data-threat="#{nth($eventThreat, 1)}"] {
+      color: nth($eventThreat, 2)
+    }
+  }
+}
+
+.policy-rule__trigger {
+  margin-bottom: 15px;
+  text-align: center;
+
+  span {
+    font-weight: bold;
+
+    @each $eventThreat in $threat {
+      &[data-threat="#{nth($eventThreat, 1)}"] {
+        color: nth($eventThreat, 2);
+      }
+    }
+  }
+}
+
+.policy-rule__binding {
+  margin-bottom: 15px;
+  text-align: center;
+
+  span {
+    display: inline-block;
+    margin-left: 2px;
+
+    &:before {
+      margin-right: 4px;
+    }
+  }
+}
+
+.policy-rule__time {
+  position: absolute;
+  top: 6px;
+  right: 30px;
+
+  color: #868686;
+}
+
+.policy-rule__items-wrap {
+  display: table;
+
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+
+  color: #606060;
+}
+
+.policy-rule__items,
+.policy-rule__direction {
+  display: table-cell;
+  color: #606060;
+}
+
+.policy-rule__items {
+  width: 43%;
+  padding: 10px;
+  box-sizing: border-box;
+
+  text-align: center;
+  vertical-align: middle;
+
+  .deleted {
+    color: #ed5e4f;
+    text-decoration: line-through;
+  }
+
+  li {
+    display: inline;
+
+    &:after {
+      content: ",";
+      margin-right: 5px;
+      color: #868686;
+    }
+
+    &:last-child {
+      &:after {
+        content: "";
+      }
+    }
+  }
+
+  a {
+    display: inline-block;
+    overflow-x: hidden;
+
+    max-width: 150px;
+
+    color: #606060;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 18px;
+
+    &:before {
+      margin-right: 5px;
+    }
+  }
+}
+
+.policy-rule__direction_both {
+  background: url("#{$assetPath}/sprites/policy--arrows.png") no-repeat center;
+}
+
+.policy-rule__direction_right {
+  background: url("#{$assetPath}/sprites/policy--arrow.png") no-repeat center;
+}

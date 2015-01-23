@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+@import "../../base/mixins";
+
+.update-page__upload-indicator {
+  display: inline-block;
+  min-width: 300px;
+}
+
+.update-page__upload {
+  max-width: 500px;
+}
+
+.upload {
+  input[type=file] {
+    position: absolute;
+    top: -10000px;
+  }
+}
+
+.upload__file-name {
+  margin-left: 10px;
+}
+
+.upload__progress-container {
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.upload__cancel {
+  float: right;
+}
+
+.upload__progress {
+  margin: 5px 100px 5px 0;
+  display: block;
+  width: auto;
+  @include progress;
+}
+
+.upload__error-msg {
+  color: $red;
+}
+
+.update__popup {}
+
+.update__progress {
+  margin: 0;
+  @include progress;
+}
+
+.update__stage {
+  padding: 2px 0;
+}
+
+.change-log__content {
+  margin-top: 20px;
+  border: 1px solid #f4f4f4;
+  border-width: 1px 0;
+  padding: 20px 10px;
+  overflow: hidden;
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.events-request__tab {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-top: none;
+}
+
+.events-request__label {
+  padding-top: 5px;
+  vertical-align: top;
+}
+
+.events-request__submit {
+  padding: 0 0 20px 0;
+
+  div {
+    &:first-child {
+      float: right;
+    }
+
+    &:last-child {
+      overflow: hidden;
+    }
+  }
+}

@@ -1,0 +1,361 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+// Conditions view styles
+// ==========================================================================
+.conditions {
+  margin-left: 25px;
+  min-height: 40px;
+  padding-bottom: 20px;
+}
+
+.conditions__filter {
+  padding-top: 10px;
+  padding-left: 10px;
+  > .conditions__set {
+    margin: 0;
+    padding: 0 10px;
+    > .conditions__handle {
+      display: none;
+    }
+  }
+}
+
+.conditions__block,
+.conditions__set {
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 28px;
+  background-color: #fff;
+  border-radius: 1px;
+  border: 1px solid $greyBorder;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &.draggable {
+    padding: 8px;
+    border: 1px solid #ff4260;
+  }
+  &.active {
+    padding: 8px;
+    border: 1px solid #ffc301;
+  }
+}
+
+.conditions__set {
+  min-height: 50px;
+  padding: 30px 20px 0 25px;
+}
+
+.conditions__block {
+  padding: 10px;
+  background-color: #fbfbfb;
+}
+
+// Conditions behavior
+// ==========================================================================
+.conditions__set,
+.conditions__block {
+  &:not(:first-of-type) {
+    &:before {
+      position: absolute;
+      z-index: 500;
+      top: -20px;
+      left: -30px;
+      width: 30px;
+      height: 30px;
+      margin-top: -10px;
+      background: #f2f2f2;
+      border: solid 1px $greyDarkBorder;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 11px;
+      text-align: center;
+      line-height: 30px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: -56px;
+      left: -16px;
+      width: 15px;
+      height: 82px;
+      border: solid $greyDarkBorder;
+      border-width: 1px 0 1px 1px;
+      border-radius: 2px 0 0 2px;
+    }
+  }
+  &.ui-draggable {
+    + .conditions__set,
+    + .conditions__block {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+  &.ui-sortable-helper {
+    &:before,
+    &:after {
+      display: none;
+    }
+    &:first-of-type {
+      + .conditions__set,
+      + .conditions__block {
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Fake block for dragged element
+// ==========================================================================
+.conditions__fake {
+  min-height: 38px;
+  box-shadow: none;
+  border: 1px dashed rgba(#000, 0.15);
+  &:not(:first-of-type) {
+    &:before,
+    &:after {
+      border-style: dashed;
+      color: #ccc;
+    }
+  }
+  + .conditions__set,
+  + .conditions__block {
+    &:before,
+    &:after {
+      border-style: dashed;
+      color: #ccc;
+    }
+  }
+}
+
+.conditions {
+  .ui-draggable {
+    + .conditions__fake {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.conditions__set {
+  &:first-child {
+    .conditions__fake {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.conditions__set {
+  .conditions__block {
+    ~ .conditions__fake {
+      &:before,
+      &:after {
+        display: block;
+      }
+    }
+  }
+}
+
+// Fake link of switcher for js
+// ==========================================================================
+.conditions__set,
+.conditions__block {
+  .conditions__fake-link {
+    position: absolute;
+    z-index: 500;
+    top: -20px;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    margin-top: -10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.conditions__set {
+  > .conditions__block,
+  > .conditions__set {
+    &:first-child {
+      > .conditions__fake-link {
+        display: none;
+      }
+    }
+  }
+}
+
+.conditions__filter {
+  > .conditions__set {
+    &:first-child {
+      > .conditions__fake-link {
+        display: none;
+      }
+    }
+  }
+}
+
+// Changing type of link conditions
+// ==========================================================================
+.conditions__or > {
+  .conditions__set.rus,
+  .conditions__block.rus,
+  .conditions__fake.rus {
+    &:not(:first-of-type) {
+      &:before {
+        content: "ИЛИ";
+      }
+    }
+  }
+}
+
+.conditions__set.rus,
+.conditions__block.rus,
+.conditions__fake.rus {
+  &:not(:first-of-type) {
+    &:before {
+      content: "И";
+    }
+  }
+}
+
+.conditions__or > {
+  .conditions__set.eng,
+  .conditions__block.eng,
+  .conditions__fake.eng {
+    &:not(:first-of-type) {
+      &:before {
+        content: "OR";
+      }
+    }
+  }
+}
+
+.conditions__set.eng,
+.conditions__block.eng,
+.conditions__fake.eng {
+  &:not(:first-of-type) {
+    &:before {
+      content: "AND";
+    }
+  }
+}
+
+// Conditions handle
+// ==========================================================================
+.conditions__handle {
+  position: absolute;
+  top: -13px;
+  left: 20px;
+  padding: 5px 10px;
+  background-color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: move;
+  &:empty {
+    display: none;
+  }
+  .conditions__block & {
+    background-image: linear-gradient(white 43%, #fbfbfb);
+  }
+}
+
+// Conditions content
+// ==========================================================================
+.conditions__content {
+  margin-top: 5px;
+}
+
+// Delete button
+// ==========================================================================
+.conditions__block {
+  &:hover {
+    .conditions__edit,
+    .conditions__delete {
+      opacity: 1;
+    }
+  }
+}
+
+.conditions__set {
+  &:hover {
+    .conditions__delete_block {
+      opacity: 1;
+    }
+  }
+}
+
+.conditions__delete,
+.conditions__delete_block {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  padding: 3px 5px;
+  background-image: linear-gradient(white 42%, #fbfbfb);
+  color: #b3b3b3;
+  font-size: 11px;
+  cursor: pointer;
+  &:before {
+    margin: 0;
+  }
+  &:hover {
+    // background-color: $red
+    color: $red;
+  }
+}
+
+.filter > .conditions__set > .conditions__delete_block {
+  display: none;
+}
+
+.filter > .conditions__block, .filter > .conditions__set {
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  background: transparent;
+  &:hover {
+    box-shadow: none;
+    .conditions__delete_block:first-child {
+      opacity: 0;
+    }
+  }
+}
+
+.conditions__filter {
+  overflow: auto;
+  float: left;
+  width: 79%;
+  height: 620px;
+}
+
+.conditions__list {
+  float: left;
+  position: relative;
+  width: 20%;
+  padding-left: 25px;
+  box-sizing: border-box;
+  [data-type="condition"],
+  [data-type="group"] {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid $greyLightBorder;
+    border-radius: 3px;
+    line-height: 20px;
+    cursor: move;
+  }
+  [data-type="group"] {
+    margin-left: -10px;
+  }
+}

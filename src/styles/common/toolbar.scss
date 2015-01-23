@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+.toolbar {}
+
+.toolbar__left-side {
+  float: left;
+}
+
+.toolbar__right-side {
+  overflow: hidden;
+}

@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../../base/mixins";
+
+.ui-pnotify {
+  z-index: 10001;
+}
+
+// html > body .ui-pnotify
+//   // top: 85px !important
+//   top: auto !important
+//   bottom: 7px !important
+//   right: 15px !important
+
+//   +box-shadow(1px 1px 5px rgba(#000, .2))
+
+// .ui-pnotify-container
+//   overflow: hidden !important
+
+//   position: relative
+
+//   min-height: 30px !important
+//   padding: 15px 35px 15px 70px !important
+
+//   background-color: rgba(#f4f4f4, .9)
+//   +box-shadow(none !important)
+//   +border-radius(0)
+
+//   color: #fff
+
+//   &:hover
+//     background-color: #f4f4f4
+
+//   &.alert-info
+//     background-color: $orange
+//     border: none
+
+//     .ui-pnotify-icon
+//       color: #fff
+
+//   &.alert-success
+//     background-color: $green
+//     border: none
+
+//     .ui-pnotify-icon
+//       background-color: #438d63
+
+//       color: #fff
+
+//     .ui-pnotify-closer
+//       color: #438d63
+
+//   &.alert-error
+//     background-color: $red
+//     border: none
+
+//     .ui-pnotify-icon
+//       background-color: #b73b2e
+
+//       color: #fff
+
+//     .ui-pnotify-closer
+//       color: #b73b2e
+
+// .ui-pnotify-icon
+//   position: absolute
+//   top: 0
+//   left: 0
+
+//   width: 50px
+//   height: 100%
+
+//   font-size: 18px
+
+//   span
+//     position: absolute
+//     top: 50%
+//     left: 15px
+
+//     margin-top: -10px
+
+// .ui-pnotify-title
+//   margin-bottom: 10px !important
+
+//   color: #fff
+//   font-size: 14px
+//   text-transform: uppercase
+
+// .ui-pnotify-title,
+// .ui-pnotify-text
+//   overflow: hidden
+
+//   line-height: 14px !important
+
+// .ui-pnotify-container
+//   .ui-pnotify-icon
+//     margin-right: 0
+
+//     font-size: 20px
+
+// .ui-pnotify-closer
+//   position: absolute
+//   top: 10px
+//   right: 0
+
+//   font-size: 18px
+
+//   opacity: .7
+
+//   visibility: visible !important
+
+//   &:hover
+//     opacity: 1

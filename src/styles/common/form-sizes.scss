@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+@import "../base/variables";
+
+$maxWidth: 525;
+$step: 25;
+
+.form--label {
+  $i: 0;
+  @while $i < $maxWidth {
+    $i: $i + $step;
+    &.size-#{$i} {
+      width: $i + px;
+    }
+  }
+
+  &.size-short {
+    width: 75px;
+  }
+
+  &.size-normal {
+    width: 150px;
+  }
+
+  &.size-medium {
+    width: 200px;
+  }
+
+  &.size-large {
+    width: 250px;
+  }
+
+  &.size-auto {
+    width: auto;
+  }
+
+  &.size-half {
+    width: $ElemSizeHalf;
+  }
+
+  &.size-1_2 {
+    width: $ElemSizeHalf;
+  }
+
+  &.size-1_3 {
+    width: $ElemSizeOneThird;
+  }
+
+  &.size-1_4 {
+    width: $ElemSizeOneQuarter;
+  }
+
+  &.size-2_3 {
+    width: $ElemSizeTwoThird;
+  }
+
+  &.size-3_4 {
+    width: $ElemSizeThreeQuarter;
+  }
+
+  &.size-full {
+    display: block;
+
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+
+    ~ .form--elem {
+      display: block;
+    }
+  }
+}
+
+.form--elem {
+  &.size-max {
+    width: 100%;
+  }
+}
+
+.form--elem {
+  textarea {
+    .height-small & {
+      height: 52px;
+    }
+
+    .height-medium & {
+      height: 100px;
+    }
+
+    .height-large & {
+      height: 120px;
+    }
+  }
+}
+
+textarea,
+select,
+input[type="text"],
+input[type="time"],
+input[type="number"],
+input[type="password"],
+div[contenteditable="true"],
+.select2-container {
+  $i: 0;
+  @while $i < $maxWidth {
+    $i: $i + $step;
+    .size-#{$i} & {
+      width: $i + px;
+    }
+  }
+
+  .size-short & {
+    width: 75px;
+  }
+
+  .size-normal & {
+    width: 150px;
+  }
+
+  .size-medium & {
+    width: 200px;
+  }
+
+  .size-large & {
+    width: 250px;
+  }
+}

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.integrity {
+  height: 100%;
+}
+
+.integrity--schedule {
+  float: right;
+}
+
+.integrity--paginator {
+  overflow: hidden;
+}
+
+.integrity--table {
+  height: 400px;
+}
+
+.integrity--side_title {
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: normal;
+}

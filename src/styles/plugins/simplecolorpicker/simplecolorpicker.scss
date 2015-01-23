@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+
+.simplecolorpicker {
+  &.icon {
+    height: 20px;
+    width: 20px;
+
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px $greyBorder;
+
+    outline: none;
+
+    &:before {
+      content: none;
+    }
+  }
+
+  &.picker {
+    z-index: 10000 !important;
+
+    border-radius: 0;
+  }
+
+  div {
+    height: 20px;
+    width: 20px;
+
+    outline: none;
+
+    &:hover,
+    &.selected {
+      border: 1px solid $blue;
+    }
+  }
+}
