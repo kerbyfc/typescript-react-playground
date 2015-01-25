@@ -1,24 +1,27 @@
 paths:
-  js: ./build/**/*.js
+  js: ./compiled/**/*.js
   coffee: ./src/**/*.coffee
   html: ./src/*.html
   yaml:
     - ./src/**/*.yml
     - ./config.yml
-  bootstrap: ./build/app.js
+  bootstrap: ./compiled/app.js
   doc: ./doc
   docsource: ./doc/sources
-  nodoc: "nodoc.txt"
-  index_file: ./build/index.html
+  nodoc: nodoc.txt
+  index_file: index.html
+  index_path: ./build/index.html
   build: ./build
+  src: ./src
+  compiled: ./compiled
   karma: ./karma.coffee
   config: ./config.yaml
 
   scss_bootstrap: ./src/app.scss
-  scss: ./src/styles
+  scss: ./src/styles/**/*.scss
   images: ./src/images
 
-sass:
+scss:
   includePaths:
     - ./src/styles
     - ./src/styles/bourbon
@@ -31,29 +34,35 @@ cucumber:
     definitions: ./tests/definitions/**/*.coffee
     support: ./tests/support/**/*.coffee
 
+livereload:
+  enable: true
+  cwd: ./build
+  paths:
+    - app.js
+    - app.css
+    - index.html
+    - config.json
+
 browserify:
   paths:
-    - ./build
-    - ./build/framework
+    - ./compiled
+    - ./compiled/framework
     - ./node_modules
     - ./bower_components
     - ./bower_components/react
-    - ./bower_components/react-router/dist/
-  shim:
-    jquery:
-      path: ./bower_components/jquery/dist/jquery.js
-      exports : jquery
-    lodash:
-      path: ./bower_components/lodash/dist/lodash.js
-      exports : _
+    - ./bower_components/**/dist
+    # - ./bower_components/react-router/dist
+    # - ./bower_components/jquery/dist
+    # - ./bower_components/lodash/dist
+    # - ./bower_components/store/dist
 
 api_version: v1
 
 api:
   v1:
-    protocol : https
-    host     : tm6.infowatch.ru
-    path     : /api
+    protocol: https
+    host: tm6.infowatch.ru
+    path: /api
 
 shared:
   - api_version

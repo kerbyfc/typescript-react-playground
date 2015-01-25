@@ -1,7 +1,10 @@
+_           = require "lodash"
+glob        = require "glob"
 path        = require "path"
 gulp        = require "gulp"
 karma       = require "karma"
 YAML        = require "yamljs"
+
 browserify  = require "gulp-browserify"
 yaml        = require "gulp-yaml"
 replace     = require "gulp-replace"
@@ -13,29 +16,56 @@ notify      = require "gulp-notify"
 webserver   = require "gulp-webserver"
 clean       = require "gulp-clean"
 tap         = require "gulp-tap"
-sass        = require "gulp-sass"
+scss        = require "gulp-sass"
+merge       = require "gulp-merge"
 cssimport   = require "gulp-cssimport"
-_           = require "lodash"
+
 
 ################################################################################
-# ENVIRONMENT
+# HELPERS
 
 cfg = YAML.load "config.yml"
 
-fullpath = (_path) ->
-  path.resolve process.cwd(), _path
+helpers =
+
+  fullpath: (_path, cwd = process.cwd()) ->
+    if _.isArray _path
+      return ( for entry in _path
+        helpers.fullpath entry, cwd )
+    path.resolve cwd, _path
+
+  stripLibs: (paths...) ->
+    _.flatten ["!node_modules/**", "!bower_components/**", paths]
+
+  glob: (paths) ->
+    _paths = for _path in _.clone(paths)
+      if _.contains _path, "*"
+        glob.sync _path
+      else
+        _path
+    _.flatten _paths
+
+gulp.task "test", ->
+  gulp.src "./src/framework/component.coffee"
+
+notifier = ->
+  plumber
+    errorHandler: notify.onError "Error: <%= error.message %>"
 
 ################################################################################
 # STYLES
 
-# compile sass
-gulp.task "sass", ->
-    gulp.src cfg.paths.scss_bootstrap
-      .pipe sass
-          includePaths: cfg.sass.includePaths
-      .pipe replace /\((.*)(\.css)\)/g, '(/../bower_components/$1$2)'
-      .pipe cssimport()
-      .pipe gulp.dest cfg.paths.build
+# compile scss
+gulp.task "scss", ->
+  gulp.src cfg.paths.scss_bootstrap
+    .pipe scss
+        includePaths: cfg.scss.includePaths
+    .pipe replace /\((.*)(\.css)\)/g, "(/../bower_components/$1$2)"
+    .pipe cssimport()
+    .pipe gulp.dest cfg.paths.build
+
+gulp.task "styles", ["scss"], ->
+  gulp.src cfg.paths.scss, ["scss"]
 
 ################################################################################
 # TEMPLATES
@@ -43,9 +73,11 @@ gulp.task "sass", ->
 # copy html from src to build
 gulp.task "html", ->
   gulp.src cfg.paths.html
-    .pipe plumber()
+    .pipe notifier()
     .pipe gulp.dest cfg.paths.build
 
+gulp.task "templates", ["html"], ->
+  gulp.watch cfg.paths.html, ["html"]
 
 ################################################################################
 # SCRIPTS
@@ -53,54 +85,63 @@ gulp.task "html", ->
 # compile coffee jsx
 gulp.task "cjsx", ->
   gulp.src cfg.paths.coffee
-    .pipe plumber()
-    .pipe cjsx bare: true
-    .pipe gulp.dest cfg.paths.build
+    .pipe notifier()
+    .pipe replace /(\n[\s]+\#{3}\*)([^\#]+)(\#{3})/g, (match, reg, block, end) ->
+      block = block
+        .replace /\{/g, "["
+        .replace /\}/g, "]"
+        .replace /\s\*/g, "#"
+      "\n#{block}#"
+    .pipe gulp.dest cfg.paths.src
+    .pipe cjsx
+       bare: true
+    .pipe gulp.dest cfg.paths.compiled
 
 # ↓ #
 
 # build application bundle with browserify
 gulp.task "bundle", ["cjsx"], ->
   gulp.src cfg.paths.bootstrap
-    .pipe plumber()
-    .pipe browserify cfg.browserify
+    .pipe notifier()
+    .pipe browserify
+       paths: helpers.glob cfg.browserify.paths
     .pipe gulp.dest cfg.paths.build
+
+gulp.task "scripts", ["bundle"], ->
+  gulp.watch cfg.paths.coffee, ["bundle"]
 
 ################################################################################
 #  DOCUMENTATION
 
-# cleanup doc directory
-gulp.task "cleandoc", ->
-  gulp.src cfg.paths.doc
-    .pipe clean
-      read: false
-
-# ↓ #
-
 # translate cjsx to coffee
-gulp.task "cjsx2coffee", ["cleandoc"], ->
+gulp.task "cjsx2coffee", ->
   gulp.src cfg.paths.coffee
-    .pipe plumber()
+    .pipe notifier()
     .pipe cjsx2coffee()
-    .pipe gulp.dest cfg.paths.docsource
+    .pipe gulp.dest cfg.paths.compiled
 
 # ↓ #
 
 # generate documentation for coffee
 gulp.task "codo", ["cjsx2coffee"], shell.task [
-  "./node_modules/.bin/codo --undocumented --closure #{cfg.paths.docsource} > #{cfg.paths.nodoc}"
+  "./node_modules/.bin/codo --undocumented --closure #{cfg.paths.compiled} > #{cfg.paths.nodoc}"
 ]
+
+# ↓ #
+
+gulp.task "docs", ["codo"], ->
+  gulp.watch cfg.paths.bootstrap, ["codo"]
 
 ################################################################################
 # AUTOTESTS
 
 gulp.task "karma", (done) ->
   karma.server.start
-      configFile: fullpath cfg.paths.karma
+      configFile: helpers.fullpath cfg.paths.karma
     , done
 
 ################################################################################
-# MISC
+# CONFIGS
 
 # if file stream has `shared":` substring
 # try to parse json and pick only shared objects
@@ -122,21 +163,38 @@ pickShared = (stream) ->
 # to .json fils
 gulp.task "yaml", ->
   gulp.src cfg.paths.yaml
-    .pipe plumber()
+    .pipe notifier()
     .pipe yaml
       space: 2
     .pipe tap pickShared
-    .pipe gulp.dest cfg.paths.build
+    .pipe gulp.dest cfg.paths.compiled
+
+gulp.task "configs", ["yaml"], ->
+  gulp.watch cfg.paths.yaml, ["yaml"]
+
+################################################################################
+# SERVING
+
+lrPaths = helpers.fullpath cfg.livereload.paths, cfg.livereload.cwd
 
 # start server to serve static
-gulp.task "webserver", ->
+gulp.task "serve", ->
   gulp.src cfg.paths.build
-    .pipe plumber()
     .pipe webserver
+      livereload:
+        enable: cfg.livereload.enable
+        filter: (file) ->
+          file in lrPaths
       fallback: cfg.paths.index_file
 
+################################################################################
+# MISC
+
 gulp.task "cleanup", ->
-  gulp.src cfg.paths.build
+  merge(
+      gulp.src cfg.paths.build
+      gulp.src cfg.paths.compiled
+    )
     .pipe clean
       read: false
 
@@ -145,32 +203,33 @@ gulp.task "cleanup", ->
 
 # watch changes
 gulp.task "watch", ->
-  gulp.watch [
-    cfg.paths.coffee
-    cfg.paths.html
-    cfg.paths.yaml
-    "!node_modules"
-    "!bower_components"
-  ], ["rebuild"]
-
-gulp.task "rebuild", ["cleanup"], ->
-  gulp.start "build"
+  paths =
+    yaml      : "yaml"
+    coffee    : "bundle"
+    html      : "html"
+    bootstrap : "codo"
+    scss      : "scss"
+  for _paths, tasks of paths
+    gulp.watch(
+      # remove extra dirs
+      helpers.stripLibs cfg.paths[_paths]
+      tasks.split ","
+    )
 
 # build all assets
 gulp.task "build", [
   "yaml"
   "bundle"
   "html"
-  "sass"
+  "scss"
   "codo"
 ]
 
-# run server (to serve static) and watch changes
-gulp.task "serve", ["rebuild"], ->
-  gulp.start "webserver"
-  gulp.start "watch"
-  gulp.start "karma"
-
 gulp.task "default", [
+  "styles"
+  "templates"
+  "docs"
+  "configs"
+  "scripts"
   "serve"
-]
+  ]

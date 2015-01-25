@@ -1,9 +1,10 @@
 # import globals
-require 'jquery'
-require 'lodash'
+# require 'lodash'
 
-global.React  = require 'react'
-global.Router = require 'react-router'
+window._      = require 'lodash'
+window.$      = require 'jquery'
+window.React  = require 'react'
+window.Router = require 'react-router'
 
 { Route } = Router
 

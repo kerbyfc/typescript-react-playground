@@ -1,4 +1,5 @@
 React = require 'react'
+require 'store'
 
 # backup origin function
 _ce = React.createElement
@@ -59,18 +60,16 @@ class Component
           super[key] arguments...
 
   # bridge to React getInitialState
-  #
-  # @param props [ Object ] description
-  # @return      [ Object ] state object
-  #
-  getInitialState: (props) ->
+  getInitialState: ->
     @initState arguments...
 
   # state initializer
   #
-  # @return [Object] state object
+  # @param nextProps [ Object ] description
+  # @return          [ Object ] state object
   #
-  initState: -> {}
+  initState: (nextProps = {}) ->
+    nextProps
 
   #
   # React's componentWillReceiveProps
@@ -91,7 +90,7 @@ class Component
   #
   # @return [void] this.beforeMount results
   #
-  componentWillMount: ->
+  componentWillMount: =>
     @beforeMount arguments...
 
   # beforeMount method noop
@@ -104,9 +103,11 @@ class Component
   #
   # React's componentDidMount
   #
-  # @return [void] this.onMount results
+  # @private
+  # @see Component#onMount
+  # @return [void]
   #
-  componentDidMount: ->
+  componentDidMount: =>
     @onMount arguments...
 
   # beforeMount method noop
@@ -121,6 +122,14 @@ class Component
   # @param nextProps [ Object  ] new props
   # @param nextState [ Object  ] new state
   # @return          [ void    ] this.updateIf results
+  #
+
+
+  
+  # Should component update method
+  # @param  [Object] nextProps
+  # @param  [Object] nextState
+  # @return [Boolean] should update decision
   #
   shouldComponentUpdate: (nextProps, nextState) ->
     @updateIf arguments...

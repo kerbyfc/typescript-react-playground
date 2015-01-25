@@ -30,7 +30,7 @@
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>doc&#47;sources&#47;framework&#47;component.coffee</td>
+          <td>compiled&#47;framework&#47;component.coffee</td>
         </tr>
       </table>
       <h2>Overview</h2>
@@ -95,8 +95,8 @@
     <span class='signature'>
       <a href='#getInitialState-dynamic'>
         #
-( Object )
-<b>getInitialState</b><span>(props)</span>
+(void)
+<b>getInitialState</b><span>()</span>
       </a>
     </span>
     <span class='desc'>
@@ -107,8 +107,8 @@
     <span class='signature'>
       <a href='#initState-dynamic'>
         #
-(Object)
-<b>initState</b><span>()</span>
+( Object )
+<b>initState</b><span>(nextProps = {})</span>
       </a>
     </span>
     <span class='desc'>
@@ -147,6 +147,7 @@
 <b>componentWillMount</b><span>()</span>
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
     <span class='desc'>
       React&#39;s componentWillMount 
     </span>
@@ -171,6 +172,8 @@
 <b>componentDidMount</b><span>()</span>
       </a>
     </span>
+    <span class='bound note title'>Bound</span>
+    <span class='note private title'>Private</span>
     <span class='desc'>
       React&#39;s componentDidMount 
     </span>
@@ -191,12 +194,12 @@
     <span class='signature'>
       <a href='#shouldComponentUpdate-dynamic'>
         #
-( void    )
+(Boolean)
 <b>shouldComponentUpdate</b><span>(nextProps, nextState)</span>
       </a>
     </span>
     <span class='desc'>
-      React&#39;s shouldComponentUpdate 
+      Should component update method 
     </span>
   </li>
   <li>
@@ -317,18 +320,31 @@ make type conversions</p>
   <div class='method_details'>
     <p class='signature' id='getInitialState-dynamic'>
       #
-( Object )
-<b>getInitialState</b><span>(props)</span>
+(void)
+<b>getInitialState</b><span>()</span>
       <br>
     </p>
     <div class='docstring'>
   <p>bridge to React getInitialState</p>
 </div>
 <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='initState-dynamic'>
+      #
+( Object )
+<b>initState</b><span>(nextProps = {})</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>state initializer</p>
+</div>
+<div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>props</span>
+      <span class='name'>nextProps</span>
       <span class='type'>
         (
           <tt>Object</tt>
@@ -338,30 +354,6 @@ make type conversions</p>
       <span class='desc'>description </span>
     </li>
   </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (
-        <tt>Object</tt>
-      )
-      &mdash;
-      <span class='desc'>state object </span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='initState-dynamic'>
-      #
-(Object)
-<b>initState</b><span>()</span>
-      <br>
-    </p>
-    <div class='docstring'>
-  <p>state initializer</p>
-</div>
-<div class='tags'>
   <h3>Returns:</h3>
   <ul class='return'>
     <li>
@@ -430,6 +422,7 @@ make type conversions</p>
       #
 (void)
 <b>componentWillMount</b><span>()</span>
+      <span class='bound note'>Bound</span>
       <br>
     </p>
     <div class='docstring'>
@@ -478,6 +471,8 @@ make type conversions</p>
       #
 (void)
 <b>componentDidMount</b><span>()</span>
+      <span class='bound note'>Bound</span>
+      <span class='note private'>Private</span>
       <br>
     </p>
     <div class='docstring'>
@@ -488,11 +483,13 @@ make type conversions</p>
   <ul class='return'>
     <li>
       <span class='type'></span>
-      (
-        <tt>void</tt>
-      )
-      &mdash;
-      <span class='desc'>this.onMount results </span>
+      <tt>void</tt>
+    </li>
+  </ul>
+  <h3>See also:</h3>
+  <ul class='see'>
+    <li>
+      <a href='../class/Component.html#onMount-dynamic'>Component#onMount</a>
     </li>
   </ul>
 </div>
@@ -524,12 +521,12 @@ make type conversions</p>
   <div class='method_details'>
     <p class='signature' id='shouldComponentUpdate-dynamic'>
       #
-( void    )
+(Boolean)
 <b>shouldComponentUpdate</b><span>(nextProps, nextState)</span>
       <br>
     </p>
     <div class='docstring'>
-  <p>React&#39;s shouldComponentUpdate</p>
+  <p>Should component update method</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -541,8 +538,6 @@ make type conversions</p>
           <tt>Object</tt>
         )
       </span>
-      &mdash;
-      <span class='desc'>new props </span>
     </li>
     <li>
       <span class='name'>nextState</span>
@@ -551,8 +546,6 @@ make type conversions</p>
           <tt>Object</tt>
         )
       </span>
-      &mdash;
-      <span class='desc'>new state </span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -560,10 +553,10 @@ make type conversions</p>
     <li>
       <span class='type'></span>
       (
-        <tt>void</tt>
+        <tt>Boolean</tt>
       )
       &mdash;
-      <span class='desc'>this.updateIf results </span>
+      <span class='desc'>should update decision </span>
     </li>
   </ul>
 </div>
@@ -693,7 +686,7 @@ make type conversions</p>
 </div>
     </div>
     <div id='footer'>
-  January 23, 15 13:04:01 by
+  January 25, 15 20:18:59 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

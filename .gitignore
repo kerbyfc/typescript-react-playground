@@ -11,3 +11,4 @@ asdfsa
 *.jar
 logs
 .symlinks
+compiled
