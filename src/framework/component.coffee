@@ -7,6 +7,10 @@ _ce = React.createElement
 # cache to store react components
 _cache = {}
 
+createReactComponent = (type) ->
+  React.createClass _.extend cName: type.name,
+    _.omit new type, 'constructor'
+
 # create component class to take it's
 # spec or get it from cache if it has
 # been already done, do some magic and
@@ -20,17 +24,27 @@ _cache = {}
 # @return         [ React  ] component instance
 #
 React.createElement = (type, props, children) ->
-  if type and type._isComponentClass?
-    component = _cache[type.name] ?= React.createClass _.omit new type, 'constructor'
-    _ce component, props, children
-  else
-    _ce arguments...
+
+  # HACK for convenience!
+  # remove undefined children
+  if _.isArray children
+    children = _.compact children
+
+  switch true
+    when type and type._isComponentClass?
+      component = _cache[type.name] ?= createReactComponent type
+      _ce component, props, children
+    when _.isFunction type
+      cName = type.type.prototype.cName = type.displayName
+      _ce arguments...
+    else
+      _ce arguments...
 
 # Base component class
 # @example subclassing
 #   class ButtonComponent extends Component
 #
-class Component
+module.exports = class Component
 
   # флаг компонента, необходим
   # для определения того, есть ли в
@@ -90,7 +104,7 @@ class Component
   #
   # @return [void] this.beforeMount results
   #
-  componentWillMount: =>
+  componentWillMount: ->
     @beforeMount arguments...
 
   # beforeMount method noop
@@ -107,7 +121,7 @@ class Component
   # @see Component#onMount
   # @return [void]
   #
-  componentDidMount: =>
+  componentDidMount: ->
     @onMount arguments...
 
   # beforeMount method noop
@@ -125,7 +139,7 @@ class Component
   #
 
 
-  
+
   # Should component update method
   # @param  [Object] nextProps
   # @param  [Object] nextState
@@ -165,4 +179,13 @@ class Component
   #
   onUpdate: -> null
 
-module.exports = Component
+  # Get name of the parent component (owner)
+  # Skip RouteHandler components
+  # @param  [Compoment] current component
+  # @return [String]    component name
+  #
+  getParentName: (cur = @) ->
+    while owner = cur._owner
+      name = owner.cName
+      return name unless name is "RouteHandler"
+      cur = owner

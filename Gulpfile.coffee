@@ -6,6 +6,7 @@ karma       = require "karma"
 YAML        = require "yamljs"
 
 browserify  = require "gulp-browserify"
+jade        = require "gulp-react-jade"
 yaml        = require "gulp-yaml"
 replace     = require "gulp-replace"
 shell       = require "gulp-shell"
@@ -19,7 +20,6 @@ tap         = require "gulp-tap"
 scss        = require "gulp-sass"
 merge       = require "gulp-merge"
 cssimport   = require "gulp-cssimport"
-
 
 ################################################################################
 # HELPERS
@@ -45,12 +45,21 @@ helpers =
         _path
     _.flatten _paths
 
-gulp.task "test", ->
-  gulp.src "./src/framework/component.coffee"
+pipes =
 
-notifier = ->
-  plumber
-    errorHandler: notify.onError "Error: <%= error.message %>"
+  # notify about error with growl
+  notifier: ->
+    plumber
+      errorHandler: notify.onError "Error: <%= error.message %>\n <%= error.stack %>"
+
+  # translate Docblockr comments to codo comments
+  doc2codo: ->
+    replace /(\n[\s]+\#{3}\*)([^\#]+)(\#{3})/g, (m, _s, block, e_) ->
+      block = block
+        .replace /\{/g, "["
+        .replace /\}/g, "]"
+        .replace /\s\*/g, "#"
+      "\n#{block}#"
 
 ################################################################################
 # STYLES
@@ -73,11 +82,18 @@ gulp.task "styles", ["scss"], ->
 # copy html from src to build
 gulp.task "html", ->
   gulp.src cfg.paths.html
-    .pipe notifier()
+    .pipe pipes.notifier()
     .pipe gulp.dest cfg.paths.build
 
-gulp.task "templates", ["html"], ->
+gulp.task "jade", ->
+  gulp.src cfg.paths.jade
+    .pipe jade()
+    .pipe replace /^(.*)/, "module.exports = $1"
+    .pipe gulp.dest cfg.paths.compiled
+
+gulp.task "templates", ["html", "jade"], ->
   gulp.watch cfg.paths.html, ["html"]
+  gulp.watch cfg.paths.jade, ["jade"]
 
 ################################################################################
 # SCRIPTS
@@ -85,14 +101,7 @@ gulp.task "templates", ["html"], ->
 # compile coffee jsx
 gulp.task "cjsx", ->
   gulp.src cfg.paths.coffee
-    .pipe notifier()
-    .pipe replace /(\n[\s]+\#{3}\*)([^\#]+)(\#{3})/g, (match, reg, block, end) ->
-      block = block
-        .replace /\{/g, "["
-        .replace /\}/g, "]"
-        .replace /\s\*/g, "#"
-      "\n#{block}#"
-    .pipe gulp.dest cfg.paths.src
+    .pipe pipes.notifier()
     .pipe cjsx
        bare: true
     .pipe gulp.dest cfg.paths.compiled
@@ -102,9 +111,9 @@ gulp.task "cjsx", ->
 # build application bundle with browserify
 gulp.task "bundle", ["cjsx"], ->
   gulp.src cfg.paths.bootstrap
-    .pipe notifier()
+    .pipe pipes.notifier()
     .pipe browserify
-       paths: helpers.glob cfg.browserify.paths
+      paths: helpers.glob cfg.browserify.paths
     .pipe gulp.dest cfg.paths.build
 
 gulp.task "scripts", ["bundle"], ->
@@ -116,8 +125,9 @@ gulp.task "scripts", ["bundle"], ->
 # translate cjsx to coffee
 gulp.task "cjsx2coffee", ->
   gulp.src cfg.paths.coffee
-    .pipe notifier()
+    .pipe pipes.notifier()
     .pipe cjsx2coffee()
+    .pipe pipes.doc2codo()
     .pipe gulp.dest cfg.paths.compiled
 
 # ↓ #
@@ -139,6 +149,15 @@ gulp.task "karma", (done) ->
   karma.server.start
       configFile: helpers.fullpath cfg.paths.karma
     , done
+
+
+################################################################################
+# SCAFFOLDING
+
+gulp.task "component", ->
+  console.log gulp.env.component
+
+
 
 ################################################################################
 # CONFIGS
@@ -163,7 +182,7 @@ pickShared = (stream) ->
 # to .json fils
 gulp.task "yaml", ->
   gulp.src cfg.paths.yaml
-    .pipe notifier()
+    .pipe pipes.notifier()
     .pipe yaml
       space: 2
     .pipe tap pickShared

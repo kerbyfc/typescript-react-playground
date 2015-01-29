@@ -2,9 +2,7 @@ Component = require 'component'
 
 # settings module ldap view
 #
-class LdapView extends Component
-
-  lol = true
+module.exports = class LdapView extends Component
 
   # render ldap view
   # @note there is a build in React interface
@@ -12,5 +10,3 @@ class LdapView extends Component
   #
   render: ->
     <div>LDAP VIEW</div>
-
-module.exports = LdapView

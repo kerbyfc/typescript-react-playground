@@ -16,6 +16,7 @@ paths:
   compiled: ./compiled
   karma: ./karma.coffee
   config: ./config.yaml
+  jade: ./src/**/*.jade
 
   scss_bootstrap: ./src/app.scss
   scss: ./src/styles/**/*.scss
@@ -61,7 +62,7 @@ api_version: v1
 api:
   v1:
     protocol: https
-    host: tm6.infowatch.ru
+    host: v-tavadov-devel
     path: /api
 
 shared:

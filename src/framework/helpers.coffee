@@ -33,6 +33,8 @@ class Helpers
   # @return        [ Promise ] jquery promise
   #
   apiCall: (url, options = {}) ->
+    if options.data
+      options.data = JSON.stringify options.data
     $.ajax _.extend options,
       url: @apiUrl url
 

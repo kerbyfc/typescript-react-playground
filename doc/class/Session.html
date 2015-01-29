@@ -51,7 +51,18 @@
       <a href='#start-dynamic'>
         #
 (void)
-<b>start</b><span>(callback)</span>
+<b>start</b><span>(cb)</span>
+      </a>
+    </span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#involve-dynamic'>
+        #
+(void)
+<b>involve</b><span>(modules)</span>
       </a>
     </span>
     <span class='desc'>
@@ -62,10 +73,47 @@
       <a href='#check-dynamic'>
         #
 (void)
-<b>check</b><span>(cb)</span>
+<b>check</b><span>(cb = @cb)</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#establish-dynamic'>
+        #
+(void)
+<b>establish</b><span>({data})</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#checkAccess-dynamic'>
+        #
+(void)
+<b>checkAccess</b><span>(priv)</span>
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#login-dynamic'>
+        #
+( $.Deffered )
+<b>login</b><span>(data)</span>
       </a>
     </span>
     <span class='desc'>
+      Login 
     </span>
   </li>
 </ul>
@@ -75,7 +123,16 @@
     <p class='signature' id='start-dynamic'>
       #
 (void)
-<b>start</b><span>(callback)</span>
+<b>start</b><span>(cb)</span>
+      <br>
+    </p>
+    
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='involve-dynamic'>
+      #
+(void)
+<b>involve</b><span>(modules)</span>
       <br>
     </p>
     
@@ -84,15 +141,97 @@
     <p class='signature' id='check-dynamic'>
       #
 (void)
-<b>check</b><span>(cb)</span>
+<b>check</b><span>(cb = @cb)</span>
+      <span class='bound note'>Bound</span>
       <br>
     </p>
     
   </div>
+  <div class='method_details'>
+    <p class='signature' id='establish-dynamic'>
+      #
+(void)
+<b>establish</b><span>({data})</span>
+      <span class='bound note'>Bound</span>
+      <br>
+    </p>
+    
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='checkAccess-dynamic'>
+      #
+(void)
+<b>checkAccess</b><span>(priv)</span>
+      <span class='bound note'>Bound</span>
+      <br>
+    </p>
+    
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='login-dynamic'>
+      #
+( $.Deffered )
+<b>login</b><span>(data)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Login</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>data</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'><ul> user data
+</ul>
+</span>
+    </li>
+  </ul>
+  <h3>
+    Options Hash:
+    (data):
+  </h3>
+  <ul class='options'>
+    <li>
+      <span class='name'>username</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+    </li>
+    <li>
+      <span class='name'>password</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>$.Deffered</tt>
+      )
+      &mdash;
+      <span class='desc'>deferred </span>
+    </li>
+  </ul>
+</div>
+  </div>
 </div>
     </div>
     <div id='footer'>
-  January 25, 15 20:18:59 by
+  January 29, 15 13:02:36 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

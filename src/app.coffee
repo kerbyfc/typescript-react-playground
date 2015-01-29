@@ -1,27 +1,51 @@
-# import globals
-# require 'lodash'
-
 window._      = require 'lodash'
 window.$      = require 'jquery'
 window.React  = require 'react'
 window.Router = require 'react-router'
 
-{ Route } = Router
+{ Route, DefaultRoute } = Router
 
-# modules
-Application = require 'components/layouts/application'
-Settings    = require 'modules/settings/bootstrap'
-Auth        = require 'modules/auth/bootstrap'
+Layout = require 'components/layout'
 
-# form routers based on modules
-routes =
-  <Route name="app" path="/" handler={Application}>
-    {Auth}
-    {Settings}
-  </Route>
+###*
+ * Singleton that starts the application.
+###
+class Bootstrapper
 
-# start user session
-require 'session'
-  .start ->
-    Router.run routes, Router.HistoryLocation, (Handler) ->
-      React.render <Handler/>, document.body
+  ###*
+   * construct bootstrapper
+   * @param  {Array}   modules - list of modules
+   * @param  {Session} session - session singleton
+   * @return {Bootstraper}
+  ###
+  constructor: (mods, session) ->
+    # start session and then...
+    session.start ->
+
+      # save route to build menu later
+      # FIXME module should be an array of routes, but not a function
+      # TODO routes should be filtered by session with user privileges (recursive)
+      # (it should use some property for this e.g. "priveledge" or even "key")
+      session.routes = for mod in mods
+        do (mod) ->
+          # involve module
+          mod session
+
+      # wrap route with handlers with application layout
+      routes = <Route handler=Layout>
+        { session.routes }
+      </Route>
+
+      # start application
+      # Router.run routes, Router.HistoryLocation, (Handler) ->
+      Router.run routes, (Handler) ->
+        React.render <Handler/>, document.body
+
+new Bootstrapper [
+
+  # application modules
+  require "modules/settings/bootstrap"
+  require "modules/dashboard/bootstrap"
+
+  # session
+  ], require "session"

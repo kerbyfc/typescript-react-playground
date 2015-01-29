@@ -3,7 +3,26 @@
   "version": "1.1.0",
   "main": "Gulpfile.js",
   "dependencies": {
-    "coffee-script": "*",
+    "coffee-script": "*"
+  },
+  "author": "kerbyfc@gmail.com",
+  "license": "ISC",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kerbyfc/react-playgorund.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kerbyfc/react-playgorund/issues"
+  },
+  "homepage": "https://github.com/kerbyfc/react-playgorund",
+  "description": "TME",
+  "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-cjsx": "^2.0.0",
     "gulp-yaml": "^0.2.2",
@@ -12,6 +31,7 @@
     "gulp-plumber": "^0.6.6",
     "gulp-clean": "~0.3.1",
     "gulp-install": "^0.2.0",
+    "gulp-react-jade": "0.1.1",
     "gulp-coffeelint": "^0.4.0",
     "gulp-browserify": "^0.5.0",
     "gulp-webserver": "^0.8.7",
@@ -31,22 +51,5 @@
     "karma-coffee-preprocessor": "~0.2.1",
     "lodash": "*",
     "codo": "*"
-  },
-  "author": "kerbyfc@gmail.com",
-  "license": "ISC",
-  "directories": {
-    "doc": "doc"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kerbyfc/react-playgorund.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kerbyfc/react-playgorund/issues"
-  },
-  "homepage": "https://github.com/kerbyfc/react-playgorund",
-  "description": "TME"
+  }
 }

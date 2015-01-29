@@ -1,10 +1,17 @@
 Component = require 'component'
 
 # common button control
-class Btn extends Component
+module.exports = class Btn extends Component
+
+  # Get text
+  # @return [String] button text
+  #
+  renderText: ->
+    @props.text or "Submit"
 
   # @nodoc
   render: ->
-    <div className="btn">Button</div>
+    <button {...@props}>
+      { @renderText() }
+    </button>
 
-module.exports = Btn
