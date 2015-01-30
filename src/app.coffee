@@ -1,3 +1,4 @@
+# globals
 window._      = require 'lodash'
 window.$      = require 'jquery'
 window.React  = require 'react'
@@ -5,7 +6,7 @@ window.Router = require 'react-router'
 
 { Route, DefaultRoute } = Router
 
-Layout = require 'components/layout'
+Layout = require 'app_layout'
 
 ###*
  * Singleton that starts the application.

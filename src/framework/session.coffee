@@ -1,5 +1,6 @@
 helpers = require "helpers"
-AuthLayout = require "components/auth/auth_layout"
+
+AuthDialog = require "auth_dialog"
 
 class Session
 
@@ -15,7 +16,7 @@ class Session
   check: (@cb = @cb) =>
     helpers.apiCall 'user/check'
       .error =>
-        React.renderComponent <AuthLayout session=@ />, document.body
+        React.renderComponent <AuthDialog session=@ />, document.body
       .done @establish
 
   establish: ({ data }) =>

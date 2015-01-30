@@ -1,8 +1,3 @@
-Layout = require './components/layouts/common'
-
-# Ldap   = require './components/ldap'
-Users  = require './components/users'
-
 { Route, RouteHandler } = Router
 
 Component = require "component"

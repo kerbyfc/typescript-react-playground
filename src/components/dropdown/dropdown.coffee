@@ -1,0 +1,90 @@
+Component = require "component"
+template  = require "./dropdown-tmpl"
+
+class Dropdown extends Component
+
+  template: template
+
+  ###*
+   * @nodoc
+   * @return {Object} - component props
+  ###
+  defaultProps: ->
+    linkClass : ""
+    className : ""
+    caret     : false
+    open      : false
+
+  ###*
+   * @nodoc
+   * @return {Object} - component state
+  ###
+  initState: ->
+    open: @props.open
+
+  ###*
+   * @nodoc
+   * @return {Void} - before mount non-async manipulations
+  ###
+  beforeMount: ->
+    super
+
+  ###*
+   * @nodoc
+   * @return {Void} - state non-affecting manipulations
+  ###
+  beforeUpdate: ->
+    super
+
+  ###*
+   * @nodoc
+   * @return {Void} - state non-affection manipulations
+  ###
+  onUpdate: ->
+    super
+
+  ###*
+   * @nodoc
+   * @return {Object} - template locals
+  ###
+  locals: ->
+    _.extend @, Router
+
+  ###*
+   * Toggle visibility state
+   * @return {Void}
+  ###
+  toggle: (e) ->
+    e.preventDefault()
+    @setState
+      open: not @state.open
+
+  ###*
+   * Hide dropdown contents
+   * @return {Void}
+  ###
+  hide: ->
+    if @state.open
+      @setState
+        open: false
+
+  resolveClass: ->
+    "#{@props.className} #{@state.open and "open"}"
+
+  resolveLinkClass: ->
+    "dropdown-toggle #{@props.linkClass}"
+
+  ###*
+   * @nodoc
+   * @return {Void} - after component mount manipulations
+  ###
+  onMount: ->
+    $ document.body
+      .on 'click', (e) =>
+        dropdown = $(e.target).closest('.dropdown-component')
+        # clicked to another
+        another = dropdown[0] isnt @el() and @state.open
+        if dropdown.length is 0 or another
+          @hide()
+
+module.exports = Dropdown

@@ -4,9 +4,11 @@ path        = require "path"
 gulp        = require "gulp"
 karma       = require "karma"
 YAML        = require "yamljs"
+fs          = require "fs-extra"
 
 browserify  = require "gulp-browserify"
 jade        = require "gulp-react-jade"
+rename      = require "gulp-rename"
 yaml        = require "gulp-yaml"
 replace     = require "gulp-replace"
 shell       = require "gulp-shell"
@@ -20,6 +22,11 @@ tap         = require "gulp-tap"
 scss        = require "gulp-sass"
 merge       = require "gulp-merge"
 cssimport   = require "gulp-cssimport"
+template    = require "gulp-template"
+
+# get gulp arguments
+argv = require "yargs"
+  .argv
 
 ################################################################################
 # HELPERS
@@ -44,6 +51,16 @@ helpers =
       else
         _path
     _.flatten _paths
+
+  # form ComponentName based on directory_name
+  compName: (dirname) ->
+    dirname.split "_"
+      .map (chunk) ->
+        _.capitalize chunk
+      .join ""
+
+  className: (dirname) ->
+    dirname.replace(/\_/g, '-') + cfg.component.classNameSuffix
 
 pipes =
 
@@ -87,13 +104,14 @@ gulp.task "html", ->
 
 gulp.task "jade", ->
   gulp.src cfg.paths.jade
+    .pipe pipes.notifier()
     .pipe jade()
     .pipe replace /^(.*)/, "module.exports = $1"
     .pipe gulp.dest cfg.paths.compiled
 
 gulp.task "templates", ["html", "jade"], ->
   gulp.watch cfg.paths.html, ["html"]
-  gulp.watch cfg.paths.jade, ["jade"]
+  gulp.watch cfg.paths.jade, ["bundle"]
 
 ################################################################################
 # SCRIPTS
@@ -109,7 +127,7 @@ gulp.task "cjsx", ->
 # ↓ #
 
 # build application bundle with browserify
-gulp.task "bundle", ["cjsx"], ->
+gulp.task "bundle", ["cjsx", "jade"], ->
   gulp.src cfg.paths.bootstrap
     .pipe pipes.notifier()
     .pipe browserify
@@ -152,12 +170,70 @@ gulp.task "karma", (done) ->
 
 
 ################################################################################
-# SCAFFOLDING
+# GENERATORS
 
-gulp.task "component", ->
-  console.log gulp.env.component
+gulp.task "generate", ->
+  target = switch true
+    when argv.c?
+      "component"
+    else
+      false
+  if target
+    gulp.start "generate:#{target}"
 
+gulp.task "generate:component", ->
 
+  component = helpers.fullpath path.join [
+      # resolve module directory path when -m was passed
+      (argv.m and
+        path.join cfg.paths.modules, argv.m) or # - in module
+          cfg.paths.src # - in base
+
+      # relative components dir path
+      cfg.paths.components_dir
+      argv.c
+    ]...
+  dir = path.dirname component
+
+  # check components directory existance
+  fs.exists dir, (exists) ->
+    unless exists
+      return console.log "Can't find #{dir}}"
+
+    # check if component already exists
+    fs.exists component, (ok) ->
+      if ok
+        if argv.f?
+          fs.removeSync component
+        else
+          return console.log "Component already exists"
+
+      # generate
+      fs.mkdir component, (err) ->
+        throw err if err
+
+        # basename must be in lower case (convention)
+        basename = path.basename component
+          .toLowerCase()
+
+        deps = argv.d?
+        if deps
+          deps = argv.d.split(',')
+          # transform [btn,link] to {Btn:btn,Link:link}
+          deps = _.object _.map(_.clone(deps), helpers.compName), deps
+
+        # use all component templates, defined in config
+        for tpl in cfg.templates.component
+          gulp.src tpl
+            .pipe template
+              component : helpers.compName basename
+              classname : helpers.className basename
+              filename  : basename
+              complete  : argv.complete?
+              deps      : deps
+            .pipe rename
+              basename: basename
+            .pipe gulp.dest component
 
 ################################################################################
 # CONFIGS

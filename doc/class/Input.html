@@ -30,7 +30,7 @@
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>compiled&#47;components&#47;controls&#47;input.coffee</td>
+          <td>compiled&#47;components&#47;input&#47;input.coffee</td>
         </tr>
         <tr>
           <td>Inherits:</td>
@@ -39,18 +39,17 @@
           </td>
         </tr>
       </table>
-      <h2>Overview</h2>
-      <div class='docstring'>
-  <p>Text/password/date input component</p>
-</div>
-<div class='tags'>
-</div>
-      <h2>Direct Known Subclasses</h2>
-      <p class='children'>
-        <a href='../class/FormInput.html'>FormInput</a>
-      </p>
       <h2>Variables Summary</h2>
-      
+      <dl class='constants'>
+  <dt id='template-variable'>
+    template
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>template</code></pre>
+    
+  </dd>
+</dl>
       <h3 class='inherited'>
         Variable inherited from
         <a href='../class/Component.html'>Component</a>
@@ -65,7 +64,18 @@
       <a href='#val-dynamic'>
         #
 (void)
-<b>val</b><span>()</span>
+<b>val</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#bind-dynamic'>
+        #
+(void)
+<b>bind</b><span>(property)</span>
       </a>
     </span>
     <span class='desc'>
@@ -80,6 +90,7 @@
         </h3>
         <p class='inherited'>
           <a href='../class/Component.html#defaultProps-dynamic'>#defaultProps</a>
+          <a href='../class/Component.html#getDefaultProps-dynamic'>#getDefaultProps</a>
           <a href='../class/Component.html#getInitialState-dynamic'>#getInitialState</a>
           <a href='../class/Component.html#initState-dynamic'>#initState</a>
           <a href='../class/Component.html#componentWillReceiveProps-dynamic'>#componentWillReceiveProps</a>
@@ -89,12 +100,17 @@
           <a href='../class/Component.html#componentDidMount-dynamic'>#componentDidMount</a>
           <a href='../class/Component.html#onMount-dynamic'>#onMount</a>
           <a href='../class/Component.html#shouldComponentUpdate-dynamic'>#shouldComponentUpdate</a>
-          <a href='../class/Component.html#updateIf-dynamic'>#updateIf</a>
+          <a href='../class/Component.html#willUpdate-dynamic'>#willUpdate</a>
           <a href='../class/Component.html#componentWillUpdate-dynamic'>#componentWillUpdate</a>
           <a href='../class/Component.html#beforeUpdate-dynamic'>#beforeUpdate</a>
           <a href='../class/Component.html#componentDidUpdate-dynamic'>#componentDidUpdate</a>
           <a href='../class/Component.html#onUpdate-dynamic'>#onUpdate</a>
           <a href='../class/Component.html#getParentName-dynamic'>#getParentName</a>
+          <a href='../class/Component.html#render-dynamic'>#render</a>
+          <a href='../class/Component.html#locals-dynamic'>#locals</a>
+          <a href='../class/Component.html#el-dynamic'>#el</a>
+          <a href='../class/Component.html#$el-dynamic'>#$el</a>
+          <a href='../class/Component.html#$-dynamic'>#$</a>
         </p>
       </h2>
       <h2>Instance Method Details</h2>
@@ -103,7 +119,16 @@
     <p class='signature' id='val-dynamic'>
       #
 (void)
-<b>val</b><span>()</span>
+<b>val</b><span>(value)</span>
+      <br>
+    </p>
+    
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='bind-dynamic'>
+      #
+(void)
+<b>bind</b><span>(property)</span>
       <br>
     </p>
     
@@ -111,7 +136,7 @@
 </div>
     </div>
     <div id='footer'>
-  January 29, 15 13:02:36 by
+  January 29, 15 23:17:27 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

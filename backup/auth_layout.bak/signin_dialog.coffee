@@ -12,41 +12,15 @@ module.exports = class SignInDialog extends Component
 
   # @nodoc
   renderLoginInput: ->
-    <FormInput
-      ref         = "login"
-      name        = "login"
-      tabindex    = ++@tabindex
-      placeholder = "Введите логин"
 
-      label = {
-        text      : "Логин"
-        className : "size-full"
-      }
-      />
 
   # @nodoc
   renderPasswordInput: ->
-    <FormInput
-      ref         = "password"
-      type        = "password"
-      name        = "password"
-      tabindex    = ++@tabindex
-      placeholder = "Введите пароль"
 
-      label = {
-        text      : "Пароль"
-        className : "size-full"
-      }
-      />
 
   # @nodoc
   renderSubmit: ->
-    <FormBtn
-      className = "button button-success"
-      tabindex  = ++@tabindex
-      text      = "Войти"
-      onClick   = @onSubmit
-      />
+
 
   onSubmit: (e) ->
     e.preventDefault()
@@ -68,6 +42,38 @@ module.exports = class SignInDialog extends Component
         {[
           @renderLoginInput()
           @renderPasswordInput()
+          @renderSubmit()
+        ]}
+      </form>
+    </div>
+
+
+
+          FormInput
+
+            <FormInput
+          ref         = "login"
+          name        = "login"
+          tabindex    = ++@tabindex
+          placeholder = "Введите логин"
+
+          label = {
+            text      : "Логин"
+            className : "size-full"
+          }
+          />
+          <FormInput
+      ref         = "password"
+      type        = "password"
+      name        = "password"
+      tabindex    = ++@tabindex
+      placeholder = "Введите пароль"
+
+      label = {
+        text      : "Пароль"
+        className : "size-full"
+      }
+      />
           @renderSubmit()
         ]}
       </form>

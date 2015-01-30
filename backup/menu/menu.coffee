@@ -8,12 +8,13 @@ session      = require "session"
 
 module.exports = class Navigator extends Component
 
+  # "main_nav--item #{@props.className or ""}"
   renderLink: (route) ->
-    <MenuLink>
+    <li className={ @resolveClassName() }>
       <Link className="main_nav--link" to=route.props.name >
         { route.props.name }
       </Link>
-    </MenuLink>
+    </li>
 
   renderDropdown: (route) ->
     <MenuDropdown name=route.props.name>

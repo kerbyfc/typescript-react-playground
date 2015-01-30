@@ -30,7 +30,7 @@
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>compiled&#47;components&#47;layout&#47;navigator.coffee</td>
+          <td>compiled&#47;components&#47;dropdown&#47;dropdown.coffee</td>
         </tr>
         <tr>
           <td>Inherits:</td>
@@ -40,7 +40,16 @@
         </tr>
       </table>
       <h2>Variables Summary</h2>
-      
+      <dl class='constants'>
+  <dt id='template-variable'>
+    template
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>template</code></pre>
+    
+  </dd>
+</dl>
       <h3 class='inherited'>
         Variable inherited from
         <a href='../class/Component.html'>Component</a>
@@ -52,10 +61,34 @@
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#initState-dynamic'>
+      <a href='#toggle-dynamic'>
+        #
+(Void)
+<b>toggle</b><span>(e)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Toggle visibility state 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hide-dynamic'>
+        #
+(Void)
+<b>hide</b><span>()</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Hide dropdown contents 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#resolveClass-dynamic'>
         #
 (void)
-<b>initState</b><span>()</span>
+<b>resolveClass</b><span>()</span>
       </a>
     </span>
     <span class='desc'>
@@ -63,22 +96,10 @@
   </li>
   <li>
     <span class='signature'>
-      <a href='#onClick-dynamic'>
+      <a href='#resolveLinkClass-dynamic'>
         #
 (void)
-<b>onClick</b><span>()</span>
-      </a>
-    </span>
-    <span class='bound note title'>Bound</span>
-    <span class='desc'>
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
-      <a href='#render-dynamic'>
-        #
-(void)
-<b>render</b><span>()</span>
+<b>resolveLinkClass</b><span>()</span>
       </a>
     </span>
     <span class='desc'>
@@ -93,6 +114,7 @@
         </h3>
         <p class='inherited'>
           <a href='../class/Component.html#defaultProps-dynamic'>#defaultProps</a>
+          <a href='../class/Component.html#getDefaultProps-dynamic'>#getDefaultProps</a>
           <a href='../class/Component.html#getInitialState-dynamic'>#getInitialState</a>
           <a href='../class/Component.html#initState-dynamic'>#initState</a>
           <a href='../class/Component.html#componentWillReceiveProps-dynamic'>#componentWillReceiveProps</a>
@@ -102,40 +124,75 @@
           <a href='../class/Component.html#componentDidMount-dynamic'>#componentDidMount</a>
           <a href='../class/Component.html#onMount-dynamic'>#onMount</a>
           <a href='../class/Component.html#shouldComponentUpdate-dynamic'>#shouldComponentUpdate</a>
-          <a href='../class/Component.html#updateIf-dynamic'>#updateIf</a>
+          <a href='../class/Component.html#willUpdate-dynamic'>#willUpdate</a>
           <a href='../class/Component.html#componentWillUpdate-dynamic'>#componentWillUpdate</a>
           <a href='../class/Component.html#beforeUpdate-dynamic'>#beforeUpdate</a>
           <a href='../class/Component.html#componentDidUpdate-dynamic'>#componentDidUpdate</a>
           <a href='../class/Component.html#onUpdate-dynamic'>#onUpdate</a>
           <a href='../class/Component.html#getParentName-dynamic'>#getParentName</a>
+          <a href='../class/Component.html#render-dynamic'>#render</a>
+          <a href='../class/Component.html#locals-dynamic'>#locals</a>
+          <a href='../class/Component.html#el-dynamic'>#el</a>
+          <a href='../class/Component.html#$el-dynamic'>#$el</a>
+          <a href='../class/Component.html#$-dynamic'>#$</a>
         </p>
       </h2>
       <h2>Instance Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='initState-dynamic'>
+    <p class='signature' id='toggle-dynamic'>
+      #
+(Void)
+<b>toggle</b><span>(e)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Toggle visibility state</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <tt>Void</tt>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hide-dynamic'>
+      #
+(Void)
+<b>hide</b><span>()</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Hide dropdown contents</p>
+</div>
+<div class='tags'>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      <tt>Void</tt>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='resolveClass-dynamic'>
       #
 (void)
-<b>initState</b><span>()</span>
+<b>resolveClass</b><span>()</span>
       <br>
     </p>
     
   </div>
   <div class='method_details'>
-    <p class='signature' id='onClick-dynamic'>
+    <p class='signature' id='resolveLinkClass-dynamic'>
       #
 (void)
-<b>onClick</b><span>()</span>
-      <span class='bound note'>Bound</span>
-      <br>
-    </p>
-    
-  </div>
-  <div class='method_details'>
-    <p class='signature' id='render-dynamic'>
-      #
-(void)
-<b>render</b><span>()</span>
+<b>resolveLinkClass</b><span>()</span>
       <br>
     </p>
     
@@ -143,7 +200,7 @@
 </div>
     </div>
     <div id='footer'>
-  January 28, 15 17:49:55 by
+  January 29, 15 23:17:27 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

@@ -46,6 +46,25 @@ React.createElement = (type, props, children) ->
 #
 module.exports = class Component
 
+  # Initialize default properties,
+  # make type conversions
+  # @note all objects (except functions) should be copied via _.clone
+  # @todo think about copying objects
+  #
+  # @return [Component] instance
+  #
+  constructor: ->
+    if @__super__?
+      for key, val of super
+        if _.isFunction val
+          @[key] ?= ->
+            super[key] arguments...
+
+        # TODO think about it
+        else if _.isObject val
+          @[key] = _.clone super[key]
+
+  # TODO выпиздить русский!
   # флаг компонента, необходим
   # для определения того, есть ли в
   # цепочке прототипов класса класс Component
@@ -62,16 +81,11 @@ module.exports = class Component
   defaultProps: ->
     {}
 
-  # Initialize default properties,
-  # make type conversions
-  #
-  # @return [Component] instance
-  #
-  constructor: ->
-    if @__super__?
-      for key, val of super
-        @[key] ?= ->
-          super[key] arguments...
+  getDefaultProps: ->
+    if _.isFunction @::defaultProps
+      @::defaultProps()
+    else
+      @::defaultProps
 
   # bridge to React getInitialState
   getInitialState: ->
@@ -131,29 +145,20 @@ module.exports = class Component
   #
   onMount: -> null
 
-  # React's shouldComponentUpdate
-  #
-  # @param nextProps [ Object  ] new props
-  # @param nextState [ Object  ] new state
-  # @return          [ void    ] this.updateIf results
-  #
-
-
-
   # Should component update method
   # @param  [Object] nextProps
   # @param  [Object] nextState
   # @return [Boolean] should update decision
   #
   shouldComponentUpdate: (nextProps, nextState) ->
-    @updateIf arguments...
+    @willUpdate arguments...
 
   # updateIf method noop
   # @todo add method description
   #
   # @return [Null]
   #
-  updateIf: -> true
+  willUpdate: -> true
 
   # -> React's componentWillUpdate
   #
@@ -189,3 +194,19 @@ module.exports = class Component
       name = owner.cName
       return name unless name is "RouteHandler"
       cur = owner
+
+  render: ->
+    @template _.extend {}, @, @locals()
+
+  locals: ->
+    {}
+
+  el: ->
+    @getDOMNode()
+
+  $el: ->
+    $ @el()
+
+  $: (selector) ->
+    # aka backbone
+    @$el().find selector

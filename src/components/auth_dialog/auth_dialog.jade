@@ -1,0 +1,28 @@
+.auth-dialog-component.layout
+  div
+    .no-layout
+      .auth
+        .auth--title
+        form.auth--form.form
+          .form--row
+
+            label.form--label.size-full | Login
+            Input(
+              ref  = "login"
+              hint = "Enter login"
+              )
+
+          .form--row
+            label.form--label.size-full | Password
+            Input(
+              ref  = "password"
+              type = "password"
+              hint = "enter password"
+              )
+
+          .form--row.submit
+            Btn(
+              text      = "Submit"
+              className = "button-success"
+              onClick   = login
+              )

@@ -18,9 +18,26 @@ paths:
   config: ./config.yaml
   jade: ./src/**/*.jade
 
+  modules: ./src/modules
   scss_bootstrap: ./src/app.scss
   scss: ./src/styles/**/*.scss
   images: ./src/images
+
+  # used to split paths with
+  components_dir: components
+
+component:
+  classNameSuffix: '-component'
+
+
+
+templates:
+  # using array/object means templates will be processed together
+  component:
+    - ./templates/component.coffee
+    - ./templates/component.scss
+    - ./templates/component.jade
+
 
 scss:
   includePaths:
@@ -48,14 +65,12 @@ browserify:
   paths:
     - ./compiled
     - ./compiled/framework
+    - ./compiled/components/**/ # closing "/" to affect only dirs
+    - ./compiled/modules/**/components/**/
     - ./node_modules
     - ./bower_components
     - ./bower_components/react
-    - ./bower_components/**/dist
-    # - ./bower_components/react-router/dist
-    # - ./bower_components/jquery/dist
-    # - ./bower_components/lodash/dist
-    # - ./bower_components/store/dist
+    - ./bower_components/**/dist/
 
 api_version: v1
 
