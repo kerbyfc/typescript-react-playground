@@ -24,50 +24,97 @@ The text below was written under inspiration of using net tools of web-stack:
 All of us love clean code and all of us has it's own code style guide. It's strongly recommended to have common documented team style guide. My vision of code is represented in section below.
 
 #### 3.1. Coffeescript style guide
-For convenience l'll some shortenings:
-- ☜ - to mark *good* practices
-- ☚ \[explanation\] - to mark *bad* practices
+Most of critical cases are covered with coffee linter. 
 
-###### Identation and max line length
-Use only 2 spaces identation. Chars limit per line = 80.
+For convenience l'll some shortenings are used:
+✓ - to mark *good* practices
+☝ - covered with coffee linter
+✗ \[explanation\] - to mark *bad* practices
 
-###### Blank Lines (BL)
-Separate top-level function and class definitions with a *single* blank line.It's *strongly recomended* to avoid line breaks in context of block (only comments may break code inside code block)
+##### Special chars
+- Use only 2 spaces for identation☝. 
+- Chars limit per line is 80☝. 
+- Use double quotes for strings.
+
+###### Blank Lines
+Separate top-level function and class definitions with a *single* blank line.It's *strongly recomended* to avoid line breaks in context of block (only comments may break code inside code block).
 ```coffee
 a = "foo"
-☜ 
+✓ 
 class Foo
-    ☜ 
+    ✓ 
     contructor: ->
         bar()
-        ☚ inside block
+        ✗ inside block
         baz()
 
-    ☚ extra
+    ✗ extra
     bar()
 ```
 
 ###### Optional commas
-Multiline arrays/objects should not contain commas
+Multiline arrays/objects should not contain commas.
 ```coffee
 foo = [
-  'bar' ☜ 
-  'baz', ☚
+  'bar' ✓ 
+  'baz', ✗
   bar:
     bear: 2
     vodka: [
-        "smirnoff"
-    ] ☜ comply identation
+        "beluga premium"
+    ] ✓ comply identation
 ]
 ```
 
+##### Comments
+All comments should be meaningful, and should not just repeat code sense.
 
-###### Inline commends
-Inline comments in context of function should not 
+###### Inline comments
+Inline comments should be used *only* inside functions. First letter of the comment should be uppercased.
+```coffee
+# My super class ✗
+class Bar
+
+  # function documentation ✗
+  foo (a) = ->
+    # inc ✗
+    a++
+    # Decrement before return ✓
+    --a
+```
+
+###### Block comments
+Block comments should be used to document functions, classes, it's methods and properties. Block comments should be started with `###*` and ended with `###`. Each line inside block comment should be prefixed with ` *` (with extra space). Usage of new lines in block comments is not recommended.
+```coffee
+###*
+ * Bar class description
+ * @deprecated
+###
+class Bar
+    
+  ###* ✓
+   * Class version
+   * ✗ 
+   * @type {String}
+  ### ✓
+  version = "0.0.1"
+
+  ###*
+   * Constructor description
+   * may be multiline.
+   * @param  {Number} bear
+   * @param  {Number} water
+   * @return {Bar}
+  ### 
+  constructor: (bear, water) ->
+    bear  *= 2
+    water /= 2
+
+```
 
 
 Правила описания
-```javascript
+```json
 {
     "feature": "Функция|Функционал|Свойство",
     "background": "Предыстория|Контекст",

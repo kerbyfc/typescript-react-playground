@@ -154,7 +154,7 @@ gulp.task "cjsx2coffee", ->
 # generate documentation for coffee
 gulp.task "codo", ["cjsx2coffee"], shell.task [
   "./node_modules/.bin/codo
-   --undocumented --closure
+   --undocumented --closure --private
     #{cfg.paths.compiled} > #{cfg.paths.nodoc}"
 ]
 

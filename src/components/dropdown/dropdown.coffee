@@ -5,15 +5,17 @@ class Dropdown extends Component
 
   template: template
 
-  ###*
-   * @nodoc
-   * @return {Object} - component props
-  ###
-  defaultProps: ->
+  defaultProps =
     linkClass : ""
     className : ""
     caret     : false
     open      : false
+
+  ###*
+   * @nodoc
+   * @return {Object} - component props
+  ###
+  defaultProps: defaultProps
 
   ###*
    * @nodoc

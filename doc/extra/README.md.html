@@ -34,7 +34,55 @@
         </p>
       </nav>
       <div id='filecontents'>
-        <h3 id="-">Автотесты</h3><p>Правила описания</p><pre><code class="lang-json">{
+        <h1 id="yac">YAC</h1>
+<h4 id="yeat-another-console">Yeat Another Console</h4><p><strong><em>New conception of Traffic Monitor(TM) frontend development workflow with a different batch of techniques, technologies and frameworks.</em></strong></p><h3 id="1-motivation">1. Motivation</h3><p>After YAP developing, i have some frustration about product quality. A lot of arhitecture defects were resolved in next version, which is under development at the moment. But i still feel DRY (don&#39;t repeat youself) approach deficiency. Now we use Marrionette behaviours, but it&#39;s still not comprehensive DRY technique: we still use css selectors to manipulate dom, behaviours are still state-missing (have not state flow or finite state machine). Marionette gives us an extra development manner freedom, the consequence of which is expressed by code inconsistency. </p><h3 id="2-inspiration">2. Inspiration</h3><p>I think that development flow must be fast, productive and unambiguous. We should not waste time in making Code Design (CD) decisions. In this case the most productive and modern approach will be web components usage. React.js may be the perfect solution. It has some inconvenience for some developers, but i&#39;m going to present the more complex solution, rather than a framework.</p><p>The text below was written under inspiration of using net tools of web-stack:</p><ul>
+<li>Gulp<sup>*</sup>  - workflow automator and source build system</li>
+<li>React - js library for building ui</li>
+<li>Cjxs  - Jsx transpiler with coffeescript support</li>
+<li>Yaml<sup>*</sup>  - very simple and powerfull markup language for static data structures</li>
+<li>Karma<sup>*</sup> - spectacular test runner for javascript</li>
+<li>Codo  - documentation generator</li>
+</ul><p>* - tools, which integration is not <em>complete</em> in current TM</p><h3 id="3-style-guide">3. Style Guide</h3><p>All of us love clean code and all of us has it&#39;s own code style guide. It&#39;s strongly recommended to have common documented team style guide. My vision of code is represented in section below.</p><h4 id="3-1-coffeescript-style-guide">3.1. Coffeescript style guide</h4><p>Most of critical cases are covered with coffee linter. </p><p>For convenience l&#39;ll some shortenings are used:
+☜ - to mark <em>good</em> practices
+☝ - covered with coffee linter
+☚ [explanation] - to mark <em>bad</em> practices</p><h5 id="special-chars">Special chars</h5>
+<ul>
+<li>Use only 2 spaces for identation☝. </li>
+<li>Chars limit per line is 80☝. </li>
+<li>Use double quotes for strings.</li>
+</ul>
+<h6 id="blank-lines">Blank Lines</h6><p>Separate top-level function and class definitions with a <em>single</em> blank line.It&#39;s <em>strongly recomended</em> to avoid line breaks in context of block (only comments may break code inside code block).</p><pre><code class="lang-coffee">a = &quot;foo&quot;
+☜ 
+class Foo
+    ☜ 
+    contructor: -&gt;
+        bar()
+        ☚ inside block
+        baz()
+
+    ☚ extra
+    bar()
+</code></pre>
+<h6 id="optional-commas">Optional commas</h6><p>Multiline arrays/objects should not contain commas.</p><pre><code class="lang-coffee">foo = [
+  &#39;bar&#39; ☜ 
+  &#39;baz&#39;, ☚
+  bar:
+    bear: 2
+    vodka: [
+        &quot;beluga premium&quot;
+    ] ☜ comply identation
+]
+</code></pre>
+<h5 id="comments">Comments</h5><p>All comments should be meaningful, and should not just repeat code sense.</p><h6 id="inline-commends">Inline commends</h6><p>Inline comments should be used <em>only</em> inside functions. First letter of the comment should be uppercased.</p><pre><code># My super class ☚
+class Bar
+
+  # function documentation ☚
+  foo (a) = -&gt;
+    # inc \bad - first letter in lower case
+    a++
+    # Decrement before return \good
+    --a
+</code></pre><p>Правила описания</p><pre><code class="lang-javascript">{
     &quot;feature&quot;: &quot;Функция|Функционал|Свойство&quot;,
     &quot;background&quot;: &quot;Предыстория|Контекст&quot;,
     &quot;scenario&quot;: &quot;Сценарий&quot;,
@@ -47,11 +95,11 @@
     &quot;but&quot;: &quot;*|Но|А&quot;
 }
 </code></pre>
-
+<h1 id="test">test</h1><p><img src="http://tardis1.tinygrab.com/grabs/a25d0cc4c172c8180ea6c8b587a2d4a4cf404fd03a.png" alt="test"></p>
       </div>
     </div>
     <div id='footer'>
-  January 30, 15 11:05:59 by
+  January 30, 15 14:06:12 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>
