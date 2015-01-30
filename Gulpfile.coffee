@@ -67,7 +67,8 @@ pipes =
   # notify about error with growl
   notifier: ->
     plumber
-      errorHandler: notify.onError "Error: <%= error.message %>\n <%= error.stack %>"
+      errorHandler: notify.onError "Error: <%= error.message %>
+        \n <%= error.stack %>"
 
   # translate Docblockr comments to codo comments
   doc2codo: ->
@@ -152,7 +153,9 @@ gulp.task "cjsx2coffee", ->
 
 # generate documentation for coffee
 gulp.task "codo", ["cjsx2coffee"], shell.task [
-  "./node_modules/.bin/codo --undocumented --closure #{cfg.paths.compiled} > #{cfg.paths.nodoc}"
+  "./node_modules/.bin/codo
+   --undocumented --closure
+    #{cfg.paths.compiled} > #{cfg.paths.nodoc}"
 ]
 
 # ↓ #

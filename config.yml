@@ -1,76 +1,5 @@
-paths:
-  js: ./compiled/**/*.js
-  coffee: ./src/**/*.coffee
-  html: ./src/*.html
-  yaml:
-    - ./src/**/*.yml
-    - ./config.yml
-  bootstrap: ./compiled/app.js
-  doc: ./doc
-  docsource: ./doc/sources
-  nodoc: nodoc.txt
-  index_file: index.html
-  index_path: ./build/index.html
-  build: ./build
-  src: ./src
-  compiled: ./compiled
-  karma: ./karma.coffee
-  config: ./config.yaml
-  jade: ./src/**/*.jade
-
-  modules: ./src/modules
-  scss_bootstrap: ./src/app.scss
-  scss: ./src/styles/**/*.scss
-  images: ./src/images
-
-  # used to split paths with
-  components_dir: components
-
-component:
-  classNameSuffix: '-component'
-
-
-
-templates:
-  # using array/object means templates will be processed together
-  component:
-    - ./templates/component.coffee
-    - ./templates/component.scss
-    - ./templates/component.jade
-
-
-scss:
-  includePaths:
-    - ./src/styles
-    - ./src/styles/bourbon
-    - ./bower_components
-    - ./bower_components/bootstrap-sass-official/vendor/assets/stylesheets
-
-cucumber:
-  paths:
-    features: ./tests/features/**/*.feature
-    definitions: ./tests/definitions/**/*.coffee
-    support: ./tests/support/**/*.coffee
-
-livereload:
-  enable: true
-  cwd: ./build
-  paths:
-    - app.js
-    - app.css
-    - index.html
-    - config.json
-
-browserify:
-  paths:
-    - ./compiled
-    - ./compiled/framework
-    - ./compiled/components/**/ # closing "/" to affect only dirs
-    - ./compiled/modules/**/components/**/
-    - ./node_modules
-    - ./bower_components
-    - ./bower_components/react
-    - ./bower_components/**/dist/
+################################################################################
+# ENVIRONMENT OPTIONS
 
 api_version: v1
 
@@ -80,6 +9,117 @@ api:
     host: v-tavadov-devel
     path: /api
 
+# specify what options will be injected to application bundle
 shared:
   - api_version
   - api
+
+################################################################################
+# BUILD SYSTEM (GULP) PATHS
+
+paths:
+
+  # SOURCES
+  src    : ./src
+  coffee : ./src/**/*.coffee
+  html   : ./src/*.html
+  yaml:
+    - ./src/**/*.yml
+    - ./config.yml
+
+  modules : ./src/modules
+
+  jade           : ./src/**/*.jade
+  scss           : ./src/styles/**/*.scss
+  images         : ./src/images
+  scss_bootstrap : ./src/app.scss
+
+  # COMPILED SOURCES
+  compiled : ./compiled
+
+  js         : ./compiled/**/*.js
+  bootstrap  : ./compiled/app.js
+  index_file : index.html
+
+  # DOCUMENTATION
+  doc   : ./doc
+  nodoc : nodoc.txt
+
+  # BUILD
+  build: ./build
+  index_path: ./build/index.html
+
+  # TESTS
+  karma : ./karma.coffee
+
+  # MISC
+  components_dir: components
+
+################################################################################
+# GENERATORS OPTIONS
+
+templates:
+  # using array/object means templates will be processed together
+  component:
+    - ./templates/component.coffee
+    - ./templates/component.scss
+    - ./templates/component.jade
+
+################################################################################
+# STYLES COMPILATION OPTIONS
+
+scss:
+  includePaths:
+    # common
+    - ./src/styles
+    - ./src/styles/bourbon
+    # components
+    - ./src/components/**/
+    - ./src/modules/**/components/**/
+    # vendors
+    - ./bower_components
+    - ./bower_components/bootstrap-sass-official/vendor/assets/stylesheets
+
+################################################################################
+# TESTS OPTIONS
+
+cucumber:
+  paths:
+    features: ./tests/features/**/*.feature
+    definitions: ./tests/definitions/**/*.coffee
+    support: ./tests/support/**/*.coffee
+
+################################################################################
+# CODE COMPILATION OPTIONS
+
+browserify:
+  paths:
+    # precompiled sources
+    - ./compiled
+    - ./compiled/framework
+    - ./compiled/components/**/
+    - ./compiled/modules/**/components/**/
+    # vendors
+    - ./node_modules
+    - ./bower_components
+    - ./bower_components/react
+    - ./bower_components/**/dist/ # warning, may cause conflicts
+
+# components options
+component:
+  classNameSuffix: '-component'
+
+################################################################################
+# SERVING OPTIONS (DEVELOPMENT ONLY)
+
+# livereload options for
+# development web-server
+livereload:
+  enable: true
+  cwd: ./build
+  # watch filter
+  paths:
+    - app.js
+    - app.css
+    - index.html
+    - config.json
