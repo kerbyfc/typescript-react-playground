@@ -115,16 +115,17 @@ module.exports = class Component
   updateProps: -> null
 
   # React's componentWillMount
-  #
-  # @return [void] this.beforeMount results
+  # Invoked once, immediately before the initial rendering occurs.
+  # If you call setState within this method, *render()* will see
+  # the updated state and will be
+  # executed only once despite the state change.
+  # @private
   #
   componentWillMount: ->
     @beforeMount arguments...
 
   # beforeMount method noop
   # @todo add method description
-  #
-  # @return [Null]
   #
   beforeMount: -> null
 
@@ -155,8 +156,6 @@ module.exports = class Component
 
   # updateIf method noop
   # @todo add method description
-  #
-  # @return [Null]
   #
   willUpdate: -> true
 

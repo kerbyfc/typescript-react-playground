@@ -26,27 +26,6 @@ class Dropdown extends Component
 
   ###*
    * @nodoc
-   * @return {Void} - before mount non-async manipulations
-  ###
-  beforeMount: ->
-    super
-
-  ###*
-   * @nodoc
-   * @return {Void} - state non-affecting manipulations
-  ###
-  beforeUpdate: ->
-    super
-
-  ###*
-   * @nodoc
-   * @return {Void} - state non-affection manipulations
-  ###
-  onUpdate: ->
-    super
-
-  ###*
-   * @nodoc
    * @return {Object} - template locals
   ###
   locals: ->
@@ -81,6 +60,7 @@ class Dropdown extends Component
    * @return {Void} - after component mount manipulations
   ###
   onMount: ->
+    # FIXME calls for every instance!
     $ document.body
       .on 'click', (e) =>
         dropdown = $(e.target).closest('.dropdown-component')

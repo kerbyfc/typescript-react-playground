@@ -19,41 +19,53 @@ shared:
 
 paths:
 
+  common: &common
+    images     : images/
+    modules    : modules/
+    components : components/
+
   # SOURCES
-  src    : ./src
-  coffee : ./src/**/*.coffee
-  html   : ./src/*.html
-  yaml:
-    - ./src/**/*.yml
-    - ./config.yml
+  src:
+    << : *common
+    base      : src
 
-  modules : ./src/modules
+    scripts   : /**/*.coffee
+    configs   : /**/*.yaml
+    bootstrap : app.coffee
+    index     : index.jade
+    styles    : app.scss
 
-  jade           : ./src/**/*.jade
-  scss           : ./src/styles/**/*.scss
-  images         : ./src/images
-  scss_bootstrap : ./src/app.scss
+    components:
+      templates : /**/components/**/*.jade
+      styles    : /**/components/**/*.scss
 
   # COMPILED SOURCES
-  compiled : ./compiled
+  compiled:
+    << : *common
+    base: compiled
 
-  js         : ./compiled/**/*.js
-  bootstrap  : ./compiled/app.js
-  index_file : index.html
+    scripts   : /**/*.js
+    configs   : /**/*.json
+    bootstrap : app.js
+    styles    : app.css
 
-  # DOCUMENTATION
-  doc   : ./doc
-  nodoc : nodoc.txt
+    components:
+      templates : /**/*-tmpl.js
+      styles    : /**/components/**/*.css
 
-  # BUILD
-  build: ./build
-  index_path: ./build/index.html
+  # BUILDED SOURCES
+  build:
+    << : *common
+    base: build
 
-  # TESTS
-  karma : ./karma.coffee
+    index     : index.html
+    bootstrap : app.js
+    styles    : app.css
 
   # MISC
-  components_dir: components
+  config : config.yml
+  nodoc  : nodoc.txt
+  karma  : karma.coffee
 
 ################################################################################
 # GENERATORS OPTIONS

@@ -43,46 +43,70 @@
 <li>Karma<sup>*</sup> - spectacular test runner for javascript</li>
 <li>Codo  - documentation generator</li>
 </ul><p>* - tools, which integration is not <em>complete</em> in current TM</p><h3 id="3-style-guide">3. Style Guide</h3><p>All of us love clean code and all of us has it&#39;s own code style guide. It&#39;s strongly recommended to have common documented team style guide. My vision of code is represented in section below.</p><h4 id="3-1-coffeescript-style-guide">3.1. Coffeescript style guide</h4><p>Most of critical cases are covered with coffee linter. </p><p>For convenience l&#39;ll some shortenings are used:
-☜ - to mark <em>good</em> practices
+✓ - to mark <em>good</em> practices
 ☝ - covered with coffee linter
-☚ [explanation] - to mark <em>bad</em> practices</p><h5 id="special-chars">Special chars</h5>
+✗ [explanation] - to mark <em>bad</em> practices</p><h5 id="special-chars">Special chars</h5>
 <ul>
 <li>Use only 2 spaces for identation☝. </li>
 <li>Chars limit per line is 80☝. </li>
 <li>Use double quotes for strings.</li>
 </ul>
 <h6 id="blank-lines">Blank Lines</h6><p>Separate top-level function and class definitions with a <em>single</em> blank line.It&#39;s <em>strongly recomended</em> to avoid line breaks in context of block (only comments may break code inside code block).</p><pre><code class="lang-coffee">a = &quot;foo&quot;
-☜ 
+✓ 
 class Foo
-    ☜ 
+    ✓ 
     contructor: -&gt;
         bar()
-        ☚ inside block
+        ✗ inside block
         baz()
 
-    ☚ extra
+    ✗ extra
     bar()
 </code></pre>
 <h6 id="optional-commas">Optional commas</h6><p>Multiline arrays/objects should not contain commas.</p><pre><code class="lang-coffee">foo = [
-  &#39;bar&#39; ☜ 
-  &#39;baz&#39;, ☚
+  &#39;bar&#39; ✓ 
+  &#39;baz&#39;, ✗
   bar:
     bear: 2
     vodka: [
         &quot;beluga premium&quot;
-    ] ☜ comply identation
+    ] ✓ comply identation
 ]
 </code></pre>
-<h5 id="comments">Comments</h5><p>All comments should be meaningful, and should not just repeat code sense.</p><h6 id="inline-commends">Inline commends</h6><p>Inline comments should be used <em>only</em> inside functions. First letter of the comment should be uppercased.</p><pre><code># My super class ☚
+<h5 id="comments">Comments</h5><p>All comments should be meaningful, and should not just repeat code sense.</p><h6 id="inline-comments">Inline comments</h6><p>Inline comments should be used <em>only</em> inside functions. First letter of the comment should be uppercased.</p><pre><code class="lang-coffee"># My super class ✗
 class Bar
 
-  # function documentation ☚
+  # function documentation ✗
   foo (a) = -&gt;
-    # inc \bad - first letter in lower case
+    # inc ✗
     a++
-    # Decrement before return \good
+    # Decrement before return ✓
     --a
-</code></pre><p>Правила описания</p><pre><code class="lang-javascript">{
+</code></pre>
+<h6 id="block-comments">Block comments</h6><p>Block comments should be used to document functions, classes, it&#39;s methods and properties. Block comments should be started with <code>###*</code> and ended with <code>###</code>. Each line inside block comment should be prefixed with <code>*</code> (with extra space). Usage of new lines in block comments is not recommended.</p><pre><code class="lang-coffee">###*
+ * Bar class description
+ * @deprecated
+###
+class Bar
+
+  ###* ✓
+   * Class version
+   * ✗ 
+   * @type {String}
+  ### ✓
+  version = &quot;0.0.1&quot;
+
+  ###*
+   * Constructor description
+   * may be multiline.
+   * @param  {Number} bear
+   * @param  {Number} water
+   * @return {Bar}
+  ### 
+  constructor: (bear, water) -&gt;
+    bear  *= 2
+    water /= 2
+</code></pre><p>Правила описания</p><pre><code class="lang-json">{
     &quot;feature&quot;: &quot;Функция|Функционал|Свойство&quot;,
     &quot;background&quot;: &quot;Предыстория|Контекст&quot;,
     &quot;scenario&quot;: &quot;Сценарий&quot;,
@@ -99,7 +123,7 @@ class Bar
       </div>
     </div>
     <div id='footer'>
-  January 30, 15 14:06:12 by
+  February 02, 15 21:29:26 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

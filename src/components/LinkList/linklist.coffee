@@ -1,12 +1,14 @@
 Component = require "component"
-template  = require "./app_layout_header-tmpl"
+template  = require "./linklist-tmpl"
 
-Menu = require "app_layout_header_menu"
-
-class AppLayoutHeader extends Component
+requiredComponents =
+  Link: require "link"
+  Dropdown: require "dropdown"
+  
+class Linklist extends Component
 
   template: template
-
+  
   ###*
    * @nodoc
    * @return {Object} - component props
@@ -27,7 +29,7 @@ class AppLayoutHeader extends Component
   ###
   beforeMount: ->
     super
-
+  
   ###*
    * @nodoc
    * @return {Void} - state non-affecting manipulations
@@ -41,14 +43,14 @@ class AppLayoutHeader extends Component
   ###
   onUpdate: ->
     super
-
+  
   ###*
    * @nodoc
    * @return {Object} - template locals
   ###
-  locals: ->
-    Menu: Menu
-
+  locals: -> 
+    _.extend @, requiredComponents
+     
   ###*
    * @nodoc
    * @return {Void} - after component mount manipulations
@@ -56,4 +58,4 @@ class AppLayoutHeader extends Component
   onMount: ->
     super
 
-module.exports = AppLayoutHeader
+module.exports = Linklist
