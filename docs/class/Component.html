@@ -40,13 +40,14 @@ project components.</p>
   <div class='examples'>
     <h3>Examples:</h3>
     <h4>
-      Component creation
+      Component declaring
     </h4>
     <pre><code class='coffeescript'>class Dropdown extends Component
+  template: JSX.dropdown
   locals: -&gt;
     msg: &quot;hello&quot;</code></pre>
     <h4>
-      Component instantiation
+      Component usage
     </h4>
     <pre><code class='coffeescript'>Dropdown = require &quot;dropdown&quot;
 Dropdown
@@ -111,8 +112,8 @@ Dropdown
     <span class='signature'>
       <a href='#create-static'>
         .
-( React.Element )
-<b>create</b><span>(component, props, children)</span>
+(React.Element)
+<b>create</b><span>(type, props, children)</span>
       </a>
     </span>
     <span class='desc'>
@@ -144,8 +145,10 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
-      Call defaultProps method. 
+      Call defaultProps method, if it&#39;s a function, otherwise return it.
+
     </span>
   </li>
   <li>
@@ -153,7 +156,7 @@ Dropdown
       <a href='#initState-dynamic'>
         #
 (Object)
-<b>initState</b><span>(props)</span>
+<b>initState</b><span>()</span>
       </a>
     </span>
     <span class='abstract note title'>Abstract</span>
@@ -170,6 +173,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls initState method. 
     </span>
@@ -179,7 +183,7 @@ Dropdown
       <a href='#updateProps-dynamic'>
         #
 (void)
-<b>updateProps</b><span>()</span>
+<b>updateProps</b><span>(nextProps)</span>
       </a>
     </span>
     <span class='abstract note title'>Abstract</span>
@@ -192,10 +196,11 @@ Dropdown
       <a href='#componentWillReceiveProps-dynamic'>
         #
 (void)
-<b>componentWillReceiveProps</b><span>(nextProps)</span>
+<b>componentWillReceiveProps</b><span>()</span>
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls updateProps. 
     </span>
@@ -209,6 +214,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls beforeMount. 
     </span>
@@ -235,6 +241,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls onMount 
     </span>
@@ -260,8 +267,9 @@ Dropdown
 <b>shouldComponentUpdate</b><span>()</span>
       </a>
     </span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
-      Calls willUpdate 
+      Calls willUpdate. 
     </span>
   </li>
   <li>
@@ -286,6 +294,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls willUpldate 
     </span>
@@ -295,7 +304,7 @@ Dropdown
       <a href='#beforeUpdate-dynamic'>
         #
 (void)
-<b>beforeUpdate</b><span>()</span>
+<b>beforeUpdate</b><span>(nextProps, nextState)</span>
       </a>
     </span>
     <span class='abstract note title'>Abstract</span>
@@ -312,6 +321,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls onUpdate method. 
     </span>
@@ -321,7 +331,7 @@ Dropdown
       <a href='#onUpdate-dynamic'>
         #
 (void)
-<b>onUpdate</b><span>()</span>
+<b>onUpdate</b><span>(nextProps, nextState)</span>
       </a>
     </span>
     <span class='abstract note title'>Abstract</span>
@@ -338,6 +348,7 @@ Dropdown
       </a>
     </span>
     <span class='note private title'>Private</span>
+    <span class='abstract note title'>Abstract</span>
     <span class='desc'>
       Calls onUnmount 
     </span>
@@ -419,19 +430,6 @@ Dropdown
   </li>
   <li>
     <span class='signature'>
-      <a href='#isNodeInRoot-dynamic'>
-        #
-(Boolean)
-<b>isNodeInRoot</b><span>(node, root)</span>
-      </a>
-    </span>
-    <span class='desc'>
-      Determine if the given node is inside another node
-
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#contains-dynamic'>
         #
 (Boolean|jQuery)
@@ -485,14 +483,14 @@ Dropdown
   <div class='method_details'>
     <p class='signature' id='create-static'>
       .
-( React.Element )
-<b>create</b><span>(component, props, children)</span>
+(React.Element)
+<b>create</b><span>(type, props, children)</span>
       <br>
     </p>
     <div class='docstring'>
   <div class='note'>
     <strong>Note:</strong>
-    Remove undefined/null children from children list for convenience! (useful with <code>if</code> statements) 
+    Remove undefined/null children from children list for convenience! (useful with <code>if</code> statements in array of children) 
   </div>
   <p>Create react component.</p>
 </div>
@@ -503,7 +501,7 @@ Dropdown
       <span class='name'>component</span>
       <span class='type'>
         (
-          <tt>Component</tt>
+          <tt><a href='../class/Component.html'>Component</a></tt>
         )
       </span>
       &mdash;
@@ -614,9 +612,15 @@ Dropdown
     </strong>
     Might be implemented 
   </div>
-  <p>Cascade method for getDefaultProps.
-Place here the code to define component
-initial props.</p>
+  <p>Cascade method for getDefaultProps. Place here the
+code to define component initial props.
+Invoked once and cached when the class is created. Values
+in the mapping will be set on this.props if that
+prop is not specified by the parent component
+(i.e. using an in check). This method is invoked before
+any instances are created and thus cannot rely on this.props.
+In addition, be aware that any complex objects returned
+by getDefaultProps() will be shared across instances, not copied.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -647,16 +651,20 @@ initial props.</p>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <div class='note'>
     <strong>Note:</strong>
-    executes in another scope, rather than component scope 
+    executes in another scope, rather than component scope. LifeCycle order: 1 
   </div>
-  <p>Call defaultProps method.
-if it&#39;s a function, otherwise return it.</p>
+  <p>Call defaultProps method, if it&#39;s a function,
+otherwise return it.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -682,7 +690,7 @@ if it&#39;s a function, otherwise return it.</p>
     <p class='signature' id='initState-dynamic'>
       #
 (Object)
-<b>initState</b><span>(props)</span>
+<b>initState</b><span>()</span>
       <br>
     </p>
     <div class='docstring'>
@@ -692,11 +700,7 @@ if it&#39;s a function, otherwise return it.</p>
       method
       is abstract.
     </strong>
-    Might be implemented might be implemented 
-  </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
+    Might be implemented might be implemented. 
   </div>
   <p>Cascade method for getInitialState.
 Form an initial state object.</p>
@@ -730,9 +734,13 @@ Form an initial state object.</p>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    add link to antipatterns 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <p>Calls initState method.</p>
 </div>
@@ -754,7 +762,10 @@ Form an initial state object.</p>
       <a href='../class/Component.html#initState-dynamic'>Component#initState</a>
     </li>
     <li>
-      <a href='http://facebook.github.io/react/docs/component-specs.html#getinitialstate'>method official spec</a>
+      <a href='http://goo.gl/ngXVLl'>method official spec</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/w97dup'>antipattern</a>
     </li>
   </ul>
 </div>
@@ -763,7 +774,7 @@ Form an initial state object.</p>
     <p class='signature' id='updateProps-dynamic'>
       #
 (void)
-<b>updateProps</b><span>()</span>
+<b>updateProps</b><span>(nextProps)</span>
       <br>
     </p>
     <div class='docstring'>
@@ -775,15 +786,31 @@ Form an initial state object.</p>
     </strong>
     Might be implemented 
   </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
-  </div>
   <p>Cascade method for componentWillReceiveProps.
 Place here the code manipulations when component
-receive properties from it&#39;s parent component.</p>
+receive properties from it&#39;s parent component.
+Invoked when a component is receiving new props.
+This method is not called for the initial render.
+Use this as an opportunity to react to a prop transition
+before render() is called by updating the state using
+this.setState(). The old props can be accessed via this.props.
+Calling this.setState() within this function
+will not trigger an additional render.</p>
 </div>
 <div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>nextProps</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>new properties (not diff) </span>
+    </li>
+  </ul>
   <h3>See also:</h3>
   <ul class='see'>
     <li>
@@ -796,14 +823,18 @@ receive properties from it&#39;s parent component.</p>
     <p class='signature' id='componentWillReceiveProps-dynamic'>
       #
 (void)
-<b>componentWillReceiveProps</b><span>(nextProps)</span>
+<b>componentWillReceiveProps</b><span>()</span>
       <span class='note private'>Private</span>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    add @see to of-doc 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <p>Calls updateProps.</p>
 </div>
@@ -812,6 +843,12 @@ receive properties from it&#39;s parent component.</p>
   <ul class='see'>
     <li>
       <a href='../class/Component.html#updateProps-dynamic'>Component#updateProps</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/hZpQ6D'>method official spec</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/6p7UxI'>componentWillReceiveProps Not Triggered After Mounting</a>
     </li>
   </ul>
 </div>
@@ -825,9 +862,13 @@ receive properties from it&#39;s parent component.</p>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    add @see to of-doc 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <p>Calls beforeMount.</p>
 </div>
@@ -836,6 +877,9 @@ receive properties from it&#39;s parent component.</p>
   <ul class='see'>
     <li>
       <a href='../class/Component.html#beforeMount-dynamic'>Component#beforeMount</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/eXtGGs'>method official spec</a>
     </li>
   </ul>
 </div>
@@ -856,10 +900,6 @@ receive properties from it&#39;s parent component.</p>
     </strong>
     Might be implemented 
   </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
-  </div>
   <p>Cascade method for componentWillMount.
 Invoked once, immediately before the initial rendering occurs.
 If you call setState within this method,render()* will see
@@ -869,6 +909,9 @@ executed only once despite the state change.</p>
 <div class='tags'>
   <h3>See also:</h3>
   <ul class='see'>
+    <li>
+      <a href='http://goo.gl/H8huLH'>method official spec</a>
+    </li>
     <li>
       <a href='../class/Component.html#componentWillMount-dynamic'>Component#componentWillMount</a>
     </li>
@@ -884,9 +927,13 @@ executed only once despite the state change.</p>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    add @see to of-doc 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <p>Calls onMount</p>
 </div>
@@ -895,6 +942,9 @@ executed only once despite the state change.</p>
   <ul class='see'>
     <li>
       <a href='../class/Component.html#onMount-dynamic'>Component#onMount</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/x2uUl6'>method official spec</a>
     </li>
   </ul>
 </div>
@@ -913,13 +963,17 @@ executed only once despite the state change.</p>
       method
       is abstract.
     </strong>
-    Might be implemented 
+    Might be implemented. 
   </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
-  </div>
-  <p>Cascade method for componentDidMount.</p>
+  <p>Cascade method for componentDidMount.
+Invoked once, only on the client (not on the server),
+immediately after the initial rendering occurs.
+At this point in the lifecycle, the component has a
+DOM representation which you can access via
+this.getDOMNode(). If you want to integrate with
+other JavaScript frameworks, set timers using
+setTimeout or setInterval, or send AJAX requests,
+perform those operations in this method.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -945,7 +999,15 @@ executed only once despite the state change.</p>
       <br>
     </p>
     <div class='docstring'>
-  <p>Calls willUpdate</p>
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
+  </div>
+  <p>Calls willUpdate.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -959,6 +1021,9 @@ executed only once despite the state change.</p>
   <ul class='see'>
     <li>
       <a href='../class/Component.html#willUpdate-dynamic'>Component#willUpdate</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/xibdls'>method official spec</a>
     </li>
   </ul>
 </div>
@@ -977,13 +1042,34 @@ executed only once despite the state change.</p>
       method
       is abstract.
     </strong>
-    Might be implemented 
+    Might be implemented. 
   </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    doc params 
+  <p>Place here the code to permit updates.
+Invoked before rendering when new props or state are
+being received. This method is not called
+for the initial render or when forceUpdate is used.
+Use this as an opportunity to return false when you&#39;re
+certain that the transition to the new props and state
+will not require a component update.</p><p>If shouldComponentUpdate returns false, then render() will be
+completely skipped until the next state change. (In addition,
+beforeUpdate and onUpdate will not be called.)
+By default, shouldComponentUpdate always returns true
+to prevent subtle bugs when state is mutated in place,
+but if you are careful to always treat state as
+immutable and to read only from props and state in
+render() then you can override shouldComponentUpdate with
+an implementation that compares the old props and
+state to their replacements. If performance is a bottleneck, especially
+with dozens or hundreds of components, use willUpdate
+to speed up your app.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>willUpdate: (nextProps, nextState) -&gt;
+   nextProps.id !== this.props.id</code></pre>
   </div>
-  <p>Place here the code to permit updates.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1031,9 +1117,13 @@ executed only once despite the state change.</p>
       <br>
     </p>
     <div class='docstring'>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    add @see to of-doc 
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
   </div>
   <p>Calls willUpldate</p>
 </div>
@@ -1041,7 +1131,10 @@ executed only once despite the state change.</p>
   <h3>See also:</h3>
   <ul class='see'>
     <li>
-      <a href='../class/Component.html#willUpdate-dynamic'>Component#willUpdate</a>
+      <a href='Component#willUpdateA'>Component#willUpdateA</a>
+    </li>
+    <li>
+      <a href='http://goo.gl/UacS26'>method official spec</a>
     </li>
   </ul>
 </div>
@@ -1050,7 +1143,7 @@ executed only once despite the state change.</p>
     <p class='signature' id='beforeUpdate-dynamic'>
       #
 (void)
-<b>beforeUpdate</b><span>()</span>
+<b>beforeUpdate</b><span>(nextProps, nextState)</span>
       <br>
     </p>
     <div class='docstring'>
@@ -1060,16 +1153,39 @@ executed only once despite the state change.</p>
       method
       is abstract.
     </strong>
-    Might be implemented 
-  </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    params doc 
+    Might be implemented. 
   </div>
   <p>Cascade method for componentWillUpdate.
-Place here the code to resolve component state.</p>
+Place here the code to resolve component state.
+Invoked immediately before rendering when new props or
+state are being received. This method is not called for
+the initial render. Use this as an opportunity to
+perform preparation before an update occurs.</p>
 </div>
 <div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>nextProps</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>next properties </span>
+    </li>
+    <li>
+      <span class='name'>nextState</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>next state </span>
+    </li>
+  </ul>
   <h3>See also:</h3>
   <ul class='see'>
     <li>
@@ -1087,6 +1203,14 @@ Place here the code to resolve component state.</p>
       <br>
     </p>
     <div class='docstring'>
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
+  </div>
   <div class='note todo'>
     <strong>TODO:</strong>
     see to of-doc 
@@ -1106,7 +1230,7 @@ Place here the code to resolve component state.</p>
     <p class='signature' id='onUpdate-dynamic'>
       #
 (void)
-<b>onUpdate</b><span>()</span>
+<b>onUpdate</b><span>(nextProps, nextState)</span>
       <br>
     </p>
     <div class='docstring'>
@@ -1116,15 +1240,38 @@ Place here the code to resolve component state.</p>
       method
       is abstract.
     </strong>
-    Might be implemented 
+    Might be implemented. 
   </div>
-  <div class='note todo'>
-    <strong>TODO:</strong>
-    params doc 
-  </div>
-  <p>Cascade method for componentWillUpdate.</p>
+  <p>Cascade method for componentWillUpdate.
+Invoked immediately after the component&#39;s updates are
+flushed to the DOM. This method is not called for
+the initial render. Use this as an opportunity to
+operate on the DOM when the component has been updated.</p>
 </div>
 <div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>nextProps</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>next properties </span>
+    </li>
+    <li>
+      <span class='name'>nextState</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>next state </span>
+    </li>
+  </ul>
   <h3>See also:</h3>
   <ul class='see'>
     <li>
@@ -1142,6 +1289,14 @@ Place here the code to resolve component state.</p>
       <br>
     </p>
     <div class='docstring'>
+  <div class='abstract note'>
+    <strong>
+      This
+      method
+      is abstract.
+    </strong>
+    Shouldn&#39;t be implemented. 
+  </div>
   <div class='note todo'>
     <strong>TODO:</strong>
     add @see to of-doc 
@@ -1171,13 +1326,17 @@ Place here the code to resolve component state.</p>
       method
       is abstract.
     </strong>
-    Might be implemented 
+    Might be implemented. 
   </div>
   <div class='note todo'>
     <strong>TODO:</strong>
     doc params 
   </div>
-  <p>Cascade method for componentWillUnmount.</p>
+  <p>Cascade method for componentWillUnmount.
+Invoked immediately before a component is unmounted from the DOM.
+Perform any necessary cleanup in this method, such as
+invalidating timers or cleaning up any DOM elements that
+were created in onMount.</p>
 </div>
 <div class='tags'>
   <h3>See also:</h3>
@@ -1200,8 +1359,25 @@ Place here the code to resolve component state.</p>
     <strong>Note:</strong>
     Components scafolding setups components 
   </div>
-  <p>Renders template. Template by default
-must be set to template property of component</p><p> template property automaticaly.</p>
+  <p>Renders template. Template by default must be set to
+template property of component
+The render() method is required. When called, it should
+examine this.props and this.state and return a single child component.
+This child component can be either a virtual representation of
+a native DOM component (such as <div /> or React.DOM.div())
+or another composite component that you&#39;ve defined yourself. You can
+also return null or false to indicate that you don&#39;t want
+anything rendered. Behind the scenes, React renders a</p><p><noscript> tag to work with our current diffing algorithm.
+When returning null or false, el()
+will return null. The render() function should be pure, meaning
+that it does not modify component state, it returns
+the same result each time it&#39;s invoked, and it
+does not read from or write to the DOM or
+otherwise interact with the browser (e.g., by using setTimeout). If
+you need to interact with the browser, perform your work
+in onMount() or the other lifecycle methods instead. Keeping
+render() pure makes server rendering more practical and
+makes components easier to think about.</p><p> template property automaticaly.</p>
 </div>
 <div class='tags'>
   <h3>Returns:</h3>
@@ -1357,63 +1533,6 @@ Aka backbonde.</p>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='isNodeInRoot-dynamic'>
-      #
-(Boolean)
-<b>isNodeInRoot</b><span>(node, root)</span>
-      <br>
-    </p>
-    <div class='docstring'>
-  <p>Determine if the given node is inside
-another node</p>
-  <div class='examples'>
-    <h3>Examples:</h3>
-    <h4>
-      
-    </h4>
-    <pre><code class='coffeescript'>handleClick: (e) -&gt;
-  unless @isNodeInRoot e.target, @el()
-    alert &quot;close dropdown&quot;</code></pre>
-  </div>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>node</span>
-      <span class='type'>
-        (
-          <tt>Object</tt>
-        )
-      </span>
-      &mdash;
-      <span class='desc'>target dom node </span>
-    </li>
-    <li>
-      <span class='name'>root</span>
-      <span class='type'>
-        (
-          <tt>Object</tt>
-        )
-      </span>
-      &mdash;
-      <span class='desc'>dom node to search in </span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (
-        <tt>Boolean</tt>
-      )
-      &mdash;
-      <span class='desc'>search result </span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='contains-dynamic'>
       #
 (Boolean|jQuery)
@@ -1423,6 +1542,15 @@ another node</p>
     <div class='docstring'>
   <p>Checks if component contains node. Returns jQuery object if
 component includes element, false otherwise.</p>
+  <div class='examples'>
+    <h3>Examples:</h3>
+    <h4>
+      
+    </h4>
+    <pre><code class='coffeescript'>handleClick: (e) -&gt;
+  unless @contains, e.target
+    alert &quot;click outside dropdown, lets collapse it ;)&quot;</code></pre>
+  </div>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
@@ -1454,7 +1582,7 @@ component includes element, false otherwise.</p>
 </div>
     </div>
     <div id='footer'>
-  February 05, 15 16:00:04 by
+  February 05, 15 19:39:51 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

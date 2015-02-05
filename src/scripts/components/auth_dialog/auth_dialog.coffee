@@ -41,7 +41,7 @@ class AuthDialog extends Component
   # @return [Object] - template locals
   #
   locals: ->
-    _.extend @props, imports
+    imports
 
   # @nodoc
   # @return [Void] - after component mount manipulations

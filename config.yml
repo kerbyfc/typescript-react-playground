@@ -6,7 +6,7 @@ api_version: v1
 api:
   v1:
     protocol: https
-    host: tm6.infowatch.ru
+    host: v-tavadov-devel
     path: /api
 
 # specify what options will be injected to application bundle

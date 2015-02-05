@@ -61,9 +61,9 @@ class <%= component %> extends Component
    * @return {Object} - template locals
   ###
   locals: -> <% if (deps) { %>
-    _.extend @, imports
+    imports
     <% } else { %>
-    @
+    {}
     <% } %> <% if (complete) { %>
   ###*
    * @nodoc

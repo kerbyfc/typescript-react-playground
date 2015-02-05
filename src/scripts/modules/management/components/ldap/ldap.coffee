@@ -1,5 +1,7 @@
 LdapStore = require "stores/ldap"
 
+console.log LdapStore
+
 class Ldap extends Component
 
   template: JSX.ldap

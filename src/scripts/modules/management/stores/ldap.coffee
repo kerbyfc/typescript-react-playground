@@ -1,26 +1,19 @@
 Store  = require "core/store"
-Action = require "core/action"
-
-actions = Action.create [
-]
 
 class LdapStore extends Store
 
-  actions: [
-    'init'
-    'increment'
-    'decrement'
-  ]
-
   value = 0
+
+  data = lol: true
 
   @on 'init', (val) ->
     value = val
 
-  value: ->
-    console.log value
-    value
+  @on 'console', (val) ->
+    false
 
+  value: ->
+    value
 
 module.exports = new LdapStore
 
