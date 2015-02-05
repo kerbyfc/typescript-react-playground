@@ -53,7 +53,7 @@
   width: 25px;
   height: 25px;
   cursor: pointer;
-  background: url("/img/handle.png") no-repeat 50% 50%;
+  background: url("/images/handle.png") no-repeat 50% 50%;
   font-weight: bold;
   color: #1C94C4;
   outline: none;
@@ -147,12 +147,12 @@
 .ui-spinner-down {
   bottom: 0;
   border: none !important;
-  background: url(/img/spinner_bottom.png) no-repeat !important;
+  background: url(/images/spinner_bottom.png) no-repeat !important;
 }
 
 .ui-spinner-up {
   top: 0;
-  background: url(/img/spinner_top.png) no-repeat !important;
+  background: url(/images/spinner_top.png) no-repeat !important;
   border: none !important;
 }
 

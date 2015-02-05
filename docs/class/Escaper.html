@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../extra/README.md.html' title='Tm'>
+      Tm
+    </a>
+    &raquo;
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>Escaper</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Escaper
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>node_modules&#47;yamljs&#47;src&#47;Escaper.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>Escaper encapsulates escaping rules for single
+and double-quoted YAML strings.</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Variables Summary</h2>
+      <dl class='constants'>
+  <dt id='LIST_ESCAPEES-variable'>
+    LIST_ESCAPEES
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'></code></pre>
+    <div class='docstring'>
+  <p>Mapping arrays for escaping a double quoted string. The backslash is
+first to ensure proper escaping.</p>
+</div>
+<div class='tags'>
+</div>
+  </dd>
+  <dt id='LIST_ESCAPED-variable'>
+    LIST_ESCAPED
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>[&#39;\\&quot;&#39;, &#39;\\\\&#39;, &#39;\\&quot;&#39;, &quot;\\0&quot;, &quot;\\x01&quot;, &quot;\\x02&quot;, &quot;\\x03&quot;, &quot;\\x04&quot;, &quot;\\x05&quot;, &quot;\\x06&quot;, &quot;\\a&quot;, &quot;\\b&quot;, &quot;\\t&quot;, &quot;\\n&quot;, &quot;\\v&quot;, &quot;\\f&quot;, &quot;\\r&quot;, &quot;\\x0e&quot;, &quot;\\x0f&quot;, &quot;\\x10&quot;, &quot;\\x11&quot;, &quot;\\x12&quot;, &quot;\\x13&quot;, &quot;\\x14&quot;, &quot;\\x15&quot;, &quot;\\x16&quot;, &quot;\\x17&quot;, &quot;\\x18&quot;, &quot;\\x19&quot;, &quot;\\x1a&quot;, &quot;\\e&quot;, &quot;\\x1c&quot;, &quot;\\x1d&quot;, &quot;\\x1e&quot;, &quot;\\x1f&quot;, &quot;\\N&quot;, &quot;\\_&quot;, &quot;\\L&quot;, &quot;\\P&quot;]</code></pre>
+    
+  </dd>
+</dl>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#requiresDoubleQuoting-static'>
+        .
+(Boolean)
+<b>requiresDoubleQuoting</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Determines if a JavaScript value would require double quoting in YAML. 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#escapeWithDoubleQuotes-static'>
+        .
+(String)
+<b>escapeWithDoubleQuotes</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Escapes and surrounds a JavaScript value with double quotes. 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#requiresSingleQuoting-static'>
+        .
+(Boolean)
+<b>requiresSingleQuoting</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Determines if a JavaScript value would require single quoting in YAML. 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#escapeWithSingleQuotes-static'>
+        .
+(String)
+<b>escapeWithSingleQuotes</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Escapes and surrounds a JavaScript value with single quotes. 
+    </span>
+  </li>
+</ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='requiresDoubleQuoting-static'>
+      .
+(Boolean)
+<b>requiresDoubleQuoting</b><span>(value)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Determines if a JavaScript value would require double quoting in YAML.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A JavaScript value value </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>true    if the value would require double quotes. </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='escapeWithDoubleQuotes-static'>
+      .
+(String)
+<b>escapeWithDoubleQuotes</b><span>(value)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Escapes and surrounds a JavaScript value with double quotes.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A JavaScript value </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>The quoted, escaped string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='requiresSingleQuoting-static'>
+      .
+(Boolean)
+<b>requiresSingleQuoting</b><span>(value)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Determines if a JavaScript value would require single quoting in YAML.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A JavaScript value </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>true if the value would require single quotes. </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='escapeWithSingleQuotes-static'>
+      .
+(String)
+<b>escapeWithSingleQuotes</b><span>(value)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Escapes and surrounds a JavaScript value with single quotes.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A JavaScript value </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>The quoted, escaped string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  February 04, 15 14:28:55 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.9
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>

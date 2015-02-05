@@ -14,15 +14,18 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1",
-    "lodash": "~2.4.1",
-    "nprogress"                 : "0.1.2",
-    "react-router": "~0.11.3",
-    "react": "~0.12.1",
-    "bootstrap-sass-official": "3.1.1",
-    "multiselect"               : "0.9.8",
-    "bootstrap-datetimepicker"  : "0.0.10",
-    "store": "2.1.6"
+    "jquery" : "~2.1.1",
+    "lodash" : "~2.4.1",
+
+    "react-router" : "~0.11.3",
+    "react"        : "~0.12.1",
+
+    "nprogress"   : "0.1.2",
+    "multiselect" : "0.9.8",
+    "store"       : "2.1.6",
+
+    "bootstrap-sass-official"  : "3.1.1",
+    "bootstrap-datetimepicker" : "0.0.10"
   }
 }
 

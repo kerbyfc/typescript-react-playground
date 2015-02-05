@@ -1,0 +1,34 @@
+ul.app-layout-header-menu-component.nav.navbar-nav
+
+  // each module has a batch of routes
+  each moduleRoutes in session.routes
+    if moduleRoutes
+      each route, i in moduleRoutes
+
+        // render link only for named routes
+        if route.props.name
+
+          if route.props.children
+            // render submenu
+            Dropdown(
+              text  = route.props.name
+              route = route.props.name
+              items = extractRoutes(route.props.children)
+              linkClass = resolveDropdownClass(route.props.name)
+              caret = true
+              )
+
+          else
+            // render link
+            li(class= "@resolveClassName()")
+              Link( to = route.props.name )
+
+                // TOOD see how to use global jade vars
+                // to it with i18n and Route components
+                = "i18n:" + route.props.name
+
+  li
+    a(
+      onClick = logout
+      ) Logout
+

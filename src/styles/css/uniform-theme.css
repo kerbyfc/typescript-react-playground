@@ -1,5 +1,5 @@
 
-/* Global Declaration 
+/* Global Declaration
 ------------------------------------------------------------------------- ***/
 
 div.selector,
@@ -10,24 +10,24 @@ div.uploader,
 div.uploader span.action,
 div.button,
 div.button span {
-	background-image: url('/img/uniform/theme-sprite.png');
+	background-image: url('/images/uniform/theme-sprite.png');
 	background-repeat: no-repeat;
 	-webkit-font-smoothing: antialiased;
 }
 
-.selector, 
-.radios, 
-.checker, 
+.selector,
+.radios,
+.checker,
 .uploader,
-.selector *, 
-.radios *, 
-.checker *, 
+.selector *,
+.radios *,
+.checker *,
 .uploader *{
   margin: 0;
   padding: 0;
 }
 
-/* SELECT 
+/* SELECT
 ------------------------------------------------------------------------- ***/
 /* background setting */
 div.selector {
@@ -45,7 +45,7 @@ div.selector span {
 div.selector select {
 	/* change these to adjust positioning of select element */
   	left: 0px;
-	top: 0px;	
+	top: 0px;
 }
 
 div.selector:active,
@@ -140,7 +140,7 @@ div.checker.disabled span.checked,
 div.checker.disabled:active span.checked,
 div.checker.disabled.active span.checked	{ background-position: -180px -320px; }
 
-/* RADIO 
+/* RADIO
 ------------------------------------------------------------------------- ***/
 /* background setting */
 /* chnage class .radio to radios in js uniform */
@@ -200,7 +200,7 @@ div.radios.disabled span.checked,
 div.radios.disabled:active span.checked,
 div.radios.disabled.active span.checked { background-position: -180px -340px; }
 
-/* Uploader 
+/* Uploader
 ------------------------------------------------------------------------- ***/
 /* background setting */
 div.uploader {
@@ -242,24 +242,24 @@ div.uploader.disabled 					{ background-position: 0px -450px; }
 div.uploader.disabled span.action 		{ background-position: right -570px; }
 
 
-/* CUSTOM SETTINGS 
+/* CUSTOM SETTINGS
 ------------------------------------------------------------------------- ***/
-/* Select 
+/* Select
 -------------------------------------------------- */
 div.selector {
-	-webkit-box-sizing: content-box; 
-	   -moz-box-sizing: content-box; 
+	-webkit-box-sizing: content-box;
+	   -moz-box-sizing: content-box;
 	    -ms-box-sizing: content-box;
 			box-sizing: content-box;
-	display: inline-block; 
+	display: inline-block;
 	*display: inline;
 	margin: 0;
 	max-width: 280px;
 	/*min-width: 210px;*/
 	overflow: hidden;
-	padding: 0 0 0 8px; 
+	padding: 0 0 0 8px;
 	position: relative;
-	vertical-align: middle; 
+	vertical-align: middle;
 	/*width: 100%;*/
 	*zoom: 1;
 }
@@ -279,21 +279,21 @@ div.selector span {
 div.selector select {
 	left: 0px;
 	position: absolute;
-	top: 0px; 
+	top: 0px;
 	width: 100%;
 }
 
 div.selector.disabled span { color: #bbb; }
 
-/* Checker 
+/* Checker
 -------------------------------------------------- */
 div.checker { margin-right: 5px; }
 
-/* Radio 
+/* Radio
 -------------------------------------------------- */
 div.radios { margin-right: 3px; }
 
-/* Uploader 
+/* Uploader
 -------------------------------------------------- */
 div.uploader {
 	cursor: pointer;
@@ -327,7 +327,7 @@ div.uploader.disabled span.filename {
 }
 
 
-/* CORE FUNCTIONALITY 
+/* CORE FUNCTIONALITY
    Not advised to edit stuff below this line
 ------------------------------------------------------------------------- ***/
 .selector,
@@ -388,7 +388,7 @@ table div.checker input[type="checkbox"] {
 	margin-top: -7px;
 }
 
-/* Radio 
+/* Radio
 -------------------------------------------------- */
 div.radios { position: relative; }
 

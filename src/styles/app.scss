@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+////////////////////////////////////////////////////////////////////////////////
+// FONTS
+
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
+
+////////////////////////////////////////////////////////////////////////////////
+// VENDORS
+
+// @import "xeditable/dist/jqueryui-editable/css/jqueryui-editable.css";
+// @import "bootstrap-timepicker/css/bootstrap-timepicker.css";
+// //@import "bootstrap-daterangepicker/daterangepicker-bs3.css";
+// //@import "jquery-ui/themes/smoothness/jquery-ui.css";
+// @import "nprogress/nprogress.css";
+// //@import "fancytree/dist/skin-win7/ui.fancytree.css";
+// //@import "plugins/bootstrap/bootstrap.scss";
+// //@import "bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css";
+// //@import "bootstrap-multiselect/css/bootstrap-multiselect.css";
+// //@import "dynatree/src/skin-vista/ui.dynatree.css";
+// //@import "jquery-dropdown/jquery.dropdown.css";
+// //@import "jquery-simplecolorpicker/jquery.simplecolorpicker.css";
+// //@import "multiselect/css/multi-select.css";
+// //@import "pnotify/pnotify.core.css";
+// //@import "pnotify/pnotify.buttons.css";
+// //@import "pnotify/pnotify.history.css";
+// //@import "pnotify/pnotify.picon.css";
+// //@import "slickgrid/slick.grid.css";
+// //@import "select2/select2.css";
+// //@import "bootstrap-timepicker/css/bootstrap-timepicker.css";
+// //@import "jquery.uniform/themes/default/css/uniform.default.css";
+
+////////////////////////////////////////////////////////////////////////////////
+// FRAMEWORKS
+
+@import "bourbon";
+@import "bootstrap";
+
+
+// Base
+// ==========================================================================
+@import "base/variables.scss";
+@import "base/common.scss";
+@import "base/fonts.scss";
+
+@import "base/_animation/animation_var.scss";
+@import "base/_animation/animation.scss";
+
+// Common
+// ==========================================================================
+@import "common/button.scss";
+@import "common/default-table.scss";
+@import "common/dropdown.scss";
+
+@import "common/form-advanced.scss";
+@import "common/form-block.scss";
+@import "common/form-hint.scss";
+@import "common/form-sizes.scss";
+@import "common/form-validate.scss";
+@import "common/form.scss";
+@import "common/tumbler.scss";
+
+@import "common/popover-info.scss";
+@import "common/popover-unit.scss";
+@import "common/popover.scss";
+
+@import "common/popup_about.scss";
+@import "common/popup_license.scss";
+@import "common/popup.scss";
+
+@import "common/tooltip.scss";
+
+@import "common/iw-tabs.scss";
+
+// Layout
+// ==========================================================================
+@import "layout/auth.scss";
+
+@import "layout/layout.scss";
+@import "layout/header.scss";
+@import "layout/main_nav.scss";
+@import "layout/content.scss";
+@import "layout/sidebar.scss";
+@import "layout/breadcrumbs.scss";
+@import "layout/content-header.scss";
+@import "layout/notify.scss";
+@import "layout/system-message.scss";
+
+// Shared
+// ==========================================================================
+@import "shared/actions-panel.scss";
+@import "shared/colorpicker.scss";
+@import "shared/empty-block.scss";
+@import "shared/icon.scss";
+@import "shared/license.scss";
+@import "shared/tags.scss";
+@import "shared/drag-helper.scss";
+
+@import "shared/tree_nav.scss";
+@import "shared/tree-filters.scss";
+
+@import "shared/toolbar.scss";
+
+@import "shared/entity/entity-block.scss";
+@import "shared/entity/entity-list.scss";
+@import "shared/entity/entity-item.scss";
+
+@import "shared/unit.scss";
+
+// Dashboards
+// ==========================================================================
+@import "modules/dashboard/dashboard.scss";
+@import "modules/dashboard/dashboard-toolbar.scss";
+@import "modules/dashboard/dashboard-view.scss";
+@import "modules/dashboard/dashboard-add-widget.scss";
+@import "modules/dashboard/dashboard-report.scss";
+
+@import "modules/dashboard/widget.scss";
+@import "modules/dashboard/widget-content.scss";
+@import "modules/dashboard/widget-threats-count.scss";
+@import "modules/dashboard/widget-violators.scss";
+
+// Events
+// ==========================================================================
+@import "modules/events/condition_builder.scss";
+@import "modules/events/conditions.scss";
+ // Стандартные табы продукта, там где не используется бутстрап
+
+@import "modules/events/events.scss";
+@import "modules/events/events-filters.scss";
+@import "modules/events/events-tooltip.scss";
+@import "modules/events/events-request.scss";
+
+@import "modules/events/event.scss";
+@import "modules/events/event-type.scss";
+@import "modules/events/event-details.scss";
+@import "modules/events/event-dialog.scss";
+
+// Classificator
+// ==========================================================================
+
+// Protection objects
+  // ========================================================================
+@import "modules/protection-objects/protected_documents.scss";
+
+// Files
+// ==========================================================================
+
+// Employees
+// ==========================================================================
+@import "modules/employees/employees.scss";
+@import "modules/employees/employee.scss";
+@import "modules/employees/employee-extended.scss";
+@import "modules/employees/employee-contacts.scss";
+@import "modules/employees/employee-contact.scss";
+
+// Policies
+// ==========================================================================
+@import "modules/policies/policies.scss";
+@import "modules/policies/policies-filters.scss";
+@import "modules/policies/policy.scss";
+@import "modules/policies/policy-objects.scss";
+@import "modules/policies/policy-rules.scss";
+@import "modules/policies/policy-rule.scss";
+@import "modules/policies/policy-control.scss";
+
+// Lists
+// ==========================================================================
+@import "modules/lists/lists.scss";
+
+// Control
+// ==========================================================================
+// @import "modules/control/ldap.scss";
+// @import "modules/control/license.scss";
+// @import "modules/control/roles.scss";
+// @import "modules/control/sistem-status.scss";
+// @import "modules/control/audit.scss";
+// @import "modules/control/integrity.scss";
+// @import "modules/control/services.scss";
+// @import "modules/control/settings.scss";
+
+
+@import "modules/control/control.scss";
+
+@import "modules/control/license.scss";
+
+
+@import "modules/control/audit_events.scss";
+@import "modules/control/diagnostic.scss";
+@import "modules/control/integrity.scss";
+
+@import "modules/control/network_params.scss";
+@import "modules/control/network.scss";
+@import "modules/control/product_services.scss";
+@import "modules/control/product_update.scss";
+
+@import "modules/control/services.scss";
+@import "modules/control/settings-ldap.scss";
+@import "modules/control/settings.scss";
+@import "modules/control/sorting.scss";
+@import "modules/control/update.scss";
+
+// Crawler
+// ==========================================================================
+@import "modules/crawler/crawler_header.scss";
+@import "modules/crawler/crawler_job_details.scss";
+@import "modules/crawler/crawler_job.scss";
+@import "modules/crawler/crawler_scanner.scss";
+@import "modules/crawler/crawler_sidebar.scss";
+@import "modules/crawler/crawler_xeditable.scss";
+@import "modules/crawler/crawler.scss";
+
+////////////////////////////////////////////////////////////////////////////////
+// @see gulp scss_inject task
+// COMPONENTS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import 'app_layout/app_layout.scss';
+@import 'app_layout_header/app_layout_header.scss';
+@import 'app_layout_header_menu/app_layout_header_menu.scss';
+@import 'auth_dialog/auth_dialog.scss';
+@import 'btn/btn.scss';
+@import 'dropdown/dropdown.scss';
+@import 'input/input.scss';
+@import 'ldap/ldap.scss';
+@import 'management_layout/management_layout.scss';
+@import 'users/users.scss';

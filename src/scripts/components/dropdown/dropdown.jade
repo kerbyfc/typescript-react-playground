@@ -1,0 +1,35 @@
+li.dropdown-component.dropdown(
+  class   = resolveClass()
+  onClick = toggle
+  )
+
+  a( class = resolveLinkClass() )
+    = props.text
+
+    if props.caret
+      span.caret
+
+  if state.open
+    ul.dropdown-menu
+
+      // try to render items first
+      if props.items
+        each text, val in props.items
+          li( key = val )
+            Link(
+              to  = val
+              )
+              = text
+
+      // if they were not passed
+      // try to render child dom
+      if props.children
+        = props.children
+
+
+
+
+
+
+
+

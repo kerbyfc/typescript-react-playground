@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <script src='../javascript/application.js'></script>
+  <script src='../javascript/search.js'></script>
+  <link rel='stylesheet' href='../stylesheets/application.css' type='text/css'>
+</head>
+  <body>
+    <div id='base' data-path='../'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='../extra/README.md.html' title='Tm'>
+      Tm
+    </a>
+    &raquo;
+    <a href='../alphabetical_index.html' title='Index'>
+      Index
+    </a>
+    &raquo;
+    <span class='title'>Utils</span>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        Utils
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>node_modules&#47;yamljs&#47;src&#47;Utils.coffee</td>
+        </tr>
+      </table>
+      <h2>Overview</h2>
+      <div class='docstring'>
+  <p>A bunch of utility methods</p>
+</div>
+<div class='tags'>
+</div>
+      <h2>Variables Summary</h2>
+      <dl class='constants'>
+  <dt id='REGEX_LEFT_TRIM_BY_CHAR-variable'>
+    REGEX_LEFT_TRIM_BY_CHAR
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>{}</code></pre>
+    
+  </dd>
+  <dt id='REGEX_RIGHT_TRIM_BY_CHAR-variable'>
+    REGEX_RIGHT_TRIM_BY_CHAR
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>{}</code></pre>
+    
+  </dd>
+  <dt id='REGEX_SPACES-variable'>
+    REGEX_SPACES
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>&#47;\s+&#47;g</code></pre>
+    
+  </dd>
+  <dt id='REGEX_DIGITS-variable'>
+    REGEX_DIGITS
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>&#47;^\d+$&#47;</code></pre>
+    
+  </dd>
+  <dt id='REGEX_OCTAL-variable'>
+    REGEX_OCTAL
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>&#47;[^0-7]&#47;gi</code></pre>
+    
+  </dd>
+  <dt id='REGEX_HEXADECIMAL-variable'>
+    REGEX_HEXADECIMAL
+    =
+  </dt>
+  <dd>
+    <pre><code class='coffeescript'>&#47;[^a-f0-9]&#47;gi</code></pre>
+    
+  </dd>
+</dl>
+      <h2>Class Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#trim-static'>
+        .
+(String)
+<b>trim</b><span>(str, char = &#39;\\s&#39;)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Trims the given string on both sides 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#ltrim-static'>
+        .
+(String)
+<b>ltrim</b><span>(str, char = &#39;\\s&#39;)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Trims the given string on the left side 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#rtrim-static'>
+        .
+(String)
+<b>rtrim</b><span>(str, char = &#39;\\s&#39;)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Trims the given string on the right side 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isEmpty-static'>
+        .
+(Boolean)
+<b>isEmpty</b><span>(value)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Checks if the given value is empty (null, undefined, empty string, string &#39;0&#39;) 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#subStrCount-static'>
+        .
+(Integer)
+<b>subStrCount</b><span>(string, subString, start, length)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Counts the number of occurences of subString inside string 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isDigits-static'>
+        .
+(Boolean)
+<b>isDigits</b><span>(input)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Returns true if input is only composed of digits 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#octDec-static'>
+        .
+(Integer)
+<b>octDec</b><span>(input)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Decode octal value 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#hexDec-static'>
+        .
+(Integer)
+<b>hexDec</b><span>(input)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Decode hexadecimal value 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#utf8chr-static'>
+        .
+(String)
+<b>utf8chr</b><span>(c)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Get the UTF-8 character for the given code point. 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#parseBoolean-static'>
+        .
+(Boolean)
+<b>parseBoolean</b><span>(input, strict = true)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Returns the boolean value equivalent to the given input 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#isNumeric-static'>
+        .
+(Boolean)
+<b>isNumeric</b><span>(input)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Returns true if input is numeric 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#stringToDate-static'>
+        .
+(Date)
+<b>stringToDate</b><span>(str)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Returns a parsed date from the given string 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#strRepeat-static'>
+        .
+(String)
+<b>strRepeat</b><span>(str, number)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Repeats the given string a number of times 
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#getStringFromFile-static'>
+        .
+(String)
+<b>getStringFromFile</b><span>(path, callback = null)</span>
+      </a>
+    </span>
+    <span class='desc'>
+      Reads the data from the given file path and returns the result as string 
+    </span>
+  </li>
+</ul>
+      <h2>Class Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='trim-static'>
+      .
+(String)
+<b>trim</b><span>(str, char = &#39;\\s&#39;)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Trims the given string on both sides</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>str</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string to trim </span>
+    </li>
+    <li>
+      <span class='name'>char</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The character to use for trimming (default: &#39;\s&#39;) </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>A trimmed string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='ltrim-static'>
+      .
+(String)
+<b>ltrim</b><span>(str, char = &#39;\\s&#39;)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Trims the given string on the left side</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>str</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string to trim </span>
+    </li>
+    <li>
+      <span class='name'>char</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The character to use for trimming (default: &#39;\s&#39;) </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>A trimmed string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='rtrim-static'>
+      .
+(String)
+<b>rtrim</b><span>(str, char = &#39;\\s&#39;)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Trims the given string on the right side</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>str</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string to trim </span>
+    </li>
+    <li>
+      <span class='name'>char</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The character to use for trimming (default: &#39;\s&#39;) </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>A trimmed string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isEmpty-static'>
+      .
+(Boolean)
+<b>isEmpty</b><span>(value)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Checks if the given value is empty (null, undefined, empty string, string &#39;0&#39;)</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>value</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The value to check </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>true if the value is empty </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='subStrCount-static'>
+      .
+(Integer)
+<b>subStrCount</b><span>(string, subString, start, length)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Counts the number of occurences of subString inside string</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>string</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string where to count occurences </span>
+    </li>
+    <li>
+      <span class='name'>subString</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The subString to count </span>
+    </li>
+    <li>
+      <span class='name'>start</span>
+      <span class='type'>
+        (
+          <tt>Integer</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The start index </span>
+    </li>
+    <li>
+      <span class='name'>length</span>
+      <span class='type'>
+        (
+          <tt>Integer</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string length until where to count </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Integer</tt>
+      )
+      &mdash;
+      <span class='desc'>The number of occurences </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isDigits-static'>
+      .
+(Boolean)
+<b>isDigits</b><span>(input)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Returns true if input is only composed of digits</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>input</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The value to test </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>true if input is only composed of digits </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='octDec-static'>
+      .
+(Integer)
+<b>octDec</b><span>(input)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Decode octal value</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>input</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The value to decode </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Integer</tt>
+      )
+      &mdash;
+      <span class='desc'>The decoded value </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='hexDec-static'>
+      .
+(Integer)
+<b>hexDec</b><span>(input)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Decode hexadecimal value</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>input</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The value to decode </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Integer</tt>
+      )
+      &mdash;
+      <span class='desc'>The decoded value </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='utf8chr-static'>
+      .
+(String)
+<b>utf8chr</b><span>(c)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Get the UTF-8 character for the given code point.</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>c</span>
+      <span class='type'>
+        (
+          <tt>Integer</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The unicode code point </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>The corresponding UTF-8 character </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='parseBoolean-static'>
+      .
+(Boolean)
+<b>parseBoolean</b><span>(input, strict = true)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Returns the boolean value equivalent to the given input</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>input</span>
+      <span class='type'>
+        (
+          <tt>String|Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The input value </span>
+    </li>
+    <li>
+      <span class='name'>strict</span>
+      <span class='type'>
+        (
+          <tt>Boolean</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>If set to false, accept &#39;yes&#39; and &#39;no&#39; as boolean values </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>the boolean value </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='isNumeric-static'>
+      .
+(Boolean)
+<b>isNumeric</b><span>(input)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Returns true if input is numeric</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>input</span>
+      <span class='type'>
+        (
+          <tt>Object</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The value to test </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Boolean</tt>
+      )
+      &mdash;
+      <span class='desc'>true if input is numeric </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='stringToDate-static'>
+      .
+(Date)
+<b>stringToDate</b><span>(str)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Returns a parsed date from the given string</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>str</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The date string to parse </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>Date</tt>
+      )
+      &mdash;
+      <span class='desc'>The parsed date or null if parsing failed </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='strRepeat-static'>
+      .
+(String)
+<b>strRepeat</b><span>(str, number)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Repeats the given string a number of times</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>str</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The string to repeat </span>
+    </li>
+    <li>
+      <span class='name'>number</span>
+      <span class='type'>
+        (
+          <tt>Integer</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The number of times to repeat the string </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>The repeated string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='getStringFromFile-static'>
+      .
+(String)
+<b>getStringFromFile</b><span>(path, callback = null)</span>
+      <br>
+    </p>
+    <div class='docstring'>
+  <p>Reads the data from the given file path and returns the result as string</p>
+</div>
+<div class='tags'>
+  <h3>Parameters:</h3>
+  <ul class='param'>
+    <li>
+      <span class='name'>path</span>
+      <span class='type'>
+        (
+          <tt>String</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>The path to the file </span>
+    </li>
+    <li>
+      <span class='name'>callback</span>
+      <span class='type'>
+        (
+          <tt>Function</tt>
+        )
+      </span>
+      &mdash;
+      <span class='desc'>A callback to read file asynchronously (optional) </span>
+    </li>
+  </ul>
+  <h3>Returns:</h3>
+  <ul class='return'>
+    <li>
+      <span class='type'></span>
+      (
+        <tt>String</tt>
+      )
+      &mdash;
+      <span class='desc'>The resulting data as string </span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  February 04, 15 14:28:55 by
+  <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
+    Codo
+  </a>
+  2.0.9
+  &#10034;
+  Press H to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/netzpirat' target='_parent'>@netzpirat</a>
+  &#10034;
+  <a href='http://twitter.com/_inossidabile' target='_parent'>@_inossidabile</a>
+</div>
+<iframe id='search_frame'></iframe>
+<div id='fuzzySearch'>
+  <input type='text'>
+  <ol></ol>
+</div>
+<div id='help'>
+  <p>
+    Quickly fuzzy find classes, mixins, methods, file:
+  </p>
+  <ul>
+    <li>
+      <span>T</span>
+      Open fuzzy finder dialog
+    </li>
+  </ul>
+  <p>
+    Control the navigation frame:
+  </p>
+  <ul>
+    <li>
+      <span>L</span>
+      Toggle list view
+    </li>
+    <li>
+      <span>C</span>
+      Show class list
+    </li>
+    <li>
+      <span>I</span>
+      Show mixin list
+    </li>
+    <li>
+      <span>F</span>
+      Show file list
+    </li>
+    <li>
+      <span>M</span>
+      Show method list
+    </li>
+    <li>
+      <span>E</span>
+      Show extras list
+    </li>
+  </ul>
+  <p>
+    You can focus and blur the search input:
+  </p>
+  <ul>
+    <li>
+      <span>S</span>
+      Focus search input
+    </li>
+    <li>
+      <span>Esc</span>
+      Blur search input
+    </li>
+  </ul>
+</div>
+  </body>
+</html>

@@ -6,7 +6,7 @@ api_version: v1
 api:
   v1:
     protocol: https
-    host: v-tavadov-devel
+    host: tm6.infowatch.ru
     path: /api
 
 # specify what options will be injected to application bundle
@@ -20,8 +20,11 @@ shared:
 paths:
 
   common: &common
+    fonts      : fonts/
     images     : images/
-    modules    : modules/
+    styles     : styles/
+    scripts    : scripts/
+    modules    : scripts/modules/
     components : components/
 
   # SOURCES
@@ -29,29 +32,16 @@ paths:
     << : *common
     base      : src
 
-    scripts   : /**/*.coffee
-    configs   : /**/*.yaml
-    bootstrap : app.coffee
+    coffee    : scripts/**/*.coffee
+    bootstrap : scripts/app.coffee
+    yaml      : scripts/**/*.yaml
     index     : index.jade
-    styles    : app.scss
+    scss      : styles/**/*.scss
+    style     : styles/app.scss
 
     components:
-      templates : /**/components/**/*.jade
-      styles    : /**/components/**/*.scss
-
-  # COMPILED SOURCES
-  compiled:
-    << : *common
-    base: compiled
-
-    scripts   : /**/*.js
-    configs   : /**/*.json
-    bootstrap : app.js
-    styles    : app.css
-
-    components:
-      templates : /**/*-tmpl.js
-      styles    : /**/components/**/*.css
+      templates : scripts/**/components/**/*.jade
+      styles    : scripts/**/components/**/*.scss
 
   # BUILDED SOURCES
   build:
@@ -61,21 +51,23 @@ paths:
     index     : index.html
     bootstrap : app.js
     styles    : app.css
+    templates : templates.js
 
   # MISC
   config : config.yml
   nodoc  : nodoc.txt
   karma  : karma.coffee
+  docs   : docs
 
 ################################################################################
-# GENERATORS OPTIONS
+# SCAFFOLDING OPTIONS
 
-templates:
+scaffold:
   # using array/object means templates will be processed together
   component:
-    - ./templates/component.coffee
-    - ./templates/component.scss
-    - ./templates/component.jade
+    - ./scaffold/component.coffee
+    - ./scaffold/component.scss
+    - ./scaffold/component.jade
 
 ################################################################################
 # STYLES COMPILATION OPTIONS
@@ -86,8 +78,8 @@ scss:
     - ./src/styles
     - ./src/styles/bourbon
     # components
-    - ./src/components/**/
-    - ./src/modules/**/components/**/
+    - ./src/scripts/components
+    - ./src/scripts/modules/**/components
     # vendors
     - ./bower_components
     - ./bower_components/bootstrap-sass-official/vendor/assets/stylesheets
@@ -106,11 +98,13 @@ cucumber:
 
 browserify:
   paths:
-    # precompiled sources
-    - ./compiled
-    - ./compiled/framework
-    - ./compiled/components/**/
-    - ./compiled/modules/**/components/**/
+    # sources
+    - src/scripts/ # root
+    - src/scripts/modules/**/ # modules roots
+    - src/scripts/components/**/ # common components
+    - src/scripts/modules/**/components/**/ # module components
+    # compiled sources
+    - build
     # vendors
     - ./node_modules
     - ./bower_components
@@ -121,8 +115,18 @@ browserify:
 component:
   classNameSuffix: '-component'
 
+
 ################################################################################
-# SERVING OPTIONS (DEVELOPMENT ONLY)
+# DOCUMENTATION
+
+codo:
+  lib    : ./node_modules/codo/lib
+  theme  :
+    src: ./src/docs
+    link: ./node_modules/codo/themes/default
+
+################################################################################
+# SERVING OPTIONS
 
 # livereload options for
 # development web-server
