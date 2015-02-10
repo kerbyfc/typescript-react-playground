@@ -132,3 +132,93 @@ class Bar
 # test
 
 ![test](http://tardis1.tinygrab.com/grabs/a25d0cc4c172c8180ea6c8b587a2d4a4cf404fd03a.png)
+
+### TODOs
+***app.coffee*** 
+routes should be filtered by session with user privileges (recursive)
+```coffee 
+        # save route to build menu later
+        # FIXME module should be an array of routes, but not a function
+        # TODO routes should be filtered by session with user privileges (recursive)
+        # (it should use some property for this e.g. "priveledge" or even "key")
+        App.session.routes = for mod in modules
+          do (mod) ->
+            # involve module
+            mod App.session
+
+```
+
+***core/api/base.coffee*** 
+add validation there (data existace)
+```coffee 
+
+  post: (url, options = {}) ->
+    # TODO add validation there (data existace)
+    @call url, _.extend options, type: "POST"
+
+module.exports = Api
+
+```
+
+***app.scss*** 
+scss todo
+```scss 
+@import "bootstrap";
+
+// TODO scss todo
+// Base
+// ==========================================================================
+@import "base/variables.scss";
+@import "base/common.scss";
+@import "base/fonts.scss";
+
+```
+
+***common/dropdown.scss*** 
+abstract this so that the navbar fixed styles are not placed here?
+```scss 
+//
+// Just add .dropup after the standard .dropdown class and you're set, bro.
+// TODO: abstract this so that the navbar fixed styles are not placed here?
+
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+```
+
+
+
+### FIXMEs
+***app.coffee*** 
+module should be an array of routes, but not a function
+```coffee 
+
+        # save route to build menu later
+        # FIXME module should be an array of routes, but not a function
+        # TODO routes should be filtered by session with user privileges (recursive)
+        # (it should use some property for this e.g. "priveledge" or even "key")
+        App.session.routes = for mod in modules
+          do (mod) ->
+            # involve module
+            mod App.session
+```
+
+***components/dropdown/dropdown.coffee*** 
+calls for every instance!
+```coffee 
+  #
+  onMount: ->
+    # FIXME calls for every instance!
+    $ document
+      .on 'click', @handleDocumentClick
+
+  handleDocumentClick: (e) ->
+    if dropdown = $(e.target).closest('.dropdown-component')[0]
+      # clicked to another
+```
+
+
+
+### Licence

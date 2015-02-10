@@ -1,7 +1,7 @@
 
-class Users extends Component
+class Users extends App.Component
 
-  template: JSX.users
+  template: App.JSX.users
 
   # @nodoc
   # @return [Object] - component props

@@ -2,9 +2,9 @@
 imports =
   AppLayoutHeaderMenu: require "app_layout_header_menu"
 
-class AppLayoutHeader extends Component
+class AppLayoutHeader extends App.Component
 
-  template: JSX.app_layout_header
+  template: App.JSX.app_layout_header
 
   # @nodoc
   # @return [Object] - template locals

@@ -1,15 +1,13 @@
+View = require "view"
 
 imports =
   AppLayoutHeader: require "app_layout_header"
 
-class AppLayout extends Component
+class AppLayout extends View
 
-  template: JSX.app_layout
+  displayName: "AppLayout"
 
-  # @nodoc
-  # @return [Object] - template locals
-  #
-  locals: ->
-    _.extend @, imports, Router
+  imports: imports
+  template: App.JSX.app_layout
 
 module.exports = AppLayout

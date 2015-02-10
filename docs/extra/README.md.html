@@ -119,11 +119,69 @@ class Bar
     &quot;but&quot;: &quot;*|Но|А&quot;
 }
 </code></pre>
-<h1 id="test">test</h1><p><img src="http://tardis1.tinygrab.com/grabs/a25d0cc4c172c8180ea6c8b587a2d4a4cf404fd03a.png" alt="test"></p>
+<h1 id="test">test</h1><p><img src="http://tardis1.tinygrab.com/grabs/a25d0cc4c172c8180ea6c8b587a2d4a4cf404fd03a.png" alt="test"></p><h3 id="todos">TODOs</h3><p><strong><em>app.coffee</em></strong> 
+routes should be filtered by session with user privileges (recursive)</p><pre><code class="lang-coffee">        # save route to build menu later
+        # FIXME module should be an array of routes, but not a function
+        # TODO routes should be filtered by session with user privileges (recursive)
+        # (it should use some property for this e.g. &quot;priveledge&quot; or even &quot;key&quot;)
+        App.session.routes = for mod in modules
+          do (mod) -&gt;
+            # involve module
+            mod App.session
+</code></pre><p><strong><em>core/api/base.coffee</em></strong> 
+add validation there (data existace)</p><pre><code class="lang-coffee">
+  post: (url, options = {}) -&gt;
+    # TODO add validation there (data existace)
+    @call url, _.extend options, type: &quot;POST&quot;
+
+module.exports = Api
+</code></pre><p><strong><em>app.scss</em></strong> 
+scss todo</p><pre><code class="lang-scss">@import &quot;bootstrap&quot;;
+
+// TODO scss todo
+// Base
+// ==========================================================================
+@import &quot;base/variables.scss&quot;;
+@import &quot;base/common.scss&quot;;
+@import &quot;base/fonts.scss&quot;;
+</code></pre><p><strong><em>common/dropdown.scss</em></strong> 
+abstract this so that the navbar fixed styles are not placed here?</p><pre><code class="lang-scss">//
+// Just add .dropup after the standard .dropdown class and you&#39;re set, bro.
+// TODO: abstract this so that the navbar fixed styles are not placed here?
+
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  // Reverse the caret
+  .caret {
+    border-top: 0;
+</code></pre>
+<h3 id="fixmes">FIXMEs</h3><p><strong><em>app.coffee</em></strong> 
+module should be an array of routes, but not a function</p><pre><code class="lang-coffee">
+        # save route to build menu later
+        # FIXME module should be an array of routes, but not a function
+        # TODO routes should be filtered by session with user privileges (recursive)
+        # (it should use some property for this e.g. &quot;priveledge&quot; or even &quot;key&quot;)
+        App.session.routes = for mod in modules
+          do (mod) -&gt;
+            # involve module
+            mod App.session
+</code></pre><p><strong><em>components/dropdown/dropdown.coffee</em></strong> 
+calls for every instance!</p><pre><code class="lang-coffee">  #
+  onMount: -&gt;
+    # FIXME calls for every instance!
+    $ document
+      .on &#39;click&#39;, @handleDocumentClick
+
+  handleDocumentClick: (e) -&gt;
+    if dropdown = $(e.target).closest(&#39;.dropdown-component&#39;)[0]
+      # clicked to another
+</code></pre>
+<h3 id="licence">Licence</h3>
+
       </div>
     </div>
     <div id='footer'>
-  February 05, 15 19:39:51 by
+  February 10, 15 18:32:28 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

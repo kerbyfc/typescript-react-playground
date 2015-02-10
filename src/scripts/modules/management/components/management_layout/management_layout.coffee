@@ -1,7 +1,7 @@
 
-class ManagementLayout extends Component
+class ManagementLayout extends App.Component
 
-  template: JSX.management_layout
+  template: App.JSX.management_layout
 
   # @nodoc
   # @return [Object] - component props
@@ -37,7 +37,7 @@ class ManagementLayout extends Component
   # @return [Object] - template locals
   #
   locals: ->
-    Router
+    App.Router
 
   # @nodoc
   # @return [Void] - after component mount manipulations

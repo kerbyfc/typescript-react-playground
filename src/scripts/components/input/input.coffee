@@ -1,7 +1,7 @@
 
-class Input extends Component
+class Input extends App.Component
 
-  template: JSX.input
+  template: App.JSX.input
 
   # @nodoc
   # @return [Object] - component props
@@ -19,7 +19,7 @@ class Input extends Component
     value: @props.value
 
   # @nodoc
-  # @return [Void] - before mount non-async manipulations
+# @return [Void] - before mount non-async manipulations
   #
   beforeMount: ->
     super

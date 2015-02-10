@@ -30,7 +30,7 @@
       <table class='box'>
         <tr>
           <td>Defined in:</td>
-          <td>src&#47;scripts&#47;core&#47;component.coffee</td>
+          <td>src&#47;scripts&#47;core&#47;components&#47;base.coffee</td>
         </tr>
       </table>
       <h2>Overview</h2>
@@ -42,8 +42,8 @@ project components.</p>
     <h4>
       Component declaring
     </h4>
-    <pre><code class='coffeescript'>class Dropdown extends Component
-  template: JSX.dropdown
+    <pre><code class='coffeescript'>class Dropdown extends App.Component
+  template: App.JSX.dropdown
   locals: -&gt;
     msg: &quot;hello&quot;</code></pre>
     <h4>
@@ -1582,7 +1582,7 @@ component includes element, false otherwise.</p>
 </div>
     </div>
     <div id='footer'>
-  February 05, 15 19:39:51 by
+  February 10, 15 18:32:28 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

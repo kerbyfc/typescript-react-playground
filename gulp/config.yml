@@ -1,0 +1,130 @@
+################################################################################
+# BUILD SYSTEM (GULP) PATHS
+
+paths:
+
+  root : ./
+
+  common: &common
+    fonts      : fonts/
+    images     : images/
+    styles     : styles/
+    scripts    : scripts/
+    modules    : scripts/modules/
+    components : components/
+
+  # SOURCES
+  src:
+    << : *common
+    base : src
+    all  : /**/*.*
+
+    coffee    : scripts/**/*.coffee
+    bootstrap : scripts/app.coffee
+    yaml      : scripts/**/*.yml
+    index     : index.jade
+    scss      : styles/**/*.scss
+    style     : styles/app.scss
+
+    components:
+      templates : scripts/**/components/**/*.jade
+      styles    : scripts/**/components/**/*.scss
+
+  # BUILDED SOURCES
+  build:
+    << : *common
+    base: build
+
+    index     : index.html
+    bootstrap : app.js
+    styles    : app.css
+    templates : templates.js
+
+  # MISC
+  config : config.yml
+  nodoc  : nodoc.txt
+  karma  : karma.coffee
+  docs   : docs
+  readme : README.md
+
+################################################################################
+# SCAFFOLDING OPTIONS
+
+scaffold:
+  # using array/object means templates will be processed together
+  component:
+    - ./scaffold/component.coffee
+    - ./scaffold/component.scss
+    - ./scaffold/component.jade
+
+################################################################################
+# STYLES COMPILATION OPTIONS
+
+scss:
+  includePaths:
+    # common
+    - ./src/styles
+    - ./src/styles/bourbon
+    # components
+    - ./src/scripts/components
+    - ./src/scripts/modules/**/components
+    # vendors
+    - ./bower_components
+    - ./bower_components/bootstrap-sass-official/vendor/assets/stylesheets
+
+################################################################################
+# TESTS OPTIONS
+
+cucumber:
+  paths:
+    features: ./tests/features/**/*.feature
+    definitions: ./tests/definitions/**/*.coffee
+    support: ./tests/support/**/*.coffee
+
+################################################################################
+# CODE COMPILATION OPTIONS
+
+browserify:
+  paths:
+    # sources
+    - src/scripts/ # root
+    - src/scripts/core/**/
+    - src/scripts/modules/**/ # modules roots
+    - src/scripts/components/**/ # common components
+    - src/scripts/modules/**/components/**/ # module components
+    # compiled sources
+    - build
+    # vendors
+    - ./node_modules
+    - ./bower_components
+    - ./bower_components/react
+    - ./bower_components/**/dist/ # warning, may cause conflicts
+
+# components options
+component:
+  classNameSuffix: '-component'
+
+
+################################################################################
+# DOCUMENTATION
+
+codo:
+  lib    : ./node_modules/codo/lib
+  theme  :
+    src: ./src/docs
+    link: ./node_modules/codo/themes/default
+
+################################################################################
+# SERVING OPTIONS
+
+# livereload options for
+# development web-server
+livereload:
+  enable: true
+  cwd: ./build
+  # watch filter
+  paths:
+    - app.js
+    - app.css
+    - index.html
+    - config.json

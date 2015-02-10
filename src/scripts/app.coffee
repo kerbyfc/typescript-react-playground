@@ -7,50 +7,69 @@ _.extend window,
   $     : require "jquery"
   React : require "react"
 
-_.extend window,
-  Component : require "core/component"
+App = window.App =
+  # require config first
+  config: require "config"
+
+# then require core classes
+_.extend App,
+  Component : require "core/components/base"
+  Store     : require "core/stores/base"
   JSX       : require "templates"
   Router    : require "react-router"
 
-{ Route } = Router
+# then require user session
+App.session = require "core/session"
 
-# main application layout
-Layout = require "app_layout"
+# require base layouts
+AuthLayout = require "auth_layout"
+AppLayout  = require "app_layout"
 
-# Singleton that starts the application.
-#
-class Bootstrapper
+{ Route } = App.Router
+
+class App
+
+  _.extend App, window.App
 
   # construct bootstrapper
   # @param  [Array]   modules - list of modules
   # @param  [Session] session - session singleton
   # @return [Bootstraper]
   #
-  constructor: (mods, session) ->
+  constructor: (modules) ->
     # start session and then...
-    session.start ->
+    App.session.check
 
-      # save route to build menu later
-      # FIXME module should be an array of routes, but not a function
-      # TODO routes should be filtered by session with user privileges (recursive)
-      # (it should use some property for this e.g. "priveledge" or even "key")
-      session.routes = for mod in mods
-        do (mod) ->
-          # involve module
-          mod session
+      success: ->
 
-      # wrap route with handlers with application layout
-      routes = Component.create Route, handler:Layout, session.routes
+        # save route to build menu later
+        # FIXME module should be an array of routes, but not a function
+        # TODO routes should be filtered by session with user privileges (recursive)
+        # (it should use some property for this e.g. "priveledge" or even "key")
+        App.session.routes = for mod in modules
+          do (mod) ->
+            # involve module
+            mod App.session
 
-      # start application
-      # Router.run routes, Router.HistoryLocation, (Handler) ->
-      Router.run routes, (Handler) ->
-        React.render Component.create(Handler), document.body
+        # wrap route with handlers with application layout
+        routes = App.Component.create Route, handler: AppLayout, App.session.routes
 
-new Bootstrapper [
+        # start application
+        # Router.run routes, Router.HistoryLocation, (Handler) ->
+        App.Router.run routes, (Handler) ->
+          React.render App.Component.create(Handler), document.body
 
+      error: ->
+        React.render App.Component.create(AuthLayout), document.body
+
+  navigate: (route, title) ->
+    if history
+      history.pushState null, "signin", "signin"
+      history.go 1
+    else
+      location.hash = "/#{route}"
+
+new App [
   # application modules
   require "modules/management/bootstrap"
-
-  # session
-  ], require "core/session"
+]

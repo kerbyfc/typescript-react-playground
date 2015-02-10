@@ -48,39 +48,27 @@
       <ul class='summary'>
   <li>
     <span class='signature'>
-      <a href='#start-dynamic'>
-        #
-( $.Deffered )
-<b>start</b><span>(cb)</span>
-      </a>
-    </span>
-    <span class='desc'>
-      Entry point to application, application will start after user session will be established
-
-    </span>
-  </li>
-  <li>
-    <span class='signature'>
       <a href='#check-dynamic'>
         #
-( $.Deferred )
-<b>check</b><span>(cb = @cb)</span>
+(Object)
+<b>check</b><span>(callbacks = {
+  success: null,
+  error: null
+})</span>
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
-      Check user is logged in 
+      Check if user is authenticated, processs coincident callback. 
     </span>
   </li>
   <li>
     <span class='signature'>
-      <a href='#establish-dynamic'>
+      <a href='#wrapLoginCallbacks-dynamic'>
         #
 (void)
-<b>establish</b><span>({data})</span>
+<b>wrapLoginCallbacks</b><span>(callbacks)</span>
       </a>
     </span>
-    <span class='bound note title'>Bound</span>
     <span class='desc'>
     </span>
   </li>
@@ -94,89 +82,48 @@
     </span>
     <span class='bound note title'>Bound</span>
     <span class='desc'>
-      Check if user has priviledge to access functionality 
     </span>
   </li>
   <li>
     <span class='signature'>
       <a href='#login-dynamic'>
         #
-( $.Deffered )
+(Object)
 <b>login</b><span>(data)</span>
       </a>
     </span>
     <span class='desc'>
-      Login 
+      Login user 
     </span>
   </li>
 </ul>
       <h2>Instance Method Details</h2>
       <div class='methods'>
   <div class='method_details'>
-    <p class='signature' id='start-dynamic'>
-      #
-( $.Deffered )
-<b>start</b><span>(cb)</span>
-      <br>
-    </p>
-    <div class='docstring'>
-  <p>Entry point to application, application will start
-after user session will be established</p>
-</div>
-<div class='tags'>
-  <h3>Parameters:</h3>
-  <ul class='param'>
-    <li>
-      <span class='name'>cb</span>
-      <span class='type'>
-        (
-          <tt>Function</tt>
-        )
-      </span>
-      &mdash;
-      <span class='desc'><ul> callback
-</ul>
-</span>
-    </li>
-  </ul>
-  <h3>Returns:</h3>
-  <ul class='return'>
-    <li>
-      <span class='type'></span>
-      (
-        <tt>$.Deffered</tt>
-      )
-      &mdash;
-      <span class='desc'>promise </span>
-    </li>
-  </ul>
-</div>
-  </div>
-  <div class='method_details'>
     <p class='signature' id='check-dynamic'>
       #
-( $.Deferred )
-<b>check</b><span>(cb = @cb)</span>
-      <span class='bound note'>Bound</span>
+(Object)
+<b>check</b><span>(callbacks = {
+  success: null,
+  error: null
+})</span>
       <br>
     </p>
     <div class='docstring'>
-  <p>Check user is logged in</p>
+  <p>Check if user is authenticated, processs coincident callback.</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>cb</span>
+      <span class='name'>callbacks</span>
       <span class='type'>
         (
-          <tt>Function</tt>
+          <tt>Object</tt>
         )
       </span>
       &mdash;
-      <span class='desc'><ul> callback
-</ul>
-</span>
+      <span class='desc'>callbacks for api call </span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -184,7 +131,7 @@ after user session will be established</p>
     <li>
       <span class='type'></span>
       (
-        <tt>$.Deferred</tt>
+        <tt>Object</tt>
       )
       &mdash;
       <span class='desc'>promise </span>
@@ -193,11 +140,10 @@ after user session will be established</p>
 </div>
   </div>
   <div class='method_details'>
-    <p class='signature' id='establish-dynamic'>
+    <p class='signature' id='wrapLoginCallbacks-dynamic'>
       #
 (void)
-<b>establish</b><span>({data})</span>
-      <span class='bound note'>Bound</span>
+<b>wrapLoginCallbacks</b><span>(callbacks)</span>
       <br>
     </p>
     
@@ -210,10 +156,7 @@ after user session will be established</p>
       <span class='bound note'>Bound</span>
       <br>
     </p>
-    <div class='docstring'>
-  <p>Check if user has priviledge to access functionality</p>
-</div>
-<div class='tags'>
+    <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
@@ -243,25 +186,25 @@ after user session will be established</p>
   <div class='method_details'>
     <p class='signature' id='login-dynamic'>
       #
-( $.Deffered )
+(Object)
 <b>login</b><span>(data)</span>
       <br>
     </p>
     <div class='docstring'>
-  <p>Login</p>
+  <p>Login user</p>
 </div>
 <div class='tags'>
   <h3>Parameters:</h3>
   <ul class='param'>
     <li>
-      <span class='name'>user</span>
+      <span class='name'>data</span>
       <span class='type'>
         (
           <tt>Object</tt>
         )
       </span>
       &mdash;
-      <span class='desc'>data @option [ String ] username @option [ String ] password </span>
+      <span class='desc'>loging &amp; pass </span>
     </li>
   </ul>
   <h3>Returns:</h3>
@@ -269,10 +212,10 @@ after user session will be established</p>
     <li>
       <span class='type'></span>
       (
-        <tt>$.Deffered</tt>
+        <tt>Object</tt>
       )
       &mdash;
-      <span class='desc'>deferred </span>
+      <span class='desc'>promise </span>
     </li>
   </ul>
 </div>
@@ -280,7 +223,7 @@ after user session will be established</p>
 </div>
     </div>
     <div id='footer'>
-  February 05, 15 19:39:51 by
+  February 10, 15 18:32:28 by
   <a href='https://github.com/coffeedoc/codo' title='CoffeeScript API documentation generator'>
     Codo
   </a>

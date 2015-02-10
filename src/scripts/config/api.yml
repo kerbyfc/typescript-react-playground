@@ -1,0 +1,7 @@
+api:
+  version: v1
+
+  v1:
+    protocol: https
+    host: v-tavadov-devel
+    path: /api

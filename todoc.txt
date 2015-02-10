@@ -1,0 +1,35 @@
+
+ Classes              Path                                                                                                               
+ App                  /app.coffee                                                              
+ AppLayout            /components/app_layout/app_layout.coffee                                 
+ AppLayoutHeader      /components/app_layout_header/app_layout_header.coffee                   
+ AppLayoutHeaderMenu  /components/app_layout_header_menu/app_layout_header_menu.coffee         
+ AuthLayout           /components/auth_layout/auth_layout.coffee                               
+ Btn                  /components/btn/btn.coffee                                               
+ Input                /components/input/input.coffee                                           
+ Api.V1               /core/api/v1.coffee                                                      
+ Api                  /core/base.coffee                                                        
+ View                 /core/components/view.coffee                                             
+ Session              /core/session.coffee                                                     
+ Ldap                 /modules/management/components/ldap/ldap.coffee                          
+ ManagementLayout     /modules/management/components/management_layout/management_layout.coffee
+ Users                /modules/management/components/users/users.coffee                        
+
+
+ Methods                                     Path                                                                                                      
+ bind (Input)                                /components/input/input.coffee                                  
+ extractRoutes (AppLayoutHeaderMenu)         /components/app_layout_header_menu/app_layout_header_menu.coffee
+ get (Api)                                   /core/api/base.coffee                                           
+ handleDocumentClick (Dropdown)              /components/dropdown/dropdown.coffee                            
+ login (AuthLayout)                          /components/auth_layout/auth_layout.coffee                      
+ logout (AppLayoutHeaderMenu)                /components/app_layout_header_menu/app_layout_header_menu.coffee
+ navigate (App)                              /app.coffee                                                     
+ onUnmount (Dropdown)                        /components/dropdown/dropdown.coffee                            
+ post (Api)                                  /core/api/base.coffee                                           
+ render (View)                               /core/components/view.coffee                                    
+ resolveClass (Dropdown)                     /components/dropdown/dropdown.coffee                            
+ resolveDropdownClass (AppLayoutHeaderMenu)  /components/app_layout_header_menu/app_layout_header_menu.coffee
+ resolveLinkClass (Dropdown)                 /components/dropdown/dropdown.coffee                            
+ val (Input)                                 /components/input/input.coffee                                  
+ wrapLoginCallbacks (Session)                /core/session.coffee                                            
+

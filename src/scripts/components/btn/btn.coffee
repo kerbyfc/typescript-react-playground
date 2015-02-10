@@ -1,7 +1,7 @@
 
-class Btn extends Component
+class Btn extends App.Component
 
-  template: JSX.btn
+  template: App.JSX.btn
 
   # @nodoc
   # @return [Object] - component props

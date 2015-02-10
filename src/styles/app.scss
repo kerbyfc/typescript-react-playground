@@ -36,7 +36,7 @@ $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 @import "bourbon";
 @import "bootstrap";
 
-
+// TODO scss todo
 // Base
 // ==========================================================================
 @import "base/variables.scss";
@@ -211,122 +211,16 @@ $icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 @import "modules/crawler/crawler.scss";
 
 ////////////////////////////////////////////////////////////////////////////////
-// @see gulp scss_inject task
+// @see gulp scss:inject task
 // COMPONENTS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @import 'app_layout/app_layout.scss';
 @import 'app_layout_header/app_layout_header.scss';
 @import 'app_layout_header_menu/app_layout_header_menu.scss';
-@import 'auth_dialog/auth_dialog.scss';
+@import 'auth_layout/auth_layout.scss';
 @import 'btn/btn.scss';
 @import 'dropdown/dropdown.scss';
 @import 'input/input.scss';
 @import 'ldap/ldap.scss';
 @import 'management_layout/management_layout.scss';
 @import 'users/users.scss';
+

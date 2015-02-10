@@ -1,10 +1,8 @@
 LdapStore = require "stores/ldap"
 
-console.log LdapStore
+class Ldap extends App.Component
 
-class Ldap extends Component
-
-  template: JSX.ldap
+  template: App.JSX.ldap
 
   # @nodoc
   # @return [Object] - component props

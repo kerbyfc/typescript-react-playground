@@ -2,9 +2,9 @@
  * Dropdown component. Can render list of items with `li` tag,
  * or render custom content.
 ###
-class Dropdown extends Component
+class Dropdown extends App.Component
 
-  template: JSX.dropdown
+  template: App.JSX.dropdown
 
   defaultProps =
     linkClass : ""
@@ -27,7 +27,7 @@ class Dropdown extends Component
   # @return [Object] - template locals
   #
   locals: ->
-    _.extend @, Router
+    _.extend @, App.Router
 
   # Toggle visibility state
   # @return [Void]
