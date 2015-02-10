@@ -26,6 +26,12 @@ paths:
     scss      : styles/**/*.scss
     style     : styles/app.scss
 
+    docs:
+      styles    : docs/**/*.styl
+      js        : docs/**/*.js
+      coffee    : docs/**/*.coffee
+      templates : docs/**/*.hamlc
+
     components:
       templates : scripts/**/components/**/*.jade
       styles    : scripts/**/components/**/*.scss

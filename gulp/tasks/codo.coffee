@@ -17,7 +17,7 @@ gulp.task "codo:patch", ->
 gulp.task "codo:build", ["codo:patch", "codo:theme"], shell.task [
   "./node_modules/.bin/codo
   --undocumented --closure --private
-  #{p.src.scripts} -o #{p.docs} | tee #{p.nodoc}
+  #{p.src.scripts} -o #{p.docs}
   | perl -pe 's/\\x1b\\[[0-9;]*m//g'
   | sed 's/#{PATH.resolve(p.src.scripts).replace /\//g, '\\/'}//'
   | sed 's/[│├┌┬┼┐┤┤┘┴└─]//g'
@@ -26,4 +26,10 @@ gulp.task "codo:build", ["codo:patch", "codo:theme"], shell.task [
 ]
 
 gulp.task "codo:serve", ["codo:build"], ->
-  gulp.watch p.build.bootstrap, ["codo:build"]
+  gulp.watch [
+    p.build.bootstrap
+    p.src.docs.styles
+    p.src.docs.js
+    p.src.docs.coffee
+    p.src.docs.templates
+  ], ["codo:build"]
