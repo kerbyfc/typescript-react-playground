@@ -1,5 +1,6 @@
 
  Classes              Path                                                                                                               
+ App                  /app.coffee                                                              
  AppLayout            /components/app_layout/app_layout.coffee                                 
  AppLayoutHeader      /components/app_layout_header/app_layout_header.coffee                   
  AppLayoutHeaderMenu  /components/app_layout_header_menu/app_layout_header_menu.coffee         
@@ -17,12 +18,12 @@
 
  Methods                                     Path                                                                                                      
  bind (Input)                                /components/input/input.coffee                                  
- constructor (App)                           /app.coffee                                                     
  extractRoutes (AppLayoutHeaderMenu)         /components/app_layout_header_menu/app_layout_header_menu.coffee
  get (Api)                                   /core/api/base.coffee                                           
  handleDocumentClick (Dropdown)              /components/dropdown/dropdown.coffee                            
  login (AuthLayout)                          /components/auth_layout/auth_layout.coffee                      
  logout (AppLayoutHeaderMenu)                /components/app_layout_header_menu/app_layout_header_menu.coffee
+ navigate (App)                              /app.coffee                                                     
  onUnmount (Dropdown)                        /components/dropdown/dropdown.coffee                            
  post (Api)                                  /core/api/base.coffee                                           
  render (View)                               /core/components/view.coffee                                    

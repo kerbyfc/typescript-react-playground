@@ -1,11 +1,41 @@
+# globals
 
-###
- App class
-###
+window._ = require "lodash"
+
+# setup globals
+_.extend window,
+  $     : require "jquery"
+  React : require "react"
+
+App = window.App =
+  # require config first
+  config: require "config"
+
+# then require core classes
+_.extend App,
+  Component : require "core/components/base"
+  Store     : require "core/stores/base"
+  JSX       : require "templates"
+  Router    : require "react-router"
+
+# then require user session
+App.session = require "core/session"
+
+# require base layouts
+AuthLayout = require "auth_layout"
+AppLayout  = require "app_layout"
+
+{ Route } = App.Router
+
 class App
 
   _.extend App, window.App
 
+  # construct bootstrapper
+  # @param  [Array]   modules - list of modules
+  # @param  [Session] session - session singleton
+  # @return [Bootstraper]
+  #
   constructor: (modules) ->
     # start session and then...
     App.session.check
@@ -32,13 +62,6 @@ class App
       error: ->
         React.render App.Component.create(AuthLayout), document.body
 
-
-  ###*
-   * Method navigate
-   * @param  {[type]} route [description]
-   * @param  {[type]} title [description]
-   * @return {[type]}       [description]
-  ###
   navigate: (route, title) ->
     if history
       history.pushState null, "signin", "signin"
@@ -46,3 +69,7 @@ class App
     else
       location.hash = "/#{route}"
 
+new App [
+  # application modules
+  require "modules/management/bootstrap"
+]

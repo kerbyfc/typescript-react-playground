@@ -27,7 +27,7 @@ gulp.task "codo:build", ["codo:patch", "codo:theme"], shell.task [
 
 gulp.task "codo:serve", ["codo:build"], ->
   gulp.watch [
-    p.build.bootstrap
+    p.src.coffee
     p.src.docs.styles
     p.src.docs.js
     p.src.docs.coffee

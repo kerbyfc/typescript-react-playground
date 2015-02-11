@@ -6,6 +6,7 @@ coffeify    = require "coffeeify"
 gulp.task "scripts:build", ["yaml:build", "jade:build"], ->
   src p.src.bootstrap, read: false
     .pipe browserify
+      debug: !gulp.env.production
       transform  : ['coffeeify']
       extensions : ['.coffee'  ]
       insertGlobals: false
