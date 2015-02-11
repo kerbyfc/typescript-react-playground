@@ -1,10 +1,8 @@
 merge = require "gulp-merge"
-clean = require "gulp-clean"
+del   = require "del"
 
 gulp.task "cleanup", ->
-  merge(
-      src p.build.base
-      src p.docs
-    )
-    .pipe clean
-      read: false
+  del [
+    src p.build.base
+    src p.docs
+  ]
