@@ -15,7 +15,7 @@ gulp.task "codo:patch", ->
     .pipe gulp.dest cfg.codo.lib
 
 gulp.task "codo:build", ["codo:patch", "codo:theme"], shell.task [
-  "./node_modules/.bin/codo
+  "node_modules/.bin/codo
   --undocumented --closure --private
   #{p.src.scripts} -o #{p.docs}
   | perl -pe 's/\\x1b\\[[0-9;]*m//g'
