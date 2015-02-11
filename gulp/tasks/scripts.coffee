@@ -1,5 +1,6 @@
 browserify  = require "gulp-browserify"
 rename      = require "gulp-rename"
+coffeify    = require "coffeeify"
 
 # build application bundle with browserify
 gulp.task "scripts:build", ["yaml:build", "jade:build"], ->

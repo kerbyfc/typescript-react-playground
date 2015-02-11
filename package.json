@@ -28,6 +28,7 @@
   "description": "TME",
   "devDependencies": {
     "codo": "*",
+    "coffeeify": "1.0.0",
     "fs-extra": "0.16.3",
     "glob": "4.3.5",
     "gulp": "3.8.10",
