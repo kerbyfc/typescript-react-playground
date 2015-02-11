@@ -5,10 +5,6 @@ node_modules
 bower_components
 build
 .DS_Store
-vertx
 npm-debug.log
-asdfsa
-*.jar
 logs
-.symlinks
-compiled
+docs
