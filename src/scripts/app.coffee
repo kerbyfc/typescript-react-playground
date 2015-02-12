@@ -13,16 +13,17 @@ App = window.App =
 
 # then require core classes
 _.extend App,
-  Component : require "core/components/base"
-  Store     : require "core/stores/base"
   JSX       : require "templates"
   Router    : require "react-router"
 
+  require "component"
+  require "store"
+
 # then require user session
-App.session = require "core/session"
+App.session = require "session.coffee"
 
 # require base layouts
-AuthLayout = require "auth_layout"
+AuthLayout = require "auth_layout.coffee"
 AppLayout  = require "app_layout"
 
 { Route } = App.Router

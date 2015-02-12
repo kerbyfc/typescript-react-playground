@@ -38,7 +38,7 @@ for scope, paths of cfg.paths
           , {}
         else
           # join relative and base paths
-          PATH.join p[scope].base, _path
+          PATH.resolve p[scope].base, _path
 
 _.extend global,
 

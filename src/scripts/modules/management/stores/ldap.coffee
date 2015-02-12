@@ -14,7 +14,6 @@
 #     value
 
 
-Store     = require('core/stores/base')
 actions   = require('./actions')
 
 init      = actions.init
@@ -22,7 +21,7 @@ decrement = actions.decrement
 increment = actions.increment
 
 # module.exports = new LdapStore
-module.exports = Store (listen, waitFor) ->
+module.exports = App.Store (listen, waitFor) ->
   value = 0
 
   listen init, (val) ->

@@ -16,8 +16,8 @@ paths:
   # SOURCES
   src:
     << : *common
-    base : src
-    all  : /**/*.*
+    base : ./src
+    all  : ./**/*.*
 
     coffee    : scripts/**/*.coffee
     bootstrap : scripts/app.coffee
@@ -39,7 +39,7 @@ paths:
   # BUILDED SOURCES
   build:
     << : *common
-    base: build
+    base: ./build
 
     index     : index.html
     bootstrap : app.js
@@ -93,13 +93,13 @@ cucumber:
 browserify:
   paths:
     # sources
-    - src/scripts/ # root
-    - src/scripts/core/**/
-    - src/scripts/modules/**/ # modules roots
-    - src/scripts/components/**/ # common components
-    - src/scripts/modules/**/components/**/ # module components
+    - ./src/scripts/ # root
+    - ./src/scripts/core/
+    - ./src/scripts/modules/**/ # modules roots
+    - ./src/scripts/components/**/ # common components
+    - ./src/scripts/modules/**/components/**/ # module components
     # compiled sources
-    - build
+    - ./build
     # vendors
     - ./node_modules
     - ./bower_components

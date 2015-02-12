@@ -1,9 +1,8 @@
-View = require "view"
 
 imports =
   AppLayoutHeader: require "app_layout_header"
 
-class AppLayout extends View
+class AppLayout extends App.View
 
   displayName: "AppLayout"
 

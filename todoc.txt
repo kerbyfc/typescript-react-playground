@@ -9,7 +9,7 @@
  Input                /components/input/input.coffee                                           
  Api.V1               /core/api/v1.coffee                                                      
  Api                  /core/base.coffee                                                        
- View                 /core/components/view.coffee                                             
+ View                 /core/component/view.coffee                                              
  Session              /core/session.coffee                                                     
  Ldap                 /modules/management/components/ldap/ldap.coffee                          
  ManagementLayout     /modules/management/components/management_layout/management_layout.coffee
@@ -26,7 +26,7 @@
  navigate (App)                              /app.coffee                                                     
  onUnmount (Dropdown)                        /components/dropdown/dropdown.coffee                            
  post (Api)                                  /core/api/base.coffee                                           
- render (View)                               /core/components/view.coffee                                    
+ render (View)                               /core/component/view.coffee                                     
  resolveClass (Dropdown)                     /components/dropdown/dropdown.coffee                            
  resolveDropdownClass (AppLayoutHeaderMenu)  /components/app_layout_header_menu/app_layout_header_menu.coffee
  resolveLinkClass (Dropdown)                 /components/dropdown/dropdown.coffee                            
