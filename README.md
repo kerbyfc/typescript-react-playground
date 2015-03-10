@@ -5,15 +5,15 @@
 
 ### 1. Motivation
 
-After YAP developing, i have some frustration about product quality. A lot of arhitecture defects were resolved in next version, which is under development at the moment. But i still feel DRY (don't repeat youself) approach deficiency. Now we use Marrionette behaviours, but it's still not comprehensive DRY technique: we still use css selectors to manipulate dom, behaviours are still state-missing (have not state flow or finite state machine). Marionette gives us an extra development manner freedom, the consequence of which is expressed by code inconsistency. 
+After YAP developing, i have some frustration about product quality. A lot of arhitecture defects were resolved in next version, which is under development at the moment. But i still feel DRY (don't repeat youself) approach deficiency. Now we use Marrionette behaviours, but it's still not comprehensive DRY technique: we still use css selectors to manipulate dom, behaviours are still state-missing (have not state flow or finite state machine). Marionette gives us an extra development manner freedom, the consequence of which is expressed by code inconsistency.
 
-### 2. Inspiration 
+### 2. Inspiration
 I think that development flow must be fast, productive and unambiguous. We should not waste time in making Code Design (CD) decisions. In this case the most productive and modern approach will be web components usage. React.js may be the perfect solution. It has some inconvenience for some developers, but i'm going to present the more complex solution, rather than a framework.
 
 The text below was written under inspiration of using net tools of web-stack:
 - Gulp<sup>*</sup>  - workflow automator and source build system
 - React - js library for building ui
-- Cjxs  - Jsx transpiler with coffeescript support
+- Jade templates (TODO think about necessity)
 - Yaml<sup>*</sup>  - very simple and powerfull markup language for static data structures
 - Karma<sup>*</sup> - spectacular test runner for javascript
 - Codo  - documentation generator
@@ -24,7 +24,7 @@ The text below was written under inspiration of using net tools of web-stack:
 All of us love clean code and all of us has it's own code style guide. It's strongly recommended to have common documented team style guide. My vision of code is represented in section below.
 
 #### 3.1. Coffeescript style guide
-Most of critical cases are covered with coffee linter. 
+Most of critical cases are covered with coffee linter.
 
 For convenience l'll some shortenings are used:
 ✓ - to mark *good* practices
@@ -32,17 +32,17 @@ For convenience l'll some shortenings are used:
 ✗ \[explanation\] - to mark *bad* practices
 
 ##### Special chars
-- Use only 2 spaces for identation☝. 
-- Chars limit per line is 80☝. 
+- Use only 2 spaces for identation☝.
+- Chars limit per line is 80☝.
 - Use double quotes for strings.
 
 ###### Blank Lines
 Separate top-level function and class definitions with a *single* blank line.It's *strongly recomended* to avoid line breaks in context of block (only comments may break code inside code block).
 ```coffee
 a = "foo"
-✓ 
+✓
 class Foo
-    ✓ 
+    ✓
     contructor: ->
         bar()
         ✗ inside block
@@ -56,7 +56,7 @@ class Foo
 Multiline arrays/objects should not contain commas.
 ```coffee
 foo = [
-  'bar' ✓ 
+  'bar' ✓
   'baz', ✗
   bar:
     bear: 2
@@ -91,10 +91,10 @@ Block comments should be used to document functions, classes, it's methods and p
  * @deprecated
 ###
 class Bar
-    
+
   ###* ✓
    * Class version
-   * ✗ 
+   * ✗
    * @type {String}
   ### ✓
   version = "0.0.1"
@@ -105,7 +105,7 @@ class Bar
    * @param  {Number} bear
    * @param  {Number} water
    * @return {Bar}
-  ### 
+  ###
   constructor: (bear, water) ->
     bear  *= 2
     water /= 2
@@ -134,9 +134,9 @@ class Bar
 ![test](http://tardis1.tinygrab.com/grabs/a25d0cc4c172c8180ea6c8b587a2d4a4cf404fd03a.png)
 
 ### TODOs
-***app.coffee*** 
+***app.coffee***
 routes should be filtered by session with user privileges (recursive)
-```coffee 
+```coffee
         # save route to build menu later
         # FIXME module should be an array of routes, but not a function
         # TODO routes should be filtered by session with user privileges (recursive)
@@ -148,9 +148,9 @@ routes should be filtered by session with user privileges (recursive)
 
 ```
 
-***core/api/base.coffee*** 
+***core/api/base.coffee***
 add validation there (data existace)
-```coffee 
+```coffee
 
   post: (url, options = {}) ->
     # TODO add validation there (data existace)
@@ -160,9 +160,9 @@ module.exports = Api
 
 ```
 
-***app.scss*** 
+***app.scss***
 scss todo
-```scss 
+```scss
 @import "bootstrap";
 
 // TODO scss todo
@@ -174,9 +174,9 @@ scss todo
 
 ```
 
-***common/dropdown.scss*** 
+***common/dropdown.scss***
 abstract this so that the navbar fixed styles are not placed here?
-```scss 
+```scss
 //
 // Just add .dropup after the standard .dropdown class and you're set, bro.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
@@ -191,9 +191,9 @@ abstract this so that the navbar fixed styles are not placed here?
 
 
 ### FIXMEs
-***app.coffee*** 
+***app.coffee***
 module should be an array of routes, but not a function
-```coffee 
+```coffee
 
         # save route to build menu later
         # FIXME module should be an array of routes, but not a function
@@ -205,9 +205,9 @@ module should be an array of routes, but not a function
             mod App.session
 ```
 
-***components/dropdown/dropdown.coffee*** 
+***components/dropdown/dropdown.coffee***
 calls for every instance!
-```coffee 
+```coffee
   #
   onMount: ->
     # FIXME calls for every instance!
