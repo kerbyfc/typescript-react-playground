@@ -1,0 +1,92 @@
+<% if _.isEmpty(@participants_keys) and _.isEmpty(@participants) and _.isEmpty(@participants_conflicts) : %>
+    <div class="unit__empty"><%= App.t 'events.events.participant_undefined' %></div>
+<% else : %>
+
+    <% if @service.get('mnemo') is 'email' and
+       (@participants_keys.length + @participants.length + @participants_conflicts.length) > 1 and
+       @participant_type is 'sender' : %>
+        <div class="unit conflict" data-collapse-item>
+
+            <!-- Показываем проидентифицированных пользователей -->
+            <% for sender, i in @participants : %>
+                <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                <% include "events/partials/_user_info", _.assign(@, {participant: sender}) %>
+            <% end %>
+
+            <% if @participants.length and @participants_keys.length : %>
+                <span class='unit__text'><%= App.t 'global.or' %></span>
+            <% end %>
+
+            <!-- Показываем непроидентифицированные ключи -->
+            <% for participant, i in @participants_keys : %>
+                <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                <% include "events/identity_entity", _.assign(@, {identity: participant.KEY, KEY_TYPE: participant.KEY_TYPE}) %>
+            <% end %>
+
+            <% if @participants.length and @participants_keys.length and @participants_conflicts.length : %>
+                <span class='unit__text'><%= App.t 'global.or' %></span>
+            <% end %>
+
+            <% if @participants_conflicts : %>
+                <% for participant in @participants_conflicts : %>
+                    <div class="unit conflict" data-collapse-item>
+                        <% if participant.senders : %>
+                            <% for conflicted_sender, i in participant.senders : %>
+                                <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                                <% include "events/partials/_user_info", _.assign(@, {participant: conflicted_sender}) %>
+                            <% end %>
+                        <% end %>
+
+                        <% if participant.recipients : %>
+                            <% for conflicted_recipient, i in participant.recipients : %>
+                                <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                                <% include "events/partials/_user_info", _.assign(@, {participant: conflicted_recipient}) %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% else : %>
+        <!-- Показываем конфликты для проидентифицированных пользователей -->
+        <% if @participants_conflicts : %>
+            <% for participant in @participants_conflicts : %>
+                <div class="unit conflict" data-collapse-item>
+                    <% if participant.senders : %>
+                        <% for conflicted_sender, i in participant.senders : %>
+                            <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                            <% include "events/partials/_user_info", _.assign(@, {participant: conflicted_sender}) %>
+                        <% end %>
+                    <% end %>
+
+                    <% if participant.recipients : %>
+                        <% for conflicted_recipient, i in participant.recipients : %>
+                            <%- if i isnt 0 then "<span class='unit__text'>#{App.t 'global.or'}</span>" %>
+
+                            <% include "events/partials/_user_info", _.assign(@, {participant: conflicted_recipient}) %>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <!-- Показываем проидентифицированных пользователей -->
+        <% for participant in @participants : %>
+            <div class="unit" data-collapse-item>
+                <% include "events/partials/_user_info", _.assign(@, {participant: participant}) %>
+            </div>
+        <% end %>
+
+        <!-- Показываем непроидентифицированные ключи -->
+        <% for participant in @participants_keys : %>
+            <div class="unit" data-collapse-item>
+                <% include "events/identity_entity", _.assign(@, {identity: participant.KEY, KEY_TYPE: participant.KEY_TYPE}) %>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

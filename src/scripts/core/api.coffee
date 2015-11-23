@@ -1,4 +1,7 @@
-api =
-  v1: require "core/api/v1"
+config = require("config.json")
 
-module.exports = api[App.config.api.version]
+api = {
+  v1: require("api/v1")
+}
+
+module.exports = new api[config.api.version]

@@ -1,0 +1,7 @@
+<div class="popup__content">
+    <%- App.t "analysis.category.category_delete_dialog_question", category: "<b data-entry-id=#{@id} data-entry-type=category>#{@name}</b>" %>
+</div>
+<div class="popup__footer">
+    <button class="[ button button_success ]" data-action="delete"><%- App.t "global.delete", context: "success" %></button>
+    <button class="button" data-action="cancel"><%- App.t 'global.cancel' %></button>
+</div>

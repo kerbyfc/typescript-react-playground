@@ -1,0 +1,48 @@
+<div class="sidebar__content">
+    <div class="sidebar__header">
+        <div class="sidebar__title"><%- App.t "global.search_filters" %></div>
+    </div>
+
+    <div class="sidebar__indent">
+        <div class="form__title"><%- App.t "global.search_filters" %></div>
+        <div class="[ form__row vertical ]">
+            <label class="form__label"><%- App.t "global.user" %></label>
+            <div class="form__elem">
+                <select id="audit_events_users_filter"></select>
+            </div>
+        </div>
+        <div class="[ form__row vertical ]">
+            <label class="form__label"><%- App.t "global.action" %></label>
+            <div class="form__elem">
+                <select id="audit_events_operation_filter">
+                    <option value="<all>">
+                        <%- App.t "global.all" %>
+                    </option>
+                    <%- @sort_filter_params "settings.audit_events_operations" %>
+                </select>
+            </div>
+        </div>
+        <div class="[ form__row vertical ]">
+            <label class="form__label"><%- App.t "global.object" %></label>
+            <div class="form__elem">
+                <select id="audit_events_entity_filter">
+                    <option value="<all>">
+                        <%- App.t "global.all" %>
+                    </option>
+                    <%- @sort_filter_params "settings.audit_events_entities" %>
+                </select>
+            </div>
+        </div>
+        <div class="[ form__row vertical ]">
+            <label class="form__label"><%- App.t "global.date" %></label>
+            <div class="form__elem">
+                <i class="form__icon [ icon _calendar ]"></i>
+                <input id="audit_events_date_filter" data-val="<all>" type="text" placeholder="<%- App.t "daterangepicker.customRangeLabel" %>" readonly>
+                <a class="form__clean" id="audit_events_date_filter_clear" href="#" hidden>
+                    <%- App.t 'global.clear' %>
+                </a>
+            </div>
+        </div>
+        <div data-audit-events-period></div>
+    </div>
+</div>

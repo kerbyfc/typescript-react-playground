@@ -1,0 +1,112 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты текстового объекта -->
+	<% for key, value of @FIELDS[@ENTITY] when key not in ['STENCIL', 'LIBRARY_REV', 'ENTITY'] : %>
+		<tr>
+			<td><%= @locale[key] or @locale[key.toLowerCase()] or key %></td>
+		    <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+		</tr>
+	<% end %>
+
+    <!-- Выводим категорию текстовог ообъекта -->
+    <!-- ToDo: Убрать проверку после исправления на бэкэнде -->
+    <% if @FIELDS.CATEGORY : %>
+    	<tr>
+            <td><%= @locale.category_id %></td>
+            <td>
+    			<% if @FIELDS.CATEGORY.DISPLAY_NAME is '<root>' : %>
+    				<%= @locale.root %>
+    			<% else : %>
+    				<%= @FIELDS.CATEGORY.DISPLAY_NAME %>
+    			<% end %>
+    		</td>
+    	</tr>
+    <% end %>
+
+    <!-- выводим значения текстового обьекта -->
+    <% if @FIELDS.text_object_patterns : %>
+        <tr>
+            <td><%= App.t 'configuration.text_object_patterns' %></td>
+            <td>
+                <table class="default-table">
+                    <tr>
+                        <th><%= @locale.text %></th>
+                        <th><%= @locale.enabled %></th>
+                        <th><%= @locale.type %></th>
+                        <th><%= @locale.note %></th>
+                    </tr>
+                    <% for value in @FIELDS.text_object_patterns : %>
+                        <tr>
+                            <td><%= value.TEXT %></td>
+                            <td><% include "configuration/entities/_show_attribute", _.merge @, attributes: value, key: 'ENABLED' %></td>
+                            <td><% include "configuration/entities/_show_attribute", _.merge @, attributes: value, key: 'IS_REGEXP' %></td>
+                            <td><%= value.NOTE %></td>
+                        </tr>
+                    <% end %>
+                </table>
+            </td>
+        </tr>
+    <% end %>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты текстового объекта -->
+	<% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['STENCIL', 'LIBRARY_REV', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key] or @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим категории текстовог ообъекта -->
+    <% if @FIELDS.diff_keys.category : %>
+        <tr>
+            <td><%= @locale.category_id %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% if @FIELDS[k].category : %>
+                        <% for category in @FIELDS[k].category : %>
+                            <%= @locale[category.DISPLAY_NAME] or category.DISPLAY_NAME %></br>
+                        <% end %>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <!-- выводим значения текстового обьекта -->
+    <% if @FIELDS.diff_keys.text_object_patterns : %>
+        <tr>
+            <td><%= App.t 'configuration.text_object_patterns' %></td>
+            <% for k in ['old', 'new'] : %>
+	            <td>
+	                <table class="default-table">
+	                    <tr>
+	                        <th><%= @locale.text %></th>
+	                        <th><%= @locale.enabled %></th>
+	                        <th><%= @locale.type %></th>
+	                        <th><%= @locale.note %></th>
+	                    </tr>
+	                    <% for value in @FIELDS[k].text_object_patterns : %>
+	                        <tr>
+	                            <td><%= value.TEXT %></td>
+	                            <td><% include "configuration/entities/_show_attribute", _.merge @, attributes: value, key: 'ENABLED' %></td>
+	                            <td><% include "configuration/entities/_show_attribute", _.merge @, attributes: value, key: 'IS_REGEXP' %></td>
+	                            <td><%= value.NOTE %></td>
+	                        </tr>
+	                    <% end %>
+	                </table>
+	            </td>
+			<% end %>
+        </tr>
+    <% end %>
+
+<% end %>

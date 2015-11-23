@@ -1,0 +1,90 @@
+<form>
+    <!--
+        Контрол выбора аттрибута сортировки для событий по умолчанию
+    -->
+    <div class="form__row">
+        <label for="SORT_FIELD" class="[ form__label size-medium ]"><%= App.t 'events.conditions.sort_field' %></label>
+        <div class="form__elem">
+            <select name="SORT_FIELD">
+                <% for column in [
+                    'VIOLATION_LEVEL'
+                    'OBJECT_TYPE_CODE'
+                    'USER_DECISION'
+                    'VERDICT'
+                    'FORWARD_STATE_CODE'
+                    'OBJECT_ID'
+                    'senders'
+                    'recipients'
+                    'workstations'
+                    'protected_documents'
+                    'ATTACHMENT_COUNT'
+                    'RULE_GROUP_TYPE'
+                    'CAPTURE_DATE'
+                    'SENT_DATE'
+                    'OBJECT_SIZE'
+                    'text'
+                    'policies'
+                    'lists'
+                    'capture_server'
+                    'tags'
+                    'OBJECT_ERROR_EXISTS'
+                    'DESTINATION_PATH'
+                ] : %>
+                    <option value='<%- column %>'><%- App.t "events.conditions.#{column.toLowerCase()}" %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+
+    <!--
+        Контрол выбора направления сортировки событий
+    -->
+    <div class="form__row">
+        <label for="SORT_DIRECTION" class="[ form__label size-medium ]"><%= App.t 'events.conditions.sort_direction' %></label>
+        <div class="form__elem">
+            <select name="SORT_DIRECTION">
+                <option value='asc'><%- App.t 'events.conditions.sort_asc' %></option>
+                <option value='desc'><%- App.t 'events.conditions.sort_desc' %></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form__row">
+        <!--
+            Контрол выбора отображаемых полей для запроса
+        -->
+        <select multiple='multiple' data-id="pre-selected-options" name="columns" data-form-type="multiselectList">
+            <% for column in [
+                'VIOLATION_LEVEL'
+                'USER_DECISION'
+                'VERDICT'
+                'OBJECT_TYPE_CODE'
+                'FORWARD_STATE_CODE'
+                'OBJECT_ID'
+                'senders'
+                'recipients'
+                'workstations'
+                'workstation_type'
+                'protected_documents'
+                'ATTACHMENT_COUNT'
+                'RULE_GROUP_TYPE'
+                'CAPTURE_DATE'
+                'SENT_DATE'
+                'OBJECT_SIZE'
+                'policies'
+                'lists'
+                'capture_server'
+                'tags'
+                'OBJECT_ERROR_EXISTS'
+                'task_name'
+                'create_date'
+                'modify_date'
+                'task_run_date'
+                'DESTINATION_PATH'
+                'destination_type'
+            ] : %>
+                <option value='<%- column %>'><%- App.t "events.conditions.#{column.toLowerCase()}" %></option>
+            <% end %>
+        </select>
+    </div>
+</form>

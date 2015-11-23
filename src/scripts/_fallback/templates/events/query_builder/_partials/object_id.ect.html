@@ -1,0 +1,12 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="object_id" class="[ form__label size-normal ]"><%= App.t 'events.conditions.object_id' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="object_id[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem"><input type="text" name="object_id[value]"></div>
+</div>

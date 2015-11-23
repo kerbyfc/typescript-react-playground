@@ -1,0 +1,46 @@
+<div class="employeeItem__general">
+    <div class="employeeItem__type">
+        <% if @SOURCE in ["ad", "dd"] : %>
+            <% if @DISABLED is 1 : %>
+                <span class="[ employeeItem__status _inactive ]"></span>
+            <% else : %>
+                <span class="[ employeeItem__status _active ]"></span>
+            <% end %>
+        <% end %>
+        <% if @SOURCE is "ad" : %>AD<% end %>
+        <% if @SOURCE is "dd" : %>DD<% end %>
+    </div>
+
+    <div
+      <% if @SOURCE is "ad" : %>
+        class="[ employeeItem__workstation _activeDirectory ]"
+
+      <% else if @SOURCE is "dd" : %>
+        class="[ employeeItem__workstation _dominoDirectory ]"
+
+      <% else : %>
+        class="employeeItem__workstation"
+      <% end %>
+    ></div>
+    <h2 class="employeeItem__name"><%= @DISPLAY_NAME %></h2>
+</div>
+<div class="employeeItem__info">
+    <div class="employeeItem__contacts">
+        <% if @contacts.length is 1  and  @contacts[0].creator : %>
+            <div class="empty-block"><span class="empty-block__message"><%- App.t 'organization.no_contacts' %></span></div>
+        <% else : %>
+          <% for value in @contacts  when not value.creator : %>
+              <div class="employeeItem__contact">
+                <span class="tooltip-toggle" href="#" data-toggle="tooltip" title="" data-original-title=""><%= value.VALUE %></span>
+              </div>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="employeeItem__tags">
+        <% if @status and @status.length : %>
+          <% for status in @status : %>
+                <span style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>"><%= App.t('lists.statuses', { returnObjectTrees: true })[status.DISPLAY_NAME] ? status.DISPLAY_NAME %></span>
+            <% end %>
+        <% end %>
+    </div>
+</div>

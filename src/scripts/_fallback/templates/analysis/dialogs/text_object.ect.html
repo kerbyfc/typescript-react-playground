@@ -1,0 +1,36 @@
+<div class="[ popup__content size-short ]">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.text_object.display_name' %></label>
+            <div class="form__elem"><input data-form-autofocus="true" type="text" name="DISPLAY_NAME" placeholder="<%- App.t 'analysis.text_object.text_object_name_placeholder' %>"></div>
+        </div>
+
+        <div class="form__row">
+            <label for="COUNTRY" class="form__label"><%- App.t 'global.country' %></label>
+            <div class="form__elem">
+                <select name="COUNTRY">
+                    <% for i of @helpers.getCountries() : %>
+                    <option value="<%- i %>"><%- @helpers.getCountries i %></option>
+                    <% end %>
+                </select>
+            </div>
+        </div>
+
+        <% unless @isNew : %>
+            <h3 class="form__title"><%- App.t 'select_dialog.text_object_pattern', context: 'many' %></h3>
+            <div data-region="table" data-el="container"></div>
+        <% end %>
+
+        <div class="[ form__row vertical ]">
+            <label for="NOTE" class="[ form__label ]"><%- App.t 'analysis.text_object.note' %></label>
+            <div class="form__elem"><textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea></div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+ <div class="popup__footer">
+    <button class="[ button _success ]" data-type="<%- @action %>"><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="[ button _success ]" data-type="add" style="display: none"><%- App.t "global.copy", context: "success" %></button>
+    <button class="button" data-action="cancel" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

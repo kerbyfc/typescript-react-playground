@@ -1,0 +1,84 @@
+<form class="form">
+    <fieldset>
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'entry.policy.transmission_path', context: 'rule' %></label>
+            <div class="form__elem">
+                <% @object_type_codes = _.groupBy App.request('bookworm', 'event').toJSON(), 'service_ref' %>
+
+                <select
+                    class="multiselect"
+                    multiple="multiple"
+                    name="OBJECT_TYPE_CODE[]"
+                    data-form-type="multiselect"
+                    data-default-label="<%- App.t "entry.event.type", context: 'any' %>"
+                    collapsible-groups="true"
+                >
+                    <% for service in @channel() : %>
+                        <optgroup value="<%= service.service_id %>" label="<span></span><img src='img/eventType/eventType__<%= service.mnemo %>.png'> <%= service.name %>">
+                            <% for object_type_code in @object_type_codes[service.service_id] : %>
+                            <option
+                                value="<%= object_type_code.event_id %>"
+                                label="<%= object_type_code.name %>"
+                                ></option>
+                            <% end %>
+                        </optgroup>
+                    <% end %>
+                </select>
+            </div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'entry.policy.day_week', context: 'rule' %></label>
+            <div class="form__elem">
+                <select class="multiselect" multiple="multiple" name="DAY" data-form-type="day">
+                <% for i of days = @day() : %>
+                    <option label="<%- days[i] %>" value="<%- ++i %>"></option>
+                <% end %>
+                </select>
+            </div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'entry.policy.time_capture_rule', context: 'rule' %></label>
+            <div class="form__elem">
+                <div class="form__timepicker input-append">
+                    <input name="START_TIME" type="text" class="input-small" data-form-type="time">
+                    <span class="add-on"></span>
+                </div>
+            </div>
+            <label class="[ form__label size-auto ]">-</label>
+            <div class="form__elem">
+                <div class="form__timepicker input-append">
+                    <input name="END_TIME" type="text" class="input-small" data-form-type="time">
+                    <span class="add-on"></span>
+                </div>
+            </div>
+        </div>
+        <% include 'policy/select2/workstation', @ %>
+
+        <div class="form__row">
+            <label class="form__label" for="SOURCE[]">
+                <%- App.t 'entry.policy.sender', context: 'many' %><a title="<%- App.t 'form.hint.sender_copy' %>" class="form__hint-icon [ icon _sizeSmall _help ]"></a>
+            </label>
+            <div class="[ form__elem size-50 ]">
+                <select name="CONDITION_SOURCE">
+                    <option value="0">=</option>
+                    <option value="1">≠</option>
+                </select>
+            </div>
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="SOURCE[]"
+                    data-form-type="select2"
+                    data-form-server="person,group,perimeter"
+                    data-form-local=""
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'entry.policy.sender', context: 'many' %>"
+                    data-form-entry="group,person,perimeter"
+                    ></button>
+            </div>
+        </div>
+    </fieldset>
+</form>

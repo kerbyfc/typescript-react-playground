@@ -1,0 +1,176 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты рабочей станции -->
+    <% for key, value of @FIELDS[@ENTITY] when key not in ['SOURCE', 'ENTITY', 'TYPE'] : %>
+        <tr>
+            <td><%= @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим тип рабочей станции -->
+    <% if @FIELDS[@ENTITY].TYPE : %>
+        <tr>
+            <td><%- @locale.workstation_type %></td>
+            <td>
+                <%= @locale["workstation_type_#{@FIELDS[@ENTITY].TYPE}"]%>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим контакты рабочей станции -->
+    <% if @FIELDS.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <td>
+                <ul class="configuration__entity">
+                    <% for value in @FIELDS.contacts : %>
+                        <% include "configuration/entities/_contacts", value: value %>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим  родительскую группу -->
+    <tr>
+        <td><%= @locale.parent_group_id %></td>
+        <td>
+            <% for group in @FIELDS.groups : %>
+                <%= @locale[group.DISPLAY_NAME] or group.DISPLAY_NAME %></br>
+            <% end %>
+        </td>
+    </tr>
+
+    <!-- Выводим статусы -->
+    <% if @FIELDS.status : %>
+    <tr>
+        <td><%= @locale.statuses %></td>
+        <td>
+            <div>
+            <% for status in @FIELDS.status : %>
+                <span style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>;display: inline-block;vertical-align: middle;padding: 5px 5px 4px;font-size: 11px;margin-bottom: 3px;"><%= App.t('lists.statuses', { returnObjectTrees: true })[status.DISPLAY_NAME] ? status.DISPLAY_NAME %></span>
+            <% end %>
+            </div>
+        </td>
+    </tr>
+    <% end %>
+
+    <!-- Выводим рабочие станции -->
+    <% if @FIELDS.persons : %>
+      <tr>
+          <td><%- @locale.persons %></td>
+          <td>
+              <ul class="configuration__entity">
+              <% for person in @FIELDS.persons : %>
+                  <li>
+                      <%= person.DISPLAY_NAME %>
+                  </li>
+              <% end %>
+              </ul>
+          </td>
+      </tr>
+    <% end %>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты рабочей станции -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['SOURCE', 'ENTITY', 'TYPE'] : %>
+            <tr>
+                <td><%=  @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим тип рабочей станции -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% if 'TYPE' in @FIELDS.diff_keys[@ENTITY] : %>
+            <tr>
+                <td><%- @locale.workstation_type %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <%= @locale["workstation_type_#{@FIELDS[k][@ENTITY].TYPE}"]%>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим контакты рабочей станции -->
+    <% if @FIELDS.diff_keys.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <% for key in ['old', 'new'] : %>
+                <td>
+                    <% if @FIELDS[key].contacts : %>
+                        <ul class="configuration__entity">
+                            <% for value in @FIELDS[key].contacts : %>
+                                <% include "configuration/entities/_contacts", value: value %>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <!-- Выводим  родительские группы -->
+    <% if @FIELDS.diff_keys.groups : %>
+        <tr>
+            <td><%= @locale.parent_group_id %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% for group in @FIELDS[k].groups : %>
+                        <%= @locale[group.DISPLAY_NAME] or group.DISPLAY_NAME %></br>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <!-- Выводим статусы -->
+    <% if @FIELDS.diff_keys.status : %>
+        <tr>
+            <td><%= @locale.statuses %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <div>
+                    <% for status in @FIELDS[k].status : %>
+                        <span style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>;display: inline-block;vertical-align: middle;padding: 5px 5px 4px;font-size: 11px;margin-bottom: 3px;"><%= App.t('lists.statuses', { returnObjectTrees: true })[status.DISPLAY_NAME] ? status.DISPLAY_NAME %></span>
+                    <% end %>
+                    </div>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <!-- Выводим персон -->
+    <% if @FIELDS.diff_keys.persons : %>
+        <tr>
+            <td><%- @locale.persons %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                <% if @FIELDS[k].persons : %>
+                    <ul class="configuration__entity">
+                    <% for person in @FIELDS[k].persons : %>
+                        <li>
+                            <%= person.DISPLAY_NAME %>
+                        </li>
+                    <% end %>
+                    </ul>
+                <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+<% end %>

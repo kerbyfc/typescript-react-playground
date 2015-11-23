@@ -1,0 +1,57 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты каталога -->
+	<% for key, value of @FIELDS[@ENTITY] when key not in ['PARENT_CATALOG_ID', 'ENTITY'] : %>
+	    <tr>
+	        <td><%= @locale[key.toLowerCase()] or key %></td>
+	        <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+	    </tr>
+    <% end %>
+
+    <!-- Выводим родительский каталог -->
+    <tr>
+        <td><%= @locale.parent_catalog %></td>
+        <td>
+            <% if @FIELDS[@ENTITY].PARENT_CATALOG_ID : %>
+                <%= @FIELDS.parent.DISPLAY_NAME %>
+            <% else : %>
+                <%= @locale.root %>
+            <% end %>
+        </td>
+    </tr>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты каталога -->
+	<% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['PARENT_CATALOG_ID', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим родительский каталог -->
+    <% if @FIELDS.diff_keys.parent : %>
+        <tr>
+            <td><%= @locale.parent_catalog %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% if @FIELDS[k][@ENTITY].PARENT_CATEGORY_ID isnt null : %>
+                        <%= @FIELDS[k].parent.DISPLAY_NAME %>
+                    <% else : %>
+                        <%= @locale.root %>
+                    <% end %>
+	            </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+<% end %>

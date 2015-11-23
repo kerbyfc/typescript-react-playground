@@ -1,0 +1,25 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="perimeter_out" class="[ form__label size-normal ]"><%= App.t 'events.conditions.perimeter_out' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="perimeter_out[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem">
+        <textarea
+            placeholder="<%- App.t 'form.placeholder.search' %>"
+            name="perimeter_out[value][]"
+            data-form-type="select2"
+            data-form-server="perimeter"
+            ></textarea>
+        <button
+            type="button"
+            class="[ button _icon ] [ icon _create ]"
+            data-form-title="<%- App.t 'events.conditions.perimeter_out' %>"
+            data-form-entry="perimeter"
+            ></button>
+    </div>
+</div>

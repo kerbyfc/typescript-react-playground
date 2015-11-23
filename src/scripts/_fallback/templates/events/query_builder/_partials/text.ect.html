@@ -1,0 +1,61 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="text" class="[ form__label size-normal ]"><%= App.t 'events.conditions.text' %></label>
+    <% else : %>
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.condition' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="text[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem"><textarea name="text[value]"></textarea></div>
+</div>
+<% if @mode isnt 'lite' : %>
+    <div class="form__row">
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.text_search_mode' %></label>
+        <div class="[ form__elem size-large ]">
+            <select name="text[search_mode]">
+                <option value="all"><%= App.t 'events.conditions.text_search_modes.all' %></option>
+                <option value="phrase"><%= App.t 'events.conditions.text_search_modes.phrase' %></option>
+                <option value="exact"><%= App.t 'events.conditions.text_search_modes.exact' %></option>
+                <option value="any"><%= App.t 'events.conditions.text_search_modes.any' %></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form__row">
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.scope' %></label>
+        <div class="[ form__elem size-large ]">
+            <select name="text[scope]">
+                <option value="object"><%= App.t 'events.conditions.scopes.object' %></option>
+                <option value="text"><%= App.t 'events.conditions.scopes.text' %></option>
+                <option value="subject"><%= App.t 'events.conditions.scopes.subject' %></option>
+                <option value="attachment"><%= App.t 'events.conditions.scopes.attachment' %></option>
+                <option value="filename"><%= App.t 'events.conditions.scopes.filename' %></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form__row">
+        <label for="text[raw]" class="[ form__label size-normal ]"><%= App.t 'events.conditions.raw_search_mode' %> <a href="javascript:void(0);" class="form__hint-icon [ icon _sizeSmall _help ]" title="<%= App.t 'events.conditions.text_raw_hint' %>"></a></label>
+        <div class="form__elem">
+            <div class="tumbler">
+                <input class="tumbler__input" name="text[raw]" type="checkbox">
+                <label for="text[raw]" class="tumbler__toggle"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form__row">
+        <label for="text[morphology]" class="[ form__label size-normal ]"><%= App.t 'events.conditions.with_morphology' %></label>
+        <div class="form__elem">
+            <div class="tumbler">
+                <input class="tumbler__input" name="text[morphology]" type="checkbox" checked>
+                <label for="text[morphology]" class="tumbler__toggle"></label>
+            </div>
+        </div>
+    </div>
+
+<% end %>

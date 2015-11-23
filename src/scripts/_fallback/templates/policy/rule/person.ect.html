@@ -1,0 +1,31 @@
+<% if @can('edit_rule') : %><a href="#" class="policyRuleItem__button" data-action="removeRule"></a><% end %>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t "entry.policy.capture_threat", context: "rule" %></label>
+    <div class="policyRuleItem__values">
+        <span data-threat="<%- if @DATA.VIOLATION then @DATA.VIOLATION.toLowerCase() else "any_threat" %>"><%- App.t 'entry.policy.threat', context: if @DATA.VIOLATION then @DATA.VIOLATION.toLowerCase() else "any" %></span>
+    </div>
+</div>
+
+<% if @DATA.POLICY?.length : %>
+    <div class="policyRuleItem__row">
+        <label class="policyRuleItem__label"><%- App.t "entry.policy.policy", context: "rule" %></label>
+        <div class="policyRuleItem__values">
+            <% for item in @DATA.POLICY : %>
+                <span
+                    data-entry-type="<%- item.TYPE %>"
+                    data-entry-id="<%- item.ID %>"
+                    class="<%- if @entry.isDeleted item then "deleted" else "" %>">
+                    <i class="<%- @style.className.entry[item.TYPE] %>"></i> <%- @entry.getName item %>
+                </span>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t "global.action", context: "many" %></label>
+    <div class="policyRuleItem__values">
+        <ul class="policyRuleItem__actions" data-ui="actionList"></ul>
+    </div>
+</div>

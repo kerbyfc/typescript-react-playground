@@ -1,0 +1,54 @@
+<h3 class="pluginInfo__name"><%= @DISPLAY_NAME %></h3>
+<div class="pluginInfo__desc"><%= @DESCRIPTION %></div>
+<div class="pluginInfo__general">
+    <div><%- App.t "global.vendor" %>: <%= @VENDOR %></div>
+    <div><%= App.t "global.version", version : @VERSION %></div>
+</div>
+
+<% if @adds_events?.length : %>
+    <div class="pluginContent__block">
+        <h3 class="pluginContent__title"><%- App.t "settings.plugins.new_events" %></h3>
+        <% _.each @adds_events, (add_event) => : %>
+            <% _.each add_event.protocols, (protocol) => : %>
+                <div class="pluginContent__item">
+                    <span class="pluginContent__eventType">
+                        <img src="<%= App.Config.server %>/img/icon/<%- add_event.MNEMO %>.jpg" width="16" height="16">
+                        <%- "#{add_event.DISPLAY_NAME}, #{protocol.DISPLAY_NAME}" %>
+                    </span>
+                    <% include "settings/plugins/license_state", _.assign(@, {event:add_event.MNEMO, protocol: protocol.MNEMO}) %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @uses_events?.length : %>
+    <div class="pluginContent__block">
+        <h3 class="pluginContent__title"><%- App.t "settings.plugins.exists_events" %></h3>
+        <% _.each @uses_events, (uses_event) => : %>
+            <% _.each uses_event.protocols, (protocol) => : %>
+                <div class="pluginContent__item">
+                    <span class="pluginContent__eventType">
+                        <img src="<%= App.Config.server %>/img/icon/<%- uses_event.MNEMO %>.jpg" width="16" height="16">
+                        <%- "#{uses_event.DISPLAY_NAME}, #{protocol.DISPLAY_NAME}" %>
+                    </span>
+                    <% include "settings/plugins/license_state", _.assign(@, {event: uses_event.MNEMO, protocol: protocol.MNEMO}) %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @contact?.length : %>
+    <div class="pluginContent__block">
+        <h3 class="pluginContent__title"><%- App.t "settings.plugins.contacts" %></h3>
+        <% _.each @contact, (contact_type) -> : %>
+            <div class="pluginContent__item">
+                <span class="pluginContent__eventType">
+                    <img src="<%= App.Config.server %>/img/icon/<%- contact_type.MNEMO %>.jpg" width="16" height="16">
+                    <%- contact_type.DISPLAY_NAME %>
+                </span>
+            </div>
+        <% end %>
+    </div>
+<% end %>

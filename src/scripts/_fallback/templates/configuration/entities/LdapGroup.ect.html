@@ -1,0 +1,82 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты группы -->
+	<% for key, value of @FIELDS[@ENTITY] when key not in ['PARENT_GROUP_ID', 'IS_VISIBLE', 'ENTITY', 'SOURCE'] : %>
+	    <tr>
+	        <td><%= @locale[key.toLowerCase()] or key %></td>
+	        <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+	    </tr>
+    <% end %>
+
+    <!-- Выводим контакты группы -->
+    <% if @FIELDS.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <td>
+                <ul class="configuration__entity">
+                    <% for value in @FIELDS.contacts : %>
+                        <% include "configuration/entities/_contacts", value: value %>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим  родительскую группу -->
+    <tr>
+        <td><%= @locale.parent_group_id %></td>
+        <td>
+            <% for parent in @FIELDS.parents : %>
+                <%= @locale[parent.DISPLAY_NAME] or parent.DISPLAY_NAME %>
+            <% end %>
+        </td>
+    </tr>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты группы -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['IS_VISIBLE', 'PARENT_GROUP_ID', 'ENTITY', 'SOURCE'] : %>
+            <tr>
+                <td><%=  @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим контакты группы -->
+    <% if @FIELDS.diff_keys.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <% for key in ['old', 'new'] : %>
+                <td>
+                    <ul class="configuration__entity">
+                        <% _.each @FIELDS[key].contacts, (value) -> : %>
+                            <% include "configuration/entities/_contacts", value: value %>
+                        <% end %>
+                    </ul>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <!-- Выводим  родительские группы -->
+    <% if @FIELDS.diff_keys.parents : %>
+        <td><%= @locale.parent_group_id %></td>
+        <% for k in ['old', 'new'] : %>
+            <td>
+                <% for parent in @FIELDS[k].parents : %>
+                    <%= @locale[parent.DISPLAY_NAME] or parent.DISPLAY_NAME %></br>
+                <% end %>
+            </td>
+        <% end %>
+    <% end %>
+
+<% end %>

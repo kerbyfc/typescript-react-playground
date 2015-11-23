@@ -1,0 +1,28 @@
+<form class="form popup__addItem">
+    <fieldset>
+        <div class="form__row">
+            <div class="[ form__elem size-150 ]">
+                <select name="TYPE" class="unit_tabs--select2">
+                <% for contact in App.request('bookworm', 'contact').toJSON() : %>
+                    <option
+                        value="<%- contact.mnemo %>"
+                        <% if contact.icon : %>
+                        data-icon-class="icon _<%- contact.mnemo %>"
+                        data-icon-path="<%- contact.icon %>"
+                        <% else : %>
+                        data-icon-class="icon _<%- contact.mnemo %>"
+                        <% end %>
+                    ><%- contact.name %>
+                    </option>
+                <% end %>
+                </select>
+            </div>
+            <div class="[ form__elem size-max ]">
+                <input name="NAME" type="text" placeholder="<%- App.t 'form.placeholder.contact' %>" value="">
+            </div>
+            <div class="form__elem">
+                <input type="submit" class="[ button _success ]" value="<%- App.t 'global.add' %>">
+            </div>
+        </div>
+    </fieldset>
+</form>

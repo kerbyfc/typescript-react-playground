@@ -1,0 +1,8 @@
+<% if @can('edit_rule') : %>
+<button
+    class="[ button _success ] policyRule__button"
+    data-action="addRule"
+    ><%- App.t 'add', { postProcess: 'entry', entry: 'policy', context: 'rule' } %>
+</button>
+<% end %>
+<div class="policyRule__list" data-ui="ruleList"></div>

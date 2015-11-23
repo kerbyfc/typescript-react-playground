@@ -1,0 +1,23 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap" data-error-container>
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- @modal_dialog_title %></h2>
+
+            <div class="popup__content">
+
+                <ul id="tab-header" class="tabs"></ul>
+
+                <div id="tab-content"></div>
+
+            </div>
+
+            <div class="popup__footer">
+                <button class="[ button _success ]"><%= App.t 'global.select' %></button>
+                <button class="button"><%= App.t 'global.cancel' %></button>
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

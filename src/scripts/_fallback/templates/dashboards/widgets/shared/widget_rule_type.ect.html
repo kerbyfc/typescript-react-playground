@@ -1,0 +1,8 @@
+<select class="rule_type">
+    <option value="" selected><%- App.t 'dashboards.widgets.all_rule_group_type' %></option>
+    <option value="Transfer"><%- App.t 'dashboards.widgets.transfer_rule_group_type' %></option>
+    <% if App.Setting.get('product').indexOf('pdp') is -1 :  %>
+    <option value="Placement"><%- App.t 'dashboards.widgets.placement_rule_group_type' %></option>
+    <% end %>
+    <option value="Copy"><%- App.t 'dashboards.widgets.copy_rule_group_type' %></option>
+</select>

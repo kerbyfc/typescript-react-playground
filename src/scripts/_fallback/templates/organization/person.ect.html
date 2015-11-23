@@ -1,0 +1,64 @@
+<div class="employeeItem__general">
+    <div class="employeeItem__type">
+        <% if @SOURCE in ["ad", "dd"] : %>
+            <% if @DISABLED is 1 : %>
+                <span class="[ employeeItem__status _inactive ]"></span>
+            <% else : %>
+                <span class="[ employeeItem__status _active ]"></span>
+            <% end %>
+        <% end %>
+        <% if @SOURCE is "ad" : %>AD<% end %>
+        <% if @SOURCE is "dd" : %>DD<% end %>
+    </div>
+    <div class="employeeItem__ava">
+        <img
+            width=67
+            height=67
+            alt=""
+            src="<%- App.Config.server %>/api/ldapPerson/image?person_id=<%- @PERSON_ID %>&t=<%- App.Helpers.guid() %>">
+    </div>
+    <h2 class="employeeItem__name"><%= @DISPLAY_NAME %></h2>
+    <span class="employeeItem__rank"><%= @TM_TITLE or @TITLE %></span>
+</div>
+<div class="employeeItem__info">
+    <div class="employeeItem__contacts">
+        <% if @contacts.length is 0 : %>
+            <div class="empty-block"><span class="empty-block__message"><%- App.t 'organization.no_contacts' %></span></div>
+        <% else : %>
+            <% for value in @contacts when value.CONTACT_TYPE not in ["sid", "auth", "icq", "webaccount"] and value.IS_PRIMARY : %>
+                <div class="employeeItem__contact">
+                    <i
+                        class="tooltip-toggle
+                        <% switch value.CONTACT_TYPE : %>
+                            <% when 'email', 'mail' :%>
+                                icon _email _sizeSmall
+                            <% end %>
+                            <% when 'lotus' :%>
+                                icon _lotus _sizeSmall
+                            <% end %>
+                            <% when 'phone' :%>
+                                icon _phone _sizeSmall
+                            <% end %>
+                            <% when 'mobile' :%>
+                                icon _mobile _sizeSmall
+                            <% end %>
+                            <% when 'skype' :%>
+                                icon _skype _sizeSmall
+                            <% end %>
+                        <% end %>
+                        " data-toggle="tooltip" title="<%= value.VALUE %>"
+                    ></i> <%= value.VALUE %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    <% if @status and @status.length : %>
+        <div class="employeeItem__tags">
+            <% for status in @status : %>
+                <span style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>">
+                    <%= App.Helpers.getPredefinedLocalizedValue status.DISPLAY_NAME, "lists.statuses" %>
+                </span>
+            <% end %>
+        </div>
+    <% end %>
+</div>

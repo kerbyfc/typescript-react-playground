@@ -1,0 +1,30 @@
+<% block 'content' : %>
+
+    <p class="update__stage"><%- App.t "settings.update.msg__starting" %></p>
+
+    <div class="progress upload__progress _waiting">
+        <div class="progress-bar progress-bar-striped" role="progressbar">
+            <span class="sr-only diagnostic-item__pct"></span>
+        </div>
+    </div>
+
+<% end %>
+
+<% block 'popup' : %>
+    <input type="checkbox" class="popup__toggle">
+    <div class="popup update__popup">
+        <div class="popup__position">
+            <div class="popup__wrap">
+                <div class="popup__indent">
+                    <div id="popup__content" class="popup__content">
+
+                        <% content 'content' %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<% content 'popup' %>

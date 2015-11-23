@@ -1,0 +1,19 @@
+<span class="policyItem__status"></span>
+<h3 class="policyItem__name">
+    <span data-entry-id="<%- @id %>" data-entry-type="policy" data-ui="header"><%- @name %></span>
+</h3>
+<div class="policyItem__objects" data-region="object"></div>
+<% if @can(action: 'delete') : %>
+    <a href="#" class="policyItem__button" data-action="remove"></a>
+<% end %>
+<nav class="policyRuleTab">
+    <% for item in @rules : %>
+        <a
+          href="#"
+          class="policyRuleTab__item"
+          data-rule="<%- item %>"
+          ><%- App.t "entry.policy.#{item.toLowerCase()}", context: "menu" %> <strong data-rule-count></strong></a>
+    <% end %>
+</nav>
+
+<div class="policyItem__content" data-region="content"></div>

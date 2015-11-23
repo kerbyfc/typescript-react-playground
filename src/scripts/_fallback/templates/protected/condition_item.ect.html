@@ -1,0 +1,19 @@
+<span class="queryBuilder__link"></span>
+<h3 class="queryBuilder__name"><%- App.t "entry.document.condition" %></h3>
+<button type="button" class="queryBuilder__remove" data-toolbar-action="deleteEntry"></button>
+
+<div data-ui="documentConditionList"></div>
+<% if @can and @entryPool.length : %>
+<footer class="queryBuilder__footer">
+    <select class="queryBuilder__create" data-toolbar-action="addEntry" placeholder="<%- App.t "entry.document.entry_add" %>">
+        <option></option>
+        <% for type in @entryType : %>
+        <optgroup label='<%- App.t "select_dialog.#{type}", context: "many" %>'>
+            <% for entry in _.where(@entryPool, type: type) : %>
+            <option value="<%- type %>::<%- entry.ENTRY_ID %>"><%- @entry.getName entry.content %></option>
+            <% end %>
+        </optgroup>
+        <% end %>
+    </select>
+</footer>
+<% end %>

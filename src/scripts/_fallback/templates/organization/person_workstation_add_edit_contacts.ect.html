@@ -1,0 +1,89 @@
+<%
+    if (
+        not @blocked and
+        @helpers.can({ action: "edit", type: @IDENTITY_TYPE})
+    )
+: %>
+    <div class="buttonSet">
+        <button data-add-contact class="[ button _icon ] [ icon _create ]"></button>
+        <button data-edit-contact class="[ button _icon ] [ icon _edit ]"></button>
+        <button data-delete-contact class="[ button _icon ] [ icon _delete ]"></button>
+    </div>
+    <input id="employeeExtendedTab__form" type="checkbox" hidden>
+    <form class="employeeExtendedTab__form form" data-add-contact-form>
+        <div class="employeeExtendedTab__formWrap">
+            <input type="hidden" name="IDENTITY_TYPE" value="<%- @IDENTITY_TYPE %>">
+            <input type="hidden" name="action" value="<%- @action or 'add' %>">
+            <input type="hidden" name="CONTACT_ID" value="">
+            <input type="hidden" name="cid" value="">
+
+            <h3 class="employeeExtendedTab__formTitle"><%= @t 'organization.adding_contact' %></h3>
+
+            <div class="form__row">
+                <label class="[ form__label size-normal ]"><%= App.t 'organization.contact_type' %></label>
+                <% if @IDENTITY_TYPE is "workstation" : %>
+                    <div class="form__elem">
+                        <select name="CONTACT_TYPE">
+                            <option value="ip">IP</option>
+                            <option value="dnshostname">DNS</option>
+                            <option value="auth"><%- App.t "contacts.types.auth" %></option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="IS_PERSONAL" value="0">
+                <% else : %>
+                    <div class="form__col _vertical size-max">
+                        <div class="form__row">
+                            <div class="form__elem">
+                                <select id="contact-type" name="CONTACT_TYPE">
+                                    <option value="email"><%- App.t "contacts.types.email" %></option>
+                                    <option value="lotus"><%- App.t "contacts.types.lotus" %></option>
+                                    <% if @IDENTITY_TYPE is "person" : %>
+                                        <option value="mobile"><%- App.t "contacts.types.mobile" %></option>
+                                        <option value="phone"><%- App.t "contacts.types.phone" %></option>
+                                        <option value="skype"><%- App.t "contacts.types.skype" %></option>
+                                        <option value="icq"><%- App.t "contacts.types.icq" %></option>
+                                        <option value="webaccount"><%- App.t "contacts.types.web" %></option>
+                                    <% end %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__elem">
+                                <div class="formSwitch">
+                                    <label class="formSwitch__item">
+                                        <input class="formSwitch__input" name="IS_PERSONAL" type="radio" value="0" checked>
+                                        <span class="formSwitch__toggle"><%- App.t "contacts.work" %></span>
+                                    </label>
+                                    <label class="formSwitch__item">
+                                        <input class="formSwitch__input" name="IS_PERSONAL" type="radio" value="1">
+                                        <span class="formSwitch__toggle"><%- App.t "contacts.personal" %></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="form__row">
+                <label class="[ form__label size-normal ]"><%- App.t "contacts.contact" %></label>
+                <div class="form__elem" data-error-container>
+                    <input data-error-style="tooltip" data-tooltip-position="left" type="text" name="VALUE" value="<%= @VALUE %>">
+                </div>
+            </div>
+            <div class="form__row">
+                <label class="[ form__label size-normal ]"><%- App.t "global.description" %></label>
+                <div class="form__elem"><textarea name="NOTE"></textarea></div>
+            </div>
+            <div class="form__row">
+                <label class="[ form__label size-normal ]"></label>
+                <div class="form__elem">
+                    <button class="[ button _success ]" data-save-contact type="submit">
+                        <%- App.t "global.save" %>
+                    </button>
+                    <span class="button" data-reset-contact><%- App.t "global.cancel" %></span>
+                </div>
+            </div>
+        </div>
+    </form>
+<% end %>
+<ul id="person-workstation-contacts" class="employeeExtendedTab__list"></ul>

@@ -1,0 +1,32 @@
+<button
+    class="[ button _grey ]"
+    type="button"
+    data-action="changeEntry"
+    ><%- App.t 'entry.policy.entry_add' %></button>
+<% if @types.length : %>
+<div class="entityList__desc" data-ui="message"></div>
+<% for type in @types : %>
+    <% objects = _.where(@objects, TYPE: type) %>
+    <div class="entityBlock">
+        <h3 class="entityBlock__title"><%- App.t "select_dialog.#{type}", context: "many" %></h3>
+        <ul class="entityBlock__items"><% for item in objects : %>
+            <li class="entityItem <%- if @entry.isDeleted item then "deleted" else "" %>"
+                data-entry-type="<%- item.TYPE %>"
+                data-entry-id="<%- item.ID %>">
+                <%- @entry.getName item %>
+                <% if @can 'edit' : %>
+                <button
+                    class="[ icon _delete ] entityItem__delete"
+                    type="button"
+                    data-type="<%- item.TYPE %>"
+                    data-id="<%- item.ID %>"
+                    data-action="removeEntry"
+                    ></button>
+                <% end %>
+            </li>
+        <% end %></ul>
+    </div>
+<% end %>
+<% else : %>
+<div class="entityList__emptyMessage"><%- App.t 'entry.policy.empty_object_sidebar' %></div>
+<% end %>

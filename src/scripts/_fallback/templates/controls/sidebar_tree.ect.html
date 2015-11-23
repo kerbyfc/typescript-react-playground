@@ -1,0 +1,18 @@
+<div class="sidebar__header">
+    <h2 class="sidebar__title"><%- @header %></h2>
+    <% include 'controls/toolbar', @ %>
+    <% if @search : %>
+        <div class="sidebar__search">
+            <% include 'controls/search', @ %>
+        </div>
+    <% end %>
+    <% if @isFilter : %>
+        <div class="treeFilter">
+            <a class="active treeFilter__item" data-filter="all"><%- App.t 'global.all' %></a>
+            <a class="treeFilter__item" data-filter="1" ><%- App.t 'global.active', context: 'many' %></a>
+            <a class="treeFilter__item" data-filter="0" ><%- App.t 'global.inactive', context: 'many' %></a>
+        </div>
+    <% end %>
+</div>
+
+<div data-region="tree" class="sidebar__indent"><li class="empty-block__message" data-ui="message"></li></div>

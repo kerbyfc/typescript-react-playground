@@ -1,0 +1,41 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- App.t "reports.widget.#{@isNew and 'add' or 'edit'}_title" %></h2>
+            <div class="popup__content reports-popup">
+                <form class="form">
+
+                    <div class="form__row">
+                        <label class="form__label"><%- App.t "global.name" %></label>
+                        <div class="form__elem"><input type="text" name="DISPLAY_NAME" value="<%- @DISPLAY_NAME %>" placeholder="<%- App.t "reports.placeholders.name" %>"></div>
+                    </div>
+
+                    <!-- TABS TITLES -->
+                    <ul class="nav-tabs nav">
+                        <% for tab in ["view", "query"]: %>
+                            <li <%- if @tab is tab then "class='active'" %>><a href="#<%- tab %>-tab" data-toggle="tab" data-tab="<%- tab %>" data-original-title><%- App.t "reports.widget.tabs.#{tab}" %></a></li>
+                        <% end %>
+                    </ul>
+
+                    <!-- TABS CONTENT -->
+                    <div class="tab-content reports-popup__tab-content">
+                        <% for tab in ["view", "query"]: %>
+                            <div id="<%- tab %>-tab" class="tab-pane <%- if @tab is tab then 'active' %>">
+                                <% include "reports/dialogs/_partials/widget_#{tab}_tab", @ %>
+                            </div>
+                        <% end %>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="popup__footer">
+                <button class="[ button _success ]" data-action="save"><%- App.t "reports.widget.save" %></button>
+                <button class="button" data-action="cancel"><%- App.t "global.cancel" %></button>
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

@@ -1,0 +1,13 @@
+<header class="contentHeader">
+    <h2 class="contentHeader__title" data-ui="header"></h2>
+    <div class="contentHeader__toolbar _positionLeft">
+        <% include 'controls/toolbar', @ %>
+        <% include 'controls/search', @ %>
+    </div>
+</header>
+
+<div class="[ content__indent _scrollable ]">
+    <% include 'controls/grid/table', @ %>
+</div>
+
+<% include 'controls/grid/paginator', @ %>

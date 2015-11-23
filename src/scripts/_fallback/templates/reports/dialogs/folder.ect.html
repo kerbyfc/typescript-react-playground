@@ -1,0 +1,37 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- App.t "reports.folder.#{@isNew and 'add' or 'edit'}_title"%> </h2>
+            <div class="popup__content">
+                <form class="form">
+                    <div class="form__row">
+                        <label class="form__label"><%- App.t "reports.name" %></label>
+                        <div class="form__elem"><input type="text" name="DISPLAY_NAME" value="<%= @DISPLAY_NAME %>"></div>
+                    </div>
+
+                    <% if not @PARENT_FOLDER_ID: %>
+                        <div class="form__row">
+                            <label class="form__label"><%- App.t "reports.access.folder" %></label>
+                            <div class="form__elem">
+                              <select name="IS_PERSONAL" id="" <%- if not @canBePrivatized then "disabled" %>>
+                                    <option data-icon-class="icon _accessPublic" value="0"><%- App.t "reports.access.personal.0" %></option>
+                                    <option data-icon-class="icon _accessPersonal" value="1"><%- App.t "reports.access.personal.1" %></option>
+                                </select>
+                            </div>
+                        </div>
+                    <% else: %>
+                      <input type="hidden" name="IS_PERSONAL" value="<%- @IS_PERSONAL %>">
+                    <% end %>
+
+                </form>
+            </div>
+            <div class="popup__footer">
+                <button class="[ button _success ]" data-action="save"><%- App.t "reports.folder.save" %></button>
+                <label for="popup" class="button" data-action="cancel"><%- App.t "global.cancel" %></label>
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

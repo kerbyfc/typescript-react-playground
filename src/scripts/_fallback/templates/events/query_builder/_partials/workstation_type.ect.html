@@ -1,0 +1,12 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+    <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.workstation_type' %></label>
+    <% end %>
+    <div class="form__elem">
+        <select class="multiselect" multiple="multiple" name="workstation_type[]" data-form-type="multiselect">
+            <option value="computer"><%= App.t 'events.conditions.workstation_type_computer' %></option>
+            <option value="mobile"><%= App.t 'events.conditions.workstation_type_mobile' %></option>
+            <option value="terminal"><%= App.t 'events.conditions.workstation_type_terminal' %></option>
+        </select>
+    </div>
+</div>

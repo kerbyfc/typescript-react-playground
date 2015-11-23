@@ -1,0 +1,14 @@
+<table class="[ default-table _alignCenter ]">
+    <thead>
+        <tr>
+            <th><%- App.t 'dashboards.widgets.policies_label' %></th>
+            <th><i class="fontello-icon-exchange" title="<%= App.t 'dashboards.widgets.transfer_rule_group_type' %>"></i></th>
+            <th><i class="fontello-icon-floppy-1" title="<%= App.t 'dashboards.widgets.copy_rule_group_type' %>"></i></th>
+            <% if App.Setting.get('product') isnt "pdp" :  %>
+                <th><i class="fontello-icon-hdd" title="<%= App.t 'dashboards.widgets.placement_rule_group_type' %>"></i></th>
+            <% end %>
+            <th><%= App.t 'dashboards.widgets.total' %></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

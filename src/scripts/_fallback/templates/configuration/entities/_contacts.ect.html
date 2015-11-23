@@ -1,0 +1,24 @@
+<li>
+    <% switch @value.CONTACT_TYPE : %>
+        <% when 'email', 'lotus' : %>
+            <div class="fontello-icon-mail-2">
+        <% end %>
+        <% when 'icq' : %>
+            <div class="fontello-icon-icq">
+        <% end %>
+        <% when 'skype' : %>
+            <div class="fontello-icon-skype">
+        <% end %>
+        <% when 'domain' : %>
+            <div class="fontello-icon-net">
+        <% end %>
+        <% when 'mobile' : %>
+            <div class="fontello-icon-mobile-3">
+        <% end %>
+        <% when 'url' : %>
+            <div class="fontello-icon-net">
+        <% end %>
+    <% end %>
+        <%= @value.VALUE %>
+    </div>
+</li>

@@ -1,0 +1,25 @@
+<header class="contentHeader">
+    <h2 class="contentHeader__title"><%- App.t "settings.audit_events" %></h2>
+</header>
+
+<div class="sorting">
+    <div class="sorting__caption"><%- App.t "global.sorting" %></div>
+    <div class="sorting__item">
+      <label class="sorting__trigger">
+        <input
+            class="sorting__input"
+            type="radio"
+            name="sorting"
+            checked
+            data-sort-param="CHANGE_DATE"
+            data-sort-order="desc">
+        <span
+            class="sorting__sort sorting__sort_bt"
+            data-sort-order-show>
+            <%- App.t("global.by_date").toLowerCase() %>
+        </span>
+      </label>
+    </div>
+</div>
+
+<section class="content__indent _scrollable" data-lazy-load id="audit_events_content_table"></section>

@@ -1,0 +1,61 @@
+<form class="form _viewOnly">
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_common_scan_policy' %></label>
+        <div class="form__elem">
+            <%= @scanProfile() %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_auth' %></label>
+        <div class="form__elem">
+            <% if @FileSystem.Credentials.useLocal is "true" : %>
+                <%= App.t 'crawler.job_details_common_scanner_auth' %>
+            <% else : %>
+                <%= @FileSystem.Credentials.login %>
+            <% end %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.resource' %></label>
+        <div class="form__elem">
+            <%=  @ResourceName %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_common_mode' %></label>
+        <div class="form__elem">
+            <%- @scanningMode() %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_common_min_size' %></label>
+        <div class="form__elem">
+            <% if @Filters.SizeFilter.restrictMinSize is "false" : %>
+                <%= App.t 'crawler.job_details_common_no_restriction' %>
+            <% else : %>
+                <%= @Filters.SizeFilter.min / 1024 %>
+            <% end %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_common_max_size' %></label>
+        <div class="form__elem">
+            <% if @Filters.SizeFilter.restrictMaxSize is "false" : %>
+                <%= App.t 'crawler.job_details_common_no_restriction' %>
+            <% else : %>
+                <%= @Filters.SizeFilter.max / 1024 %>
+            <% end %>
+        </div>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'crawler.job_details_common_file_formats' %></label>
+        <br class="form__elem">
+            <% for item, i in @Filters.MaskFilter when item.enabled is "true" : %>
+                <%= item.mask %>
+                <% if (i % 5) is 0  and i isnt 0 : %>
+                    <br/>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+<!-- QUERY OPTIONS -->
+<div class="form__row">
+    <div class="form__elem"><%- App.t "reports.widget.copy_hint" %></div>
+    <label class="[ form__label size-large ]">
+        <button data-action="copy"></button>
+    </label>
+</div>
+
+<div class="form__row">
+    <label class="[ form__label size-normal ]"><%- App.t "reports.widget.query_type" %></label>
+    <div class="form__elem">
+        <select data-mode-toggler>
+            <% for mode in @modes: %>
+                <option value="<%- mode %>"><%- App.t "reports.query_types.#{mode}" %></option>
+            <% end %>
+        </select>
+    </div>
+</div>
+
+<!-- QUERY BUILDER -->
+<div class="form" data-region="query-builder"></div>

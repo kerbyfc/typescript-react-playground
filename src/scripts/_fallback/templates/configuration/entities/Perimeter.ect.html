@@ -1,0 +1,96 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <% for key, value of @FIELDS[@ENTITY] when key not in ['OWNER', 'ENTITY'] : %>
+        <tr>
+            <td><%= @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+    <% end %>
+
+    <% if @FIELDS.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <td>
+                <ul class="configuration__entity">
+                    <% for value in @FIELDS.contacts : %>
+                        <% include "configuration/entities/_contacts", value: value %>
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    <% end %>
+
+    <% if @FIELDS.entries?.length : %>
+        <tr>
+            <td>Персоны и группы</td>
+            <td>
+                <ul class="configuration__entity">
+                    <% for value in @FIELDS.entries : %>
+                        <% if value.ENTITY is 'LdapPerson' : %>
+                            <li><div class="fontello-icon-user-5"><%= value.DISPLAY_NAME %></div></li>
+                        <% else : %>
+                            <li><div class="fontello-icon-users-1"><%= value.DISPLAY_NAME %></div></li>
+                        <% end %>
+
+                    <% end %>
+                </ul>
+            </td>
+        </tr>
+    <% end %>
+
+<% else : %>
+
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['OWNER', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <% if @FIELDS.diff_keys['entries'] : %>
+        <tr>
+            <td>Персоны и группы</td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% if @FIELDS[k]['entries'] : %>
+                    <ul class="configuration__entity">
+                        <% for value in @FIELDS[k]['entries'] : %>
+                            <% if value.ENTITY is 'LdapGroup' : %>
+                                <li><div class="fontello-icon-users-1"><%= value.DISPLAY_NAME %></div></li>
+                            <% else : %>
+                                <li><div class="fontello-icon-user-5"><%= value.DISPLAY_NAME %></div></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+    <% if @FIELDS.diff_keys.contacts : %>
+        <tr>
+            <td><%= @locale.contacts %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <ul class="configuration__entity">
+                        <% if @FIELDS[k].contacts : %>
+                            <% for value in @FIELDS[k].contacts : %>
+                                <% include "configuration/entities/_contacts", value: value %>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+<% end %>

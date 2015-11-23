@@ -1,0 +1,58 @@
+<div class="sidebar__header">
+    <h2 class="sidebar__title"><%- App.t "organization.groups" %></h2>
+    <div class="toolbar">
+        <div class="toolbar__actions">
+            <div class="buttonSet" data-toolbar>
+                <button
+                    class="[ button _icon ] [ icon _create ]"
+                    id="create-group-in-organization"
+                    data-action="create_group"
+                    title="<%- App.t "organization.createGroup" %>"
+                    disabled>
+                </button>
+                <button
+                    class="[ button _icon ] [ icon _edit ]"
+                    data-action="edit_group"
+                    title="<%- App.t "organization.editGroup" %>"
+                    disabled>
+                </button>
+                <button
+                    class="[ button _icon ] [ icon _delete ]"
+                    id="delete-group-in-organization"
+                    data-action="delete_group"
+                    title="<%- App.t "organization.deleteGroup" %>"
+                    disabled>
+                </button>
+
+                <!-- TODO убрать display: none, когда реализуется функционал -->
+                <button
+                    class="[ button _icon ]"
+                    style="display: none"
+                    data-action="import_ad"
+                    title="organization.import_groups_from_ad"
+                    disabled
+                    ><i class="fontello-icon-upload"></i>
+                </button>
+                <button
+                    class="[ button _icon ]"
+                    style="display: none"
+                    data-action="export_ad"
+                    title="organization.export_groups"
+                    disabled
+                    ><i class="fontello-icon-download"></i>
+                </button>
+
+                <button
+                    class="[ button _icon ] [ icon _createPolicy ]"
+                    data-action="create_policy"
+                    title="<%- App.t "organization.create_policy" %>"
+                    disabled>
+                </button>
+            </div>
+            <div class="toolbar__search">
+                <input id="search_by_groups" type="hidden">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sidebar__indent tree_view"></div>

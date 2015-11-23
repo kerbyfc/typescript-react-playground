@@ -1,0 +1,58 @@
+<div class="sidebar__header toolbar" data-actions>
+    <h2 class="sidebar__title"><%= App.t 'menu.reports' %></h2>
+    <div class="buttonSet">
+
+        <div class="buttonDropdown dropdown">
+            <button
+                class="dropdown-toggle [ button _icon ] [ icon _create ]"
+                type="button"
+                data-toggle="dropdown"
+                data-action="add"
+                id="report-toolbar-dropdown"
+                ></button>
+            <ul class="dropdown-menu" aria-labelledby="report-toolbar-dropdown">
+                <li><button data-href="/reports/new/edit" data-action="add" data-type="report"><%- App.t "reports.report.create" %></a></li>
+                <li><button data-href="/reports/folders/new" data-action="add" data-type="folder"><%- App.t "reports.folder.create" %></a></li>
+            </ul>
+        </div>
+
+        <button
+            class="[ button _icon ] [ icon _edit ]"
+            type="button"
+            data-action="edit"
+            title="<%- App.t "global.edit" %>">
+        </button>
+
+        <button
+            class="[ button _icon ] [ icon _copy ]"
+            type="button"
+            data-action="copy"
+            title="<%- App.t "global.copy" %>">
+        </button>
+
+        <button
+            class="[ button _icon ] [ icon _play ]"
+            type="button"
+            data-action="execute"
+            title="<%- App.t "reports.report.run" %>">
+        </button>
+
+        <button
+            class="[ button _icon ] [ icon _stop ]"
+            type="button"
+            data-action="cancel"
+            title="<%- App.t "reports.report.cancel" %>">
+        </button>
+
+        <button
+            class="[ button _icon ] [ icon _delete ]"
+            type="button"
+            data-action="delete"
+            title="<%- App.t "global.delete" %>">
+        </button>
+
+    </div>
+    <div class="sidebar__search" data-widget="fancyTreeSearch"></div>
+</div>
+
+<div class="sidebar__indent" data-tree></div>

@@ -1,0 +1,7 @@
+<td><%= @DISPLAY_NAME %></td>
+<td><a href="javascript:void(0);" class="stat" data-type="Transfer"><%= @TRANSFER_CNT %></a></td>
+<td><a href="javascript:void(0);" class="stat" data-type="Copy"><%= @COPY_CNT %></a></td>
+<% if App.Setting.get('product') isnt "pdp" :  %>
+<td><a href="javascript:void(0);" class="stat" data-type="Placement"><%= @PLACEMENT_CNT %></a></td>
+<% end %>
+<td><a href="javascript:void(0);" class="stat" data-type="Copy,Transfer,Placement"><%= @TOTAL_CNT %></a></td>

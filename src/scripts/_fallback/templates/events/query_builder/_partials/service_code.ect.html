@@ -1,0 +1,14 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+    <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.service_code' %></label>
+    <% end %>
+    <div class="form__elem">
+        <select class="multiselect" multiple="multiple" name="service_code[]" data-form-type="multiselect">
+            <% for service_code in App.request('bookworm', 'service').toJSON() : %>
+                <% if App.Setting.get('product') isnt "pdp" and service_code.service_id isnt "7843FC5BEA024E9B274E26DB43B7E680D8BC9356" : %>
+                    <option value="<%= service_code.service_id %>" label="<i class='fontello-icon-<%= service_code.mnemo %>'></i><%= service_code.name %>"></option>
+                <% end %>
+            <% end %>
+        </select>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<li class="widgetViolator__unit">
+    <div class="widgetViolator__ava">
+        <a href="javascript:void(0);">
+            <img height="32" width="32" src='<%= "#{App.Config.server}/api/ldapPerson/image?person_id=#{@SENDER_ID}" %>'>
+        </a>
+    </div>
+    <div class="widgetViolator__name">
+        <% if @DISPLAY_NAME : %>
+            <a href="javascript:void(0);" data-type="person" data-id="<%= @SENDER_ID %>" title="<%= @DISPLAY_NAME %>"><%= _.trunc @DISPLAY_NAME %></a>
+        <% else : %>
+            <a href="javascript:void(0);"><%= @KEY %></a>
+        <% end %>
+        <span class="widgetViolator__post"><%= @TITLE %></span>
+    </div>
+    <div class="widgetViolator__threat">
+        <a
+            href="javascript:void(0);"
+            data-threat="High"
+            title="<%= App.t 'dashboards.widgets.threats.High' %>"
+            data-value="<%= @HIGH_CNT ? 0 %>"
+            class="user_stat"
+        ><%= @HIGH_CNT ? 0 %></a>
+        <a
+            href="javascript:void(0);"
+            data-threat="Medium"
+            title="<%= App.t 'dashboards.widgets.threats.Medium' %>"
+            data-value="<%= @MEDIUM_CNT ? 0 %>"
+            class="user_stat"
+        ><%= @MEDIUM_CNT ? 0 %></a>
+        <a
+            href="javascript:void(0);"
+            data-threat="Low"
+            title="<%= App.t 'dashboards.widgets.threats.Low' %>"
+            data-value="<%= @LOW_CNT ? 0 %>"
+            class="user_stat"
+        ><%= @LOW_CNT ? 0 %></a>
+    </div>
+</li>

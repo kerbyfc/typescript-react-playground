@@ -1,0 +1,68 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты категории -->
+    <% switch @FIELDS[@ENTITY].TYPE : %>
+        <% when 'term' : %>
+            <% exclude = ['TYPE', 'PARENT_CATEGORY_ID', 'FP_TEXT_VALUE_THRESHOLD', 'FP_BIN_VALUE_THRESHOLD', 'ENTITY'] %>
+        <% end %>
+        <% when 'text_object', 'form', 'stamp', 'table' : %>
+            <% exclude = ['TYPE', 'PARENT_CATEGORY_ID', 'ENABLED', 'TERM_WEIGHT', 'TERM_CASE_SENSITIVE', 'FP_TEXT_VALUE_THRESHOLD', 'FP_BIN_VALUE_THRESHOLD', 'TERM_MORPHOLOGY', 'TERM_LANGUAGE', 'ENTITY'] %>
+        <% end %>
+        <% when 'fingerprint' : %>
+            <% exclude = ['TYPE', 'PARENT_CATEGORY_ID', 'ENABLED', 'TERM_WEIGHT', 'TERM_CASE_SENSITIVE', 'TERM_MORPHOLOGY', 'TERM_LANGUAGE', 'ENTITY'] %>
+        <% end %>
+    <% end %>
+
+    <% for key, value of @FIELDS[@ENTITY] when key not in exclude : %>
+        <tr>
+            <td><%= @locale[key] or @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим родительскую категорию -->
+    <tr>
+        <td><%= @locale.parent %></td>
+        <td>
+            <% if @FIELDS[@ENTITY].PARENT_CATEGORY_ID isnt null : %>
+                <%= @FIELDS.parent.DISPLAY_NAME %>
+            <% else : %>
+                <%= @locale.root %>
+            <% end %>
+        </td>
+    </tr>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты категории -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['TYPE', 'PARENT_CATEGORY_ID', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key] or @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим родительскую категорию -->
+    <% if 'PARENT_CATEGORY_ID' in @FIELDS.diff_keys[@ENTITY] : %>
+        <tr>
+            <td><%= @locale.parent_category %></td>
+            <% for key in ['old', 'new'] : %>
+                <td>
+                    <% if @FIELDS[key][@ENTITY].PARENT_CATEGORY_ID isnt null : %>
+                        <%= @FIELDS[key].parent.DISPLAY_NAME %>
+                    <% else : %>
+                        <%= @locale.root %>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+<% end %>

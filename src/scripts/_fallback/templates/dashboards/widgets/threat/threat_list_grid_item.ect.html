@@ -1,0 +1,5 @@
+<td><%- App.t "dashboards.widgets.#{@type.toLowerCase()}_rule_group_type" %></td>
+<td data-threat="High"><a href="javascript:void(0);" class="stat" data-type="<%= @type %>"><%= @High %></a></td>
+<td data-threat="Medium"><a href="javascript:void(0);" class="stat" data-type="<%= @type %>"><%= @Medium %></a></td>
+<td data-threat="Low"><a href="javascript:void(0);" class="stat" data-type="<%= @type %>"><%= @Low %></a></td>
+<td><a href="javascript:void(0);" class="count_grid" data-type="<%= @type %>"><%= @High + @Medium + @Low %></a></td>

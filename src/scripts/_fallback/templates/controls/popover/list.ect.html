@@ -1,0 +1,19 @@
+<div class="popover-info">
+    <% for type in @types : %>
+        <div class="popover-info__row">
+            <div class=" [ popover-info__param popover-info__param--inline ] "><%- App.t "select_dialog.#{type}", context: "many" %>:</div>
+            <div class="popover-info__value">
+                <ul class="popover-info__value-list">
+                <% for item in _.where(@objects, TYPE: type) : %>
+                    <li
+                        data-type="<%- item.TYPE %>"
+                        data-id="<%- item.ID %>"
+                        class="popover-info__value-item<%- if @entry.isDeleted item then " deleted" else "" %> <%- @style.className.entry[type] %>">
+                        <%- @entry.getName item %>
+                    </li>
+                <% end %>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+</div>

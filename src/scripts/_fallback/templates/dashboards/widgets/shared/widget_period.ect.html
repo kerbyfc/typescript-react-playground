@@ -1,0 +1,11 @@
+<div class="form__row">
+    <label class="form__label" for="tm-widget-common-settings-last-period">
+        <%- App.t 'dashboards.widgets.commonWidgetSettings.lastPeriod' %>:
+    </label>
+    <% include 'controls/form/selectdaterangepicker', @extend(
+        startName    : 'BASEOPTIONS[start_datetime]'
+        endName      : 'BASEOPTIONS[end_datetime]'
+        intervalName : 'BASEOPTIONS[default_period]'
+        default      : ['this_day', 'last_3_days', 'last_7_days', 'this_week', 'this_month', 'last_30_days', 'range']
+    ) %>
+</div>

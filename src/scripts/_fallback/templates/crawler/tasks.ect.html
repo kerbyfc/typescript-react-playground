@@ -1,0 +1,43 @@
+<div class="sidebar__header">
+    <h2 class="sidebar__title">
+        <%= App.t 'crawler.crawler_header' %>
+        <div class="[ sidebar__toolbar _positionRight ]">
+            <button class="button" data-action="editScanner"><%= App.t 'crawler.scanner_edit' %></button>
+        </div>
+    </h2>
+
+    <div class="sidebar__toolbar buttonSet">
+        <button
+            class="[ button _icon ] [ icon _create ]"
+            id="crawler_create_task"
+            title="<%- App.t 'crawler.create_job' %>">
+        </button>
+        <button
+            class="[ button _icon ] [ icon _edit ]"
+            id="crawler_edit_task"
+            title="<%- App.t 'crawler.edit_job' %>">
+        </button>
+        <button
+            class="[ button _icon ] [ icon _play ]"
+            id="crawler_run_task"
+            title="<%- App.t 'crawler.run_job' %>">
+        </button>
+        <button
+            class="[ button _icon ] [ icon _stop ]"
+            id="crawler_stop_task"
+            title="<%- App.t 'crawler.stop_job' %>">
+        </button>
+        <button
+            class="[ button _icon ] [ icon _delete ]"
+            id="crawler_delete_task"
+            title="<%- App.t 'crawler.delete_job' %>">
+        </button>
+        <button
+            class="[ button _icon ] [ icon _clean ]"
+            id="crawler_purge_hashes"
+            title="<%- App.t 'crawler.purge_hashes_job' %>">
+        </button>
+    </div>
+</div>
+
+<div class="crawlerTasks sidebar__indent"></div>

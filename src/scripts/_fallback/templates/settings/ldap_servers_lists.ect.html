@@ -1,0 +1,10 @@
+<%
+@buttons = [ "create", "edit", "delete", "start_sync" ]
+%>
+
+<div class="sidebar__header">
+    <h2 class="sidebar__title"><%= App.t 'settings.ldap_settings.ldapServers' %></h2>
+    <% include 'controls/toolbar', @ %>
+</div>
+
+<% include 'controls/fancytree', @ %>

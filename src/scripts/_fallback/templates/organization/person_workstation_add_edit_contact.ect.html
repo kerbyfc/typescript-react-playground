@@ -1,0 +1,7 @@
+<% if @IDENTITY_TYPE is "workstation" :%>
+    <span class="employeeExtendedItem__value"><%- @CONTACT_TYPE.toUpperCase() %>: <%= @VALUE %></span>
+<% else if @IDENTITY_TYPE is "person" or @IDENTITY_TYPE is "group" :%>
+    <i class="employeeExtendedItem__icon [ icon _sizeSmall _<%- @CONTACT_TYPE %> ]"></i>
+    <span class="employeeExtendedItem__value"><%- App.t "contacts.types.#{ @CONTACT_TYPE }", { context: if +@IS_PERSONAL then "personal" else "work" } %>:  <%= @VALUE %></span>
+<% end %>
+<p class="employeeExtendedItem__description"><%= @NOTE %></p>

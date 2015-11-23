@@ -1,0 +1,196 @@
+<header class="eventDetails__header _extended">
+    <div class="eventDetails__general">
+
+        <% include "events/partials/header_indicators", @ %>
+
+        <span class="eventDetails__id">ID:<%= @OBJECT_ID %></span>
+        <span class="eventDetails__weight"><%= App.Helpers.getBytesWithUnit(@OBJECT_SIZE) %></span>
+        <% if @OBJECT_ERROR_EXISTS : %>
+            <i class="[ icon _error ]"></i>
+        <% end %>
+    </div>
+</header>
+
+<nav class="eventDetail__tabs tabs">
+    <ul>
+        <li class="tabs__item active">
+            <a class="tabs__link" href="#eventDetailsExtended__general" data-toggle="tab"><%= App.t 'events.conditions.main_info' %></a>
+        </li>
+        <li class="tabs__item">
+            <a class="tabs__link" href="#eventDetailsExtended__analisys" data-toggle="tab"><%= App.t 'events.conditions.protected_documents' %></a>
+        </li>
+        <li class="tabs__item">
+            <a class="tabs__link" href="#eventDetailsExtended__errors" data-toggle="tab"><%= App.t 'events.events.event_messages' %></a>
+        </li>
+    </ul>
+</nav>
+
+<input class="eventDetails__rollTrigger" id="eventDetails__rollTriggerExtended" type="checkbox">
+<section class="eventDetails__contentWrap tab-content">
+    <div class="eventDetails__content _tab tab-pane active" id="eventDetailsExtended__general"></div>
+    <div class="eventDetails__content _tab tab-pane" id="eventDetailsExtended__analisys"></div>
+    <div class="eventDetails__content _tab tab-pane" id="eventDetailsExtended__errors"></div>
+
+    <label for="eventDetails__rollTriggerExtended" class="eventDetails__rollButton"></label>
+</section>
+
+<!-- OLD -->
+<div class="tab-content tab-content-visible eventDetailExtended__tab" style="display: none;">
+    <div class="tab-pane" id="analysis">
+
+        <form class="form" style="display: none;">
+
+            <% if @protected_documents?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.protected_documents' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for document in @protected_documents : %>
+                            <% if document.IS_DELETED is 0 : %>
+                                <% if document.catalog.length : %>
+                                    <li class="unit">
+                                        <a class="unit__name" href="/protected/<%= document.catalog[0].CATALOG_ID %>/<%= document.PROT_DOCUMENT_ID %>" class="category"><%= document.DISPLAY_NAME %></a>
+                                    </li>
+                                <% else : %>
+                                    <li class="unit">
+                                        <a class="unit__name" href="/protected/<%= document.PROT_DOCUMENT_ID %>" class="category"><%= document.DISPLAY_NAME %></a>
+                                    </li>
+                                <% end %>
+                            <% else : %>
+                                <li class="unit">
+                                    <span class="unit__name _deleted" data-id="<%= document.PROT_DOCUMENT_ID %>"><%= document.DISPLAY_NAME %></span>
+                                </li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <% if @categories?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.categories' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for category in @categories : %>
+                            <% if category.IS_DELETED is 0 : %>
+                                <li class="unit"><a class="unit__name" href="analysis/term/<%= category.CATEGORY_ID %>"><%= category.DISPLAY_NAME %></a></li>
+                            <% else : %>
+                                <li class="unit"><span class="unit__name _deleted" data-id="<%= category.CATEGORY_ID %>"><%= category.DISPLAY_NAME %></span></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <% if @text_objects?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.text_objects' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for text_object in @text_objects : %>
+                            <% if text_object.IS_DELETED is 0 : %>
+                                <% for category in text_object.category : %>
+                                    <li class="unit"><a class="unit__name" href="analysis/text_object/<%= category.CATEGORY_ID %>/<%= text_object.TEXT_OBJECT_ID %>"><%= text_object.DISPLAY_NAME %></a></li>
+                                <% end %>
+                            <% else : %>
+                                <li class="unit"><span class="unit__name _deleted" data-id="<%= text_object.TEXT_OBJECT_ID %>"><%= text_object.DISPLAY_NAME %></span></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <!-- Etalon fingerprints -->
+            <% if @fingerprint?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.etalon_fingerprints' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for fingerprint in @fingerprint : %>
+                            <% if fingerprint.IS_DELETED is 0 : %>
+                                <% for category in fingerprint.category : %>
+                                    <li class="unit"><a class="unit__name" href="analysis/fingerprint/<%= category.CATEGORY_ID %>/<%= fingerprint.FINGERPRINT_ID %>"><%= fingerprint.DISPLAY_NAME %></a></li>
+                                <% end %>
+                            <% else : %>
+                                <li class="unit"><span class="unit__name _deleted" data-id="<%= fingerprint.FINGERPRINT_ID %>"><%= fingerprint.DISPLAY_NAME %></span></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <!-- Etalon fingerprints -->
+
+            <!-- Etalon forms -->
+            <% if @form?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.etalon_forms' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for form in @form : %>
+                            <% if form.IS_DELETED is 0 : %>
+                                <% for category in form.category : %>
+                                    <li class="unit"><a class="unit__name" href="analysis/form/<%= category.CATEGORY_ID %>/<%= form.FINGERPRINT_ID %>"><%= form.DISPLAY_NAME %></a></li>
+                                <% end %>
+                            <% else : %>
+                                <li class="unit"><span class="unit__name _deleted" data-id="<%= form.FINGERPRINT_ID %>"><%= form.DISPLAY_NAME %></span></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <!-- Etalon forms -->
+
+            <!-- Etalon stamps -->
+            <% if @stamp?.length : %>
+                <div class="form__row">
+                    <span class="form__label"><%= App.t 'events.conditions.etalon_stamps' %></span>
+                    <ul class="eventDetail__items [ form__col _wrappable ]">
+                        <% for stamp in @stamp : %>
+                            <% if stamp.IS_DELETED is 0 : %>
+                                <% for category in stamp.category : %>
+                                    <li class="unit"><a class="unit__name" href="analysis/stamp/<%= category.CATEGORY_ID %>/<%= stamp.FINGERPRINT_ID %>"><%= stamp.DISPLAY_NAME %></a></li>
+                                <% end %>
+                            <% else : %>
+                                <li class="unit"><span class="unit__name _deleted" data-id="<%= stamp.FINGERPRINT_ID %>"><%= stamp.DISPLAY_NAME %></span></li>
+                            <% end %>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <!-- Etalon stamps -->
+
+            <!-- Etalon tables -->
+            <% if @table?.length : %>
+            <div class="form__row">
+                <span class="form__label"><%= App.t 'events.conditions.etalon_tables' %></span>
+                <ul class="eventDetail__items [ form__col _wrappable ]">
+                    <% for table in @table : %>
+                        <% if table.IS_DELETED is 0 : %>
+                            <% for category in table.category : %>
+                                <li class="unit"><a class="unit__name" href="analysis/table/<%= category.CATEGORY_ID %>/<%= table.FINGERPRINT_ID %>"><%= table.DISPLAY_NAME %></a></li>
+                            <% end %>
+                        <% else : %>
+                            <li class="unit"><span class="unit__name _deleted" data-id="<%= table.FINGERPRINT_ID %>"><%= table.DISPLAY_NAME %></span></li>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <!-- Etalon tables -->
+
+            <!-- Homography objects -->
+            <% if @image?.length : %>
+            <div class="form__row">
+                <span class="form__label"><%= App.t 'events.conditions.homography' %></span>
+                <ul class="eventDetail__items [ form__col _wrappable ]">
+                    <% for image in @image : %>
+                        <% if image.IS_DELETED == 0 : %>
+                            <li class="unit"><a class="unit__name" href="analysis/graphic/<%= image.FINGERPRINT_ID %>"><%= image.DISPLAY_NAME %></a></li>
+                        <% else : %>
+                            <li class="unit"><span class="unit__name _deleted" data-id="<%= image.FINGERPRINT_ID %>"><%= image.DISPLAY_NAME %></span></li>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <!-- Homography objects -->
+
+        </form>
+
+    </div>
+</div>

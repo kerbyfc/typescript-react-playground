@@ -1,0 +1,10 @@
+<div class="form__row" data-group="<%= @group %>">
+    <% if @mode is 'lite' : %>
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.modify_date' %></label>
+    <% end %>
+    <% include 'controls/form/selectdaterangepicker', @extend(
+        startName : 'modify_date[start_date]'
+        endName   : 'modify_date[end_date]'
+        default   : ['none', 'from', 'to', 'range']
+    ) %>
+</div>

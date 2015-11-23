@@ -1,0 +1,23 @@
+<div class="popup__content">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.category.display_name' %></label>
+            <div class="form__elem">
+                <input type="text" data-form-autofocus="true" maxlength="256" name="DISPLAY_NAME" placeholder="<%- App.t 'form.placeholder.catalog' %>">
+            </div>
+        </div>
+
+        <div class="form__row vertical">
+            <label for="NOTE" class="form__label"><%- App.t 'analysis.category.note' %></label>
+            <div class="form__elem">
+                <textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea>
+            </div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" type="submit" disabled><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset" data-action="cancel"><%- App.t 'global.cancel' %></button>
+</div>

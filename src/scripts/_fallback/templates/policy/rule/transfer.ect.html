@@ -1,0 +1,94 @@
+<% if @can('edit_rule') : %><a
+    href="#"
+    class="policyRuleItem__button"
+    data-action="removeRule">
+</a><% end %>
+
+<% channel = @channel() %>
+<% if channel.length : %>
+    <div class="policyRuleItem__row">
+        <label class="policyRuleItem__label"><%- App.t "entry.policy.transmission_path_rule" %></label>
+        <div class="policyRuleItem__values">
+            <div class="policyRuleItem__type">
+                <% for item in channel : %>
+                    <span><%- item.name %></span>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t 'entry.policy.sender_many' %></label>
+    <div class="policyRuleItem__values">
+        <% if @DATA.SOURCE?.length : %>
+            <%- if +@DATA.CONDITION_SOURCE then App.t 'entry.policy.sender', context: 'any_other' else "" %>
+            <% for item in @DATA.SOURCE : %><% className = @style.className.entry[item.TYPE] %>
+                <span
+                    data-entry-type="<%- item.TYPE %>"
+                    data-entry-id="<%- item.ID %>"
+                    class="<%- if @entry.isDeleted item then "deleted" else "" %>">
+                    <% if path = @entry.getImagePath(item) : %><img src='<%- path %>' width=20 height=20><% end %>
+                    <i class="<%- className %>"><%- if not className and not path then "#{item.TYPE}: " %></i> <%- @entry.getName item %>
+                </span>
+            <% end %>
+        <% else : %>
+            <span data-type="SOURCE" data-dialog="source">
+                <i class="[ icon _sizeSmall _sid ]"></i>
+                <%- App.t 'entry.policy.sender', context: 'any' %>
+            </span>
+        <% end %>
+    </div>
+</div>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t "entry.policy.direction_rule" %></label>
+    <div class="policyRuleItem__values">
+        <i class="policyRuleItem__direction <%- ["", "_both"][ +@DATA.DIRECTION ] %>"></i>
+    </div>
+</div>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t 'entry.policy.dest_many' %></label>
+    <div class="policyRuleItem__values">
+        <% if @DATA.DEST?.length : %>
+            <%- if +@DATA.CONDITION_DEST then App.t 'entry.policy.dest', context: 'any_other' else "" %>
+            <% for item in @DATA.DEST : %><% className = @style.className.entry[item.TYPE] %>
+                <span
+                    data-entry-type="<%- item.TYPE %>"
+                    data-entry-id="<%- item.ID %>"
+                    class="<%- if @entry.isDeleted item then "deleted" else "" %>">
+                    <i class="<%- className %>"><%- if not className then "#{item.TYPE}: " %></i> <%- @entry.getName item %>
+                </span>
+            <% end %>
+        <% else : %>
+            <span data-type="DEST" data-dialog="dest">
+                <i class="[ icon _sizeSmall _sid ]"></i>
+                <%- App.t "entry.policy.#{@TYPE}", context: 'any_dest' %>
+            </span>
+        <% end %>
+    </div>
+</div>
+
+<% if @DATA.WORKSTATION?.length : %>
+    <div class="policyRuleItem__row">
+        <label class="policyRuleItem__label"><%- App.t 'select_dialog.workstation' %></label>
+        <div class="policyRuleItem__values">
+            <% for item in @DATA.WORKSTATION : %>
+                <span
+                    data-entry-type="<%- item.TYPE %>"
+                    data-entry-id="<%- item.ID %>"
+                    class="<%- if @entry.isDeleted item then "deleted" else "" %>">
+                    <i class="<%- @style.className.entry[item.TYPE] %>"></i> <%- @entry.getName item %>
+                </span>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<div class="policyRuleItem__row">
+    <label class="policyRuleItem__label"><%- App.t "global.action", context: "many" %></label>
+    <div class="policyRuleItem__values">
+        <ul class="policyRuleItem__actions" data-ui="actionList"></ul>
+    </div>
+</div>

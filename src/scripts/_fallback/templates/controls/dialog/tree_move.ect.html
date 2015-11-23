@@ -1,0 +1,9 @@
+<div class="[ popup__content size-short ]">
+    <%- App.t("global.move") %> <%- App.t("select_dialog.#{@type}_plural_1").toLowerCase() %> <b data-entry-id="<%- @source.id %>" data-entry-type="<%- @type %>"><%- @source.getName() %></b>
+    <%- App.t 'global.to' %>
+    <% if @dest : %> <%- App.t("select_dialog.#{@type}_plural_1").toLowerCase() %> <b data-entry-id="<%- @dest.id %>" data-entry-type="<%- @type %>"><%- @dest.getName() %></b><% else : %> <%- App.t('global.root').toLowerCase() %><% end %>?
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" type="submit"><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

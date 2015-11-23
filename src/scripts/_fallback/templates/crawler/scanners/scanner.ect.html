@@ -1,0 +1,66 @@
+<div class="[ content__indent _scrollable _autoHeight ]">
+    <div class="contentHeader">
+        <h2 class="contentHeader__title"><%= @title %></h2>
+    </div>
+
+    <form class="form crawler__form">
+        <fieldset>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_name' %></label>
+                <div class="form__elem"><input type="text" name="name" maxlength="256"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_server_address' %></label>
+                <div class="form__elem"><input type="text" name="ExpressdHost" maxlength="256"></div>
+                <label class="[ form__label size-auto ]">:</label>
+                <div class="form__elem"><input type="number" name="ExpressdPort"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_send_speed' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="SendManagerTBFSpeed[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_scan_speed' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="TasksTBFSpeed[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_file_queue_size' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="QueueSizeLimit[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_queue_check_interval' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="OutFileQueueCheckInterval[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_connections_to_tm' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="ExpressdConnectionLimit[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_reconnection_interval' %></label>
+                <div class="[ form__elem size-100 ]"><input type="number" name="ExpressdTcpWaitRetry[Value]"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_ignore_sids' %></label>
+                <div class="[ form__elem height-large ]"><textarea name="FilteredSids[Value]"></textarea></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.scanner_details_system_folder_mask' %></label>
+                <div class="[ form__elem height-large ]"><textarea name="SystemFolders[Value]"></textarea></div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="content__footer">
+    <button type="success" class="button _success" data-action="save"><%= App.t 'global.save' %></button>
+    <button type="reset" class="button cancel_button" data-action="cancel"><%= App.t 'global.cancel' %></button>
+</div>

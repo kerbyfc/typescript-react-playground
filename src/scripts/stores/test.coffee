@@ -1,19 +1,19 @@
-# class TestStore extends Store
+class TestStore extends Store
 
-#   value = 0
+  value = 0
 
-#   data = lol: false
+  data = lol: false
 
-#   @on 'init', (val) ->
-#     value = val
+  @on 'init', (val) ->
+    value = val
 
-#   @on 'test', (vals...) ->
-#     console.debug vals
+  @on 'test', (vals...) ->
+    console.debug vals
 
-#   @on 'console', (val) ->
-#     console.log val
+  @on 'console', (val) ->
+    console.log val
 
-#   value: ->
-#     value
+  value: ->
+    value
 
 module.exports = {}

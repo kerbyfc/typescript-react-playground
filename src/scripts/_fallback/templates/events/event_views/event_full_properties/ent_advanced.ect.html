@@ -1,0 +1,33 @@
+<div style="margin-bottom: 10px;"><a href="#" class="eventAnalisysItem__more"> < <%= App.t 'global.back' %> </a></div>
+
+<% include 'events/event_views/event_full_properties/analysis_entry_info', {t: @t, ent: @entry, entries: @entries} %>
+
+<% if @entries.ENTRY_TYPE is 'category' : %>
+<table class="default-table">
+    <tr>
+        <th><%= App.t 'events.events.term' %></th>
+        <th><%= App.t 'events.events.term_count' %></th>
+    </tr>
+    <% for t in @entry.entries : %>
+        <tr>
+            <td><%= t.DISPLAY_NAME %></td>
+            <td><%= t.TOTAL_ENTRIES %></td>
+        </tr>
+    <% end %>
+</table>
+<% else : %>
+    <% if @entry.category.length : %>
+    <h3 class="eventAnalisysItem__subTitle"><%= App.t 'events.events.catalog' %></h3>
+    <ul class="eventAnalisysItem__links">
+    <% for category in @entry.category : %>
+        <li>
+            <% if category.IS_DELETED is 1 : %>
+                <span class="deleted"><%= category.DISPLAY_NAME %></span>
+            <% else : %>
+                <a href="/analysis/<%= category.CATEGORY_TYPE %>/<%= category.CATEGORY_ID %>"><%= category.DISPLAY_NAME %></a>
+            <% end %>
+        </li>
+    <% end %>
+    </ul>
+    <% end %>
+<% end %>

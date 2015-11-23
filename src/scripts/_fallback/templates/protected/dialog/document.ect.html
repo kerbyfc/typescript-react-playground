@@ -1,0 +1,41 @@
+<div class="[ popup__content size-normal ]">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'protected.document.display_name' %></label>
+            <div class="form__elem">
+                <input type="text" data-form-autofocus="true" name="DISPLAY_NAME" required placeholder="<%- App.t 'form.placeholder.name' %>">
+            </div>
+        </div>
+        <div class="form__row">
+            <label for="ENABLED" class="form__label"><%- App.t 'protected.document.status' %></label>
+            <div class="form__elem">
+                <div class="tumbler">
+                    <input class="tumbler__input" name="ENABLED" type="checkbox">
+                    <label for="ENABLED" class="tumbler__toggle"></label>
+                </div>
+                <div class="form__hint"><%- App.t 'protected.document.status_hint' %></div>
+            </div>
+        </div>
+
+        <ul class="tabs">
+            <li class="tabs__item active"><a class="tabs__link" href="#analisysElements" data-tab="Entry" data-toggle="tab"><%- App.t "entry.document.entry_many" %></a></li>
+            <li class="tabs__item"><a class="tabs__link" href="#detectionConditions" data-tab="Condition" data-toggle="tab"><%- App.t "entry.document.condition_many" %></a></li>
+        </ul>
+        <div class="tab-content protected">
+            <div class="tab-pane active" id="analisysElements" data-region="entry"></div>
+            <div class="tab-pane" id="detectionConditions" data-region="condition"></div>
+        </div>
+
+        <div class="[ form__row vertical ]">
+            <label for="NOTE" class="form__label"><%- App.t 'protected.document.note' %></label>
+            <div class="form__elem">
+                <textarea name="NOTE" maxlength="1000"></textarea>
+            </div>
+        </div>
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]"><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

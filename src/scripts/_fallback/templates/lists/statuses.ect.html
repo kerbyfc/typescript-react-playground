@@ -1,0 +1,38 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%= App.t 'lists.statuses.statuses_title' %></h2>
+    <p class="contentHeader__description"><%= App.t 'lists.statuses.statuses_description' %></p>
+</div>
+
+<div class="toolbar">
+    <div class="toolbar__pagination" id="statuses_paginator"></div>
+    <div class="toolbar__actions">
+        <div class="buttonSet">
+            <button
+                class="[ button _icon ] [ icon _create ]"
+                data-action="create_status"
+                title="<%= App.t 'lists.statuses.create' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _edit ]"
+                data-action="edit_status"
+                title="<%= App.t 'lists.statuses.edit' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _delete ]"
+                data-action="delete_status"
+                title="<%= App.t 'lists.statuses.delete' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _createPolicy ]"
+                data-action="create_policy"
+                title="<%= App.t 'lists.statuses.create_policy' %>"
+                disabled>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="[ content__indent _scrollable ]" id="statuses_table"></div>

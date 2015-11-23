@@ -1,0 +1,5 @@
+<% if @image : %>
+<img src='<%- @image %>' width='20' height='20'><%- @label %>
+<% else : %>
+<i class='<%- @style.className.entry[@type] %>'></i>&nbsp;<%- @label %>
+<% end %>

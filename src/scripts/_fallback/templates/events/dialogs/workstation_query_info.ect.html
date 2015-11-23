@@ -1,0 +1,31 @@
+<div class="unit_list--primary">
+    <% if @SOURCE is "ad" : %>
+    <div class="unit_list--photo-ws-ad"></div>
+    <% else : %>
+    <div class="unit_list--photo-ws"></div>
+    <% end %>
+    <h3><%- @DISPLAYNAME %></h3>
+    <span><%- "#{App.t 'events.conditions.server'}: #{@SERVER_NAME}" %></span>
+</div>
+<div class="unit_list--contacts">
+    <% if @contacts.length is 1  and  @contacts[0].creator : %>
+    <div class="unit_list--no_data"><%- App.t 'organization.no_contacts' %></div>
+    <% else : %>
+    <% for value in @contacts  when not value.creator : %>
+    <p>
+        <% if @identity_key and @identity_key is value.VALUE : %>
+        <span class="tooltip-toggle" style="font-weight:bold;" href="#" data-toggle="tooltip" title="" data-original-title=""><%- value.VALUE %></span>
+        <% else : %>
+        <span class="tooltip-toggle" href="#" data-toggle="tooltip" title="" data-original-title=""><%- value.VALUE %></span>
+        <% end %>
+    </p>
+    <% end %>
+    <% end %>
+</div>
+<% if @status and @status.length : %>
+<div class="unit_list--footer">
+    <% for status in @status : %>
+        <span class="event_identity" style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>"><%= App.t('lists.statuses', { returnObjectTrees: true })[status.DISPLAY_NAME] ? status.DISPLAY_NAME %></span>
+    <% end %>
+</div>
+<% end %>

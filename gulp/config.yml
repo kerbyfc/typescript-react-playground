@@ -1,9 +1,10 @@
 ################################################################################
 # BUILD SYSTEM (GULP) PATHS
+# TODO: maybe it's not good to use current paths structure
 
 paths:
-
   root : ./
+  bootstrap: app.js
 
   common: &common
     fonts      : fonts/
@@ -105,11 +106,6 @@ browserify:
     - ./bower_components
     - ./bower_components/react
     - ./bower_components/**/dist/ # warning, may cause conflicts
-
-# components options
-component:
-  classNameSuffix: '-component'
-
 
 ################################################################################
 # DOCUMENTATION

@@ -1,0 +1,12 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.verdict' %></label>
+    <% end %>
+    <div class="form__elem">
+        <select class="multiselect" multiple="multiple" name="verdict[]" data-form-type="multiselect">
+            <option value="Allowed"><%= App.t 'events.conditions.verdict_allowed' %></option>
+            <option value="Forbidden"><%= App.t 'events.conditions.verdict_forbidden' %></option>
+            <option value="Quarantined"><%= App.t 'events.conditions.verdict_quarantined' %></option>
+        </select>
+    </div>
+</div>

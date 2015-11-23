@@ -1,0 +1,37 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- @title %></h2>
+            <div id="popup__content" class="popup__content">
+                <%- @content %>
+                <% content %>
+            </div>
+            <div class="popup__footer">
+                <% if _.isString @confirm : %>
+                    <button
+                        class="[ button _success ]"
+                        <% if @confirm_disabled : %>
+                            disabled
+                        <% end %>
+                        data-action="accept"
+                        data-index="ok"
+                    >
+                        <%- @confirm %>
+                    </button>
+                <% else if _.isArray @confirm : %>
+                    <% for value, index in @confirm : %>
+                        <button class="[ button _success ]" data-index="<%- index %>" data-action="accept">
+                            <%- value %>
+                        </button>
+                    <% end %>
+                <% end %>
+                <% if @cancel : %>
+                    <button class="button" data-action="cancel"><%- @cancel %></button>
+                <% end %> 
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

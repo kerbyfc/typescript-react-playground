@@ -1,32 +1,47 @@
-api = require "api"
+api = require "./api.coffee"
 
 class Session
 
   established: false
 
+  _showLoginForm = ->
+    React.render AppLayout.create(AuthLayout), document.body
+
+  _startRouting = ->
+    routes = module(session) for module in modules
+
+    # wrap route with handlers with application layout
+    routes = AppLayout.create Router.Route, handler: AppLayout, routes
+
+    Router.run routes, (Handler) ->
+      React.render AppLayout.create(Handler), document.body
+
+  start: (modules) ->
+    @check()
+      .done (response) =>
+        @user = response.data
+        _startRouting()
+      .fail =>
+        @user = null
+        _showLoginForm()
+
   ###*
    * Check if user is authenticated, processs coincident callback.
-   *
-   * @param  {Object} callbacks * callbacks for api call
-   *
+   * @param  {Object} options
    * @return {Object} promise
   ###
-  check: (callbacks = success: null, error: null) ->
-    api.get 'user/check', @wrapLoginCallbacks callbacks
+  check: (options = {}) ->
+    api.get 'user/check', options
 
-  wrapLoginCallbacks: (callbacks) ->
+  wrapLoginCallbacks: (options) ->
     @loginCallbacks =
+
       success: ({data}) =>
         @user = data
-        callbacks.success? data
+
       error: =>
         @user = null
-        callbacks.error? arguments...
 
-  #
-  # @param [ String ] priveledge or it's part
-  # @return [ String|Undefined ] priveledge or undefined
-  #
   ###*
    * Check if user has priviledge to access functionality
    *

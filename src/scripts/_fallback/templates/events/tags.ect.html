@@ -1,0 +1,9 @@
+<% for tag in @tags : %>
+    <div class="tag <%= if tag.IS_DELETED then 'deleted' %>" data-collapse-item>
+        <span class="tag__label" style="background-color:<%= tag.COLOR %>"></span>
+        <span class="tag__name" title="<%= tag.DISPLAY_NAME %>"><%= tag.DISPLAY_NAME %></span>
+        <% if @helpers.can({action: 'edit_tag', type: 'event'}) : %>
+            <a href="#" class="tag__delete" data-tag-id="<%= tag.TAG_ID %>" title="<%- App.t 'lists.tags.delete' %>"></a>
+        <% end %>
+    </div>
+<% end %>

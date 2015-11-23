@@ -1,0 +1,70 @@
+<form>
+    <fieldset>
+        <h3 class="form__title"><%- App.t 'global.actions_for_rule', context: 'many' %></h3>
+        <div class="form__row" data-ui='actions'>
+            <label for="NOTIFY" class="form__label"><%- App.t 'entry.policy.notify', context: 'action' %><a title="<%- App.t 'form.hint.notify' %>" class="form__hint-icon [ icon _sizeSmall _help ]"></a></label>
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="NOTIFY[]"
+                    data-form-type="select2"
+                    data-form-server="user"
+                    data-form-local="email"
+                    ></textarea>
+            </div>
+        </div>
+        <div class="form__row" data-ui='actions'>
+            <label for="policy-action-threat-level" class="form__label"><%- App.t 'entry.policy.violation', context: 'action' %></label>
+            <div class="form__elem">
+                <select name="VIOLATION">
+                    <option value="<%- if @IS_SYSTEM then '' else 'NO' %>"><%- App.t 'entry.policy.threat', context: 'no' %></option>
+                    <option value="HIGH"><%- App.t 'entry.policy.threat', context: 'high' %></option>
+                    <option value="MEDIUM"><%- App.t 'entry.policy.threat', context: 'medium' %></option>
+                    <option value="LOW"><%- App.t 'entry.policy.threat', context: 'low' %></option>
+                </select>
+            </div>
+        </div>
+        <!-- tag -->
+        <div class="form__row" data-ui='actions'>
+            <label for="TAG" class="[ form__label vertical ]"><%- App.t 'entry.policy.tag_action', context: 'many' %></label>
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="TAG[]"
+                    data-form-type="select2"
+                    data-form-server="tag"
+                    data-form-local=""
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.tag', context: 'many' %>"
+                    data-form-entry="tag"
+                    ></button>
+            </div>
+        </div>
+        <!-- // tag -->
+        <% if @isStatuses() : %>
+            <div class="form__row" data-ui='actions'>
+                <label for="policy-action-status" class="form__label"><%- App.t 'entry.policy.status', context: 'action' %></label>
+                <div class="form__elem">
+                    <select placeholder="<%- App.t 'form.placeholder.status' %>" name="ADD_PERSON_STATUS">
+                        <option></option>
+                        <% for i of statuses = @statuses() : %>
+                        <option value="<%- statuses[i].IDENTITY_STATUS_ID %>"><%- App.t "entry.status.#{statuses[i].DISPLAY_NAME}", defaultValue: statuses[i].DISPLAY_NAME %></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+        <% end %>
+        <div class="form__row">
+            <label for="DELETE" class="form__label"><%- App.t 'entry.policy.delete', context: 'action' %></label>
+            <div class="form__elem">
+                <div class="tumbler">
+                    <input class="tumbler__input" name="DELETE" type="checkbox">
+                    <label for="DELETE" class="tumbler__toggle"></label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>

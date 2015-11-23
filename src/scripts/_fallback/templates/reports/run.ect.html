@@ -1,0 +1,64 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title">
+        <%= @report.DISPLAY_NAME %>
+        <i class="[ icon _accessPublic ] _hidden" data-public-icon></i>
+    </h2>
+
+    <div class="contentHeader__toolbar _positionRight">
+
+        <% if @isLast or not @isRunned: %>
+            <button class="button" data-action="cancel"><%- App.t "reports.report.cancel" %></button>
+            <button class="button" data-action="execute"><%- App.t "reports.report.execute" %></button>
+            <button class="button" data-action="edit"><%- App.t "global.edit" %></button>
+        <% end %>
+
+        <div class="buttonDropdown [ dropdown pull-right ]">
+            <button class="[ button _icon _caret ]  dropdown-toggle" data-toggle="dropdown" id="report-settings">
+                <i class="[ icon _settings ]"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="report-settings">
+                <li>
+                    <a href="/reports/<%- @report.QUERY_REPORT_ID %>/runs" data-bypass="">
+                        <%- App.t "reports.history" %>
+                    </a>
+                </li>
+
+                <% if @isLast or not @isRunned: %>
+                    <li><button data-action="copy"><%- App.t "global.copy" %></button></li>
+                <% end %>
+
+                <li>
+                    <button data-action="delete"><%- App.t "global.delete" %>
+                        <%- if not @isLast and @isRunned then App.t "reports.run.results" %>
+                    </button>
+                </li>
+
+                <li class="dropdown-menu__title"><%- App.t "reports.report.download" %></li>
+                <% for format, name of @formats: %>
+                    <li><button data-action="download" data-format="<%- format %>"><%- name %></button></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+
+    <div class="contentHeader__description">
+        <p data-report-note></p>
+        <p data-run-note></p>
+    </div>
+
+    <!-- OUTDATED HINT -->
+    <div class="form__message" data-hint>
+        <%- App.t "reports.run.outdated_hint" %>. <%- App.t "reports.run.see" %>
+        <a data-bypass="" href="/reports/<%- @reportId %>"><%- App.t "reports.run.see_last" %></a>
+        <%- App.t "global.or" %>
+        <a data-bypass="" href="/reports/<%- @reportId %>/runs"><%- App.t "reports.run.see_history" %></a>
+    </div>
+
+    <!-- STATUS TEXT -->
+    <div class="contentHeader__status" data-status></div>
+
+</div>
+
+<div class="content__indent" data-region="widgetGrid">
+
+</div>

@@ -1,0 +1,102 @@
+<header class="contentHeader">
+    <h3 class="contentHeader__title"><%= App.t 'settings.license.license_title' %> <%= @issue_date %></h3>
+</header>
+<div class="[ content__indent _scrollable ]">
+    <form class="[ form _viewOnly ]">
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.licensee' %></label>
+            <div class="form__elem"><%= @licensee %></div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.state' %></label>
+            <div class="form__elem">
+                <span class='statusIcon <%= "_#{@status}" %>'></span> <%= App.t("settings.license.#{@status}") %>
+            </div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.issue_date' %></label>
+            <span class="form__elem license-issue_date"><%= moment(@issue_date).format('LL') %></span>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.end_date' %></label>
+            <span class="form__elem"><%= @license_end_date %></span>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.issuer' %></label>
+            <div class="form__elem"><%= @issuer %></div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.users' %></label>
+            <div class="form__elem"><%= if (parseInt(@meta.users)  > 0) then @meta.users else App.t('settings.license.users_unlimited') %></div>
+        </div>
+
+        <hr>
+
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.technologies' %></label>
+            <div class="form__elem">
+                <ul>
+                    <% for item in @technology_features : %>
+                        <li><span><%= App.t('settings.license', { returnObjectTrees: true })[item.cas] %></span></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+        <% if @autoupdate_features.length : %>
+        <hr>
+
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.autoupdate' %></label>
+            <div class="form__elem">
+                <ul>
+                    <% for item in @autoupdate_features : %>
+                        <li><span><%= App.t 'settings.license.autoupdate_label', type: item.data_type, company: item.common_name %></span></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <% end %>
+
+        <hr>
+
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.license.interceptors' %></label>
+            <div class="form__elem">
+                <ul>
+                    <% for item in @intercept_features : %>
+                        <li>
+                            <span>
+                                <% if item.object_type is '*' : %>
+                                    <%= App.t 'settings.license.any_object_type' %>
+                                <% else : %>
+                                    <%= App.t 'settings.license.object_type_label' %>
+                                    <%= @object_type_codes[item.object_type]?[0].name or App.t('settings.license.unknown_object_type', object_type: item.object_type) %>
+                                <% end %>
+
+                                <% if item.protocol and item.protocol isnt 'NONE' : %>
+                                    , (
+                                    <% if item.protocol is '*' : %>
+                                        <%= App.t 'settings.license.any_protocol' %>
+                                    <% else : %>
+                                        <%= App.t 'settings.license.protocol_label' %>
+                                        <%=  @protocols[item.protocol]?[0].name or App.t('settings.license.unknown_protocol', protocol: item.protocol) %>
+                                    <% end %>
+                                    )
+                                <% end %>
+
+                                <% if item.origin : %>
+                                    <% if item.common_name is 'IW' : %>
+                                        , <%= App.t 'settings.license.origin', origin: App.t("settings.license.#{item.origin}", defaultValue: item.origin) %>
+                                    <% else : %>
+                                        , <%= item.origin %>
+                                    <% end %>
+                                <% end %>
+                            </span>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,28 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%= @DISPLAY_NAME %></h2>
+</div>
+
+<div class="[ content__indent _scrollable _autoHeight ]">
+    <div class="perimeter">
+
+        <div class="perimeter__form"></div>
+
+        <div id="menu">
+            <input type="hidden" name="add_elem" class="perimeter__button" tabindex="-1" title="">
+        </div>
+
+        <% if @PERIMETER_ID : %>
+            <div class="perimeter__info form__elem">
+                <% include 'controls/form/date', @ %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<% if @helpers.can({action: 'edit', type: 'perimeter'}) : %>
+    <div class="content__footer">
+        <div class="form__row">
+            <button class="[ button _success ]" data-action="save"><%= App.t 'global.save' %></button>
+        </div>
+    </div>
+<% end %>

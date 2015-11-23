@@ -1,0 +1,14 @@
+<div class="parameters-list">
+    <div class="parameters-list__row">
+        <div class="parameters-list__param parameters-list__param--inline"><%- App.t "entry.policy.#{@type}", context: 'action' %>:</div>
+        <div class="parameters-list__value">
+            <% for item in @data : %>
+                <div class="parameters-list__value-item">
+                    <span
+                        class="<%- if @entry.isDeleted item then " deleted" else "" %>"
+                      ><%- App.t "select_dialog.#{item.TYPE}" %>: <%- @entry.getName item %></span>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

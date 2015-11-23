@@ -1,0 +1,7 @@
+<span class="queryBuilder__link"></span>
+<h3 class="queryBuilder__name"><%= App.t "events.conditions.#{@filterName}" %></h3>
+<button type="button" class="queryBuilder__remove"></button>
+
+<form class="form">
+    <%- include "events/query_builder/_partials/#{@tpl}", @ %>
+</form>

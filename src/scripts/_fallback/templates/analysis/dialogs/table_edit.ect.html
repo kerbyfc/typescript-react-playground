@@ -1,0 +1,41 @@
+<div class="[ popup__content size-normal ]">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.table.display_name' %></label>
+            <div class="form__elem"><input data-form-autofocus="true" type="text" name="DISPLAY_NAME"></div>
+        </div>
+        <div class="form__row">
+            <label for="FILE_PATH" class="form__label"><%- App.t 'analysis.table.file_path' %></label>
+            <div class="form__elem"><input type="text" name="FILE_PATH" disabled></div>
+        </div>
+        <div class="form__row">
+            <label for="" class="form__label"><%- App.t 'analysis.table.mime' %></label>
+            <div class="form__elem"><input type="text" name="MIME" disabled></div>
+        </div>
+
+        <% if @SOURCE : %>
+        <div class="form__row">
+            <label for="" class="form__label"><%- App.t 'global.update_mode' %>:</label>
+            <div class="[ form__elem _text ]"><%= if @SOURCE is 'user' then App.t 'global.manual' else App.t 'global.auto' %></div>
+        </div>
+        <% end %>
+
+        <h3 class="form__title"><%- App.t 'analysis.table.rule', context: 'many' %></h3>
+
+        <div data-region="table" data-el="container"></div>
+
+        <div class="[ form__row vertical ]">
+            <label for="NOTE" class="[ form__label ]"><%- App.t 'analysis.table.note' %></label>
+            <div class="form__elem"><textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea></div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]"><%- App.t "global.edit", context: "success" %></button>
+    <% if @SOURCE is "user" : %>
+    <button class="[ button _success ]" data-type="update"><%- App.t "global.update", context: "success" %></button>
+    <% end %>
+    <button class="button" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

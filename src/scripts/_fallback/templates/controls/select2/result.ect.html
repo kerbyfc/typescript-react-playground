@@ -1,0 +1,48 @@
+<% label = App.t "select_dialog.#{@TYPE}", defaultValue: "" %>
+
+<% className = @style.className.entry[@TYPE] %>
+<% className = if @content?.PERSON_ID then '' else className %>
+
+<div class='select2__result' data-label='<%- label %>'>
+    <% if path = @entry.getImagePath(@) : %>
+        <img src='<%- path %>' width=20 height=20>
+    <% end %>
+
+    <i class="<%- className %>"><%- if @isVisibleLabel and not className and not path then App.t("select_dialog.#{@TYPE}", defaultValue: @TYPE) + ": " %></i>
+
+    <% if color = @content?.COLOR : %>
+      <div class='tag__color' data-color='<%- color %>'></div>
+    <% end %>
+
+    <% if @content?.PERSON_ID : %>
+        <img
+            src='<%- @server %>/api/ldapPerson/image?person_id=<%- @ID %>&t=<%- @helpers.guid() %>'
+            style='width: 30px'
+        >
+    <% end %>
+
+    <% if source = @content?.SOURCE : %>
+        <%- source.toUpperCase() %>:
+    <% end %>
+        <%- @entry.getName @ %>
+
+    <% if domain = @content?.DNSROOT : %>
+        <br><%- App.t "select_dialog.domain" %>: <%- domain %>
+    <% else if domain = @content?.DNSHOSTNAME : %>
+        <br><%- App.t "select_dialog.domain" %>: <%- domain %>
+    <% else if domain = @content?.DOMAIN_NAME : %>
+        <br><%- App.t "select_dialog.domain" %>: <%- domain %>
+    <% end %>
+
+    <% if name = @content?.SAMACCOUNTNAME : %>
+        <br><%- App.t "global.account" %>: <%- name %>
+    <% end %>
+
+    <% if lotus = @content?.LOTUS : %>
+        <br><%- App.t "global.account" %>: <%- lotus.split('@')[0] %>
+    <% end %>
+
+    <% if @TYPE is "user" : %>
+        <br>Email: <%- @content?.EMAIL or App.t("global.specified", context: 'not') %>
+    <% end %>
+</div>

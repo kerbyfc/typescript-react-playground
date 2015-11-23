@@ -1,0 +1,72 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%- App.t 'settings.users_tab' %></h2>
+</div>
+
+<div class="toolbar">
+    <div class="toolbar__pagination" id="users_paginator"></div>
+    <div class="toolbar__actions">
+        <div class="buttonSet">
+            <button
+                class="[ button _icon ] [ icon _create ]"
+                data-action="create_user"
+                title="<%- App.t 'settings.users.create_user' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _edit ]"
+                data-action="edit_user"
+                title="<%- App.t 'settings.users.edit_user' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _delete ]"
+                data-action="delete_user"
+                title="<%- App.t 'settings.users.delete_user' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="change_password"
+                title="<%- App.t 'settings.users.change_password' %>"
+                disabled
+                ><i class="fontello-icon-key-inv"></i>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="activate_user"
+                title="<%- App.t 'settings.users.activate_user' %>"
+                disabled
+                ><i class="fontello-icon-light-up"></i>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="deactivate_user"
+                title="<%- App.t 'settings.users.deactivate_user' %>"
+                disabled
+                ><i class="fontello-icon-off"></i>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="import_ad"
+                title="<%- App.t 'settings.users.import_ad' %>"
+                ><i class="fontello-icon-sitemap"></i>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="set_role"
+                title="<%- App.t 'settings.users.set_role' %>"
+                disabled
+                ><i class="fontello-icon-minefield"></i>
+            </button>
+            <button
+                class="[ button _icon ]"
+                data-action="set_scope"
+                title="<%- App.t 'settings.users.set_scope' %>"
+                disabled
+                ><i class="fontello-icon-eye-2"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="content__indent _scrollable" id="users_table"></div>

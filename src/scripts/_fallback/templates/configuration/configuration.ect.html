@@ -1,0 +1,26 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup">
+    <div class="popup__position">
+        <div class="popup__wrap" data-error-container>
+            <div class="popup__indent">
+                <h2 class="popup__title"><%- App.t "configuration.#{@action}_configuration_dialog_title" %></h2>
+                <div class="[ popup__content size-medium ]">
+                    <form class="form">
+                        <div class="configuration"></div>
+                        <div class="[ form__row vertical ]">
+                            <label for="NOTE" class="form__label"><%= App.t 'configuration.note' %></label>
+                            <div class="form__elem">
+                                <textarea name="NOTE" maxlength="1000" data-error-style="tooltip"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="popup__footer">
+                    <button class="[ button _success ]" data-action="save"><%= App.t "configuration.#{@action}" %></button>
+                    <button class="button" data-action="cancel"><%= App.t 'global.close' %></button>
+                </div>
+                <label for="popup" class="popup__close"></label>
+            </div>
+        </div>
+    </div>
+</div>

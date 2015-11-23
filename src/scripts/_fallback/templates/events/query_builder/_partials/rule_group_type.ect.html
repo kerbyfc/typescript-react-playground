@@ -1,0 +1,15 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.rule_group_type' %></label>
+    <% end %>
+
+    <div class="form__elem">
+        <select class="multiselect" multiple="multiple" name="rule_group_type[]" data-form-type="multiselect">
+            <option value="Transfer"><%= App.t 'events.conditions.rule_group_type_transfer' %></option>
+            <option value="Copy"><%= App.t 'events.conditions.rule_group_type_copy' %></option>
+            <% if App.Setting.get('product') isnt "pdp" :  %>
+            <option value="Placement"><%= App.t 'events.conditions.rule_group_type_placement' %></option>
+            <% end %>
+        </select>
+    </div>
+</div>

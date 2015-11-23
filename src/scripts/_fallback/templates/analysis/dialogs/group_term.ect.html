@@ -1,0 +1,58 @@
+<div class="popup__content">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.category.display_name' %></label>
+            <div class="form__elem">
+                <input type="text" data-form-autofocus="true" maxlength="256" name="DISPLAY_NAME" placeholder="<%- App.t 'form.placeholder.category' %>">
+            </div>
+        </div>
+        <h2 class="form__title"><%- App.t 'analysis.category.terms_block_label' %></h2>
+        <div class="form__row">
+            <label for="TERM_WEIGHT" class="form__label"><%- App.t 'analysis.category.term_weight' %></label>
+            <div class="[ form__elem size-short ]">
+                <input type="number" name="TERM_WEIGHT" min="1" max="10">
+            </div>
+        </div>
+        <div class="form__row">
+            <label for="TERM_LANGUAGE" class="form__label"><%- App.t 'analysis.category.term_language' %></label>
+            <div class="form__elem">
+                <select name="TERM_LANGUAGE">
+                    <% for i of @helpers.getLanguages() : %>
+                    <option value="<%- i %>"><%- @helpers.getLanguages i %></option>
+                    <% end %>
+                </select>
+            </div>
+        </div>
+        <div class="form__row">
+            <label for="TERM_MORPHOLOGY" class="form__label"><%- App.t 'analysis.category.term_morphology' %></label>
+            <div class="form__elem">
+                <div class="tumbler">
+                    <input class="tumbler__input" name="TERM_MORPHOLOGY" type="checkbox">
+                    <label for="TERM_MORPHOLOGY" class="tumbler__toggle"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form__row">
+            <label for="TERM_CASE_SENSITIVE" class="form__label"><%- App.t 'analysis.category.term_case_sensitive' %></label>
+            <div class="form__elem">
+                <div class="tumbler">
+                    <input class="tumbler__input" name="TERM_CASE_SENSITIVE" type="checkbox">
+                    <label for="TERM_CASE_SENSITIVE" class="tumbler__toggle"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form__row vertical">
+            <label for="NOTE" class="form__label"><%- App.t 'analysis.category.note' %></label>
+            <div class="form__elem">
+                <textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea>
+            </div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" type="submit" disabled><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset" data-action="cancel"><%- App.t 'global.cancel' %></button>
+</div>

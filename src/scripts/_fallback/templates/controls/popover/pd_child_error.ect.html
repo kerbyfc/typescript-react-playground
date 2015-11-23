@@ -1,0 +1,10 @@
+<%- App.t 'form.error.not_delete', { item: '', name: ''} %> <%- App.t("select_dialog.#{@type}", context: 'to').toLowerCase() %> <strong><%- @name %></strong>, <%- App.t('global.used' , count: @document.length).toLowerCase() %> <%- App.t 'global.in' %> <%- App.t "select_dialog.#{@type}", { context: "subdir", count: @document.length } %>
+<% for item in @document : %>
+    <ul class="popover__list">
+        <li><strong><%- item.name %></strong>
+            <ul class="popover__subList">
+                <li><%- item.protected_documents.join('</strong>, <strong>') %></li>
+            </ul>
+        </li>
+    </ul>
+<% end %>

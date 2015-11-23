@@ -1,0 +1,39 @@
+<div class="[ form__row _indentShort ]">
+    <% if @mode is 'lite' : %>
+        <label for="documents" class="[ form__label size-normal ]"><%= App.t 'events.conditions.documents' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="documents[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem">
+        <textarea
+            placeholder="<%- App.t 'form.placeholder.search' %>"
+            name="documents[value][]"
+            data-form-type="select2"
+            data-form-server="catalog,document"
+            ></textarea>
+        <button
+            type="button"
+            class="[ button _icon ] [ icon _create ] select_documents"
+            data-form-title="<%- App.t 'events.conditions.documents' %>"
+            data-form-entry="catalog,document"
+            data-form-entry-source="query"
+            ></button>
+    </div>
+</div>
+
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label class="[ form__label size-normal ]"></label>
+    <% end %>
+    <div class="form__elem">
+        <label class="form__checkbox">
+            <input type="checkbox" name="documents[any]">
+            <span></span>
+            <%= App.t 'events.conditions.any_documents'%>
+        </label>
+    </div>
+</div>

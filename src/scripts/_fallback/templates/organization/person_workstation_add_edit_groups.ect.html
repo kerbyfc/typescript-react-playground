@@ -1,0 +1,12 @@
+<%
+    if (
+        not @blocked and
+        @helpers.can({ action: "edit", type: App.Organization.reqres.request("get:content:entity:type")[0]})
+    )
+: %>
+    <div class="buttonSet">
+        <button data-add-group class="[ button _icon ] [ icon _create ]"></button>
+        <button data-leave-group class="[ button _icon ] [ icon _delete ]"></button>
+    </div>
+<% end %>
+<ul id="person-workstation-groups" class="employeeExtendedTab__list"></ul>

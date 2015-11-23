@@ -1,0 +1,9 @@
+<div class="form__row" data-group="<%= @group %>">
+    <div class="form__row">
+        <% if @mode is 'lite' : %>
+            <label for="task_name" class="[ form__label size-normal ]"><%= App.t 'events.conditions.task_name' %></label>
+        <% end %>
+
+        <div class="form__elem"><input type="text" name="task_name"></div>
+    </div>
+</div>

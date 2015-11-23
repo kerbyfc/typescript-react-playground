@@ -1,0 +1,4 @@
+<a class="inProgressItem__name" title='<%- @name %>'><%- @name %></a>
+<span class="inProgressItem__status _<%- @state %>" data-popover-template="controls/popover<%- if @error then '_error' else '' %>" data-state="<%- @state %>" title="<%- @error or '' %>">
+    <i class="inProgressItem__statusIcon"></i><%- if @percent then "#{@percent}%" else App.t("global.#{@state}", context: "notify") %>
+</span>

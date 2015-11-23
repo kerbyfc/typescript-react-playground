@@ -1,0 +1,109 @@
+<div class="popover_unit--primary">
+    <div class="popover_unit--photo">
+        <img
+            width=67
+            height=67
+            alt=""
+            src="<%- App.Config.server %>/api/ldapPerson/image?person_id=<%- @PERSON_ID %>&t=<%- App.Helpers.guid() %>"
+            />
+        <% if @SOURCE in ["ad", "dd"] : %>
+        <% if @DISABLED is 1 : %>
+        <span class="unit_list--user_status-inactive"></span>
+        <% else : %>
+        <span class="unit_list--user_status-active"></span>
+        <% end %>
+        <% end %>
+        <% if @SOURCE is "ad" : %>
+        <span class="unit_list--unit unit_list--unit_ad"></span>
+        <% end %>
+        <% if @SOURCE is "dd" : %>
+        <span class="unit_list--unit unit_list--unit_dd"></span>
+        <% end %>
+    </div>
+    <h3><%- @DISPLAYNAME %></h3>
+    <span><%- "#{App.t 'events.conditions.server'}: #{@SERVER_NAME}" %></span>
+</div>
+<div class="popover_unit--contacts">
+    <% if @contacts.length is 1  and  @contacts[0].creator : %>
+    <div class="popover_unit--no_data"><%- App.t 'organization.no_contacts' %></div>
+    <% else : %>
+    <% for value in @contacts  when value.CONTACT_TYPE isnt "sid" : %>
+    <p>
+        <% if _.isArray(@identity_keys) and @identity_keys.indexOf("#{value.CONTACT_TYPE}:#{value.VALUE}") isnt -1 : %>
+              <span class="tooltip-toggle
+              <% switch value.CONTACT_TYPE : %>
+                <% when 'email' :%>
+                    i-unit-contact__mail
+                <% end %>
+                <% when 'lotus' :%>
+                    i-unit-contact__lotus
+                <% end %>
+                <% when 'phone' :%>
+                    i-unit-contact__phone
+                <% end %>
+                <% when 'mobile' :%>
+                    i-unit-contact__mobile
+                <% end %>
+                <% when 'auth' :%>
+                    fontello-icon-key-2
+                <% end %>
+                <% when 'sid' :%>
+                    fontello-icon-user-4
+                <% end %>
+                <% when 'skype' :%>
+                    i-unit-contact__skype
+                <% end %>
+                <% when 'icq' :%>
+                    i-unit-contact__icq
+                <% end %>
+                <% when 'webaccount' :%>
+                    i-unit-contact__web
+                <% end %>
+              <% end %>"
+                    href="#" data-toggle="tooltip" style="font-weight:bold;" title="<%= value.VALUE %>" data-original-title=""><%- value.VALUE %></span>
+        <% else : %>
+              <span class="tooltip-toggle
+              <% switch value.CONTACT_TYPE : %>
+                <% when 'email' :%>
+                    [ icon _email ]
+                <% end %>
+                <% when 'lotus' :%>
+                    [ icon _lotus ]
+                <% end %>
+                <% when 'phone' :%>
+                    [ icon _phone ]
+                <% end %>
+                <% when 'mobile' :%>
+                    [ icon _phone ]
+                <% end %>
+                <% when 'auth' :%>
+                    [ icon _auth ]
+                <% end %>
+                <% when 'sid' :%>
+                    [ icon _sid ]
+                <% end %>
+                <% when 'skype' :%>
+                    [ icon _skype ]
+                <% end %>
+                <% when 'icq' :%>
+                    [ icon _icq ]
+                <% end %>
+                <% when 'webaccount' :%>
+                    [ icon _domain ]
+                <% end %>
+            <% end %>"
+                    href="#" data-toggle="tooltip" title="<%= value.VALUE %>" data-original-title=""><%- value.VALUE %></span>
+        <% end %>
+    </p>
+    <% end %>
+    <% end %>
+</div>
+<% if @status and @status.length : %>
+    <div class="popover_unit--footer">
+        <% for status in @status : %>
+                <span class="event_identity" style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>">
+                    <%= App.Helpers.getPredefinedLocalizedValue status.DISPLAY_NAME, "lists.statuses" %>
+                </span>
+        <% end %>
+    </div>
+<% end %>

@@ -1,0 +1,78 @@
+<div class="popup__content size-normal">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.category.display_name' %></label>
+            <div class="form__elem">
+                <input type="text" data-form-autofocus="true" maxlength="256" name="DISPLAY_NAME" placeholder="<%- App.t 'form.placeholder.catalog' %>">
+            </div>
+        </div>
+
+        <section class="form__block">
+            <div class="[ form__row vertical ]">
+                <label class="form__label size-full">
+                    <%- App.t 'analysis.category.fp_text_value_threshold' %>
+                </label>
+                <div class="form__elem">
+                    <section id="slider">
+                        <div name="FP_TEXT_VALUE_THRESHOLD"></div>
+                        <div class="jslider-scale">
+                            <span style="left: 0%"><ins style="margin-left: -2.5px;">0</ins></span>
+                            <span style="left: 10%"><ins style="margin-left: -5px;">10</ins></span>
+                            <span style="left: 20%"><ins style="margin-left: -5px;">20</ins></span>
+                            <span style="left: 30%"><ins style="margin-left: -5px;">30</ins></span>
+                            <span style="left: 40%"><ins style="margin-left: -5px;">40</ins></span>
+                            <span style="left: 50%"><ins style="margin-left: -5px;">50</ins></span>
+                            <span style="left: 60%"><ins style="margin-left: -5px;">60</ins></span>
+                            <span style="left: 70%"><ins style="margin-left: -5px;">70</ins></span>
+                            <span style="left: 80%"><ins style="margin-left: -5px;">80</ins></span>
+                            <span style="left: 90%"><ins style="margin-left: -5px;">90</ins></span>
+                            <span style="left: 100%"><ins style="margin-left: -5px;">100</ins></span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="[ form__row vertical ]">
+                <label class="form__label size-full">
+                    <%- App.t 'analysis.category.fp_bin_value_threshold' %>
+                </label>
+                <div class="form__elem">
+                    <section id="slider">
+                        <div name="FP_BIN_VALUE_THRESHOLD"></div>
+                        <div class="jslider-scale">
+                            <span style="left: 0%"><ins style="margin-left: -2.5px;">0</ins></span>
+                            <span style="left: 10%"><ins style="margin-left: -5px;">10</ins></span>
+                            <span style="left: 20%"><ins style="margin-left: -5px;">20</ins></span>
+                            <span style="left: 30%"><ins style="margin-left: -5px;">30</ins></span>
+                            <span style="left: 40%"><ins style="margin-left: -5px;">40</ins></span>
+                            <span style="left: 50%"><ins style="margin-left: -5px;">50</ins></span>
+                            <span style="left: 60%"><ins style="margin-left: -5px;">60</ins></span>
+                            <span style="left: 70%"><ins style="margin-left: -5px;">70</ins></span>
+                            <span style="left: 80%"><ins style="margin-left: -5px;">80</ins></span>
+                            <span style="left: 90%"><ins style="margin-left: -5px;">90</ins></span>
+                            <span style="left: 100%"><ins style="margin-left: -5px;">100</ins></span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="form__row">
+                <%- App.t 'analysis.fingerprint.threshold_citation_desc' %>
+            </div>
+        </section>
+
+        <div class="form__block">
+            <div class="[ form__row vertical ]">
+                <label for="NOTE" class="form__label"><%- App.t 'analysis.category.note' %></label>
+                <div class="form__elem">
+                    <textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" type="submit" disabled><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset" data-action="cancel"><%- App.t 'global.cancel' %></button>
+</div>

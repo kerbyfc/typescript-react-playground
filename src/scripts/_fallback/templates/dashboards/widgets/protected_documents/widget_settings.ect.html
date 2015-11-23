@@ -1,0 +1,66 @@
+<form class="widgetContent__settings form include-footer">
+    <fieldset class="form__fieldset">
+
+        <div class="form__row">
+            <label class="form__label" for="tm-widget-common-settings-period-update"><%- App.t 'dashboards.widgets.commonWidgetSettings.name' %></label>
+            <div class="form__elem">
+                <input name="DISPLAY_NAME" id="tm-widget-common-settings-period-update" value="" type="text">
+            </div>
+        </div>
+
+        <% include "dashboards/widgets/shared/widget_update", @ %>
+
+        <% include "dashboards/widgets/shared/widget_period", @ %>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[protected_documents]"><%- App.t 'dashboards.widgets.protected_document' %></label>
+
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="BASEOPTIONS[protected_documents][]"
+                    data-form-type="select2"
+                    data-form-server="document"
+                    data-form-minimum-input-length="1"
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.document', context: 'many' %>"
+                    data-form-entry="document"
+                    data-form-entry-source="query"
+                    ></button>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[protected_catalogs]"><%- App.t 'dashboards.widgets.protected_catalogs' %></label>
+
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="BASEOPTIONS[protected_catalogs][]"
+                    data-form-type="select2"
+                    data-form-server="catalog"
+                    data-form-minimum-input-length="1"
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.catalog', context: 'many' %>"
+                    data-form-entry="catalog"
+                    data-form-entry-source="query"
+                    ></button>
+            </div>
+        </div>
+
+        <div class="form__row submit">
+            <label class="form__label"></label>
+            <div class="form__elem">
+                <button class="[ button _success ] tm-complete-setup-widget"><%- App.t 'global.save' %></button>
+                <button class="button tm-cancel-setup-widget"><%- App.t 'global.cancel' %></button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

@@ -1,0 +1,7 @@
+<% if @helpers.can({action: 'set_status', type: @type.replace(/s$/, '')}) : %>
+  <div class="buttonSet">
+      <button data-add-status class="[ button _icon ] [ icon _create ]"></button>
+      <button data-delete-status class="[ button _icon ] [ icon _delete ]"></button>
+  </div>
+<% end %>
+<ul id="person_workstation_statuses" class="employeeExtendedTab__list"></ul>

@@ -1,0 +1,35 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- App.t "reports.history" %></h2>
+            <div class="popup__content">
+                <% if not @isRunnedAfterChanges : %>
+                    <div class="form__message">
+                        <div><%- App.t "reports.report.saved_not_runned" %></div>
+                        <div><%- App.t "global.change_date" %>: <b><%- @changeData %></b></div>
+                        <!-- TODO: <div><%- App.t "global.author" %>: <%- @user %></div> -->
+                        <div><%- App.t "global.comment" %>: <%- @NOTE %></div>
+                    </div>
+                <% end %>
+                <div class="popup__controller">
+                    <span class="dropdown-menu__container">
+                        <button class="button _success" data-action="download-variant" data-toggle="dropdown">
+                            <%- App.t "reports.report.get_from_history" %>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <% for format, name of @formats: %>
+                            <li><button data-action="download" data-format="<%- format %>"><%- name %></button></li>
+                            <% end %>
+                        </ul>
+                    </span>
+                    <button class="button" data-action="remove"><%- App.t "global.delete" %></button>
+                </div>
+                <br/>
+                <% include "controls/table", @ %>
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

@@ -1,0 +1,49 @@
+<div class="widget-dialogs__item">
+    <% if @isExistSender : %>
+        <% if @sender.hasContactInfo : %>
+            <div class="widget-dialogs__contact _sender <%- @getStyleByType @sender %>"
+                 data-entry-type="person"
+                 data-entry-id="<%- @sender.id %>">
+
+                <img class="widget-dialogs__pic"
+                     src="<%- App.Config.server %>/api/ldapPerson/image?person_id=<%- @sender.id %>&t=<%- App.Helpers.guid() %>">
+                <span class="widget-dialogs__name">
+                    <%- @sender.name %>
+                </span>
+            </div>
+        <% else : %>
+            <div class="widget-dialogs__contact _sender <%- @getStyleByType @sender %>"
+                 title="<%- @sender.name %>">
+
+                <div class="widget-dialogs__pic"></div>
+                <span class="widget-dialogs__name">
+                    <%- @sender.name %>
+                </span>
+            </div>
+        <% end %>
+    <% end %>
+
+    <% if @isExistReceiver : %>
+        <% if @receiver.hasContactInfo : %>
+            <div class="widget-dialogs__contact _receiver <%- @getStyleByType @receiver %>"
+                 data-entry-type="person"
+                 data-entry-id="<%- @receiver.id %>">
+
+                <img class="widget-dialogs__pic"
+                     src="<%- App.Config.server %>/api/ldapPerson/image?person_id=<%- @receiver.id %>&t=<%- App.Helpers.guid() %>">
+                    <span class="widget-dialogs__name">
+                        <%- @receiver.name %>
+                    </span>
+            </div>
+        <% else : %>
+            <div class="widget-dialogs__contact _receiver <%- @getStyleByType @receiver %>"
+                    title="<%- @receiver.name %>">
+
+                <div class="widget-dialogs__pic"></div>
+                    <span class="widget-dialogs__name">
+                        <%- @receiver.name %>
+                    </span>
+            </div>
+        <% end %>
+    <% end %>
+</div>

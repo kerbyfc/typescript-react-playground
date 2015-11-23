@@ -1,0 +1,6 @@
+<a href="dashboards/<%= @DASHBOARD_ID %>" class="adaptiveTabs__link" title="<%= @DISPLAY_NAME %>">
+    <%- _.trunc @DISPLAY_NAME %>
+    <% if @can('delete') : %>
+        <span class="adaptiveTabs__btn-delete"></span>
+    <% end %>
+</a>

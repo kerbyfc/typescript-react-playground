@@ -1,0 +1,24 @@
+<% @uniqueId = _.uniqueId('selectdaterangepicker') %>
+<% @default ?= ['none', 'from', 'to', 'this_day', 'last_3_days', 'last_7_days', 'this_week', 'this_month', 'last_30_days', 'range'] %>
+<div class="[ form__elem size-auto ]">
+    <select data-form-ui="<%- @uniqueId %>"  data-form-type="multiselect" class="multiselect" name="<%- @intervalName %>">
+        <% for item in @default : %>
+            <option value="<%- item %>"><%- App.t "daterangepicker.interval.#{item}" %></option>
+        <% end %>
+    </select>
+</div>
+<div class="[ form__elem size-max ]">
+    <input name="<%- @startName %>" type="hidden">
+    <input name="<%- @endName %>" type="hidden">
+
+    <i class="form__icon [ icon _calendar ]"></i>
+    <input
+        type="text"
+        data-form-component="date-range-picker"
+        <%- if @disabled then 'disabled' else '' %>
+        data-start-name="<%- @startName %>"
+        data-end-name="<%- @endName %>"
+        data-form-target="<%- @uniqueId %>"
+        placeholder="<%- App.t 'form.placeholder.daterange' %>"
+        readonly>
+</div>

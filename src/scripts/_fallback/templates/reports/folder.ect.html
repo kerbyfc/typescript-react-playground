@@ -1,0 +1,18 @@
+<form class="reportFolderControl form">
+    <div class="form__row">
+        <label class="[ form__label _alignLeft _textOnly ]"><%- App.t "reports.name" %></label>
+        <span class="form__text" data-name></span>
+    </div>
+    <div class="form__row">
+        <label class="[ form__label _alignLeft _textOnly ]"><%- App.t "reports.access.folder" %></label>
+        <i class="[ icon _accessPersonal _sizeSmall ] _hidden" data-personal-icon></i>&nbsp;
+        <span class="form__text" data-personal></span>
+    </div>
+    <div class="form__row">
+        <div class="form__elem">
+            <button data-action="edit" class="[ button _grey ]" type="button" <%- unless @editable then "disabled" else "" %>><%- App.t "global.edit" %></button>
+            <button data-action="copy" class="[ button _grey ]" type="button" <%- unless @editable then "disabled" else "" %>><%- App.t "global.copy" %></button>
+            <button data-action="delete" class="[ button _grey ]" type="button"><%- App.t "global.delete" %></button>
+        </div>
+    </div>
+</form>

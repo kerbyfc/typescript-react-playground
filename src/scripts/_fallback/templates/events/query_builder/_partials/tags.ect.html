@@ -1,0 +1,26 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="tags" class="[ form__label size-normal ]"><%= App.t 'events.conditions.tags' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="tags[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem">
+        <textarea
+            placeholder="<%- App.t 'form.placeholder.search' %>"
+            name="tags[value][]"
+            data-form-type="select2"
+            data-form-server="tag"
+            ></textarea>
+        <button
+            type="button"
+            class="[ button _icon ] [ icon _create ]"
+            data-form-title="<%- App.t 'select_dialog.tag', context: 'many' %>"
+            data-form-entry="tag"
+            data-form-entry-source="query"
+            ></button>
+    </div>
+</div>

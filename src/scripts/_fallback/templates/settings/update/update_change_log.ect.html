@@ -1,0 +1,38 @@
+<% block 'content' : %>
+
+    <div class="popup__content">
+        <div class="popup-about__logo"></div>
+        <div class="popup-about__ver"><%= App.t 'global.version', version: @dbVersion %></div>
+
+        <div class="change-log__content">
+            <%- App.t 'settings.update.msg__complete' %><br/>
+            <br/>
+            <button class="btn" data-action="reload"><%- App.t "settings.update.reload" %></button>
+        </div>
+
+        <div class="popup-about__copyright">
+            <p>&copy; 2003-2014 Infowatch</p>
+            <p><%= App.t 'global.copyright' %></p>
+        </div>
+    </div>
+
+<% end %>
+
+<% block 'popup' : %>
+    <input type="checkbox" class="popup__toggle">
+    <div class="popup popup-about">
+        <div class="popup__position">
+            <div class="popup__wrap">
+                <div class="popup__indent">
+                    <div id="popup__content" class="popup__content">
+
+                        <% content 'content' %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<% content 'popup' %>

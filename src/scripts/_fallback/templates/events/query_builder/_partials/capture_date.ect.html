@@ -1,0 +1,10 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+    <label for="capture_date" class="[ form__label size-normal ]"><%= App.t 'events.conditions.capture_date' %></label>
+    <% end %>
+    <% include 'controls/form/selectdaterangepicker', @extend(
+        startName    : 'capture_date[start_date]'
+        endName      : 'capture_date[end_date]'
+        intervalName : 'capture_date[interval]'
+    ) %>
+</div>

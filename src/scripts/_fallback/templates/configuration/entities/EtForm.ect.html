@@ -1,0 +1,52 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты формы -->
+	<% for key, value of @FIELDS[@ENTITY] when key not in ['OWNER', 'QUANTITY_THRESHOLD', 'CONDITION_COLUMNS', 'FILE_CHECKSUM', 'TEXT_VALUE_THRESHOLD', 'BIN_VALUE_THRESHOLD', 'ENTITY'] : %>
+        <tr>
+            <td><%= @locale[key] or @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим категорию формы -->
+    <!-- ToDo: Убрать проверку после исправления на бэкэнде -->
+    <% if @FIELDS.CATEGORY : %>
+        <tr>
+            <td><%= @locale.category_id %></td>
+            <td><%= @FIELDS.CATEGORY.DISPLAY_NAME %></td>
+        </tr>
+    <% end %>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты формы -->
+	<% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['OWNER', 'QUANTITY_THRESHOLD', 'CONDITION_COLUMNS', 'FILE_CHECKSUM', 'TEXT_VALUE_THRESHOLD', 'BIN_VALUE_THRESHOLD', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key] or @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %><%- if @mutators[key] then @mutators[key](@FIELDS.old[@ENTITY][key], @ENTITY) else @FIELDS.old[@ENTITY][key] %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим категорию формы -->
+    <% if @FIELDS.diff_keys.category : %>
+        <tr>
+            <td><%= @locale.category_id %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% for category in @FIELDS[k].category : %>
+                        <%= @locale[category.DISPLAY_NAME] or category.DISPLAY_NAME %></br>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+<% end %>

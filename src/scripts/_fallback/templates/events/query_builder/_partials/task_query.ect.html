@@ -1,0 +1,7 @@
+<div class="form__row" data-group="<%= @group %>">
+    <% if @mode is 'lite' : %>
+        <label for="task_query" class="[ form__label size-normal ]"><%= App.t 'events.events.task_query' %></label>
+    <% end %>
+
+    <div class="form__elem"><textarea name="task_query"></textarea></div>
+</div>

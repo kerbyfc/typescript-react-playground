@@ -1,0 +1,33 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%- App.t 'settings.scopes_tab' %></h2>
+</div>
+
+<div class="toolbar">
+    <div id="scopes_paginator" class="toolbar__pagination"></div>
+    <div class="toolbar__actions">
+        <div class="buttonSet">
+            <button
+                class="[ button _icon ] [ icon _create ]"
+                data-action="create_scope"
+                title="<%- App.t 'settings.scopes.create' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _edit ]"
+                data-action="edit_scope"
+                title="<%- App.t 'settings.scopes.edit' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _delete ]"
+                data-action="delete_scope"
+                title="<%- App.t 'settings.scopes.delete' %>"
+                disabled>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="content__indent">
+    <div id="scopes_table"></div>
+</div>

@@ -1,0 +1,10 @@
+<div class="sidebar__indent">
+    <% include 'events/query_builder/selection_create', @ %>
+</div>
+
+<div class="sidebar__footer">
+    <button class="[ button _success ]" data-action="save"><%= App.t 'global.save' %></button>
+    <button class="[ button _success ]" data-action="save_and_execute"><%= App.t 'events.conditions.save_and_execute' %></button>
+    <button class="button" data-action="cancel"><%= App.t 'global.cancel' %></button>
+    <button class="[ button _icon ] [ icon _queryBuilder ] eventRequest__extendedBuilder" data-action="switch_to_advanced" title="<%= App.t 'events.conditions.switch_to_advanced_title' %>"></button>
+</div>

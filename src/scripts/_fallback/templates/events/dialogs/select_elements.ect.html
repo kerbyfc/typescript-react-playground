@@ -1,0 +1,23 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap" data-error-container>
+        <div class="popup__indent">
+            <h2 class="popup__title"><%- @title %></h2>
+
+            <div class="popup__content">
+                <div id="elements_paginator"></div>
+                <div class="form__row">
+                    <div class="form__elem"><input data-action="search" type="text" placeholder="<%= App.t 'form.placeholder.search' %>"></div>
+                </div>
+                <div id="elements_table"></div>
+            </div>
+
+            <div class="popup__footer">
+                <button class="[ button _success ]" data-action="save"><%= App.t 'global.save' %></button>
+                <button class="button" data-action="cancel"><%= App.t 'global.cancel' %></button>
+            </div>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

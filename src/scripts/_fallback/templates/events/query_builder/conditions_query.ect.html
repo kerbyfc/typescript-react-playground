@@ -1,0 +1,19 @@
+<form class="form">
+    <% for group, conditions of @conditions : %>
+
+        <% if not _.contains(@exclude, group) and _.without(conditions, @exclude).length : %>
+          <div class="form__title" data-group="<%= group %>"><%= App.t "events.conditions.#{group}" %></div>
+        <% end %>
+
+        <% for condition in conditions : %>
+          <% unless condition in @exclude : %>
+            <% include "events/query_builder/_partials/#{condition}", @extend(
+              model : @
+              mode  : @mode
+              group : group
+            ) %>
+          <% end %>
+        <% end %>
+
+    <% end %>
+</form>

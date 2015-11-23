@@ -1,0 +1,34 @@
+<% if @totalPages : %>
+    <% if @showPageSize : %>
+    <select class="paginator__selectSize" data-paginator-size>
+        <% for k in @pageSizes : %>
+            <option value="<%- k %>" <%- if @perPage is k then "selected" %>><%- k %></option>
+        <% end %>
+    </select>
+    <% end %>
+    <% if @totalPages - 1 isnt 0 : %>
+    <div class="paginator__pages">
+        <div class="buttonSet">
+            <button type="button" data-paginator-button="first" class="[ button _icon ] [ paginator__button _first ]" <%- if @isDisabled 'first' then 'disabled' %>></button>
+            <button type="button" data-paginator-button="prev" class="[ button _icon ] [ paginator__button _previous ]" <%- if @isDisabled 'prev' then 'disabled' %>></button>
+        </div>
+        <% if @totalPages : %>
+        <div class="buttonSet">
+            <% if @isDisabled 'prevRange' : %>
+                <button type="button" data-paginator-button="prevRange" class="[ button _icon ] paginator__button">...</button>
+            <% end %>
+            <% for i in @pages(): %>
+                <button type="button" data-paginator-button="<%- i %>" class="[ button _icon ] paginator__button <%- if @isActive i then '_active' %>" <%- if @isDisabled i then 'disabled' %>><%- i %></button>
+            <% end %>
+            <% if @isDisabled 'nextRange' : %>
+                <button type="button" data-paginator-button="nextRange" class="[ button _icon ] paginator__button">...</button>
+            <% end %>
+        </div>
+        <% end %>
+        <div class="buttonSet">
+            <button type="button" data-paginator-button="next" class="[ button _icon ] [ paginator__button _next ]" <%- if @isDisabled 'next' then 'disabled' %>></button>
+            <button type="button" data-paginator-button="last" class="[ button _icon ] [ paginator__button _last ]" <%- if @isDisabled 'last' then 'disabled' %>></button>
+        </div>
+    </div>
+    <% end %>
+<% end %>

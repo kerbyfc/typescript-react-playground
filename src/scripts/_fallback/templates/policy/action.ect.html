@@ -1,0 +1,11 @@
+<% switch @TYPE : %>
+    <% when "VIOLATION" : %>
+    <span class="<%- @style.className.action[@TYPE] %>" data-type="<%- @TYPE %>" data-threat='<%- @DATA.VALUE.toLowerCase() %>'></span>
+    <% end %>
+    <% when "ACTION" : %>
+    <span class="<%- @style.className.action[@DATA.VALUE] %>" data-type="<%- @TYPE %>"></span>
+    <% end %>
+    <% else : %>
+    <span class="<%- @style.className.action[@TYPE] %>" data-type="<%- @TYPE %>"></span>
+    <% end %>
+<% end %>

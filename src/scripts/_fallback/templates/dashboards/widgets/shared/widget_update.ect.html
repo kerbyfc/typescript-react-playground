@@ -1,0 +1,15 @@
+<div class="form__row">
+
+    <label class="form__label" for="tm-widget-common-settings-period-update">
+        <%- App.t 'dashboards.widgets.commonWidgetSettings.periodUpdate' %>:
+    </label>
+
+    <div class="form__elem">
+        <select class="multiselect" name="BASEOPTIONS[periodUpdate]" data-form-type="multiselect">
+            <option value=""><%- App.t 'dashboards.widgets.no_update' %></option>
+            <% for period in ['15', '30', '60'] : %>
+            <option value="<%= period %>"><%- App.t "dashboards.widgets.every_#{period}_minutes" %></option>
+            <% end %>
+        </select>
+    </div>
+</div>

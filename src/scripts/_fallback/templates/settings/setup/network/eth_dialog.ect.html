@@ -1,0 +1,45 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%= @title %></h2>
+            <form class="form">
+                <div class="popup__content">
+                    <div class="form__row">
+                        <label for="bootproto" class="form__label"><%= App.t 'settings.network.bootproto' %> <a href="javascript:void(0);" class="form__hint-icon [ icon _sizeSmall _help ]" title="<%= App.t 'settings.network.dhcp_hint' %>"></a></label>
+                        <div class="form__elem">
+                            <div class="tumbler">
+                                <input class="tumbler__input" id="bootproto" name='bootproto' type="checkbox">
+                                <label for="bootproto" class="tumbler__toggle"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <label for="ipaddr" class="form__label"><%= App.t 'settings.network.ipaddr' %></label>
+                        <div class="form__elem">
+                            <input type="text" name="ipaddr" data-may-disabled>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <label for="netmask" class="form__label"><%= App.t 'settings.network.netmask' %></label>
+                        <div class="form__elem">
+                            <input type="text" name="netmask" data-may-disabled>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <label for="gateway" class="form__label"><%= App.t 'settings.network.gateway' %></label>
+                        <div class="form__elem">
+                            <input type="text" name="gateway" data-may-disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup__footer">
+                    <button class="[ button _success ]" data-action="save"><%- App.t 'global.save' %></button>
+                    <button class="button" data-action="cancel"><%- App.t 'global.cancel' %></button>
+                </div>
+            </form>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

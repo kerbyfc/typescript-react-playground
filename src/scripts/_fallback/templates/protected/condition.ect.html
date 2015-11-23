@@ -1,0 +1,10 @@
+<div class="queryBuilder__header">
+    <% if @entries_pool.length : %>
+        <button class="[ button _grey ]" data-toolbar-action="add" type="button"><%- App.t "entry.document.condition_add" %></button>
+    <% end %>
+</div>
+<div class="[ queryBuilder _undraggable ]">
+    <div class="queryBuilder__indent">
+        <div class="queryBuilder__block" data-ui="conditionList"></div>
+    </div>
+</div>

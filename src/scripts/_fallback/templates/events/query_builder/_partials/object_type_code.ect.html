@@ -1,0 +1,28 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label class="[ form__label size-normal ]"><%= App.t 'events.conditions.object_type_code' %></label>
+    <% end %>
+    <div class="form__elem">
+        <% @object_type_codes = _.groupBy App.request('bookworm', 'event').toJSON(), 'service_ref' %>
+
+        <select
+            class="multiselect"
+            multiple="multiple"
+            name="object_type_code[]"
+            data-form-type="multiselect"
+            data-default-label="<%- App.t "entry.event.type", context: 'any' %>"
+            collapsible-groups="true"
+        >
+            <% for service in App.request('bookworm', 'service').toJSON() : %>
+                <optgroup value="<%= service.service_id %>" label="<span></span><img src='img/eventType/eventType__<%= service.mnemo %>.png'> <%= service.name %>">
+                    <% for object_type_code in @object_type_codes[service.service_id] : %>
+                    <option
+                        value="<%= object_type_code.event_id %>"
+                        label="<%= object_type_code.name %>"
+                        ></option>
+                    <% end %>
+                </optgroup>
+            <% end %>
+        </select>
+    </div>
+</div>

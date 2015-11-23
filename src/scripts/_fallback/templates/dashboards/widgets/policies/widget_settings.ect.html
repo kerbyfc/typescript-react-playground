@@ -1,0 +1,44 @@
+ <form class="widgetContent form include-footer">
+    <fieldset class="widgetContent__settings">
+
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'dashboards.widgets.commonWidgetSettings.name' %></label>
+            <div class="form__elem">
+                <input name="DISPLAY_NAME" value="" type="text">
+            </div>
+        </div>
+
+        <% include "dashboards/widgets/shared/widget_update", @ %>
+
+        <% include "dashboards/widgets/shared/widget_period", @ %>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[policies]"><%- App.t 'dashboards.widgets.policies' %></label>
+
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.search' %>"
+                    name="BASEOPTIONS[policies][]"
+                    data-form-type="select2"
+                    data-form-server="policy"
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.policy', context: 'many' %>"
+                    data-form-entry="policy"
+                    data-form-entry-source="query"
+                    ></button>
+            </div>
+        </div>
+
+        <div class="form__row submit">
+            <label class="form__label"></label>
+            <div class="form__elem">
+                <button class="[ button _success ] tm-complete-setup-widget"><%- App.t 'global.save' %></button>
+                <button class="button tm-cancel-setup-widget"><%- App.t 'global.cancel' %></button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

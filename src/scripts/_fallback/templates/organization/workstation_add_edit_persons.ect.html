@@ -1,0 +1,9 @@
+<%
+    if @helpers.can({ action: "edit", type: "workstation"})
+: %>
+    <div class="buttonSet">
+        <button data-add-person class="[ button _icon ] [ icon _create ]"></button>
+        <button data-delete-person class="[ button _icon ] [ icon _delete ]"></button>
+    </div>
+<% end %>
+<ul id="workstation_persons" class="employeeExtendedTab__list"></ul>

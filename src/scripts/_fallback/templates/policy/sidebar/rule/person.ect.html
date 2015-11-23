@@ -1,0 +1,21 @@
+<form class="form">
+    <fieldset>
+        <div class="form__row">
+            <label for="policy-action-rule_threat-level" class="form__label"><%- App.t 'entry.policy.capture_threat', context: 'rule' %></label>
+            <div class="form__elem">
+                <select class="select2" name="VIOLATION">
+                    <option value=""><%- App.t 'entry.policy.threat', context: 'any' %></option>
+                    <option value="HIGH"><%- App.t 'entry.policy.threat', context: 'high' %></option>
+                    <option value="MEDIUM"><%- App.t 'entry.policy.threat', context: 'medium' %></option>
+                    <option value="LOW"><%- App.t 'entry.policy.threat', context: 'low' %></option>
+                </select>
+            </div>
+        </div>
+        <div class="[ form__row vertical ]">
+            <label class="form__label"><%- App.t 'entry.policy.associate_with_policy', context: 'rule' %></label>
+            <div class="form__elem">
+                <textarea placeholder="<%- App.t 'form.placeholder.search' %>" name="POLICY" rows="1" data-action="POLICY"></textarea>
+            </div>
+        </div>
+    </fieldset>
+</form>

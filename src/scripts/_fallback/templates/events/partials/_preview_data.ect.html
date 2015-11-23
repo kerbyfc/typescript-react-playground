@@ -1,0 +1,70 @@
+<% switch @service.get('mnemo') : %>
+
+    <% when 'email' : %>
+        <%= @PREVIEW_DATA.subject if @PREVIEW_DATA?.subject %>
+    <% end %>
+
+    <% when 'web' : %>
+
+        <%= @PREVIEW_DATA.resource if @PREVIEW_DATA?.resource %>
+
+        <% if @PREVIEW_DATA?.resource_type and @PREVIEW_DATA?.resource_type.length : %>
+            [
+            <% for list in @PREVIEW_DATA.resource_type : %>
+                <% if @resourceGroups.get(list)?.get('DISPLAY_NAME') : %>
+                    <%= App.t('lists.resources', { returnObjectTrees: true })[@resourceGroups.get(list)?.get('DISPLAY_NAME')] ? @resourceGroups.get(list).get('DISPLAY_NAME') %>
+                <% else : %>
+                    <%= list %>
+                <% end %>
+            <% end %>
+            ]
+        <% end %>:
+
+        <%- App.t 'events.events.send_post' %>
+    <% end %>
+
+    <% when 'print' : %>
+      <% if @PREVIEW_DATA.file : %>
+        <%= @PREVIEW_DATA.file %>
+      <% end %>
+
+      <% if @PREVIEW_DATA.application : %>
+        <%= @PREVIEW_DATA.application %>
+      <% end %>
+    <% end %>
+
+    <% when 'multimedia' : %>
+        <%= App.t 'events.events.mobile_photo_preview_data' %>
+    <% end %>
+
+    <% when 'im' : %>
+        <% if 'files' of @PREVIEW_DATA : %>
+            <%- App.t 'events.events.part_type_file_transfer' %>:
+            <%= (_.map @PREVIEW_DATA.files, (file) -> file.name).join(', ') %>
+        <% else : %>
+            <%= App.t('events.events.im_message_prev', {sent_count: @PREVIEW_DATA.sent_count or 0, received_count: @PREVIEW_DATA.received_count or 0}) %>
+        <% end %>
+    <% end %>
+
+    <% when 'file' : %>
+        <% if @PREVIEW_DATA.name and @PREVIEW_DATA.type : %>
+            <%= App.t('events.events.copy_file') %>
+            <% if @PREVIEW_DATA.name : %>
+                <%= "#{@PREVIEW_DATA.name}" %>
+            <% end %>
+            <% if @PREVIEW_DATA.type : %>
+                <% if @formats[@PREVIEW_DATA.type] : %>
+                    <%= " (#{@formats[@PREVIEW_DATA.type][0].name})" %>
+                <% else : %>
+                    <%= " (#{@PREVIEW_DATA.type})" %>
+                <% end %>
+            <% end %>
+        <% else : %>
+            <%= App.t('events.events.file_exchange_prev', {resource: "#{@PREVIEW_DATA.resource}#{@PREVIEW_DATA.file}"} ) %>
+        <% end %>
+    <% end %>
+
+    <% when 'placement' : %>
+        <%= "[#{@formats[@PREVIEW_DATA.type]?[0].name ? @PREVIEW_DATA.type}]: #{@PREVIEW_DATA.file}" %>
+    <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+<div class="unit__name">
+    <% @iconClass = if @participant.PARTICIPANT_TYPE is 'group' then "_group" else "_sid" %>
+    <a
+        href="javascript: void(0)"
+        class="unit__link popover_info <%= if @participant.IS_DELETED then 'deleted' %>"
+        data-id="<%= @participant.PARTICIPANT_ID %>"
+        data-type="<%= @participant.PARTICIPANT_TYPE %>"
+        data-keys='<%= _.map(@participant.keys, (key) -> "#{key.KEY_TYPE}:#{key.KEY}").join("||") %>'
+        data-object="<%= @OBJECT_ID %>"
+        data-direction="<%= @participant.IDENTITY_TYPE %>"
+        title="<%= if not @without_title then @participant.DISPLAY_NAME %>"
+        ><i class="[ icon _sizeSmall <%= @iconClass %> ]"></i> <%= @participant.DISPLAY_NAME %>
+    </a>
+</div>

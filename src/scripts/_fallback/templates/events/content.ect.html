@@ -1,0 +1,103 @@
+<header class="contentHeader">
+    <h2 class="contentHeader__title"><%- App.t 'menu.events' %></h2>
+    <div class="eventFilter">
+        <div class="eventFilter__list">
+            <input class="selections" type='hidden'>
+        </div>
+        <div class="eventFilter__actions">
+            <div class="buttonSet">
+                <button
+                    class="[ button _icon ] [ icon _play ]"
+                    data-action="execute"
+                    title="<%= App.t 'events.events.execute_request' %>">
+                </button>
+                <div class="buttonDropdown dropdown">
+                    <button
+                        class="[ button _icon ] [ icon _create ] dropdown-toggle"
+                        type="button"
+                        data-action="add"
+                        data-toggle="dropdown"
+                        ></button>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" data-action="lite"><%= App.t 'events.conditions.lite' %></button></li>
+                        <li><button type="button" data-action="advanced"><%= App.t 'events.conditions.advanced' %></button></li>
+                    </ul>
+                </div>
+                <button
+                    class="[ button _icon ] [ icon _edit ]"
+                    data-action="edit"
+                    title="<%= App.t 'events.events.edit_request' %>">
+                </button>
+                <button
+                    class="[ button _icon ] [ icon _copy ]"
+                    data-action="copy"
+                    title="<%= App.t 'events.events.copy_request' %>">
+                </button>
+                <button
+                    class="[ button _icon ] [ icon _delete ]"
+                    data-action="delete"
+                    title="<%= App.t 'events.events.delete_request' %>">
+                </button>
+            </div>
+            <ul class="buttonSet" id="tm-events-tabs"></ul>
+        </div>
+    </div>
+</header>
+<div class="content__block">
+    <div class="buttonSet">
+        <button
+            class="[ button _icon ] [ icon _userDecisionViolation ]"
+            data-action="set_decision"
+            data-decision="Violation"
+            title="<%= App.t 'events.events.user_decision_violation' %>"
+            ></button>
+        <button
+            class="[ button _icon ] [ icon _userDecisionNoViolation ]"
+            data-action="set_decision"
+            data-decision="NoViolation"
+            title="<%= App.t 'events.events.user_decision_no_violation' %>"
+            ></button>
+        <button
+            class="[ button _icon ] [ icon _userDecisionNotProcessed ]"
+            data-action="set_decision"
+            data-decision="NotProcessed"
+            title="<%= App.t 'events.events.user_decision_no_decision' %>"
+            ></button>
+        <button
+            class="[ button _icon ] [ icon _userDecisionAdditionalProcessingNeeded ]"
+            data-action="set_decision"
+            data-decision="AdditionalProcessingNeeded"
+            title="<%= App.t 'events.events.AdditionalProcessingNeeded' %>"
+            ></button>
+    </div>
+    <div class="buttonSet">
+        <button
+            class="[ button _icon ] [ icon _tag ]"
+            data-action="set_tag"
+            title="<%= App.t 'events.events.set_tag' %>"
+            ></button>
+        <div class="buttonDropdown dropdown">
+            <button class="[ button _caret ] dropdown-toggle" data-toggle="dropdown" type="button" id="toolbarDropdownButton"></button>
+            <ul class="dropdown-menu" aria-labelledby="toolbarDropdownButton">
+                <li><button type="button" data-action="export"><%= App.t 'events.events.export' %></button></li>
+                <li><button type="button" data-action="debug_info"><%= App.t 'events.events.debug_info' %></button></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="[ content__indent _scrollable ]" id="tm-events-tab-content"></section>
+
+<footer class="content__footer">
+    <div class="eventRequestInfo">
+        <div class="eventRequestInfo__item" style="display:none;" id="selectionDate">
+            <%= App.t 'events.conditions.executed' %>:
+            <span class="eventRequestInfo__date"></span>
+        </div>
+        <div class="eventRequestInfo__item" style="display:none;" id="eventsCount">
+            <%= App.t 'events.conditions.query_events' %>:
+            <span class="eventRequestInfo__count"></span>
+        </div>
+    </div>
+    <div class="event__paginator" id="paginator"></div>
+</footer>

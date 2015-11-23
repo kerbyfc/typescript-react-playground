@@ -1,0 +1,55 @@
+<% switch @service?.get('mnemo') : %>
+
+    <% when 'web' : %>
+        <% if not _.isEmpty(@recipients) or not _.isEmpty(@recipients_keys) or not _.isEmpty(@recipients_conflicts) : %>
+            <% include "events/partials/_participant", _.assign(@, {participants_keys: @recipients_keys, participants: @recipients, participants_conflicts: @recipients_conflicts}) %>
+        <% else : %>
+            <div class="unit" data-collapse-item>
+                <% if @DESTINATION_HOST : %>
+                    <div class="unit__name" title="<%= @DESTINATION_HOST %>">
+                      <i class="[ icon _sizeSmall _domain ]"></i> <%= @DESTINATION_HOST %>
+                    </div>
+                <% else : %>
+                    <div class="unit__empty"><%= App.t 'events.events.participant_undefined' %></div>
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
+
+    <% when 'print' : %>
+        <% if @DEVICE_NAME : %>
+          <div class="unit" title="<%= @DEVICE_NAME %>" data-collapse-item>
+            <div class="unit__name"><i class="[ icon _sizeSmall _printer ]"></i> <%= @DEVICE_NAME %></div>
+          </div>
+        <% else : %>
+          <div class="unit" data-collapse-item>
+            <div class="unit__empty"><%= App.t 'events.events.participant_undefined' %></div>
+          </div>
+        <% end %>
+    <% end %>
+
+    <% when 'file' : %>
+        <div class="unit" data-collapse-item>
+            <% if @DESTINATION_HOST : %>
+                <div class="unit__name" title="<%= @DESTINATION_HOST %>">
+                  <i class="[ icon _sizeSmall _domain ]"></i> <%= @DESTINATION_HOST %>
+                </div>
+            <% else if @DEVICE_NAME : %>
+                <div class="unit__name" title="<%= @DEVICE_NAME.split(',')[0] %>">
+                  <i class="[ icon _sizeSmall _usb ]"></i> <%= @DEVICE_NAME.split(',')[0] %>
+                </div>
+            <% else : %>
+                <div class="unit__empty"><%= App.t 'events.events.participant_undefined' %></div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% when 'multimedia' : %>
+        <% include "events/workstation", @ %>
+    <% end %>
+
+    <% else : %>
+        <% include "events/partials/_participant", _.assign(@, {participants_keys: @recipients_keys, participants: @recipients, participants_conflicts: @recipients_conflicts, participant_type: 'recipients'}) %>
+    <% end %>
+
+<% end %>

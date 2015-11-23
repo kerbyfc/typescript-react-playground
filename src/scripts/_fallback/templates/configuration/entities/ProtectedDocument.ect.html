@@ -1,0 +1,50 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты объекта защиты -->
+    <% for key, value of @FIELDS[@ENTITY] when key not in ['CHECKSUM', 'ENTITY'] : %>
+        <tr>
+            <td><%= @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+    <% end %>
+
+    <!-- Выводим каталог объекта защиты -->
+    <tr>
+        <td><%= @locale.catalog %></td>
+        <td>
+            <%= @FIELDS.catalog[0].DISPLAY_NAME %>
+        </td>
+    </tr>
+
+<% else : %>
+
+    <!-- Выводим собственные аттрибуты объекта защиты -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+        <% for key in @FIELDS.diff_keys[@ENTITY] when key not in ['CHECKSUM', 'ENTITY'] : %>
+            <tr>
+                <td><%=  @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <% if @FIELDS.diff_keys.catalog : %>
+        <tr>
+            <td><%= @locale.catalog %></td>
+            <% for k in ['old', 'new'] : %>
+                <td>
+                    <% for catalog in @FIELDS[k].catalog : %>
+                        <%= catalog.DISPLAY_NAME %></br>
+                    <% end %>
+                </td>
+            <% end %>
+        </tr>
+    <% end %>
+
+<% end %>

@@ -1,0 +1,9 @@
+<% if @data : %>
+    <div class="eventInfo__attachment">
+        <ul class="att nav nav-pills" data-region="eventParts">
+            <% include "events/event_views/attachments", @ %>
+        </ul>
+    </div>
+
+    <iframe class="text eventInfo__content" data-region="content"></iframe>
+<% end %>

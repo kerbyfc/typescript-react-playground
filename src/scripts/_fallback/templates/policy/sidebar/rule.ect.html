@@ -1,0 +1,12 @@
+<h2 class="sidebar__title"><%- App.t "entry.policy.rule", context: @TYPE %></h2>
+<div class="sidebar__indent">
+    <div class="sidebar__block" data-region="rule"></div>
+    <div class="sidebar__block" data-region="action"></div>
+</div>
+<div class="sidebar__footer">
+    <button type="button" class="[ button _success ]" data-action="save"><%- App.t 'global.save' %></button>
+    <% if @IS_SYSTEM is 1 : %>
+    <button type="button" class="[ button _success ]" data-action="save" data-type="reset"><%- App.t 'global.reset' %></button>
+    <% end %>
+    <button type="button" class="button" data-action="back"><%- App.t 'global.cancel' %></button>
+</div>

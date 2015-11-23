@@ -1,0 +1,14 @@
+<% if @protected_documents.length : %>
+    <section class="eventAnalisys">
+        <ul class="eventAnalisys__list">
+            <% for protected_document in @protected_documents : %>
+            <li>
+                <div class="[ eventAnalisys__item _open ]">
+                    <h3 class="eventAnalisys__name" data-id="<%= protected_document.PROT_DOCUMENT_ID %>"><%= protected_document.DISPLAY_NAME %></h3>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+        <aside class="eventAnalisysItem" id="tech"></aside>
+    </section>
+<% end %>

@@ -1,0 +1,68 @@
+<form class="widgetContent__settings form">
+    <fieldset class="form__fieldset">
+
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'dashboards.widgets.commonWidgetSettings.name' %></label>
+            <div class="form__elem">
+                <input name="DISPLAY_NAME" value="" type="text">
+            </div>
+        </div>
+
+        <% include "dashboards/widgets/shared/widget_update", @ %>
+
+        <% include "dashboards/widgets/shared/widget_period", @ %>
+
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'dashboards.widgets.commonWidgetSettings.topLabel' %></label>
+            <div class="form__elem"><input name="BASEOPTIONS[top]" type="number" value=""></div>
+        </div>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[user_groups]"><%- App.t 'dashboards.widgets.groups' %></label>
+
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.group' %>"
+                    name="BASEOPTIONS[user_groups][]"
+                    data-form-type="select2"
+                    data-form-server="group"
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.group', context: 'many' %>"
+                    data-form-entry="group"
+                    data-form-entry-source="query"
+                    ></button>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[user_statuses]"><%- App.t 'dashboards.widgets.statuses' %></label>
+
+            <div class="form__elem">
+                <textarea
+                    placeholder="<%- App.t 'form.placeholder.status' %>"
+                    name="BASEOPTIONS[user_statuses][]"
+                    data-form-type="select2"
+                    data-form-server="status"
+                    ></textarea>
+                <button
+                    type="button"
+                    class="[ button _icon ] [ icon _create ]"
+                    data-form-title="<%- App.t 'select_dialog.status', context: 'many' %>"
+                    data-form-entry="status"
+                    data-form-entry-source="query"
+                    ></button>
+            </div>
+        </div>
+
+        <div class="form__row submit">
+            <label class="form__label"></label>
+            <div class="form__elem">
+                <button class="[ button _success ] tm-complete-setup-widget"><%- App.t 'global.save' %></button>
+                <button class="button tm-cancel-setup-widget" data-action="cancel"><%- App.t 'global.cancel' %></button>
+            </div>
+        </div>
+    </fieldset>
+</form>

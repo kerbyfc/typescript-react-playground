@@ -1,0 +1,83 @@
+<div class="popoverUnit__general">
+    <div class="popoverUnit__type">
+        <% if @SOURCE in ["ad", "dd"] : %>
+            <% if @DISABLED is 1 : %>
+                <i class="[ popoverUnit__status _inactive ]"></i>
+            <% else : %>
+                <i class="[ popoverUnit__status _active ]"></i>
+            <% end %>
+        <% end %>
+        <% if @SOURCE is "ad" : %>AD<% end %>
+        <% if @SOURCE is "dd" : %>DD<% end %>
+    </div>
+    <div class="popoverUnit__ava">
+        <img
+            width=67
+            height=67
+            alt=""
+            src="<%- App.Config.server %>/api/ldapPerson/image?person_id=<%- @PERSON_ID %>&t=<%- App.Helpers.guid() %>">
+    </div>
+    <h3 class="popoverUnit__name"><%- @DISPLAY_NAME %></h3>
+    <span class="popoverUnit__rank"><%- @TM_TITLE ? @TITLE %></span>
+</div>
+<div class="popoverUnit__contacts">
+<% if @contacts : %>
+    <% if @contacts.length : %>
+        <% for value in @contacts  when value.CONTACT_TYPE isnt "sid" : %>
+            <div class="popoverUnit__contact">
+                <i class="tooltip-toggle
+                    <% switch value.CONTACT_TYPE : %>
+                        <% when 'email' :%>
+                            icon _email _sizeSmall
+                        <% end %>
+                        <% when 'lotus' :%>
+                            icon _lotus _sizeSmall
+                        <% end %>
+                        <% when 'phone' :%>
+                            icon _phone _sizeSmall
+                        <% end %>
+                        <% when 'mobile' :%>
+                            icon _phone _sizeSmall
+                        <% end %>
+                        <% when 'auth' :%>
+                            icon _auth _sizeSmall
+                        <% end %>
+                        <% when 'sid' :%>
+                            icon _sid _sizeSmall
+                        <% end %>
+                        <% when 'skype' :%>
+                            icon _skype _sizeSmall
+                        <% end %>
+                        <% when 'icq' :%>
+                            icon _icq _sizeSmall
+                        <% end %>
+                        <% when 'webaccount' :%>
+                            icon _web _sizeSmall
+                        <% end %>
+                    <% end %>"
+                data-toggle="tooltip" title="<%= value.VALUE %>" data-original-title=""></i> <%- value.VALUE %>
+            </div>
+        <% end %>
+    <% else : %>
+        <div class="empty-block__message"><%- App.t 'organization.no_contacts' %></div>
+    <% end %>
+<% end %>
+</div>
+
+<div class="popoverUnit__tags">
+    <% if @status and @status.length : %>
+        <% statuses = @status.toJSON?() or @status %>
+        <% for status in statuses : %>
+            <span class="popoverUnit__tag" style="color:<%= if status.COLOR then 'white' else 'black' %>;background-color:<%= status.COLOR %>"><%= App.Helpers.getPredefinedLocalizedValue status.DISPLAY_NAME, "lists.statuses" %></span>
+        <% end %>
+    <% end %>
+</div>
+<% if @real_group : %>
+<div class="popoverUnit__link">
+    <% if @SOURCE is 'tm' : %>
+        <a href="/organization/<%= @real_group.GROUP_ID %>/persons/<%= @PERSON_ID %>"><%= App.t 'events.events.drill_to_user' %></a>
+    <% else : %>
+        <a href="/organization/<%= @real_group.GROUP_ID %>/persons/<%= @PERSON_ID %>"><%= App.t 'events.events.drill_to_user' %></a>
+    <% end %>
+</div>
+<% end %>

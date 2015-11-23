@@ -1,0 +1,26 @@
+<div class="[ popup__content size-normal ]">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.table.condition_display_name' %></label>
+            <div class="form__elem">
+                <input type="text" name="DISPLAY_NAME" required maxlength="128" placeholder="<%- App.t 'analysis.table.condition_name_placeholder' %>">
+            </div>
+        </div>
+        <div class="form__row">
+            <label for="MIN_ROWS" class="form__label"><%- App.t 'analysis.table.min_rows' %></label>
+            <div class="[ form__elem size-100 ]"><input type="number" min="1" max="32" name="MIN_ROWS"></div>
+        </div>
+        <div class="form__row">
+            <label for="VALUE" class="form__label"><%- App.t 'analysis.table.rule' %></label>
+            <div class="form__elem">
+                <input type="text" data-form-autofocus="true" name="VALUE" required maxlength="256">
+            </div>
+        </div>
+        <h3 class="form__title"><%- App.t 'analysis.table.columns' %></h3>
+        <div data-region="columns"></div>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" disabled><%- App.t "global.#{@action}", context: "success" %></button>
+    <button class="button" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

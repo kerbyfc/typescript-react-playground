@@ -1,0 +1,59 @@
+<div class="popover_unit--primary">
+    <div class="popover_unit--photo">
+        <% if @SOURCE is "ad" : %>
+        <img width=67 height=67 src="<%- App.Config.server %>/img/icon/group-icon-ad.png" alt="" />
+        <% else if @SOURCE is "dd" : %>
+        <img width=67 height=67 src="<%- App.Config.server %>/img/icon/group-icon-dd.png" alt="" />
+        <% else : %>
+        <img width=67 height=67 src="<%- App.Config.server %>/img/icon/group-icon.png" alt="" />
+        <% end %>
+    </div>
+    <h3><%- @DISPLAYNAME %></h3>
+    <span><%- "#{App.t 'events.conditions.server'}: #{@SERVER_NAME}" %></span>
+</div>
+<div class="popover_unit--contacts">
+    <% if @contacts.length is 1  and  @contacts[0].creator : %>
+    <div class="popover_unit--no_data"><%- App.t 'organization.no_contacts' %></div>
+    <% else : %>
+    <% for value in @contacts  when value.CONTACT_TYPE isnt "sid" : %>
+    <p>
+        <% if _.isArray(@identity_keys) and @identity_keys.indexOf("#{value.CONTACT_TYPE}:#{value.VALUE}") isnt -1 : %>
+              <span class="tooltip-toggle
+              <% switch value.CONTACT_TYPE : %>
+                <% when 'email', 'mail' :%>
+                    fontello-icon-mail-2
+                <% end %>
+                <% when 'lotus' :%>
+                    fontello-icon-mail-2
+                <% end %>
+                <% when 'auth' :%>
+                    fontello-icon-key-2
+                <% end %>
+                <% when 'sid' :%>
+                    fontello-icon-user-4
+                <% end %>
+              <% end %>"
+                    href="#" data-toggle="tooltip" style="font-weight:bold;" title="<%= value.VALUE %>" data-original-title=""><%- value.VALUE %></span>
+        <% else : %>
+              <span class="tooltip-toggle
+              <% switch value.CONTACT_TYPE : %>
+                <% when 'email' :%>
+                    fontello-icon-mail-2
+                <% end %>
+                <% when 'lotus' :%>
+                    fontello-icon-mail-2
+                <% end %>
+                <% when 'auth' :%>
+                    fontello-icon-key-2
+                <% end %>
+                <% when 'sid' :%>
+                    fontello-icon-user-4
+                <% end %>
+            <% end %>"
+                    href="#" data-toggle="tooltip" title="<%= value.VALUE %>" data-original-title=""><%- value.VALUE %></span>
+        <% end %>
+    </p>
+    <% end %>
+    <% end %>
+</div>
+</div>

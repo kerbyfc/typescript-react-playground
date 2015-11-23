@@ -1,0 +1,47 @@
+<% if @data : %>
+    <% if @data.attachments? : %>
+        <div class="eventDetail__attachment">
+            <ul class="att nav nav-pills" data-region="eventParts">
+                <% include "events/event_views/attachments", @ %>
+            </ul>
+        </div>
+    <% end %>
+
+    <% if @data.messages? and @data.messages.length : %>
+        <div class="eventDialog">
+            <h2 class="eventDialog__title"><%= App.t 'events.events.im_message_title' %></h2>
+            <% for message in @data.messages : %>
+                <div class="eventDialog__ava" style="float:<%= message.position %>">
+                    <% if message.from and @identity[@type + ':' + message.from] : %>
+                        <img src="<%= App.Config.server %>/api/ldapPerson/image?person_id=<%= @identity[@type + ':' + message.from].id %>" height="60" width="60">
+                    <% else : %>
+                        <img src="<%= App.Config.server %>/api/ldapPerson/image?person_id=null" height="60" width="60">
+                    <% end %>
+                </div>
+                <div class="eventDialog__content">
+                    <div class="eventDialog__message <%=message.position %>">
+                        <% if message.from and @identity[@type + ':' + message.from] : %>
+                            <div class="eventDialog__message-info"><%= message.date.calendar() %> <b><%= @identity[@type + ':' + message.from].name %> (<%= message.from %>)</b> <%= App.t 'events.events.im_user_write' %>:</div>
+                        <% else : %>
+                            <div class="eventDialog__message-info"><%= message.date.calendar() %> <b><%= message.from %></b> <%= App.t 'events.events.im_user_write' %>:</div>
+                        <% end %>
+                        <div class="eventDialog__text"><p><%= message.text %></p></div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% if @data.attachments?.length : %>
+        <iframe class="text eventInfo__content" data-region="content"></iframe>
+    <% end %>
+
+<% else : %>
+    <iframe class="text eventInfo__content" data-region="content">
+        <html>
+            <body>
+                <div><%= App.t 'events.events.im_no_messages' %></div>
+            </body>
+        </html>
+    </iframe>
+<% end %>

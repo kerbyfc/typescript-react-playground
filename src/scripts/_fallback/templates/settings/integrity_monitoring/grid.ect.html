@@ -1,0 +1,44 @@
+<header class="contentHeader">
+    <h3 class="contentHeader__title" data-ui="header"></h3>
+</header>
+
+<form class="form">
+    <fieldset>
+        <% if App.Helpers.can({type: 'integrity', action: 'scan'}) : %>
+        <h3 class="form__title"><%= App.t 'settings.integrity_settings_title' %></h3>
+        <div class="form__row">
+            <label class="form__label"><%= App.t 'settings.integrity_enebled_label' %></label>
+            <div class="form__elem">
+                <label class="tumbler">
+                    <input class="tumbler__input" type="checkbox" name="enabled">
+                    <span class="tumbler__toggle"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form__row" id="schedule" style="display:none;">
+            <label class="form__label"><%- App.t "settings.integrity_schedule" %></label>
+            <div class="[ form__elem size-100 ]">
+                <input type="time" name="schedule_time">
+            </div>
+            <div class="form__elem">
+                <button class="button" id="save_schedule_time"><%- App.t "global.save" %></button>
+            </div>
+        </div>
+        <% end %>
+        <% if App.Helpers.can({type: 'integrity', action: 'form_etalon'}) : %>
+        <h3 class="form__title"><%= App.t 'settings.integrity_results_title' %></h3>
+        <div class="form__description" id="scan_description"></div>
+        <div class="form__row" id="button_controls">
+            <button type="button" class="button" id="apply-files"><%- App.t "settings.integrity_files_apply" %></button>
+            <button type="button" class="button" id="scan-files"><%- App.t "settings.integrity_files_do_scan" %></button>
+        </div>
+        <% end %>
+        <div class="form__message" style="display:none;" id="scan_hint"><%= App.t 'settings.integrity_hint' %></div>
+    </fieldset>
+</form>
+
+<div class="[ content__indent _scrollable ]">
+    <% include 'controls/grid/table', @ %>
+</div>
+
+<% include 'controls/grid/paginator', @ %>

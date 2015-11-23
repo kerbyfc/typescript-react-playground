@@ -1,0 +1,19 @@
+<h2 class="sidebar__title"><%- App.t 'global.setting', context: 'filter' %></h2>
+<form class="form">
+    <div class="[ form__row vertical ]">
+        <label class="form__label"><%- App.t 'global.policy_name', context: 'filter' %></label>
+        <div class="form__elem">
+            <textarea placeholder="<%- App.t 'form.placeholder.search' %>" name="POLICY_NAME" rows="1" data-action="POLICY_NAME"></textarea>
+        </div>
+    </div>
+    <div class="[ form__row vertical ]">
+        <label class="form__label"><%- App.t 'entry.policy.object', context: 'filter' %></label>
+        <div class="form__elem">
+            <textarea placeholder="<%- App.t 'form.placeholder.search' %>" name="OBJECT" rows="1" data-action="OBJECT"></textarea>
+        </div>
+    </div>
+    <div class="form__row submit">
+        <button type="button" class="[ button _success ]" data-action="save"><%- App.t 'global.apply' %></button>
+        <button type="button" class="button" data-action="back"><%- App.t 'global.cancel' %></button>
+    </div>
+</form>

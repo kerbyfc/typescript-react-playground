@@ -1,0 +1,32 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%= App.t 'lists.tags.tags_title' %> </h2>
+    <p class="contentHeader__description"><%= App.t 'lists.tags.tags_description' %></p>
+</div>
+
+<div class="toolbar">
+    <div class="toolbar__pagination" id="tags_paginator"></div>
+    <div class="toolbar__actions">
+        <div class="buttonSet">
+            <button
+                class="[ button _icon ] [ icon _create ]"
+                data-action="create_tag"
+                title="<%= App.t 'lists.tags.create' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _edit ]"
+                data-action="edit_tag"
+                title="<%= App.t 'lists.tags.edit' %>"
+                disabled>
+            </button>
+            <button
+                class="[ button _icon ] [ icon _delete ]"
+                data-action="delete_tag"
+                title="<%= App.t 'lists.tags.delete' %>"
+                disabled>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="[ content__indent _scrollable ]" id="tags_table"></div>

@@ -1,0 +1,25 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><%= App.t 'menu.dashboards' %></h2>
+    <div class="contentHeader__toolbar _positionRight">
+        <button
+            class="button"
+            title="<%= App.t 'dashboards.dashboards.select_view' %>"
+            data-action="select-layout">
+            <%= App.t 'dashboards.dashboards.select_view' %>
+        </button>
+        <button
+            class="button"
+            title="<%= App.t 'dashboards.dashboards.add_widget' %>"
+            data-action="add-widget">
+            <%= App.t 'dashboards.dashboards.add_widget' %>
+        </button>
+    </div>
+</div>
+<div class="dashboard__tabs">
+    <ul id="tm-dashboards-tabs" class="adaptiveTabs"></ul>
+    <button
+        class="dashboard__create-tab [ button _icon ] [ icon _create ]"
+        data-action="add-tab" title="<%= App.t 'dashboards.dashboards.add_dashboard' %>">
+    </button>
+</div>
+<div class="content__indent _scrollable" id="tm-dashboards-tab-content"></div>

@@ -1,0 +1,18 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap">
+        <div class="popup__indent">
+            <h2 class="popup__title"><%= @title %></h2>
+            <form class="form">
+                <div class="popup__content">
+                    <div id="license_info"></div>
+                    <div class="form__action-result" style="text-align: center;"><%= App.t 'settings.license.license_import_dialog_message' %></div>
+                    <div class="form__row-center upload"><label class="form__input-file"><%= App.t 'global.upload' %><input type="file" class="upload_license"></label></div>
+                    <div class="form__row-center close_window"><label class="form__input-file"><%= App.t 'global.close' %></label></div>
+                </div>
+            </form>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

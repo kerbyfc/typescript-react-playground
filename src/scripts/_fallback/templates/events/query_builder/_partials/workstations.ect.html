@@ -1,0 +1,26 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="workstations" class="[ form__label size-normal ]"><%= App.t 'events.conditions.workstations' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="workstations[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem">
+        <textarea
+            placeholder="<%- App.t 'form.placeholder.search' %>"
+            name="workstations[value][]"
+            data-form-type="select2"
+            data-form-server="workstation"
+            data-form-local="ip,dns"
+            ></textarea>
+        <button
+            type="button"
+            class="[ button _icon ] [ icon _create ]"
+            data-form-title="<%- App.t 'events.conditions.select_workstations' %>"
+            data-form-entry="workstation"
+            ></button>
+    </div>
+</div>

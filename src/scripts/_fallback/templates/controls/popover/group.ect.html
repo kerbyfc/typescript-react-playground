@@ -1,0 +1,36 @@
+<div class="popover-info">
+
+    <div class="popover-info__row">
+        <div class="popover-info__param"><%- App.t 'global.DISPLAY_NAME' %>:</div>
+        <div class="popover-info__value"><%- @name %></div>
+    </div>
+
+    <% if @DISPLAYPATH : %>
+    <div class="popover-info__row">
+        <div class="popover-info__param"><%- App.t 'global.DISPLAYPATH' %>:</div>
+        <div class="popover-info__value"><%- @DISPLAYPATH %></div>
+    </div>
+    <% end %>
+
+    <% if @CREATE_DATE : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.CREATE_DATE' %>:</div>
+            <div class="popover-info__value"><%= moment.utc(@CREATE_DATE).local().format('L LT') %></div>
+        </div>
+    <% end %>
+
+    <% if @CHANGE_DATE and @CHANGE_DATE isnt @CREATE_DATE : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.CHANGE_DATE' %>:</div>
+            <div class="popover-info__value"><%= moment.utc(@CHANGE_DATE).local().format('L LT') %></div>
+        </div>
+    <% end %>
+
+    <% if @DESCRIPTION : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.DESCRIPTION' %>:</div>
+            <div class="popover-info__value"><%- @DESCRIPTION %></div>
+        </div>
+    <% end %>
+
+</div>

@@ -1,0 +1,155 @@
+<div class="contentHeader">
+    <h2 class="contentHeader__title"><i class="[ unitState _active ]"></i> <%- @DISPLAY_NAME %></h2>
+    <div class="contentHeader__description">
+        <%- @DESCRIPTION %>
+    </div>
+    <div class="contentHeader__description">
+        <%- App.t "global.vendor" %>: <%- @VENDOR %>
+    </div>
+    <div class="contentHeader__description">
+        <%- App.t "global.version", version : @VERSION %>
+    </div>
+</div>
+
+<div class="[ content__indent _scrollable ]">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="#plugin_tab" data-toggle="tab" data-entry="plugin">
+                <%- App.t "settings.plugins.plugins" %>
+            </a>
+        </li>
+        <li>
+            <a href="#licenses_tab" data-toggle="tab" data-entry="licenses">
+                <%- App.t "settings.plugins.licenses" %>
+            </a>
+        </li>
+        <li>
+            <a href="#tokens_tab" data-toggle="tab" data-entry="tokens">
+                <%- App.t "settings.plugins.tokens" %>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="plugin_tab">
+            <div class="pluginContent">
+                <% if @adds_events?.length : %>
+                <div class="pluginContent__block">
+                    <h3 class="pluginContent__title"><%- App.t "settings.plugins.new_events" %></h3>
+                    <% _.each @adds_events, (add_event) => : %>
+                        <% _.each add_event.protocols, (protocol) => : %>
+                        <div class="pluginContent__item">
+                            <span class="pluginContent__eventType">
+                                <img src="<%= App.Config.server %>/img/icon/<%- add_event.MNEMO %>.png" width="16" height="16">
+                                <%- "#{add_event.DISPLAY_NAME}, #{protocol.DISPLAY_NAME}" %>
+                            </span>
+                            <% include "settings/plugins/license_state", _.assign(@, {event:add_event.MNEMO, protocol: protocol.MNEMO}) %>
+                        </div>
+                        <% end %>
+                    <% end %>
+                </div>
+                <% end %>
+                <% if @uses_events?.length : %>
+                <div class="pluginContent__block">
+                    <h3 class="pluginContent__title"><%- App.t "settings.plugins.exists_events" %></h3>
+                    <% _.each @uses_events, (uses_event) => : %>
+                        <% _.each uses_event.protocols, (protocol) => : %>
+                            <div class="pluginContent__item">
+                                <span class="pluginContent__eventType">
+                                    <img src="<%= App.Config.server %>/img/icon/<%- uses_event.MNEMO %>.png" width="16" height="16">
+                                    <%- "#{uses_event.DISPLAY_NAME}, #{protocol.DISPLAY_NAME}" %>
+                                </span>
+                                <% include "settings/plugins/license_state", _.assign(@, {event: uses_event.MNEMO, protocol: protocol.MNEMO}) %>
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+                <% end %>
+                <% if @contact?.length : %>
+                <div class="pluginContent__block">
+                    <h3 class="pluginContent__title"><%- App.t "settings.plugins.contacts" %></h3>
+                    <% _.each @contact, (contact_type) -> : %>
+                        <div class="pluginContent__item">
+                            <span class="pluginContent__eventType">
+                                <img src="<%= App.Config.server %>/img/icon/<%- contact_type.MNEMO %>.png" width="16" height="16">
+                                <%- contact_type.DISPLAY_NAME %>
+                            </span>
+                        </div>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="licenses_tab">
+            <% _.each @licenses, (license) => : %>
+                <div class="pluginLicense">
+                    <div class="pluginLicense__block">
+                        <a href="/settings/license/<%- license.fingerprint %>" class="pluginLicense__more">
+                            <%- App.t "global.more_info" %>
+                        </a>
+                        <div class="pluginLicense__row">
+                            <span class="pluginLicense__label"><%- App.t 'settings.license.state' %></span>
+                            <span class="pluginLicense__info">
+                                <% if @is_license_active license : %>
+                                    <i class="[ unitState _active ]"></i>
+                                    <%- App.t "settings.license.active" %>
+                                <% else : %>
+                                    <i class="[ unitState _unactive ]"></i>
+                                    <%- App.t "settings.license.expired" %>
+                                <% end %>
+                            </span>
+                        </div>
+                        <div class="pluginLicense__row">
+                            <span class="pluginLicense__label"><%- App.t "settings.license.issue_date" %></span>
+                            <span class="pluginLicense__info"><%- @license_issue license %></span>
+                        </div>
+                        <div class="pluginLicense__row">
+                            <span class="pluginLicense__label"><%- App.t "settings.license.end_date" %></span>
+                            <span class="pluginLicense__info"><%- @license_end license %></span>
+                        </div>
+                    </div>
+                    <div class="pluginLicense__block">
+                        <% _.each license.pluginFeatures, (item, i) => : %>
+                            <div class="pluginLicense__row">
+                                <span class="pluginLicense__label">
+                                    <%- if i is 0 then App.t "settings.plugins.events" %>
+                                </span>
+                                <span class="pluginLicense__info">
+                                    <% if item.object_type isnt '*' : %>
+                                    <img src="<%= App.Config.server %>/img/icon/<%= item.object_type %>.png" width="16" height="16">
+                                    <% end %>
+                                    <% if item.object_type is '*' : %>
+                                        <%= App.t 'settings.license.any_object_type' %>
+                                    <% else : %>
+                                        <%= App.t 'settings.license.object_type_label' %>
+                                        <%= @object_type_codes[item.object_type]?[0].name or App.t('settings.license.unknown_object_type', object_type: item.object_type) %>
+                                    <% end %>
+
+                                    <% if item.protocol and item.protocol isnt 'NONE' : %>
+                                        <%- ", (" %>
+                                        <% if item.protocol is '*' : %>
+                                            <%= App.t 'settings.license.any_protocol' %>
+                                        <% else : %>
+                                            <%= App.t 'settings.license.protocol_label' %>
+                                            <%=  @protocols[item.protocol]?[0].name or App.t('settings.license.unknown_protocol', protocol: item.protocol) %>
+                                        <% end %>
+                                        )
+                                    <% end %>
+
+                                    <% if item.origin : %>
+                                        <% if item.common_name is 'IW' : %>
+                                            <%= ", #{App.t 'settings.license.origin', origin: App.t("settings.license.#{item.origin}", defaultValue: item.origin)}" %>
+                                        <% else : %>,
+                                            <%= ", #{item.origin}" %>
+                                        <% end %>
+                                    <% end %>
+                                </span>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tokens_tab"></div>
+    </div>
+</div>

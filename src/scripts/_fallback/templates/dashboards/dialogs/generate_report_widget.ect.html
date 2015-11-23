@@ -1,0 +1,33 @@
+<div class="form__elem">
+   <label class="form__checkbox">
+        <input type="checkbox" checked="checked"
+               name="includeInReport">
+        <span></span>
+        <%= @displayname %>
+    </label>
+</div>
+
+<div class="form__row">
+    <label class="form__label size-275">
+        <label class="form__checkbox">
+            <input type="checkbox" checked="checked"
+                   name="details" id="details" >
+           <span></span>
+            <%- App.t 'dashboards.dashboards.show_details' %>
+        </label>
+    </label>
+    <div class="form__elem" error-attr="details_count" error-style="tooltip" data-error-style="tooltip" >
+        <input type="text" value="<%- @details_count %>"
+               name="details_count" id="details_count">
+    </div>
+</div>
+
+<% if @STATTYPE_ID isnt 4 : %>
+<div class="form__row _viewOnly">
+    <label class="form__label size-275"><%= App.t 'dashboards.dashboards.widget_report_period' %></label>
+    <div class="form__elem">
+        <span data-period="start"></span>-<span data-period="end"></span>
+    </div>
+</div>
+<% end %>
+

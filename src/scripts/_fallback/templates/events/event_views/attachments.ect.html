@@ -1,0 +1,27 @@
+<% if @data.attachments?.length : %>
+    <% for i in [0..Math.min(4, @data.attachments.length - 1)] : %>
+        <li class="attach" data-type="attach">
+            <div class="btn-group" data-toggle="tab">
+                <% if @data.attachments[i].encrypted is '1' : %>
+                    <i class="fontello-icon-lock" title="<%- App.t 'events.events.content_encrypted' %>"></i>
+                <% end %>
+                <a href="" data-index="<%= i %>" title="<%= @data.attachments[i].filename %>">
+                    <i class="<%= @data.attachments[i].icon %>"></i>
+                    <%= @data.attachments[i].filename?.substr(0, 30) + if @data.attachments[i].filename?.length > 30 then '...' else '' %> (<%= App.Helpers.getBytesWithUnit(@data.attachments[i].size) %>)
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu right disabled" style="color: white">
+                    <li><a href="" data-index="<%= i %>" data-action="downloadAttach"><%= App.t 'events.events.save_to_disk' %></a></li>
+                </ul>
+            </div>
+        </li>
+    <% end %>
+    <% if @data.attachments.length > 5 : %>
+        <li>
+            <div><%= "#{App.t 'events.events.more'} (#{@data.attachments?.length - 5}) #{App.t('events.conditions.attachments').toLowerCase() }" %>
+            </div>
+        </li>
+    <% end %>
+<% end %>

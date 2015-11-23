@@ -1,0 +1,2 @@
+<% className = @style.className.entry[@TYPE] %><span data-entry-type='<%- @TYPE %>' class="<%- if @entry.isDeleted @ then "deleted" else "" %>" data-entry-id='<%- @ID %>'><% if path = @entry.getImagePath(@) : %><img src='<%- path %>' width=20 height=20><% end %><% if @options?.COLOR : %><i class='tag__color' data-color='<%- @options.COLOR %>'></i><% else : %><i class='<%- className %>'></i><% end %><%- @entry.getName @ %>
+</span>

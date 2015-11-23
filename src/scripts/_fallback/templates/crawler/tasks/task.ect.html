@@ -1,0 +1,244 @@
+<div class="[ content__indent _scrollable _autoHeight ]">
+    <div class="contentHeader">
+        <h2 class="contentHeader__title"><%- @title %></h2>
+    </div>
+
+    <form class="form crawler__form">
+        <fieldset>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_name' %></label>
+                <div class="form__elem"><input name="name" type="text" maxlength="256"></div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_desc' %></label>
+                <div class="form__elem"><textarea name="description" maxlength="1000"></textarea></div>
+            </div>
+
+            <h3 class="form__title"><%= App.t 'crawler.scan_object' %></h3>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_scan_policy' %></label>
+                <div class="form__elem">
+                    <select name="scanPolicy">
+                        <% for policy in @SCAN_POLICIES : %>
+                        <option value="<%- policy %>"><%- App.t "crawler.job_details_common_scan_policy_#{policy}"%></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+
+            <section class="scan_policy_sharepoint">
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_scan_policy_sharepoint_version' %></label>
+                    <div class="[ form__elem size-100 ]">
+                        <select name="sharepointVersion">
+                        <% for version in @SHAREPOINT_VERSIONS : %>
+                            <option value="<%- version %>"><%- version %></option>
+                        <% end %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sharepoint_2013">
+                    <div class="form__row">
+                        <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_sharepoint_address' %></label>
+                        <div class="form__elem">
+                          <input name="sharepointUrl" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sharepoint_above_2013">
+                    <div class="form__row">
+                        <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_file_storage_address' %></label>
+                        <div class="form__elem">
+                          <input name="sharepointTarget[address]" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_file_storage_name' %></label>
+                        <div class="form__elem">
+                          <input name="sharepointTarget[name]" type="text">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+
+            <!-- Если выбран пункт "Разделяемые сетевые ресурсы" -->
+            <section class="scan_policy_shares">
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_targets' %></label>
+                    <div class="form__elem _includeButton">
+                        <textarea
+                            placeholder="<%- App.t 'form.placeholder.search' %>"
+                            name="targets[]"
+                            data-form-type="select2"
+                            data-form-server="workstation,group"
+                            data-form-local="ip,dns"
+                            ></textarea>
+                        <button
+                            type="button"
+                            class="[ button _icon ] [ icon _create ]"
+                            data-form-title="<%- App.t 'select_dialog.workstation', context: 'many' %>"
+                            data-form-entry="workstation,group"
+                            ></button>
+                    </div>
+                </div>
+            </section>
+            <!-- // -->
+
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_mode' %></label>
+                <div class="form__elem">
+                    <select name="scanMode">
+                      <% for mode in @SCAN_MODES : %>
+                      <option value="<%- mode %>"><%- App.t "crawler.job_details_common_mode_#{mode}" %></option>
+                      <% end %>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Если выбран пункт "Все папки кроме" -->
+            <section class="filter_paths">
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.task_details_filter' %></label>
+                    <div class="[ form__col _vertical ]">
+                        <div class="form__elem">
+                          <input name="filterPath" type="text"></div>
+                        <div class="form__desc">
+                            <%= App.t 'crawler.job_details_common_mode_folder_list_sharepoint' %>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"></label>
+                <div class="form__elem">
+                    <label class="form__checkbox">
+                      <input name="FileSystem[excludeSystemFolders]" type="checkbox" />
+                      <span></span><%= App.t 'crawler.job_details_common_mode_exclude_system' %></label>
+                </div>
+            </div>
+            <!-- // -->
+
+            <h3 class="form__title"><%= App.t 'crawler.job_details_auth' %></h3>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_scanner_auth' %></label>
+                <div class="form__elem">
+                    <label class="tumbler">
+                        <input class="tumbler__input" type="checkbox" name="FileSystem[Credentials][useLocal]">
+                        <span class="tumbler__toggle"></span>
+                    </label>
+                </div>
+            </div>
+
+            <section class="credentials">
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_login' %></label>
+                    <div class="[ form__elem size-200 ]"><input name="FileSystem[Credentials][login]" type="text"></div>
+                </div>
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_pass' %></label>
+                    <div class="[ form__elem size-200 ]"><input name="FileSystem[Credentials][password]" type="password"></div>
+                </div>
+            </section>
+
+            <h3 class="form__title"><%= App.t 'crawler.job_details_common_schedule' %></h3>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_schedule_launch' %></label>
+                <div class="form__elem">
+                  <select name="Schedule[type]">
+                    <% for type in @SCHEDULE_TYPES : %>
+                    <option value="<%- type %>">
+                        <%- App.t "crawler.job_details_common_schedule_type.#{type}" %>
+                    </option>
+                    <% end %>
+                  </select>
+                </div>
+            </div>
+            <section class="schedule_daily">
+                <section class="schedule_weekly">
+                    <div class="form__row">
+                        <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_schedule_day_of_week' %></label>
+                        <div class="form__elem">
+                          <select name="Schedule[dayOfTheWeek]">
+                            <% for dayOfTheWeek in @SCHEDULE_DAYS : %>
+                            <option value="<%- dayOfTheWeek %>">
+                                <%- App.t "crawler.job_details_common_schedule_day_of_week_i.#{dayOfTheWeek}" %>
+                            </option>
+                            <% end %>
+                          </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="schedule_monthly">
+                    <div class="form__row">
+                        <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_schedule_day_of_month' %></label>
+                        <div class="form__elem">
+                          <select name="Schedule[dayOfMonth]">
+                            <% for dayOfMonth in @MOUNTH_DAYS : %>
+                              <% if dayOfMonth is 'last' : %>
+                                <option value="0">
+                                    <%- App.t('crawler.job_details_last_month_day') %>
+                                </option>
+                              <% else : %>
+                                <option value="<%- dayOfMonth %>">
+                                    <%- dayOfMonth %>
+                                </option>
+                              <% end %>
+                            <% end %>
+                          </select>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_schedule_first_launch' %></label>
+                    <div class="form__elem">
+                        <div class="input-append form__datepicker" data-form-type="datetime">
+                            <input name="Schedule[delayStart]" data-format="dd/MM/yyyy" type="text">
+                            <span class="add-on"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form__row">
+                    <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_schedule_time' %></label>
+                    <div class="[ form__elem size-100 ] form__timepicker input-append bootstrap-timepicker">
+                        <input name="Schedule[timeOfDay]" type="text" data-form-type="time">
+                        <span class="add-on"></span>
+                    </div>
+                </div>
+            </section>
+
+            <h3 class="form__title"><%= App.t 'crawler.job_details_files_options' %></h3>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_min_size' %></label>
+                <div class="form__elem">
+                  <input name="Filters[SizeFilter][min]" type="text">
+                </div>
+            </div>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_max_size' %></label>
+                <div class="form__elem">
+                  <input name="Filters[SizeFilter][max]" type="text">
+                </div>
+            </div>
+            <div class="form__row">
+                <label class="[ form__label size-medium ]"><%= App.t 'crawler.job_details_common_file_formats' %></label>
+                <div class="form__elem">
+                    <input name="Filters[MaskFilter]" type="text">
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+<div class="content__footer">
+    <button type="success" class="button _success" data-action="save"><%= App.t 'global.save' %></button>
+    <button type="reset" class="button cancel_button"><%= App.t 'global.cancel' %></button>
+</div>

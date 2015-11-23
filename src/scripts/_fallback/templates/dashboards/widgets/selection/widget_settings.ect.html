@@ -1,0 +1,30 @@
+<form class="form include-footer">
+    <fieldset class="form__fieldset">
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'dashboards.widgets.commonWidgetSettings.name' %></label>
+            <div class="form__elem">
+                <input name="DISPLAY_NAME" value="" type="text">
+            </div>
+        </div>
+
+        <% include "dashboards/widgets/shared/widget_update", @ %>
+
+        <div class="form__row">
+            <label class="form__label" for="BASEOPTIONS[selection]"><%- App.t 'dashboards.widgets.selection' %></label>
+            <div class="form__elem"><input class="selections" type='hidden' name="BASEOPTIONS[selection]"></div>
+        </div>
+
+        <div class="form__row">
+            <label class="form__label" for="tm-widget-common-settings-period-update"><%- App.t 'dashboards.widgets.perPage' %></label>
+            <div class="form__elem"><input name="BASEOPTIONS[perPage]" id="tm-widget-common-settings-period-update" type="number" value=""></div>
+        </div>
+
+        <div class="form__row submit">
+            <label class="form__label"></label>
+            <div class="form__elem">
+                <button class="[ button _success ] tm-complete-setup-widget"><%- App.t 'global.save' %></button>
+                <button class="button tm-cancel-setup-widget" data-action="cancel"><%- App.t 'global.cancel' %></button>
+            </div>
+        </div>
+    </fieldset>
+</form>

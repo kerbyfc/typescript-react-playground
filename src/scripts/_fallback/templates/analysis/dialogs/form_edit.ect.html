@@ -1,0 +1,28 @@
+<div class="popup__content">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.fingerprint.display_name' %></label>
+            <div class="form__elem"><input type="text" name="DISPLAY_NAME"></div>
+        </div>
+        <div class="form__row">
+            <label for="FILE_PATH" class="form__label"><%- App.t 'analysis.fingerprint.file_path' %></label>
+            <div class="form__elem"><input type="text" name="FILE_PATH" disabled="disabled"></div>
+        </div>
+        <div class="form__row">
+            <label class="form__label"><%- App.t 'analysis.fingerprint.mime' %></label>
+            <div class="form__elem"><input type="text" name="MIME" disabled="disabled"></div>
+        </div>
+        <div class="form__row vertical">
+            <label for="NOTE" class="[ form__label ]"><%- App.t 'analysis.fingerprint.note' %></label>
+            <div class="form__elem">
+                <textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea>
+            </div>
+        </div>
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]" disabled><%- App.t "global.edit", context: "success" %></button>
+    <button class="[ button _success ]" data-type="update"><%- App.t "global.update", context: "success" %></button>
+    <button class="button" data-action="cancel" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

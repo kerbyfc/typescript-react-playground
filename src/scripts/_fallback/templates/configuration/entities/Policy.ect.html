@@ -1,0 +1,64 @@
+<% if @OPERATION is 'add' or @OPERATION is 'delete' : %>
+
+    <!-- Выводим собственные аттрибуты политики -->
+    <% for key, value of @FIELDS[@ENTITY] when key not in ['DATA', 'USER_ID', 'ENTITY'] : %>
+        <% if value : %>
+        <tr>
+            <td><%= @locale[key] or @locale[key.toLowerCase()] or key %></td>
+            <td>
+                <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[@ENTITY], key: key %>
+            </td>
+        </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим список защищаемых объектов -->
+    <tr>
+        <td><%- App.t 'entry.policy.object_protect', context: @FIELDS[@ENTITY].TYPE.toLowerCase() %></td>
+        <td>
+            <% include "policy/sidebar/note", @extend(
+                types: _.unique(_.pluck(@FIELDS[@ENTITY].DATA.ITEMS, 'TYPE'))
+                objects: @FIELDS[@ENTITY].DATA.ITEMS
+            ) %>
+        </td>
+    </tr>
+
+    <!-- Выводим список правил обработки -->
+
+<% else : %>
+    <!-- Выводим собственные аттрибуты политики -->
+    <% if @FIELDS.diff_keys[@ENTITY] : %>
+
+        <% for key in @FIELDS.diff_keys[@ENTITY] when _.isString(key) and key not in ['DATA', 'ENTITY'] : %>
+            <tr>
+                <td><%= @locale[key] or @locale[key.toLowerCase()] or key %></td>
+                <% for k in ['old', 'new'] : %>
+                    <td>
+                        <% include "configuration/entities/_show_attribute", _.merge @, attributes: @FIELDS[k][@ENTITY], key: key %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    <% end %>
+
+    <!-- Выводим список защищаемых объектов -->
+    <% if @FIELDS.old?[@ENTITY].DATA : %>
+    <tr>
+        <td><%- App.t 'entry.policy.object_protect', context: @FIELDS.old[@ENTITY].TYPE.toLowerCase() %></td>
+        <td>
+            <% include "policy/sidebar/note", @extend(
+                types: _.unique(_.pluck(@FIELDS.old[@ENTITY].DATA.ITEMS, 'TYPE'))
+                objects: @FIELDS.old[@ENTITY].DATA.ITEMS
+            ) %>
+        </td>
+        <td>
+            <% include "policy/sidebar/note", @extend(
+                types: _.unique(_.pluck(@FIELDS.new[@ENTITY].DATA.ITEMS, 'TYPE'))
+                objects: @FIELDS.new[@ENTITY].DATA.ITEMS
+            ) %>
+        </td>
+    </tr>
+    <% end %>
+    <!-- Выводим список правил обработки -->
+
+<% end %>

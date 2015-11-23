@@ -1,0 +1,33 @@
+<div class="[ popup__content size-short ]">
+<form class="form">
+    <% if @TYPE in ['fingerprint', 'form'] : %>
+        <%- App.t "entry.#{@TYPE}.update" %>
+        <input type="hidden" value="0" name="replace">
+    <% end %>
+    <% if @TYPE is 'table' : %>
+        <fieldset>
+            <%- App.t "entry.#{@TYPE}.update" %>:
+            <ul class="form__list">
+                <li><%- App.t "entry.#{@TYPE}.update", context: "item_1" %>;</li>
+                <li><%- App.t "entry.#{@TYPE}.update", context: "item_2" %>;</li>
+                <li><%- App.t "entry.#{@TYPE}.update", context: "item_3" %>.</li>
+            </ul>
+            <h2 class="[ form__title _indentShort ]"><%- App.t "global.update", context: "mode" %></h2>
+            <div class="[ form__row _indentNone ]">
+                <div class="form__elem">
+                    <label class="form__radio"><input type="radio" value="1" name="replace" checked><span></span> <%- App.t "global.update", context: "mode_add" %></label>
+                </div>
+            </div>
+            <div class="[ form__row _indentNone ]">
+                <div class="form__elem">
+                    <label class="form__radio"><input type="radio" value="0" name="replace"><span></span> <%- App.t "global.update", context: "mode_overwrite" %></label>
+                </div>
+            </div>
+        </fieldset>
+    <% end %>
+</form>
+</div>
+<div class="popup__footer">
+    <button class="[ button _success ]"><%- App.t "global.upload", context: "success" %></button>
+    <button class="button" data-action="cancel" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

@@ -26,5 +26,6 @@ module.exports = (session) ->
               key     : "users"
               name    : "users"
               handler : Users
+
         ]
   ]

@@ -1,0 +1,47 @@
+<div class="queryBuilder__content">
+    <div class="[ form__row vertical ]">
+        <label class="form__label"><%- App.t "entry.table.DETECT_FILLED_FORM", context: "condition" %></label>
+        <div class="[ form__col _wrappable ]">
+            <div class="form__row">
+                <label class="form__radio">
+                    <input
+                        class="switch__input"
+                        name="DETECT_FILLED_FORM<%- @viewId %>"
+                        <%- if +@DETECT_FILLED_FORM is 1 then 'checked' else '' %>
+                        <%- if @can then '' else 'disabled' %>
+                        type="radio"
+                        value="1">
+                    <span></span>
+                    <%- App.t "entry.table.DETECT_FILLED_FORM", context: "condition_1" %>
+                </label>
+            </div>
+            <div class="form__row">
+                <label class="form__radio">
+                    <input
+                        class="switch__input"
+                        name="DETECT_FILLED_FORM<%- @viewId %>"
+                        <%- if +@DETECT_FILLED_FORM isnt 1 then 'checked' else '' %>
+                        <%- if @can then '' else 'disabled' %>
+                        type="radio"
+                        value="0">
+                    <span></span>
+                    <%- App.t "entry.table.DETECT_FILLED_FORM", context: "condition_0" %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="queryBuilder__content">
+    <div class="[ form__row vertical ]">
+        <label class="form__label" data-ui="labelRadio"><%- App.t "entry.table.QUANTITY_THRESHOLD", context: "condition_#{@ENTRY_TYPE}_#{@DETECT_FILLED_FORM}" %></label>
+        <div class="[ form__elem size-100 ]">
+            <input
+                type='number'
+                name="QUANTITY_THRESHOLD"
+                min="1" max="99"
+                pattern="\d+"
+                <%- if @can then '' else 'disabled' %>
+                value="<%- @QUANTITY_THRESHOLD or '0' %>">
+        </div>
+    </div>
+</div>

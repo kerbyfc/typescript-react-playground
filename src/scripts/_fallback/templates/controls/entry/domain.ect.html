@@ -1,0 +1,18 @@
+<form class="form popup__addItem">
+    <fieldset>
+        <div class="form__row">
+            <div class="[ form__elem size-150 ]">
+                <select name="TYPE" class="employee-contact__type-select">
+                    <option value="url" data-icon-class="icon _sizeSmall _domain"><%- App.t 'select_dialog.url' %></option>
+                    <option value="domain" data-icon-class="icon _sizeSmall _emailDomain"><%- App.t 'select_dialog.domain' %></option>
+                </select>
+            </div>
+            <div class="[ form__elem size-max ]">
+                <input name="NAME" type="text" placeholder="<%- App.t 'form.placeholder.domain' %>" value="">
+            </div>
+            <div class="form__elem">
+                <input type="submit" class="[ button _success ]" value="<%- App.t 'global.add' %>">
+            </div>
+        </div>
+    </fieldset>
+</form>

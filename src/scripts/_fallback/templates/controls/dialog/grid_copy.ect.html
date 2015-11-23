@@ -1,0 +1,17 @@
+<div class="[ popup__content size-short ]">
+    <%- App.t("select_dialog.#{@type}") %> <b data-entry-id="<%- @id %>" data-entry-type="<%- @type %>"><%- @name %></b> <%- App.t 'global.already' %> <%- App.t 'global.exists' %> <%- App.t 'global.in' %> <% if @section.isRoot() : %> <%- App.t 'global.root', context: 'in' %><% else : %> <%- App.t("select_dialog.#{@section.type}", context: 'in').toLowerCase() %> <b data-entry-id="<%- @section.id %>" data-entry-type="<%- @section.type %>"><%- @section.getName() %></b><% end %>?
+</div>
+<div class="popup__footer">
+    <div class="form__row">
+        <div class="form__elem">
+            <button class="[ button _success ]" type="submit" data-type="skip"><%- App.t "global.skip", context: "success" %></button>
+            <button class="[ button _success ]" type="submit" data-type="copy"><%- App.t "global.copy", context: "success" %></button>
+            <button class="button" type="reset"><%- App.t 'global.cancel' %></button>
+        </div>
+    <% if @checkbox : %>
+        <div class="[ form__elem _alignRight ]">
+            <label class="form__checkbox"><input type="checkbox" name="forAll"><span></span><%- App.t 'global.for_all' %></label>
+        </div>
+    <% end %>
+    </div>
+</div>

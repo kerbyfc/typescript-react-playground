@@ -1,0 +1,108 @@
+<div class="popup__content size-normal">
+    <fieldset>
+        <div class="form__row">
+            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'analysis.fingerprint.display_name' %></label>
+            <div class="form__elem"><input data-form-autofocus="true" type="text" name="DISPLAY_NAME"></div>
+        </div>
+        <div class="form__row _viewOnly">
+            <label for="FILE_PATH" class="form__label"><%- App.t 'analysis.fingerprint.file_path' %></label>
+            <div class="form__elem _readonly"><input type="text" name="FILE_PATH" disabled></div>
+        </div>
+        <div class="form__row _viewOnly">
+            <label for="" class="form__label"><%- App.t 'analysis.fingerprint.mime' %></label>
+            <div class="form__elem _readonly"><input type="text" name="MIME" disabled></div>
+        </div>
+
+        <section class="form__block">
+            <div class="[ form__row vertical ]">
+                <label class="[ form__label size-full ]"><%- App.t 'analysis.fingerprint.text_value_threshold' %></label>
+                <div class="form__elem">
+                    <section id="slider">
+                        <div class="jslider-scale" style="top:-8px;">
+                            <span style="left: 0%"></span>
+                            <span style="left: 10%"></span>
+                            <span style="left: 20%"></span>
+                            <span style="left: 30%"></span>
+                            <span style="left: 40%"></span>
+                            <span style="left: 50%"></span>
+                            <span style="left: 60%"></span>
+                            <span style="left: 70%"></span>
+                            <span style="left: 80%"></span>
+                            <span style="left: 90%"></span>
+                            <span style="left: 100%"></span>
+                        </div>
+                        <div name="TEXT_VALUE_THRESHOLD"></div>
+                        <div class="jslider-scale">
+                            <span style="left: 0%"><ins style="margin-left: -2.5px;">0</ins></span>
+                            <span style="left: 10%"><ins style="margin-left: -5px;">10</ins></span>
+                            <span style="left: 20%"><ins style="margin-left: -5px;">20</ins></span>
+                            <span style="left: 30%"><ins style="margin-left: -5px;">30</ins></span>
+                            <span style="left: 40%"><ins style="margin-left: -5px;">40</ins></span>
+                            <span style="left: 50%"><ins style="margin-left: -5px;">50</ins></span>
+                            <span style="left: 60%"><ins style="margin-left: -5px;">60</ins></span>
+                            <span style="left: 70%"><ins style="margin-left: -5px;">70</ins></span>
+                            <span style="left: 80%"><ins style="margin-left: -5px;">80</ins></span>
+                            <span style="left: 90%"><ins style="margin-left: -5px;">90</ins></span>
+                            <span style="left: 100%"><ins style="margin-left: -5px;">100</ins></span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="[ form__row vertical ]">
+                <label class="[ form__label size-full ]"><%- App.t 'analysis.fingerprint.bin_value_threshold' %></label>
+                <div class="form__elem">
+                    <section id="slider">
+                        <div class="jslider-scale" style="top:-8px;">
+                            <span style="left: 0%"></span>
+                            <span style="left: 10%"></span>
+                            <span style="left: 20%"></span>
+                            <span style="left: 30%"></span>
+                            <span style="left: 40%"></span>
+                            <span style="left: 50%"></span>
+                            <span style="left: 60%"></span>
+                            <span style="left: 70%"></span>
+                            <span style="left: 80%"></span>
+                            <span style="left: 90%"></span>
+                            <span style="left: 100%"></span>
+                        </div>
+                        <div name="BIN_VALUE_THRESHOLD"></div>
+                        <div class="jslider-scale">
+                            <span style="left: 0%"><ins style="margin-left: -2.5px;">0</ins></span>
+                            <span style="left: 10%"><ins style="margin-left: -5px;">10</ins></span>
+                            <span style="left: 20%"><ins style="margin-left: -5px;">20</ins></span>
+                            <span style="left: 30%"><ins style="margin-left: -5px;">30</ins></span>
+                            <span style="left: 40%"><ins style="margin-left: -5px;">40</ins></span>
+                            <span style="left: 50%"><ins style="margin-left: -5px;">50</ins></span>
+                            <span style="left: 60%"><ins style="margin-left: -5px;">60</ins></span>
+                            <span style="left: 70%"><ins style="margin-left: -5px;">70</ins></span>
+                            <span style="left: 80%"><ins style="margin-left: -5px;">80</ins></span>
+                            <span style="left: 90%"><ins style="margin-left: -5px;">90</ins></span>
+                            <span style="left: 100%"><ins style="margin-left: -5px;">100</ins></span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="form__row">
+                <%- App.t 'analysis.fingerprint.threshold_citation_desc' %>
+            </div>
+        </section>
+
+        <div class="form__block">
+            <div class="[ form__row vertical ]">
+                <label for="NOTE" class="form__label"><%- App.t 'analysis.fingerprint.note' %></label>
+                <div class="form__elem">
+                    <textarea name="NOTE" maxlength="1000" placeholder="<%- App.t 'form.placeholder.description' %>"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <% include 'controls/form/date', @ %>
+    </fieldset>
+</div>
+ <div class="popup__footer">
+    <button class="[ button _success ]" type="submit" disabled><%- App.t "global.edit", context: "success" %></button>
+    <button class="[ button _success ]" data-type="update"><%- App.t "global.update", context: "success" %></button>
+    <button class="button" data-action="cancel" type="reset"><%- App.t 'global.cancel' %></button>
+</div>

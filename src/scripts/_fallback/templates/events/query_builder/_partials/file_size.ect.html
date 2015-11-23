@@ -1,0 +1,28 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="file_size[start]" class="[ form__label size-normal ]"><%= App.t 'events.conditions.file_size' %></label>
+    <% end %>
+    <div class="form__elem">
+        <input type="number" name="file_size[start]" data-error-style="tooltip">
+    </div>
+    <div class="[ form__elem size-short ]">
+        <select name="file_size[ATTACH_SIZE_MIN_TYPE]">
+            <option value="byte"><%= App.t 'global.byte' %></option>
+            <option value="KB"><%= App.t 'global.KB' %></option>
+            <option value="MB"><%= App.t 'global.MB' %></option>
+            <option value="GB"><%= App.t 'global.GB' %></option>
+        </select>
+        </div>
+    <label for="file_size[end]" class="[ form__label size-auto ]">&ndash;</label>
+    <div class="form__elem">
+        <input type="number" name="file_size[end]" data-error-style="tooltip">
+    </div>
+    <div class="[ form__elem size-short ]">
+        <select name="file_size[ATTACH_SIZE_MAX_TYPE]">
+            <option value="byte"><%= App.t 'global.byte' %></option>
+            <option value="KB"><%= App.t 'global.KB' %></option>
+            <option value="MB"><%= App.t 'global.MB' %></option>
+            <option value="GB"><%= App.t 'global.GB' %></option>
+        </select>
+    </div>
+</div>

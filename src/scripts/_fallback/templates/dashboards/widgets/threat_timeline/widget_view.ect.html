@@ -1,0 +1,14 @@
+<div class="widgetContent__header">
+    <% include "dashboards/widgets/shared/widget_rule_type", @ %>
+
+    <div id="reportrange" class="widgetContent__range-picker">
+        <i class="[ icon _calendar ]"></i>
+        <span></span> <b class="caret"></b>
+    </div>
+</div>
+
+<div class="widgetContent__indent" style="margin-bottom:0px;overflow:hidden;">
+    <div id="dashChartVisitors">
+        <div class="widgetContent__empty"><%- App.t 'dashboards.widgets.no_items' %></div>
+    </div>
+</div>

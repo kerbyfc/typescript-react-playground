@@ -1,0 +1,27 @@
+<div class="form__row">
+    <% if @mode is 'lite' : %>
+        <label for="resources" class="[ form__label size-normal ]"><%= App.t 'events.conditions.resources' %></label>
+    <% end %>
+    <div class="[ form__elem size-50 ]">
+        <select name="resources[mode]">
+            <option value="0">=</option>
+            <option value="1">≠</option>
+        </select>
+    </div>
+    <div class="form__elem">
+        <textarea
+            placeholder="<%- App.t 'events.conditions.resource_placeholder' %>"
+            name="resources[value][]"
+            data-form-type="select2"
+            data-form-local="url_with_masks,ip,dns"
+            data-form-server="resource"
+            ></textarea>
+        <button
+            type="button"
+            class="[ button _icon ] [ icon _create ]"
+            data-form-title="<%- App.t 'events.conditions.resources' %>"
+            data-form-entry="resource"
+            data-form-entry-source="query"
+            ></button>
+    </div>
+</div>

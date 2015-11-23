@@ -1,0 +1,74 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup"><div class="popup__position">
+    <div class="popup__wrap" data-error-container>
+        <div class="popup__indent">
+            <h2 class="popup__title"><%= @title %></h2>
+            <form class="form">
+                <div class="popup__content">
+                        <div class="form__row">
+                            <label for="USERNAME" class="form__label"><%- App.t 'settings.users.login' %></label>
+                            <div class="form__elem">
+                                <input maxlength="256" type="text" name="USERNAME" <%= 'disabled="disabled"' if @blocked or @PROVIDER is 'LDAP' %>>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <label for="STATUS" class="form__label"><%- App.t 'settings.users.status' %></label>
+                            <div class="form__elem">
+                                <div class="tumbler">
+                                    <input class="tumbler__input" id="STATUS" name="STATUS" type="checkbox">
+                                    <label for="STATUS" class="tumbler__toggle"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <label for="LANGUAGE" class="form__label"><%= App.t 'settings.users.language' %></label>
+                            <div class="form__elem">
+                                <select name="LANGUAGE" <%= 'disabled="disabled"' if @blocked %>>
+                                    <option value="rus"><%= App.t 'language.rus' %></option>
+                                    <option value="eng"><%= App.t 'language.eng' %></option>
+                                </select>
+                            </div>
+                        </div>
+                        <% if not @USER_ID : %>
+                            <div class="form__row">
+                                <label for="PASSWORD" class="form__label"><%- App.t 'settings.users.password' %></label>
+                                <div class="form__elem">
+                                    <input <%= 'disabled="disabled"' if @blocked %> type="password" name="PASSWORD">
+                                </div>
+                            </div>
+                            <div class="form__row">
+                                <label for="PASSWORD_CONFIRMATION" class="form__label"><%- App.t 'settings.users.confirm_password' %></label>
+                                <div class="form__elem">
+                                    <input <%= 'disabled="disabled"' if @blocked %> type="password" name="PASSWORD_CONFIRMATION">
+                                </div>
+                            </div>
+                        <% end %>
+                        <div class="form__row">
+                            <label for="EMAIL" class="form__label"><%- App.t 'settings.users.email' %></label>
+                            <div class="form__elem">
+                                <input <%= 'disabled="disabled"' if @blocked %> maxlength="256" type="text" name="EMAIL">
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <label for="DISPLAY_NAME" class="form__label"><%- App.t 'settings.users.fullname' %></label>
+                            <div class="form__elem">
+                                <input <%= 'disabled="disabled"' if @blocked %> maxlength="256" type="text" name="DISPLAY_NAME">
+                            </div>
+                        </div>
+                        <div class="[ form__row vertical ]">
+                            <label for="NOTE" class="form__label"><%- App.t 'settings.users.note' %></label>
+                            <div class="form__elem">
+                                <textarea <%= 'disabled="disabled"' if @blocked %> maxlength="4000" name="NOTE" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
+                </div>
+                <div class="popup__footer">
+                    <button class="[ button _success ]" <%= 'disabled' if @blocked %> data-action="save"><%- App.t 'global.save' %></button>
+                    <button class="button" data-action="cancel"><%- App.t 'global.cancel' %></button>
+                </div>
+            </form>
+
+            <label for="popup" class="popup__close"></label>
+        </div>
+    </div>
+</div></div>

@@ -1,0 +1,36 @@
+<div class="popover-info">
+
+    <div class="popover-info__row">
+        <div class="popover-info__param"><%- App.t 'global.DISPLAY_NAME' %>:</div>
+        <div class="popover-info__value"><%- @name %></div>
+    </div>
+
+    <% if @COLOR : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.COLOR' %>:</div>
+            <div class="popover-info__value"><div class="tag__color" data-color='<%- @COLOR %>'></div></div>
+        </div>
+    <% end %>
+
+    <% if @CREATE_DATE : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.CREATE_DATE' %>:</div>
+            <div class="popover-info__value"><%= moment.utc(@CREATE_DATE).local().format('L LT') %></div>
+        </div>
+    <% end %>
+
+    <% if @CHANGE_DATE and @CHANGE_DATE isnt @CREATE_DATE : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.CHANGE_DATE' %>:</div>
+            <div class="popover-info__value"><%= moment.utc(@CHANGE_DATE).local().format('L LT') %></div>
+        </div>
+    <% end %>
+
+    <% if @NOTE : %>
+        <div class="popover-info__row">
+            <div class="popover-info__param"><%- App.t 'global.NOTE' %>:</div>
+            <div class="popover-info__value"><%- @NOTE %></div>
+        </div>
+    <% end %>
+
+</ul>

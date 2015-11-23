@@ -1,0 +1,40 @@
+general:
+  - object_id
+  - capture_date
+  - protocol
+  - object_type_code
+
+destinations:
+  # - service_code
+  - senders
+  - recipients
+  - perimeter_in
+  - perimeter_out
+  - workstations
+  - workstation_type
+  - resources
+
+policies:
+  - violation_level
+  - tags
+  - policies
+  - rule_group_type
+  - user_decision
+  - verdict
+
+crawler_tasks:
+  - task_name
+  - task_run_date
+  - destination_type
+  # - task_query
+
+event_content:
+  - file_name
+  - file_format
+  - destination_path
+  - create_date
+  - modify_date
+  - file_size
+  - text
+  - analysis
+  - documents

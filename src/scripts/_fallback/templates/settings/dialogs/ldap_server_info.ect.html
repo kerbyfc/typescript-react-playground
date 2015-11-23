@@ -1,0 +1,122 @@
+<header class="contentHeader">
+    <h2 class="contentHeader__title"><%= @display_name %></h2>
+</header>
+
+<section class="[ content__indent _scrollable _autoHeight ]">
+    <form class="form _viewOnly">
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.server_type' %></label>
+            <div class="form__elem">
+                <% if @server_type is 1 : %>
+                    <%= App.t 'settings.ldap_settings.server_type_ldap' %>
+                <% else : %>
+                    <%= App.t 'settings.ldap_settings.server_type_lotus' %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.sync' %></label>
+            <div class="form__elem">
+                <% if @enabled : %>
+                    <%= App.t 'settings.ldap_settings.sync_auto' %>
+                <% else : %>
+                    <%= App.t 'settings.ldap_settings.sync_manual' %>
+                <% end %>
+            </div>
+        </div>
+
+        <% if @enabled : %>
+            <div class="form__row">
+                <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.synchronize' %></label>
+                <div class="form__elem">
+                    <%= App.t "settings.ldap_settings.sync_type.#{@syncOptions.synchronize_type}" %>
+                </div>
+            </div>
+
+            <div class="form__row">
+                <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.repeat_interval' %></label>
+                <div class="form__elem">
+                    <% switch @syncOptions.synchronize_type : %>
+                        <% when 'minutes' : %>
+                            <%= "#{App.t 'settings.ldap_settings.every'} #{@syncOptions.MINUTES} #{App.t 'settings.ldap_settings.minutes'}" %>
+                        <% end %>
+                        <% when 'hours' : %>
+                            <%= "#{App.t 'settings.ldap_settings.every'} #{@syncOptions.HOURS} #{App.t 'settings.ldap_settings.hours'}" %>
+                        <% end %>
+                        <% when 'daily' : %>
+                            <%= "#{App.t 'settings.ldap_settings.in'} #{@syncOptions.DAY_TIME}" %>
+                        <% end %>
+                        <% when 'weekly' : %>
+                            <%= "#{App.t 'settings.ldap_settings.in'} #{@syncOptions.WEEK_TIME} - " %>
+                            <% for day, index in @syncOptions.week_days : %>
+                                <%= App.t('global.week_day', { returnObjectTrees: true })[day - 1] %>
+                                <% if index isnt @syncOptions.week_days.length - 1 : %>
+                                    <%= ',' %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+
+        <h2 class="form__title"><%= App.t 'settings.ldap_settings.connection_settings' %></h2>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.ldapServer' %></label>
+            <div class="form__elem"><%= @address %></div>
+        </div>
+        <% if @server_type is 1 : %>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.ldapGlobalPort' %></label>
+            <div class="form__elem"><%= @global_port %></div>
+        </div>
+        <% end %>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.ldapPort' %></label>
+            <div class="form__elem"><%= @dom_port %></div>
+        </div>
+        <% if @server_type is 1 : %>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.global_catalog' %></label>
+            <div class="form__elem">
+                <% if @use_global_catalog : %>
+                    <%= App.t 'settings.ldap_settings.use_global_catalog' %>
+                <% else : %>
+                    <%= App.t 'settings.ldap_settings.not_use_global_catalog' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.base' %></label>
+            <div class="form__elem"><%= @base %></div>
+        </div>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.login' %></label>
+            <div class="form__elem"><%= @username %></div>
+        </div>
+        <h2 class="form__title"><%= App.t 'settings.ldap_settings.status' %></h2>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.last_sync' %></label>
+            <div class="form__elem" id="last_sync"><%= if @sync_in_progress then @sync_status else @last_sync() %></div>
+        </div>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.sync_status' %></label>
+            <div class="form__elem" id="sync_status"><%= @sync_status %></div>
+        </div>
+
+
+        <% if @enabled : %>
+        <div class="form__row">
+            <label class="[ form__label size-200 _alignLeft ]"><%= App.t 'settings.ldap_settings.next_sync' %></label>
+            <div class="form__elem" id="next_sync"><%= @next_sync() %></div>
+        </div>
+        <% end %>
+
+    </form>
+</section>
+
+<footer class="content__footer">
+    <button class="button" type="button" data-action='check'><%- App.t 'settings.ldap_settings.checkServer' %></button>
+</footer>

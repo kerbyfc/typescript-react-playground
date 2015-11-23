@@ -1,0 +1,22 @@
+<div class="[ popup__content size-large ]">
+    <ul data-region="popup-menu" class="tabs">
+    <% for type in @items : %>
+        <li><a class='tabs__link' href='' data-item='<%- type %>'><%- App.t "select_dialog.#{type}", context: 'many' %></a></li>
+    <% end %>
+    </ul>
+    <div data-region="popup-content"></div>
+</div>
+
+<div class="popup__footer">
+    <div class="form__row">
+        <div class="form__elem">
+            <button class="[ button _success ]" type="submit" data-type="<%- @action %>" disabled><%- App.t @action, { postProcess: 'entry', entry: @contextType, context: "success" } %></button>
+            <button class="button" type="reset" data-action="cancel"><%- App.t 'cancel', { postProcess: 'entry', entry: @contextType, context: "success" } %></button>
+        </div>
+        <% if @checkbox : %>
+            <div class="[ form__elem _alignRight ]">
+                <label class="form__checkbox"><input type="checkbox" name="checkbox"><span></span><%- App.t 'checkbox', { postProcess: 'entry', entry: @contextType } %></label>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<input type="checkbox" class="popup__toggle">
+<div class="popup">
+    <div class="popup__position">
+        <div class="popup__wrap" data-error-container>
+            <div class="popup__indent">
+                <h2 class="popup__title"><%= @title %></h2>
+                <div class="[ popup__content size-large ]">
+                    <form class="form">
+                        <div class="form__row">
+                            <label class="form__label"><%- App.t 'organization.display_name' %></label>
+                            <div class="form__elem">
+                                <input
+                                    name="DISPLAY_NAME" type="text"
+                                    <%
+                                        if (
+                                            @blocked  or
+                                            not @helpers.can({ action: "edit", type: "group"}) or
+                                            @SOURCE in ["ad", "dd"]
+                                        )
+                                    : %>
+                                        disabled
+                                    <% end %>
+                                >
+                            </div>
+                        </div>
+                        <div class="unit_tabs">
+                            <ul id="unit_tabs" class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#unit_tabs--group-contacts" data-toggle="tab" data-original-title="" title=""><%- App.t 'organization.contacts' %></a>
+                                </li>
+                                <li>
+                                    <a href="#unit_tabs--group-childrens" data-toggle="tab" data-original-title="" title=""><%- App.t 'organization.contains_groups' %></a>
+                                </li>
+                                <li>
+                                    <a href="#unit_tabs--group-parents" data-toggle="tab" data-original-title="" title=""><%- App.t 'organization.included_in_groups' %></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" data-error-container id="unit_tabs--group-contacts"></div>
+                                <div class="tab-pane" data-error-container id="unit_tabs--group-childrens">
+                                    <ul class="employeeExtendedTab__list" data-model-attr="childs"></ul>
+                                </div>
+                                <div class="tab-pane active" data-error-container id="unit_tabs--group-parents">
+                                    <ul class="employeeExtendedTab__list" data-model-attr="parents"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="[ form__row vertical ]">
+                            <label for="TM_DESCRIPTION" class="form__label"><%- App.t 'organization.note', n : 4000 %></label>
+                            <div class="form__elem">
+                                <textarea
+                                    <%- @proper_name "DESCRIPTION" %>
+                                    <%- @is_ad_field "DESCRIPTION" %>
+
+                                    cols="30" rows="10" class="form__textarea" maxlength="4000"
+                                    <%
+                                        if (
+                                            @blocked or
+                                            not @helpers.can({ action: "edit", type: "group"})
+                                        )
+                                    : %>
+                                        disabled
+                                    <% end %>
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <% include 'controls/form/date', @ %>
+
+                    </form>
+                </div>
+                <div class="popup__footer">
+                    <button class="[ button _success ]" data-action="save" <%= 'disabled' if @blocked %>><%= App.t 'global.save' %></button>
+                    <button class="button" data-action="cancel"><%= App.t 'global.cancel' %></button>
+                </div>
+                <label for="popup" class="popup__close"></label>
+            </div>
+        </div>
+    </div>
+</div>
+

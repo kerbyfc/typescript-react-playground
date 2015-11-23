@@ -1,0 +1,26 @@
+<form class="form">
+    <div class="form__row">
+        <label for="DISPLAY_NAME" class="form__label size-medium"><%- App.t 'dashboards.dashboards.display_name' %></label>
+        <div class="form__elem" error-attr="name"  error-style="tooltip" data-error-style="tooltip">
+            <input type="text" name="DISPLAY_NAME" required data-i18n="[placeholder]dashboards.dashboards.display_name_placeholder">
+        </div>
+    </div>
+
+    <div class="form__row">
+        <label class="form__label size-medium">
+            <label class="form__checkbox">
+                <input type="checkbox" name="PARAMS[main_period]">
+                <span></span>
+                <%- App.t 'dashboards.dashboards.main_period' %>
+            </label>
+        </label>
+
+        <div    class="form__elem" disabled >
+            <% include 'controls/form/daterangepicker', @extend(
+                startName : 'PARAMS[start_period]'
+                endName   : 'PARAMS[end_period]'
+                noReset   :  true
+                ) %>
+        </div>
+    </div>
+</form>
