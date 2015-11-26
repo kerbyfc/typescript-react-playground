@@ -1,8 +1,0 @@
-<div class="dashboardCreateWidget__preview">
-    <img src="img/widgets/<%= App.Session.currentUser().get('LANGUAGE') %>/<%= @STAT %>.png">
-</div>
-<div class="dashboardCreateWidget__info">
-    <h3 class="dashboardCreateWidget__name"><%= App.t('dashboards.widgets', { returnObjectTrees: true })["#{@STAT}_name"] %></h3>
-    <p class="dashboardCreateWidget__description"><%= App.t('dashboards.widgets', { returnObjectTrees: true })["#{@STAT}_description"] %></p>
-    <a class="dashboardCreateWidget__add-btn [ button rounded ]" href="javascript: void(0)"><%= App.t 'dashboards.dashboards.add_widget' %></a>
-</div>

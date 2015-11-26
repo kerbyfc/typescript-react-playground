@@ -1,5 +1,0 @@
-<% if @mutators[@key] : %>
-	<%- @mutators[@key](@attributes[@key], @ENTITY) %>
-<% else : %>
-	<%= @locale[@attributes[@key]] or @attributes[@key] %>
-<% end %>

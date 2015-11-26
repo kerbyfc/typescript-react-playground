@@ -1,9 +1,0 @@
-<% if @key is "misc" or @error.length > 1 : %>
-<ul class='form__errors' data-error-message="<%- @cid %>">
-<% for i in @error : %>
-<li><%- App.t i, defaultValue: i %></li>
-<% end %>
-</ul>
-<% else : %>
-<%- App.t @error[0], defaultValue: @error[0] %>
-<% end %>

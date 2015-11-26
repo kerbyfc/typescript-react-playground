@@ -1,8 +1,0 @@
-<% if @event : %>
-    <% title = "#{App.t 'events.conditions.object_type_code'}: #{@event.get('name')}" %>
-<% end %>
-<% if @protocol : %>
-    <% title += ", #{App.t 'events.conditions.protocol'}: #{@protocol.get('name')}" %>
-<% end %>
-
-<i class="eventType _<%= @service?.get('mnemo') %>" title="<%= title %>"></i>

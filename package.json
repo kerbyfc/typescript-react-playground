@@ -21,7 +21,9 @@
     "doc": "doc"
   },
   "scripts": {
-    "setup": "npm prune && npm install && ./node_modules/.bin/ncu && ./node_modules/.bin/tsd reinstall --clean"
+    "setup" : "npm prune && npm install && ./node_modules/.bin/ncu && ./node_modules/.bin/tsd reinstall --clean",
+    "check" : "./node_modules/.bin/ncu",
+    "dev"   : "./node_modules/.bin/gulp serve"
   },
   "repository": {
     "type": "git",

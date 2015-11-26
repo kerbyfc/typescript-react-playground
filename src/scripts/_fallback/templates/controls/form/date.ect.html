@@ -1,6 +1,0 @@
-<% if @id : %>
-<div class="form__unit-info">
-    <div class="form__create-date"><%- App.t 'global.create_date' %>: <span data-ui='createDate'><%- moment.utc(@CREATE_DATE).local().format('L LT') %></span></div>
-    <div class="form__change-date"><%- App.t 'global.change_date' %>: <span data-ui='changeDate'><%- moment.utc(@CHANGE_DATE).local().format('L LT') %></span></div>
-</div>
-<% end %>

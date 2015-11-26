@@ -4,25 +4,32 @@ var tap    = require("gulp-tap"),
     concat = require("gulp-concat"),
     rename = require("gulp-rename");
 
-gulp.task("yaml:build", function() {
-  return src(p.src.yaml).pipe(yaml({
-    space: 2
-  })).pipe(tap(function(buf) {
-    var c;
-    c = buf.contents.toString();
-    if (c.match(/shared"[\s]*\:/)) {
-      try {
-        c = JSON.parse(c);
-        buf.contents = new Buffer(JSON.stringify(_.pick(c, c.shared), null, 2));
-      } catch (_error) {}
-    }
-    buf.contents = buf.contents.slice(1, buf.contents.length - 1);
-    return buf;
-  })).pipe(concat("config", {
-    newLine: ","
-  })).pipe(wrap("{<%= contents %>}")).pipe(rename("config.json")).pipe(save());
-});
+var yamlFiles = `${dirs.src}/**/*.yml`;
 
+function buildYaml() {
+  return helpers.src(yamlFiles)
+    .pipe(yaml({
+      space: 2
+    }))
+    .pipe(tap(
+      (stream) => {
+        var content = stream.contents.toString();
+        if (content.match(/shared"[\s]*\:/)) {
+          try {
+            content = JSON.parse(content);
+            stream.contents = new Buffer(JSON.stringify(_.pick(c, content.shared), null, 2));
+          } catch (_error) {}
+        }
+        stream.contents = stream.contents.slice(1, stream.contents.length - 1);
+        return stream;
+    }))
+    .pipe(concat("config", { newLine: "," }))
+    .pipe(wrap("{<%= contents %>}"))
+    .pipe(rename("config.json"))
+    .pipe(helpers.save());
+};
+
+gulp.task("yaml:build", buildYaml);
 gulp.task("yaml:serve", ["yaml:build"], function() {
-  return gulp.watch(p.src.yaml, ["scripts:build"]);
+  return gulp.watch(yamlFiles, ["scripts:build"]);
 });

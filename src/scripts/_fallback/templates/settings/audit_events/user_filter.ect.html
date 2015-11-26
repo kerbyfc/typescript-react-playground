@@ -1,9 +1,0 @@
-<% if @USER_ID is "<all>" : %>
-    <%- App.t "global.all" %>
-<% else : %>
-    <% if $.i18n.exists( "settings.users.#{ @DISPLAY_NAME }" ) : %>
-        <%- App.t "settings.users.#{ @DISPLAY_NAME }" %>
-    <% else : %>
-        <%- @DISPLAY_NAME %>
-    <% end %>
-<% end %>

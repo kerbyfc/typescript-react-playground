@@ -1,3 +1,0 @@
-<% for type in @types : %><% objects = _.where(@objects, TYPE: type) %><%- if objects.length > 1 then objects.length else '' %> <%- App.t "select_dialog.#{type}", count: objects.length %>: <%-
-    _.map(objects, (item) => @entry.getName item).join ', '
-%>; <% end %>
